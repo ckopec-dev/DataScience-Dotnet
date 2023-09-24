@@ -20,6 +20,7 @@ namespace Collatz
                 {
                     case "/randombiginttest": RandomBigIntTest(); break;
                     case "/randomlargesearch": RandomLargeSearch(); break;
+                    case "/averagestoppingtime": AverageStoppingTime(); break;
                     default: Console.WriteLine(switchErr); break;
                 }
             }
@@ -28,7 +29,6 @@ namespace Collatz
                 Console.WriteLine(switchErr);
             }
 
-            //Mathematics.Collatz.AverageStoppingTime();
             //Mathematics.Collatz.CalculateTest();
             //Mathematics.Collatz.IterateTest();
             //Mathematics.Collatz.PlotTest();
@@ -57,6 +57,38 @@ namespace Collatz
 
                 Console.WriteLine("{0}", st);
             }
+        }
+
+        static void AverageStoppingTime()
+        {
+            const int iterations = 100;
+            const int upperBound = 100;
+
+            double[] dataX = new double[upperBound];
+            double[] dataY = new double[upperBound];
+
+            for (int digits = 1; digits <= upperBound; digits++)
+            {
+                Console.WriteLine("Average stopping time for {0} digit(s).", digits);
+                dataX[digits - 1] = digits;
+
+                BigInteger stSum = new();
+
+                for (int i = 0; i < iterations; i++)
+                {
+                    BigInteger n = RandomBigInt(digits);
+
+                    BigInteger st = BigIterate(n);
+
+                    stSum += st;
+                }
+
+                dataY[digits - 1] = (double)(stSum / iterations);
+            }
+
+            var plt = new ScottPlot.Plot(1200, 800);
+            plt.AddBar(dataY);
+            new ScottPlot.FormsPlotViewer(plt).ShowDialog();
         }
 
         #endregion
@@ -197,40 +229,7 @@ namespace Collatz
         //    new ScottPlot.FormsPlotViewer(plt).ShowDialog();
         //}
 
-        //static void AverageStoppingTime()
-        //{
-        //    const int iterations = 100;
-        //    const int upperBound = 100;
 
-        //    double[] dataX = new double[upperBound];
-        //    double[] dataY = new double[upperBound];
-
-        //    for (int digits = 1; digits <= upperBound; digits++)
-        //    {
-        //        Console.WriteLine("Average stopping time for {0} digit(s).", digits);
-        //        dataX[digits - 1] = digits;
-
-        //        BigInteger stSum = new();
-
-        //        for (int i = 0; i < iterations; i++)
-        //        {
-        //            BigInteger n = RandomBigInt(digits);
-
-        //            BigInteger st = BigIterate(n);
-
-        //            //Console.WriteLine("{0}: {1}", n, st);
-        //            stSum += st;
-        //        }
-
-        //        //Console.WriteLine("stSum: {0}", stSum);
-
-        //        dataY[digits - 1] = (double)(stSum / iterations);
-        //    }
-
-        //    var plt = new ScottPlot.Plot(1200, 800);
-        //    plt.AddBar(dataY);
-        //    new ScottPlot.FormsPlotViewer(plt).ShowDialog();
-        //}
 
         //static long Calculate(long n)
         //{
