@@ -21,6 +21,7 @@ namespace Collatz
                     case "/randombiginttest": RandomBigIntTest(); break;
                     case "/randomlargesearch": RandomLargeSearch(); break;
                     case "/averagestoppingtime": AverageStoppingTime(); break;
+                    case "/calculatetest": CalculateTest(); break;
                     default: Console.WriteLine(switchErr); break;
                 }
             }
@@ -29,7 +30,7 @@ namespace Collatz
                 Console.WriteLine(switchErr);
             }
 
-            //Mathematics.Collatz.CalculateTest();
+            
             //Mathematics.Collatz.IterateTest();
             //Mathematics.Collatz.PlotTest();
             //Mathematics.Collatz.StoppingTimeScatterPlot(9999);
@@ -91,6 +92,11 @@ namespace Collatz
             new ScottPlot.FormsPlotViewer(plt).ShowDialog();
         }
 
+        static void CalculateTest()
+        {
+            Console.WriteLine("5: {0}", Calculate(5));
+        }
+
         #endregion
 
         #region Helpers
@@ -139,12 +145,23 @@ namespace Collatz
             else return (n * 3) + 1;
         }
 
+        static long Calculate(long n)
+        {
+            return Calculate(n, 2, 3, 1);
+        }
+
+        static long Calculate(long n, long evenDivisor, long oddMultiplier, long oddAddition)
+        {
+            // If the number is even, divide it by evenDivisor.
+            // If the number is odd, multiply by oddMultipler and add oddAddition.
+
+            if (n % 2 == 0) return n / evenDivisor;
+            else return (n * oddMultiplier) + oddAddition;
+        }
+
         #endregion
 
-        //private static void CalculateTest()
-        //{
-        //    Console.WriteLine("5: {0}", Calculate(5));
-        //}
+
 
         //private static void IterateTest()
         //{
@@ -231,24 +248,7 @@ namespace Collatz
 
 
 
-        //static long Calculate(long n)
-        //{
-        //    return Calculate(n, 2, 3, 1);
-        //}
 
-        //static long Calculate(long n, long evenDivisor, long oddMultiplier, long oddAddition)
-        //{
-        //    // Originally:
-        //    // If the number is even, divide it by two.
-        //    // If the number is odd, triple it and add one.
-
-        //    // Currently:
-        //    // If the number is even, divide it by evenDivisor.
-        //    // If the number is odd, multiply by oddMultipler and add oddAddition.
-
-        //    if (n % 2 == 0) return n / evenDivisor;
-        //    else return (n * oddMultiplier) + oddAddition;
-        //}
 
         //static long Iterate(long n)
         //{
