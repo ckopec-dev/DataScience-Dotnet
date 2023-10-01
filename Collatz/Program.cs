@@ -22,6 +22,7 @@ namespace Collatz
                     case "/randomlargesearch": RandomLargeSearch(); break;
                     case "/averagestoppingtime": AverageStoppingTime(); break;
                     case "/calculatetest": CalculateTest(); break;
+                    case "/iteratetest": IterateTest(); break;
                     default: Console.WriteLine(switchErr); break;
                 }
             }
@@ -31,7 +32,6 @@ namespace Collatz
             }
 
             
-            //Mathematics.Collatz.IterateTest();
             //Mathematics.Collatz.PlotTest();
             //Mathematics.Collatz.StoppingTimeScatterPlot(9999);
             //Collatz.StoppingTimeHistogram(1000, 2, 3, 1);
@@ -97,6 +97,12 @@ namespace Collatz
             Console.WriteLine("5: {0}", Calculate(5));
         }
 
+        static void IterateTest()
+        {
+            // This test results in an infinite loop...
+            Console.WriteLine("Steps: {0}", Iterate(5, 2, 5, 1));
+        }
+
         #endregion
 
         #region Helpers
@@ -159,14 +165,31 @@ namespace Collatz
             else return (n * oddMultiplier) + oddAddition;
         }
 
+        static long Iterate(long n, long evenDivisor, long oddMultiplier, long oddAddition)
+        {
+            if (n < 1)
+                throw new Exception("Invalid input.");
+
+            int step = 0;
+
+            do
+            {
+                step++;
+
+                n = Calculate(n, evenDivisor, oddMultiplier, oddAddition);
+
+                Console.WriteLine(n);
+            }
+            while (n != 1);
+
+            return step;
+        }
+
         #endregion
 
 
 
-        //private static void IterateTest()
-        //{
-        //    Console.WriteLine("Steps: {0}", Iterate(5, 2, 5, 1));
-        //}
+
 
         //private static void PlotTest()
         //{
@@ -250,29 +273,6 @@ namespace Collatz
 
 
 
-        //static long Iterate(long n)
-        //{
-        //    return Iterate(n, 2, 3, 1);
-        //}
 
-        //static long Iterate(long n, long evenDivisor, long oddMultiplier, long oddAddition)
-        //{
-        //    if (n < 1)
-        //        throw new Exception("Invalid input.");
-
-        //    int step = 0;
-
-        //    do
-        //    {
-        //        step++;
-
-        //        n = Calculate(n, evenDivisor, oddMultiplier, oddAddition);
-
-        //        Console.WriteLine(n);
-        //    }
-        //    while (n != 1);
-
-        //    return step;
-        //}
     }
 }
