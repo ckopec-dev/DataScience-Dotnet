@@ -23,6 +23,7 @@ namespace Collatz
                     case "/averagestoppingtime": AverageStoppingTime(); break;
                     case "/calculatetest": CalculateTest(); break;
                     case "/iteratetest": IterateTest(); break;
+                    case "/plottest": PlotTest(); break;
                     default: Console.WriteLine(switchErr); break;
                 }
             }
@@ -101,6 +102,15 @@ namespace Collatz
         {
             // This test results in an infinite loop...
             Console.WriteLine("Steps: {0}", Iterate(5, 2, 5, 1));
+        }
+
+        static void PlotTest()
+        {
+            double[] dataX = new double[] { 1, 2, 3, 4, 5 };
+            double[] dataY = new double[] { 1, 4, 9, 16, 25 };
+            var plt = new ScottPlot.Plot(400, 300);
+            plt.AddScatter(dataX, dataY);
+            new ScottPlot.FormsPlotViewer(plt).ShowDialog();
         }
 
         #endregion
@@ -191,14 +201,7 @@ namespace Collatz
 
 
 
-        //private static void PlotTest()
-        //{
-        //    double[] dataX = new double[] { 1, 2, 3, 4, 5 };
-        //    double[] dataY = new double[] { 1, 4, 9, 16, 25 };
-        //    var plt = new ScottPlot.Plot(400, 300);
-        //    plt.AddScatter(dataX, dataY);
-        //    new ScottPlot.FormsPlotViewer(plt).ShowDialog();
-        //}
+
 
         //private static void StoppingTimeScatterPlot(int max)
         //{
