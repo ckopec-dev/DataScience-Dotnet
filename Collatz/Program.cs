@@ -24,6 +24,7 @@ namespace Collatz
                     case "/calculatetest": CalculateTest(); break;
                     case "/iteratetest": IterateTest(); break;
                     case "/plottest": PlotTest(); break;
+                    case "/stoppingtimescatterplot": StoppingTimeScatterPlot(9999); break;
                     default: Console.WriteLine(switchErr); break;
                 }
             }
@@ -33,8 +34,6 @@ namespace Collatz
             }
 
             
-            //Mathematics.Collatz.PlotTest();
-            //Mathematics.Collatz.StoppingTimeScatterPlot(9999);
             //Collatz.StoppingTimeHistogram(1000, 2, 3, 1);
             //Mathematics.Collatz.StoppingTimeHistogram(1000, 2, 5, 1);
         }
@@ -110,6 +109,24 @@ namespace Collatz
             double[] dataY = new double[] { 1, 4, 9, 16, 25 };
             var plt = new ScottPlot.Plot(400, 300);
             plt.AddScatter(dataX, dataY);
+            new ScottPlot.FormsPlotViewer(plt).ShowDialog();
+        }
+
+        static void StoppingTimeScatterPlot(int max)
+        {
+            // Numbers from 1 to 9999 and their corresponding total stopping time.
+
+            double[] dataX = new double[max];
+            double[] dataY = new double[max];
+
+            for (long n = 1; n <= max; n++)
+            {
+                dataX[n - 1] = n;
+                dataY[n - 1] = Iterate(n, 2, 3, 1);
+            }
+
+            var plt = new ScottPlot.Plot(1200, 800);
+            plt.AddScatter(dataX, dataY, null, 1, 5, ScottPlot.MarkerShape.filledCircle, ScottPlot.LineStyle.None, null);
             new ScottPlot.FormsPlotViewer(plt).ShowDialog();
         }
 
@@ -203,23 +220,6 @@ namespace Collatz
 
 
 
-        //private static void StoppingTimeScatterPlot(int max)
-        //{
-        //    // Numbers from 1 to 9999 and their corresponding total stopping time.
-
-        //    double[] dataX = new double[max];
-        //    double[] dataY = new double[max];
-
-        //    for (long n = 1; n <= max; n++)
-        //    {
-        //        dataX[n - 1] = n;
-        //        dataY[n - 1] = Iterate(n);
-        //    }
-
-        //    var plt = new ScottPlot.Plot(1200, 800);
-        //    plt.AddScatter(dataX, dataY, null, 1, 5, ScottPlot.MarkerShape.filledCircle, ScottPlot.LineStyle.None, null);
-        //    new ScottPlot.FormsPlotViewer(plt).ShowDialog();
-        //}
 
         //private static void StoppingTimeHistogram(int max, long evenDivisor, long oddMultiplier, long oddAddition)
         //{
