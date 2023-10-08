@@ -7,9 +7,24 @@ namespace Euler
     /// </summary>
     internal class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
-            Problem1();
+            string switchErr = "Switch missing or invalid.";
+
+            if (args != null && args.Length == 1)
+            {
+                switch (args[0])
+                {
+                    case "/problem1": Problem1(); break;
+                    case "/problem2": Problem2(); break;
+                    case "/problem3": Problem3(); break;
+                    default: Console.WriteLine(switchErr); break;
+                }
+            }
+            else
+            {
+                Console.WriteLine(switchErr);
+            }
         }
 
         #region Problems
