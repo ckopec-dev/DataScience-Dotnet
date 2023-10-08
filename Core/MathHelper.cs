@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Core
 {
-    internal class MathHelper
+    public static class MathHelper
     {
         public static bool IsPrime(long n)
         {
+            if (n < 2) return false;
             if (n == 2) return true;
             if (n % 2 == 0) return false;
 
@@ -25,6 +21,11 @@ namespace Core
         public static List<long> ProperDivisors(long n)
         {
             List<long> d = new();
+
+            if (n == 0)
+                return d;
+
+            d.Add(1);
 
             if (n < 2)
             {
