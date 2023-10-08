@@ -25,6 +25,7 @@ namespace Collatz
                     case "/iteratetest": IterateTest(); break;
                     case "/plottest": PlotTest(); break;
                     case "/stoppingtimescatterplot": StoppingTimeScatterPlot(9999); break;
+                    case "/stoppingtimehistogram": StoppingTimeHistogram(1000, 2, 3, 1); break;
                     default: Console.WriteLine(switchErr); break;
                 }
             }
@@ -32,10 +33,6 @@ namespace Collatz
             {
                 Console.WriteLine(switchErr);
             }
-
-            
-            //Collatz.StoppingTimeHistogram(1000, 2, 3, 1);
-            //Mathematics.Collatz.StoppingTimeHistogram(1000, 2, 5, 1);
         }
 
         #region Experiments/Tests 
@@ -130,6 +127,55 @@ namespace Collatz
             new ScottPlot.FormsPlotViewer(plt).ShowDialog();
         }
 
+        static void StoppingTimeHistogram(int max, long evenDivisor, long oddMultiplier, long oddAddition)
+        {
+            // Histogram of total stopping times for the numbers 1 to 10^8.
+            // Total stopping time is on the x axis, frequency on the y axis.
+
+            // Ultimately we want 2 double arrays, similar to scatter plot demo. 
+            // But we won't know how big the array is until we're done with all the calculations.
+
+            // Store calculations in a dictionary and then convert to dual arrays when done.
+
+            Dictionary<long, long> buckets = new();
+
+            for (long n = 1; n <= max; n++)
+            {
+                if (n % 1000000 == 0)
+                    Console.WriteLine("Calculating n = {0}.", n);
+
+                long stoppingTime = Iterate(n, evenDivisor, oddMultiplier, oddAddition);
+
+                if (!buckets.ContainsKey(stoppingTime))
+                    buckets.Add(stoppingTime, 0);
+
+                buckets[stoppingTime] += 1;
+            }
+
+            Console.WriteLine("Key count: {0}", buckets.Count);
+
+            long largestKey = buckets.Keys.Max();
+
+            Console.WriteLine("Largest key: {0}", largestKey);
+
+            double[] dataX = new double[largestKey + 1];
+            double[] dataY = new double[largestKey + 1];
+
+            for (long x = 0; x < dataX.Length; x++)
+            {
+                dataX[x] = x;
+            }
+
+            foreach (var item in buckets)
+            {
+                dataY[item.Key] = item.Value;
+            }
+
+            var plt = new ScottPlot.Plot(1200, 800);
+            plt.AddBar(dataY);
+            new ScottPlot.FormsPlotViewer(plt).ShowDialog();
+        }
+
         #endregion
 
         #region Helpers
@@ -213,69 +259,5 @@ namespace Collatz
         }
 
         #endregion
-
-
-
-
-
-
-
-
-        //private static void StoppingTimeHistogram(int max, long evenDivisor, long oddMultiplier, long oddAddition)
-        //{
-        //    // Histogram of total stopping times for the numbers 1 to 10^8.
-        //    // Total stopping time is on the x axis, frequency on the y axis.
-
-        //    // Ultimately we want 2 double arrays, similar to scatter plot demo. 
-        //    // But we won't know how big the array is until we're done with all the calculations.
-
-        //    // Store calculations in a dictionary and then convert to dual arrays when done.
-
-        //    Dictionary<long, long> buckets = new();
-
-        //    for (long n = 1; n <= max; n++)
-        //    {
-        //        if (n % 1000000 == 0)
-        //            Console.WriteLine("Calculating n = {0}.", n);
-
-        //        long stoppingTime = Iterate(n, evenDivisor, oddMultiplier, oddAddition);
-
-        //        if (!buckets.ContainsKey(stoppingTime))
-        //            buckets.Add(stoppingTime, 0);
-
-        //        buckets[stoppingTime] += 1;
-        //    }
-
-        //    Console.WriteLine("Key count: {0}", buckets.Count);
-
-        //    long largestKey = buckets.Keys.Max();
-
-        //    Console.WriteLine("Largest key: {0}", largestKey);
-
-        //    double[] dataX = new double[largestKey + 1];
-        //    double[] dataY = new double[largestKey + 1];
-
-        //    for (long x = 0; x < dataX.Length; x++)
-        //    {
-        //        dataX[x] = x;
-        //    }
-
-        //    foreach (var item in buckets)
-        //    {
-        //        //Console.WriteLine("{0}:{1}", item.Key, item.Value);
-
-        //        dataY[item.Key] = item.Value;
-        //    }
-
-        //    var plt = new ScottPlot.Plot(1200, 800);
-        //    plt.AddBar(dataY);
-        //    new ScottPlot.FormsPlotViewer(plt).ShowDialog();
-        //}
-
-
-
-
-
-
     }
 }
