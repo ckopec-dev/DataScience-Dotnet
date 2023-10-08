@@ -1,4 +1,6 @@
-﻿namespace Euler
+﻿using System.Threading.Tasks.Sources;
+
+namespace Euler
 {
     /// <summary>
     /// https://projecteuler.net/archives
@@ -12,7 +14,7 @@
 
         #region Problems
 
-        private static void Problem1()
+        static void Problem1()
         {
             // If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9.
             // The sum of these multiples is 23.
@@ -30,38 +32,38 @@
             Console.WriteLine(sum);
         }
 
-        //private static void Problem2()
-        //{
-        //    // By considering the terms in the Fibonacci sequence whose values do not exceed four million,
-        //    // find the sum of the even-valued terms.
+        static void Problem2()
+        {
+            // By considering the terms in the Fibonacci sequence whose values do not exceed four million,
+            // find the sum of the even-valued terms.
 
-        //    long sum = 0;
-        //    int n = 1;
-        //    long term = 0;
+            long sum = 0;
+            int n = 1;
+            long term = 0;
 
-        //    while (term < 4000000)
-        //    {
-        //        term = MathHelper.Fibonacci(n);
+            while (term < 4000000)
+            {
+                term = Core.MathHelper.Fibonacci(n);
 
-        //        if (term % 2 == 0)
-        //            sum += term;
+                if (term % 2 == 0)
+                    sum += term;
 
-        //        n++;
-        //    }
+                n++;
+            }
 
-        //    Console.WriteLine(sum);
-        //}
+            Console.WriteLine(sum);
+        }
 
-        //internal static void Problem3()
-        //{
-        //    // The prime factors of 13195 are 5, 7, 13 and 29.
+        static void Problem3()
+        {
+            // The prime factors of 13195 are 5, 7, 13 and 29.
 
-        //    // What is the largest prime factor of the number 600851475143 ?
+            // What is the largest prime factor of the number 600851475143 ?
 
-        //    var factors = MathHelper.PrimeFactors(600851475143);
+            var factors = Core.MathHelper.PrimeFactors(600851475143);
 
-        //    Console.WriteLine(factors.Last());
-        //}
+            Console.WriteLine(factors.Last());
+        }
 
         #endregion
 
