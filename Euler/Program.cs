@@ -4,7 +4,19 @@
     {
         static void Main()
         {
-            Console.WriteLine("Hello, World!");
+            
         }
+
+        #region Problems
+
+        #endregion
+
+        #region Misc experiments
+
+        #endregion
+
+        #region Helpers
+
+        #endregion
     }
 }
