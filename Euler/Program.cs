@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks.Sources;
+﻿using Core;
 
 namespace Euler
 {
@@ -18,6 +18,7 @@ namespace Euler
                     case "/problem1": Problem1(); break;
                     case "/problem2": Problem2(); break;
                     case "/problem3": Problem3(); break;
+                    case "/misc1": Misc1(); break;
                     default: Console.WriteLine(switchErr); break;
                 }
             }
@@ -83,6 +84,25 @@ namespace Euler
         #endregion
 
         #region Misc experiments
+
+        static void Misc1()
+        {
+            // Search for friendly numbers
+            
+            for(long m = 2; m <= 10000; m++)
+            {
+                for(long n = 3; n <= 10000; n++)
+                {
+                    if (m == n || m > n)
+                        continue;
+
+                    if (MathHelper.AreFriendly(m, n))
+                    {
+                        Console.WriteLine("AreFriendly: {0}, {1}", m, n);
+                    }
+                }
+            }
+        }
 
         #endregion
 

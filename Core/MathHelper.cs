@@ -135,5 +135,16 @@ namespace Core
 
             return true;
         }
+
+        public static bool AreFriendly(long m, long n)
+        {
+            // Two numbers are considered "friendly" if each is equal to the sum of the other's proper divisors.
+
+            if (ProperDivisors(n).Sum() == m &&
+                ProperDivisors(m).Sum() == n)
+                return true;
+            else
+                return false;
+        }
     }
 }
