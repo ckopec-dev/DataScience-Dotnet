@@ -13,12 +13,13 @@ namespace Euler
 
             if (args != null && args.Length == 1)
             {
-                switch (args[0])
+                switch (args[0].ToLower())
                 {
                     case "/problem1": Problem1(); break;
                     case "/problem2": Problem2(); break;
                     case "/problem3": Problem3(); break;
                     case "/misc1": Misc1(); break;
+                    case "/misc2": Misc2(); break;
                     default: Console.WriteLine(switchErr); break;
                 }
             }
@@ -102,6 +103,15 @@ namespace Euler
                     }
                 }
             }
+        }
+
+        static void Misc2()
+        {
+            for(long n = 1; n <= 10; n++)
+            {
+                Console.WriteLine("{0} is perfect: {1}", n, MathHelper.IsPerfect(n));
+            }
+
         }
 
         #endregion

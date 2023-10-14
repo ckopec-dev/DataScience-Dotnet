@@ -146,5 +146,15 @@ namespace Core
             else
                 return false;
         }
+
+        public static bool IsPerfect(long n)
+        {
+            // A perfect number is a number that is the sum of it's proper divisors.
+
+            if (n < 2)
+                return false;
+
+            return n == ProperDivisors(n).Sum();
+        }
     }
 }
