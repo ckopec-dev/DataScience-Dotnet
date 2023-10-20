@@ -11,6 +11,7 @@ namespace Test
         {
             PrimeTest();
             ProperDivisorsTest();
+            BubbleSortTest();
         }
 
         static void PrimeTest()
@@ -24,6 +25,15 @@ namespace Test
         static void ProperDivisorsTest()
         {
             Console.WriteLine("Proper divisors of 220: {0}", String.Join(", ", Core.MathHelper.ProperDivisors(220)));
+        }
+
+        static void BubbleSortTest()
+        {
+            int[] ints = { 5, 3, 7, 1 };
+
+            Core.SortHelper.BubbleSort(ints);
+
+            Console.WriteLine("Bubble sorted: {0}", String.Join(", ", ints));
         }
     }
 }
