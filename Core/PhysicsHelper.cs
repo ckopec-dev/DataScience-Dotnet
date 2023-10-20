@@ -66,5 +66,30 @@ namespace Core
         }
 
         #endregion
+
+        #region Astronomy
+
+        public static DateTime Easter(int year)
+        {
+
+            Math.DivRem(year, 19, out int a);
+            int b = Math.DivRem(year, 100, out int c);
+            int d = Math.DivRem(b, 4, out int e);
+            int f = (b + 8) / 25;
+            int g = (b - f + 1) / 3;
+            Math.DivRem((19 * a) + b - d - g + 15, 30, out int h);
+            int i = Math.DivRem(c, 4, out int k);
+            Math.DivRem(32 + (2 * e) + (2 * i) - h - k, 7, out int l);
+            int m = (a + (11 * h) + (22 * l)) / 451;
+            int n = Math.DivRem(h + l - (7 * m) + 114, 31, out int p);
+
+            int day = p + 1;
+            int month = n;
+
+            return new DateTime(year, month, day);
+        }
+
+
+        #endregion
     }
 }

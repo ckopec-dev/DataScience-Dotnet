@@ -12,6 +12,7 @@ namespace Test
             PrimeTest();
             ProperDivisorsTest();
             BubbleSortTest();
+            EasterTest();
         }
 
         static void PrimeTest()
@@ -34,6 +35,12 @@ namespace Test
             Core.SortHelper.BubbleSort(ints);
 
             Console.WriteLine("Bubble sorted: {0}", String.Join(", ", ints));
+        }
+
+        static void EasterTest()
+        {
+            // To verify, see https://www.census.gov/data/software/x13as/genhol/easter-dates.html 
+            Core.PhysicsHelper.Easter(2008);
         }
     }
 }
