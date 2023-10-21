@@ -5,6 +5,7 @@ namespace Collatz
     /// <summary>
     /// The conjecture: https://en.wikipedia.org/wiki/Collatz_conjecture
     /// For plotting from a console app: https://scottplot.net/quickstart/console/
+    /// Interesting talk about the problem by Terence Tao: https://www.youtube.com/watch?v=k-dtx8s2ehM
     /// </summary>
     internal class Program
     {

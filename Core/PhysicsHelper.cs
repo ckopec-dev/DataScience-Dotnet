@@ -71,7 +71,6 @@ namespace Core
 
         public static DateTime Easter(int year)
         {
-
             Math.DivRem(year, 19, out int a);
             int b = Math.DivRem(year, 100, out int c);
             int d = Math.DivRem(b, 4, out int e);
@@ -88,7 +87,6 @@ namespace Core
 
             return new DateTime(year, month, day);
         }
-
 
         #endregion
     }
