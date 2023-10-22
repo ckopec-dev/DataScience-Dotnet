@@ -1,12 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Rosalind
 {
-    internal class AlgorithmicHeights
+    public static class AlgorithmicHeights
     {
+        #region Problems
+
+        public static void ProblemFIBO()
+        {
+            int n = 21;
+
+            Console.WriteLine("FinonacciRecursive({0}): {1}", n, Core.MathHelper.FibonacciRecursive(n));
+
+            Console.WriteLine("Finonacci({0}): {1}", n, Core.MathHelper.Fibonacci(n));
+        }
+
+        public static void ProblemBINS()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Helpers
+
+        #endregion
     }
 }
