@@ -26,6 +26,41 @@
             }
         }
 
+        public static void ShellSort(int[] data)
+        {
+            int gap = (int)Math.Floor((decimal)data.Length / 2m);
+
+            if (gap == 0)
+                gap = 1;
+
+            bool swapMade = true;
+
+            while (swapMade)
+            {
+                int interval = data.Length - gap;
+
+                swapMade = false;
+
+                for (int i = 0; i < interval; i++)
+                {
+                    if (data[i + gap] < data[i])
+                    {
+                        int k = data[i];
+
+                        data[i] = data[i + gap];
+                        data[i + gap] = k;
+
+                        swapMade = true;
+
+                        gap = (int)Math.Floor((decimal)gap / 2m);
+
+                        if (gap == 0)
+                            gap = 1;
+                    }
+                }
+            }
+        }
+
         #endregion
 
         #region Helper methods
