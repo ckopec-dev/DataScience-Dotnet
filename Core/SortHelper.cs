@@ -45,11 +45,7 @@
                 {
                     if (data[i + gap] < data[i])
                     {
-                        int k = data[i];
-
-                        data[i] = data[i + gap];
-                        data[i + gap] = k;
-
+                        (data[i + gap], data[i]) = (data[i], data[i + gap]);
                         swapMade = true;
 
                         gap = (int)Math.Floor((decimal)gap / 2m);
