@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{3E25D708-26D7-46DE-8966-C800EB19C867}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rosalind", "Rosalind\Rosalind.csproj", "{DBDEE4C2-B391-46F1-903B-798F0F109CDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rosalind", "Rosalind\Rosalind.csproj", "{DBDEE4C2-B391-46F1-903B-798F0F109CDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riemann", "Riemann\Riemann.csproj", "{DCC978CD-521F-4C79-974D-3952C6712A16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{DBDEE4C2-B391-46F1-903B-798F0F109CDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBDEE4C2-B391-46F1-903B-798F0F109CDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBDEE4C2-B391-46F1-903B-798F0F109CDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCC978CD-521F-4C79-974D-3952C6712A16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCC978CD-521F-4C79-974D-3952C6712A16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCC978CD-521F-4C79-974D-3952C6712A16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCC978CD-521F-4C79-974D-3952C6712A16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
