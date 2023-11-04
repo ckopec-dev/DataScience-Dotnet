@@ -18,6 +18,7 @@ namespace Euler
                     case "/problem1": Problem1(); break;
                     case "/problem2": Problem2(); break;
                     case "/problem3": Problem3(); break;
+                    case "/problem4": Problem4(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     default: Console.WriteLine(switchErr); break;
@@ -60,7 +61,7 @@ namespace Euler
 
             while (term < 4000000)
             {
-                term = Core.MathHelper.Fibonacci(n);
+                term = MathHelper.Fibonacci(n);
 
                 if (term % 2 == 0)
                     sum += term;
@@ -77,9 +78,20 @@ namespace Euler
 
             // What is the largest prime factor of the number 600851475143 ?
 
-            var factors = Core.MathHelper.PrimeFactors(600851475143);
+            var factors = MathHelper.PrimeFactors(600851475143);
 
             Console.WriteLine(factors.Last());
+        }
+
+        static void Problem4()
+        {
+            // A palindromic number reads the same both ways. The largest palindrome made from the product of two 
+            // 2-digit numbers is 9009 = 91 x 99.
+
+            // Find the largest palindrome made from the product of two 
+            // 3-digit numbers.
+
+            throw new NotImplementedException();
         }
 
         #endregion
