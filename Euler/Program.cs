@@ -21,6 +21,7 @@ namespace Euler
                     case "/problem4": Problem4(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
+                    case "/misc3": Misc3(); break;
                     default: Console.WriteLine(switchErr); break;
                 }
             }
@@ -124,6 +125,47 @@ namespace Euler
                 Console.WriteLine("{0} is perfect: {1}", n, MathHelper.IsPerfect(n));
             }
 
+        }
+
+        static void Misc3()
+        {
+            // Iterate through square values and check solutions. Nine nested loops...
+
+            long limit = 5; // iterations = limit^9
+            long found = 0;
+            long iterations = 0;
+
+            for (long i0 = 1; i0 <= limit; i0++)
+            {
+                Console.WriteLine($"Processing outer loop: {i0}");
+                for (long i1 = 1; i1 <= limit; i1++)
+                    for (long i2 = 1; i2 <= limit; i2++)
+                        for (long i3 = 1; i3 <= limit; i3++)
+                            for (long i4 = 1; i4 <= limit; i4++)
+                                for (long i5 = 1; i5 <= limit; i5++)
+                                    for (long i6 = 1; i6 <= limit; i6++)
+                                        for (long i7 = 1; i7 <= limit; i7++)
+                                            for (long i8 = 1; i8 <= limit; i8++)
+                                            {
+                                                iterations++;
+
+                                                long[,] a = new long[3, 3]
+                                                {
+                                                    {i0 * i0, i1 * i1, i2 * i2 },
+                                                    {i3 * i3, i4 * i4, i5 * i5 },
+                                                    {i6 * i6, i7 * i7, i8 * i8 }
+                                                };
+
+                                                if (MathHelper.Is3x3MagicSquare(a))
+                                                {
+                                                    Console.WriteLine($"Magic square of squares found: {i0}, {i1}, {i2}, {i3}, {i4}, {i5}, {i6}, {i7}, {i8}");
+                                                    found++;
+                                                }
+                                            }
+            }
+
+            Console.WriteLine($"Total iterations: {iterations}");
+            Console.WriteLine($"Total found: {found}");
         }
 
         #endregion

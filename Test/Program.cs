@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks.Sources;
+﻿using Core;
+using System.Threading.Tasks.Sources;
 
 namespace Test
 {
@@ -13,6 +14,7 @@ namespace Test
             ProperDivisorsTest();
             BubbleSortTest();
             EasterTest();
+            MagicSquareTest();
         }
 
         static void PrimeTest()
@@ -41,6 +43,19 @@ namespace Test
         {
             // To verify, see https://www.census.gov/data/software/x13as/genhol/easter-dates.html 
             Core.PhysicsHelper.Easter(2008);
+        }
+
+        static void MagicSquareTest()
+        {
+            // Test of magic square helper function.
+
+            long[,] a = new long[3, 3] {
+                {2, 7, 6},
+                {9, 5, 1},
+                {4, 3, 8}
+            };
+
+            Console.WriteLine(MathHelper.Is3x3MagicSquare(a));
         }
     }
 }
