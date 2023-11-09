@@ -22,6 +22,7 @@ namespace Euler
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
+                    case "/misc4": Misc4(); break;
                     default: Console.WriteLine(switchErr); break;
                 }
             }
@@ -166,6 +167,47 @@ namespace Euler
 
             Console.WriteLine($"Total iterations: {iterations}");
             Console.WriteLine($"Total found: {found}");
+        }
+
+        static void Misc4()
+        {
+            // Show convergence of pi via infinite series.
+
+            // pi/4 = 1 - 1/3 + 1/5 - 1/7 + 1/9...
+
+            const int iterations = 1000;
+
+            double[] dataX = new double[iterations];
+            double[] dataY = new double[iterations];
+
+            double currentPi = 1;
+            bool currentPos = false;
+            double currentDenom = 1;
+
+            for (long n = 1; n <= iterations; n++)
+            {
+                dataX[n - 1] = n;
+
+                currentDenom += 2d;
+
+                if (currentPos)
+                {
+                    currentPi += (1d / currentDenom);
+                    currentPos = false;
+                }
+                else
+                {
+                    currentPi -= (1d / currentDenom);
+                    currentPos = true;
+                }
+
+                Console.WriteLine("d: {0}, pi: {1}, actual: {2}", currentDenom, currentPi, currentPi * 4);
+                dataY[n - 1] = 4 * currentPi;
+            }
+
+            var plt = new ScottPlot.Plot(1200, 800);
+            plt.AddScatter(dataX, dataY, null, 1, 5, ScottPlot.MarkerShape.filledCircle, ScottPlot.LineStyle.None, null);
+            new ScottPlot.FormsPlotViewer(plt).ShowDialog();
         }
 
         #endregion
