@@ -69,9 +69,7 @@
 
             for (int i = n - 1; i >= 0; i--)
             {
-                int temp = arr[0];
-                arr[0] = arr[i];
-                arr[i] = temp;
+                (arr[i], arr[0]) = (arr[0], arr[i]);
                 Heapify(arr, i, 0);
             }
         }
@@ -94,9 +92,7 @@
 
             if (largest != i)
             {
-                int swap = arr[i];
-                arr[i] = arr[largest];
-                arr[largest] = swap;
+                (arr[largest], arr[i]) = (arr[i], arr[largest]);
                 Heapify(arr, n, largest);
             }
         }
