@@ -74,6 +74,28 @@
             }
         }
 
+        public static void SelectionSort(int[] data)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                int lowestJ = int.MaxValue;
+                int lowestJIdx = 0;
+
+                for (int j = i; j < data.Length; j++)
+                {
+                    // Find the lowest value of j. Update i with that value.
+
+                    if (data[j] < lowestJ)
+                    {
+                        lowestJ = data[j];
+                        lowestJIdx = j;
+                    }
+                }
+
+                (data[lowestJIdx], data[i]) = (data[i], data[lowestJIdx]);
+            }
+
+        }
         #endregion
 
         #region Helper methods
