@@ -35,6 +35,23 @@ namespace Core
             return ds.Tables[0];
         }
 
+        public static int Insert(string connectionString, string sqlStatement, List<SqlParameter> parameters)
+        {
+            SqlConnection cnn = new(connectionString);
+
+            cnn.Open();
+
+            sqlStatement += ";SELECT CAST(scope_identity() AS int)";
+
+            SqlCommand cmd = GetSqlCommand(cnn, sqlStatement, parameters);
+
+            int newId = (int)cmd.ExecuteScalar();
+
+            cnn.Close();
+
+            return newId;
+        }
+
         public static int Execute(string connectionString, string sqlStatement)
         {
             return Execute(connectionString, sqlStatement, new List<SqlParameter>());
