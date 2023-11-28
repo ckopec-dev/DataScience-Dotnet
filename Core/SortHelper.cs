@@ -162,11 +162,7 @@
                 {
                     if (arr[left] == arr[right]) return right;
 
-                    int temp = arr[left];
-                    arr[left] = arr[right];
-                    arr[right] = temp;
-
-
+                    (arr[right], arr[left]) = (arr[left], arr[right]);
                 }
                 else
                 {
