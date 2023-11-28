@@ -97,6 +97,28 @@
 
         }
 
+        public static void QuickSort(int[] data)
+        {
+            QuickSort(data, 0, data.Length - 1);
+        }
+
+        public static void QuickSort(int[] data, int left, int right)
+        {
+            if (left < right)
+            {
+                int pivot = Partition(data, left, right);
+
+                if (pivot > 1)
+                {
+                    QuickSort(data, left, pivot - 1);
+                }
+                if (pivot + 1 < right)
+                {
+                    QuickSort(data, pivot + 1, right);
+                }
+            }
+        }
+
         #endregion
 
         #region Helper methods
@@ -117,6 +139,39 @@
             {
                 (arr[largest], arr[i]) = (arr[i], arr[largest]);
                 Heapify(arr, n, largest);
+            }
+        }
+
+        private static int Partition(int[] arr, int left, int right)
+        {
+            int pivot = arr[left];
+            while (true)
+            {
+
+                while (arr[left] < pivot)
+                {
+                    left++;
+                }
+
+                while (arr[right] > pivot)
+                {
+                    right--;
+                }
+
+                if (left < right)
+                {
+                    if (arr[left] == arr[right]) return right;
+
+                    int temp = arr[left];
+                    arr[left] = arr[right];
+                    arr[right] = temp;
+
+
+                }
+                else
+                {
+                    return right;
+                }
             }
         }
 
