@@ -93,7 +93,23 @@ namespace Euler
             // Find the largest palindrome made from the product of two 
             // 3-digit numbers.
 
-            throw new NotImplementedException();
+            List<int> palindromes = new();
+
+            for (int x = 999; x > 99; x--)
+            {
+                for (int y = 999; y > 99; y--)
+                {
+                    int z = x * y;
+                    if (z.IsPalindrome())
+                    {
+                        palindromes.Add(z);
+                    }
+                }
+            }
+
+            palindromes.Sort();
+
+            Console.WriteLine(palindromes[^1]);
         }
 
         #endregion
