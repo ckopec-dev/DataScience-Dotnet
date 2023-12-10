@@ -1,4 +1,5 @@
 ﻿using Core;
+using System.Numerics;
 
 namespace Euler
 {
@@ -23,6 +24,7 @@ namespace Euler
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
                     case "/misc4": Misc4(); break;
+                    case "/misc5": Misc5(); break;
                     default: Console.WriteLine(switchErr); break;
                 }
             }
@@ -224,6 +226,29 @@ namespace Euler
             var plt = new ScottPlot.Plot(1200, 800);
             plt.AddScatter(dataX, dataY, null, 1, 5, ScottPlot.MarkerShape.filledCircle, ScottPlot.LineStyle.None, null);
             new ScottPlot.FormsPlotViewer(plt).ShowDialog();
+        }
+
+        static void Misc5()
+        {
+            // Find integer solutions to a^3 + b^3 = 22c^3
+            // Known solution is: a=17299,b=25469,c=9954. Is this the first?
+
+            for (BigInteger a = new(1); a < 20000; a++)
+            {
+                for(BigInteger b = new(1); b < 30000; b++)
+                {
+                    Console.WriteLine("Check a: {0}, b: {1}", a, b);
+
+                    for (BigInteger c = new(1); c < 10000; c++)
+                    {
+                        if (a * a * a + b * b * b == 22 * c * c * c)
+                        {
+                            Console.WriteLine("Solution found: {0}, {1}, {2}", a, b, c);
+                            return;
+                        }
+                    }
+                }
+            }
         }
 
         #endregion
