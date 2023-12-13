@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             string switchErr = "Switch missing or invalid.";
-
+            
             // /Problem InputPath OutputPath
             if (args != null && args.Length == 3)
             {
@@ -16,8 +16,7 @@
                 {
                     // Algorithmic Heights
                     case "/fibo": AlgorithmicHeights.ProblemFIBO(); break;
-                    //case "/bins": RandomLargeSearch(); break;
-
+                    case "/bins": AlgorithmicHeights.ProblemBINS(); break;
                     
                     default: Console.WriteLine(switchErr); break;
                 }

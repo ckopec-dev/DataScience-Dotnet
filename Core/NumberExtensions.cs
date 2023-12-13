@@ -964,15 +964,16 @@ namespace Core
             return false;
         }
 
-        public static List<double[]> ToDoubleListArray(this string val)
+        public static List<double[]> ToDoubleListArray(this string val, char rowDelimiter, char colDelimiter)
         {
             List<double[]> data = new();
 
-            string[] lines = val.Split('\n');
+            string[] lines = val.Split(rowDelimiter);
 
+            //Console.WriteLine("lines: {0}", lines);
             for (int i = 1; i <= lines.Length; i++)
             {
-                string[] fields = lines[i - 1].Split(',');
+                string[] fields = lines[i - 1].Split(colDelimiter);
 
                 double[] d = new double[fields.Length];
 
@@ -984,7 +985,7 @@ namespace Core
                     }
                     catch
                     {
-                        throw new InvalidDataException(String.Format("Line {0} in incorrect format.", i));
+                        throw new InvalidDataException(String.Format("Line {0} is in incorrect format.", i));
                     }
                 }
 
