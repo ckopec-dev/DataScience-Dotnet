@@ -15,6 +15,7 @@ namespace Test
             BubbleSortTest();
             EasterTest();
             MagicSquareTest();
+            DayNumberTest();
         }
 
         static void PrimeTest()
@@ -42,7 +43,7 @@ namespace Test
         static void EasterTest()
         {
             // To verify, see https://www.census.gov/data/software/x13as/genhol/easter-dates.html 
-            Core.PhysicsHelper.Easter(2008);
+            Console.WriteLine("Easter in 2008 fall on: {0}", Core.PhysicsHelper.Easter(2008));
         }
 
         static void MagicSquareTest()
@@ -55,7 +56,13 @@ namespace Test
                 {4, 3, 8}
             };
 
-            Console.WriteLine(MathHelper.Is3x3MagicSquare(a));
+            Console.WriteLine("Is a magic square: {0}", MathHelper.Is3x3MagicSquare(a));
+        }
+
+        static void DayNumberTest()
+        {
+            DateTime dt = new(1985, 2, 17);
+            Console.WriteLine("The day number of 2/17/1985 is {0}", dt.DayNumber());
         }
     }
 }
