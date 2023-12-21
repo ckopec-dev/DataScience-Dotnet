@@ -1,6 +1,7 @@
 ﻿
 using Core;
 using System;
+using System.Collections.Generic;
 
 namespace Rosalind
 {
@@ -50,11 +51,44 @@ namespace Rosalind
             WriteOutput(String.Join(" ", output));
         }
 
+        public static void ProblemDEG()
+        {
+            // https://rosalind.info/problems/deg/
+            // Given: A simple graph with n <= 10^3 vertices in the edge list format.
+            // Return: An array D[1..n] where D[i] is the degree of vertex i.
+
+            List<double[]> input = ReadInputToDoubleListArray();
+            SortedDictionary<double, int> dic = new();
+
+            for(int i = 1; i < input.Count; i++)
+            {
+                // How many edges on this vertex?
+                
+                if (dic.ContainsKey(input[i][0]))
+                {
+                    dic[input[i][0]]++;
+                }
+                else
+                {
+                    dic.Add(input[i][0], 1);
+                }
+
+                if (dic.ContainsKey(input[i][1]))
+                {
+                    dic[input[i][1]]++;
+                }
+                else
+                {
+                    dic.Add(input[i][1], 1);
+                }
+            }
+
+            WriteOutput(String.Join(" ", dic.Values));
+        }
+
         #endregion
 
         #region Helpers
-
-
 
         #endregion
     }

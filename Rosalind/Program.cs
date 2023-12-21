@@ -17,6 +17,7 @@
                     // Algorithmic Heights
                     case "/fibo": AlgorithmicHeights.ProblemFIBO(); break;
                     case "/bins": AlgorithmicHeights.ProblemBINS(); break;
+                    case "/deg": AlgorithmicHeights.ProblemDEG(); break;
                     
                     default: Console.WriteLine(switchErr); break;
                 }
