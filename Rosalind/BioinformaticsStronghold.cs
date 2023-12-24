@@ -1,7 +1,7 @@
 ﻿
 namespace Rosalind
 {
-    public static class BioinformaticsStronghold
+    public class BioinformaticsStronghold : ProblemDomain
     {
         #region Problems
 

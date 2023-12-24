@@ -1,7 +1,7 @@
 ﻿
 namespace Rosalind
 {
-    public static class BioinformaticsTextbookTrack
+    public class BioinformaticsTextbookTrack : ProblemDomain
     {
         #region Problems
 

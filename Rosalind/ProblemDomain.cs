@@ -1,12 +1,20 @@
-﻿
-using Core;
+﻿using Core;
 
 namespace Rosalind
 {
     public abstract class ProblemDomain
     {
+        #region Inputs
+
         public static string? InputPath { get; set; }
-        public static string? OutputPath { get; set; }
+
+        public static string ReadInputToString()
+        {
+            if (InputPath != null)
+                return File.ReadAllText(InputPath).Trim();
+            else
+                throw new InvalidInputException();
+        }
 
         public static int ReadInputToInt32()
         {
@@ -24,6 +32,12 @@ namespace Rosalind
                 throw new InvalidInputException();
         }
 
+        #endregion
+
+        #region Outputs
+
+        public static string? OutputPath { get; set; }
+
         public static void WriteOutput(string output)
         {
             WriteOutput(output, true);
@@ -39,5 +53,7 @@ namespace Rosalind
             if (printToConsole)
                 Console.WriteLine(output);
         }
+
+        #endregion
     }
 }

@@ -18,7 +18,10 @@
                     case "/fibo": AlgorithmicHeights.ProblemFIBO(); break;
                     case "/bins": AlgorithmicHeights.ProblemBINS(); break;
                     case "/deg": AlgorithmicHeights.ProblemDEG(); break;
-                    
+
+                    // Bioinformatics Armory
+                    case "/ini": BioinformaticsArmory.ProblemINI(); break;
+
                     default: Console.WriteLine(switchErr); break;
                 }
             }
