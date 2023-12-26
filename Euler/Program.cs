@@ -1,4 +1,6 @@
 ﻿using Core;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Numerics;
 
 namespace Euler
@@ -26,6 +28,7 @@ namespace Euler
                     case "/misc3": Misc3(); break;
                     case "/misc4": Misc4(); break;
                     case "/misc5": Misc5(); break;
+                    case "/misc6": Misc6(); break;
                     default: Console.WriteLine(switchErr); break;
                 }
             }
@@ -279,6 +282,45 @@ namespace Euler
                         }
                     }
                 }
+            }
+        }
+
+        static void Misc6()
+        {
+            // Ramsey theory: https://en.wikipedia.org/wiki/Ramsey%27s_theorem#R(3,_3)_=_6
+            // https://en.wikipedia.org/wiki/Theorem_on_friends_and_strangers
+            // Suppose you are at a party. How many people need to be present such that you are guaranteed that at least three of them are(pairwise) mutual strangers or at least three of them are(pairwise) mutual friends?
+
+            // Proposed preliminary algorithm...
+            // Create all possible unique pairwise combinations of 6 people.
+            // Randomly assign a relationship (known or strangers) to each pair. 
+            // Iterate
+
+            Random rnd = new();
+            const int iterations = 100;
+            const int people = 6;
+            
+            for(int iteration = 0; iteration < iterations; iteration++)
+            {
+                int strangers = 0;
+                int friends = 0;
+
+                for (int i = 1; i <= people; i++)
+                {
+                    for (int j = i + 1; j <= people; j++)
+                    {
+                        if (rnd.Next(2) == 0)
+                        {
+                            friends++;
+                        }
+                        else
+                        {
+                            strangers++;
+                        }
+                    }
+                }
+
+                Console.WriteLine("Pairs: {0}, Strangers: {1}, Friends: {2}", friends + strangers, strangers, friends);
             }
         }
 

@@ -14,7 +14,7 @@ namespace Rosalind
             // Return: Four integers(separated by spaces) representing the respective number of times that the symbols 'A', 'C', 'G', and 'T' occur in s.
             // Note: You must provide your answer in the format shown in the sample output below.
 
-            // Example input: AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC
+            // Example input: AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAA AGAGTGTCTGATAGCAGC
             // Example output: 20 12 17 21
 
             string input = ReadInputToString();
