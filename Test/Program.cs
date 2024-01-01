@@ -70,7 +70,7 @@ namespace Test
         {
             Random r = new();
             const uint dataPoints = 5;
-            Histogram<uint> hist = new Histogram<uint>();
+            Histogram<uint> hist = new();
 
             for (uint i = 0; i < dataPoints; i++)
             {
