@@ -16,6 +16,7 @@ namespace Test
             EasterTest();
             MagicSquareTest();
             DayNumberTest();
+            HistogramTest();
         }
 
         static void PrimeTest()
@@ -63,6 +64,25 @@ namespace Test
         {
             DateTime dt = new(1985, 2, 17);
             Console.WriteLine("The day number of 2/17/1985 is {0}", dt.DayNumber());
+        }
+
+        static void HistogramTest()
+        {
+            Random r = new();
+            const uint dataPoints = 5;
+            Histogram<uint> hist = new Histogram<uint>();
+
+            for (uint i = 0; i < dataPoints; i++)
+            {
+                uint iterations = (uint)r.Next(0, 11);
+
+                hist.Increment(iterations);
+            }
+
+            foreach (KeyValuePair<uint, uint> histEntry in hist.AsEnumerable())
+            {
+                Console.WriteLine("{0} occurred {1} times", histEntry.Key, histEntry.Value);
+            }
         }
     }
 }
