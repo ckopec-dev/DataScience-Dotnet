@@ -22,6 +22,9 @@
                     // Bioinformatics Armory
                     case "/ini": BioinformaticsArmory.ProblemINI(); break;
 
+                    // Bioinformatics Stronghold
+                    case "/dna": BioinformaticsStronghold.ProblemDNA(); break;
+
                     default: Console.WriteLine(switchErr); break;
                 }
             }
