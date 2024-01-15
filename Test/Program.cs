@@ -1,4 +1,5 @@
 ﻿using Core;
+using Microsoft.Data.SqlClient.DataClassification;
 using System.Threading.Tasks.Sources;
 
 namespace Test
@@ -17,6 +18,7 @@ namespace Test
             MagicSquareTest();
             DayNumberTest();
             HistogramTest();
+            EulerMascheroniTest();
         }
 
         static void PrimeTest()
@@ -82,6 +84,29 @@ namespace Test
             foreach (KeyValuePair<uint, uint> histEntry in hist.AsEnumerable())
             {
                 Console.WriteLine("{0} occurred {1} times", histEntry.Key, histEntry.Value);
+            }
+        }
+
+        static void EulerMascheroniTest()
+        {
+            // From Projects in Scientific Computation, Project 1.1.1.
+
+            double sum = 0;
+            int i = 0;
+
+            while (!sum.ToString().StartsWith("0.5772"))  //for (int i = 1; i <= 10000; i++)
+            {
+                i++;
+                sum = 0;                
+
+                for(int j = 1; j <= i; j++)
+                {
+                    sum += 1d / j;
+                }
+
+                sum -= Math.Log(i);
+
+                Console.WriteLine("{0}: {1}", i, sum);
             }
         }
     }
