@@ -94,7 +94,7 @@ namespace Test
             double sum = 0;
             int i = 0;
 
-            while (!sum.ToString().StartsWith("0.5772"))  //for (int i = 1; i <= 10000; i++)
+            while (!sum.ToString().StartsWith("0.5772"))  
             {
                 i++;
                 sum = 0;                
