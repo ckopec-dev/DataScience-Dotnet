@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace Rosalind
 {
     public class AlgorithmicHeights : ProblemDomain
@@ -80,6 +82,33 @@ namespace Rosalind
             }
 
             WriteOutput(String.Join(" ", dic.Values));
+        }
+        
+        public static void ProblemINS()
+        {
+            // https://rosalind.info/problems/ins/
+            // Given: A positive integer n <= 10^3 and an array A[1..n] of integers.
+            // Return: The number of swaps performed by insertion sort algorithm on A[1..n].
+
+            int[] input = ReadInputToIntArray();
+            int swaps = 0;
+
+            int j = input.Length;
+            for (int i = 1; i < j; ++i)
+            {
+                int sort = input[i];
+                int k = i - 1;
+
+                while (k >= 0 && input[k] > sort)
+                {
+                    input[k + 1] = input[k];
+                    k--;
+                    swaps++;
+                }
+                input[k + 1] = sort;
+            }
+
+            WriteOutput(swaps.ToString());
         }
 
         #endregion

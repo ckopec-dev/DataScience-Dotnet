@@ -32,6 +32,14 @@ namespace Rosalind
                 throw new InvalidInputException();
         }
 
+        public static int[] ReadInputToIntArray()
+        {
+            if (InputPath != null)
+                return File.ReadAllText(InputPath).Trim().ToIntArray(' ');
+            else
+                throw new InvalidInputException();
+        }
+
         #endregion
 
         #region Outputs
