@@ -23,6 +23,7 @@ namespace Euler
                     case "/problem3": Problem3(); break;
                     case "/problem4": Problem4(); break;
                     case "/problem5": Problem5(); break;
+                    case "/problem6": Problem6(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -146,6 +147,24 @@ namespace Euler
             }
 
             Console.WriteLine(result);
+        }
+
+        static void Problem6()
+        {
+            // Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
+
+            BigInteger sumOfSquares = BigInteger.Zero;
+            BigInteger squareOfSums = BigInteger.Zero;
+
+            for(int i = 1; i <= 100; i++)
+            {
+                sumOfSquares += i * i;
+                squareOfSums += i;
+            }
+
+            squareOfSums *= squareOfSums;
+
+            Console.WriteLine(squareOfSums - sumOfSquares);
         }
 
         #endregion
