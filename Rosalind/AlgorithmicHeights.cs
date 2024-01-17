@@ -89,6 +89,7 @@ namespace Rosalind
             // https://rosalind.info/problems/ins/
             // Given: A positive integer n <= 10^3 and an array A[1..n] of integers.
             // Return: The number of swaps performed by insertion sort algorithm on A[1..n].
+            // NOTE: Manually strip out irrelevant first line of input provided.
 
             int[] input = ReadInputToIntArray();
             int swaps = 0;
