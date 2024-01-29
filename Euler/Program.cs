@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Numerics;
+using System.Runtime.Intrinsics.X86;
 
 namespace Euler
 {
@@ -24,6 +25,7 @@ namespace Euler
                     case "/problem4": Problem4(); break;
                     case "/problem5": Problem5(); break;
                     case "/problem6": Problem6(); break;
+                    case "/problem7": Problem7(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -165,6 +167,24 @@ namespace Euler
             squareOfSums *= squareOfSums;
 
             Console.WriteLine(squareOfSums - sumOfSquares);
+        }
+
+        static void Problem7()
+        {
+            // By listing the first six prime numbers: 2,3,5,7,11 and 13, we can see that the 6th prime is 13.
+            // What is the 10001st prime number?
+
+            int x = 0;
+            int n = 1;
+
+            while (x < 10001)
+            {
+                n++;
+                if (Core.MathHelper.IsPrime(n))
+                    x++;
+            }
+
+            Console.WriteLine(n);
         }
 
         #endregion
