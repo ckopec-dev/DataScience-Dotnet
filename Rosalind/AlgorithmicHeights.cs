@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 
 namespace Rosalind
 {
@@ -110,6 +111,24 @@ namespace Rosalind
             }
 
             WriteOutput(swaps.ToString());
+        }
+
+        public static void ProblemDDEG()
+        {
+            // Given: A simple graph with n <= 10^3 vertices in the edge list format.
+            // Return: An array D[1..n] where D[i] is the sum of the degrees of i's neighbors.
+
+            List<double[]> input = ReadInputToDoubleListArray();
+            //SortedDictionary<double, int> dic = new();
+
+            for (int i = 1; i < input.Count; i++)
+            {
+                Console.WriteLine("Computing sum for index {0}.", i);
+
+                // 
+            }
+
+            throw new NotImplementedException();
         }
 
         #endregion

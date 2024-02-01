@@ -19,6 +19,7 @@
                     case "/bins": AlgorithmicHeights.ProblemBINS(); break;
                     case "/deg": AlgorithmicHeights.ProblemDEG(); break;
                     case "/ins": AlgorithmicHeights.ProblemINS(); break;
+                    case "/ddeg": AlgorithmicHeights.ProblemDDEG(); break;
 
                     // Bioinformatics Armory
                     case "/ini": BioinformaticsArmory.ProblemINI(); break;
