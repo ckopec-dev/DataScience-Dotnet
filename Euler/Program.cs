@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Numerics;
 using System.Runtime.Intrinsics.X86;
+using System.Windows.Forms;
 
 namespace Euler
 {
@@ -28,6 +29,7 @@ namespace Euler
                     case "/problem6": Problem6(); break;
                     case "/problem7": Problem7(); break;
                     case "/problem8": Problem8(); break;
+                    case "/problem9": Problem9(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -220,6 +222,27 @@ namespace Euler
             }
 
             Console.WriteLine(highest);
+        }
+
+        static void Problem9()
+        {
+            // A Pythagorean triplet is a set of three natural numbers, a < b < c, for which, a^2 + b^2 = c^2.
+            // There exists exactly one Pythagorean triplet for which a + b + c = 1000. Find the product a * b * c.
+
+            for (long a = 1; a < 1000; a++)
+            {
+                for (long b = 1; b < 1000; b++)
+                {
+                    for (long c = 1; c < 1000; c++)
+                    {
+                        if (a * a + b * b == c * c && a + b + c == 1000)
+                        {
+                            Console.WriteLine(a * b * c);
+                            return;
+                        }
+                    }
+                }
+            }
         }
 
         #endregion
