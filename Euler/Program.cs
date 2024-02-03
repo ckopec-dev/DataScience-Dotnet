@@ -30,6 +30,7 @@ namespace Euler
                     case "/problem7": Problem7(); break;
                     case "/problem8": Problem8(); break;
                     case "/problem9": Problem9(); break;
+                    case "/problem10": Problem10(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -243,6 +244,22 @@ namespace Euler
                     }
                 }
             }
+        }
+
+        static void Problem10()
+        {
+            // The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+            // Find the sum of all the primes below two million.
+
+            long sum = 0;
+
+            for(int i = 2; i < 2000000; i++)
+            {
+                if (i.IsPrime())
+                    sum += i;
+            }
+
+            Console.WriteLine(sum);
         }
 
         #endregion
