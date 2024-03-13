@@ -1,10 +1,5 @@
 ﻿using Core;
-using ScottPlot.Palettes;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Numerics;
-using System.Runtime.Intrinsics.X86;
-using System.Windows.Forms;
 
 namespace Euler
 {
@@ -32,6 +27,7 @@ namespace Euler
                     case "/problem9": Problem9(); break;
                     case "/problem10": Problem10(); break;
                     case "/problem11": Problem11(); break;
+                    case "/problem12": Problem12(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -376,6 +372,11 @@ namespace Euler
 
             Console.WriteLine("{0},{1},dir: {2}", gp_x, gp_y, dir);
             Console.WriteLine(gp);
+        }
+
+        static void Problem12()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
