@@ -459,6 +459,19 @@ namespace Core
             throw new Exception("This number is not supported.");
         }
 
+        public static List<long> ProperDivisors(this long number)
+        {
+            List<long> divisors = new();
+
+            for (long i = 1; i < number; i++)
+            {
+                if (number % i == 0)
+                    divisors.Add(i);
+            }
+
+            return divisors;
+        }
+
         public static List<int> ProperDivisors(this int number)
         {
             List<int> divisors = new();

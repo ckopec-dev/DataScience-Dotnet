@@ -376,7 +376,36 @@ namespace Euler
 
         static void Problem12()
         {
-            throw new NotImplementedException();
+            // Takes quite a while to brute force. Would be a good candidate for optimization.
+
+            long div_count = 0;
+            long n = 0;
+            long sum = 0;
+            long max_div_count = 0;
+
+            while (div_count <= 500)
+            {
+                n++;
+
+                sum = 0;
+
+                for(int i = 1; i <= n; i++)
+                {
+                    sum += i;
+                }
+
+                div_count = sum.ProperDivisors().Count + 1;
+
+                if (div_count > max_div_count)
+                {
+                    max_div_count = div_count;
+                    Console.WriteLine("New max div count: {0}", div_count);
+                }
+
+                //Console.WriteLine("n: {0}, sum: {1}, div_count: {2}", n, sum, div_count);
+            }
+
+            Console.WriteLine(sum);
         }
 
         #endregion
