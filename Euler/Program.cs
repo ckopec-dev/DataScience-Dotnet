@@ -28,6 +28,7 @@ namespace Euler
                     case "/problem10": Problem10(); break;
                     case "/problem11": Problem11(); break;
                     case "/problem12": Problem12(); break;
+                    case "/problem13": Problem13(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -406,6 +407,11 @@ namespace Euler
             }
 
             Console.WriteLine(sum);
+        }
+
+        static void Problem13()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
