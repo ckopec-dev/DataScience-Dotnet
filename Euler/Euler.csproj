@@ -16,4 +16,8 @@
     <ProjectReference Include="..\Core\Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="Inputs\Problem13.txt" />
+  </ItemGroup>
+
 </Project>

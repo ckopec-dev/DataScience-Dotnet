@@ -1,5 +1,6 @@
 ﻿using Core;
 using System.Numerics;
+using System.Reflection;
 
 namespace Euler
 {
@@ -411,7 +412,20 @@ namespace Euler
 
         static void Problem13()
         {
-            throw new NotImplementedException();
+            Assembly asm = Assembly.GetExecutingAssembly();
+            Stream? mrs = asm.GetManifestResourceStream("Euler.Inputs.Problem13.txt") ?? throw new Exception("Resource not found: Problem13.txt");
+            using StreamReader sr = new(mrs);
+
+            BigInteger sum = BigInteger.Zero;
+            while (!sr.EndOfStream)
+            {
+                string? line = sr.ReadLine();
+                if (line == null) break;
+                BigInteger bi = BigInteger.Parse(line);
+                sum += bi;
+            }
+
+            Console.WriteLine(sum.ToString()[..10]);
         }
 
         #endregion
