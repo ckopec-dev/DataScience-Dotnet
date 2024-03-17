@@ -36,6 +36,7 @@ namespace Euler
                     case "/misc4": Misc4(); break;
                     case "/misc5": Misc5(); break;
                     case "/misc6": Misc6(); break;
+                    case "/misc7": Misc7(); break;
                     default: Console.WriteLine(switchErr); break;
                 }
             }
@@ -601,6 +602,27 @@ namespace Euler
                 }
 
                 Console.WriteLine("Pairs: {0}, Strangers: {1}, Friends: {2}", friends + strangers, strangers, friends);
+            }
+        }
+
+        static void Misc7()
+        {
+            // See https://arxiv.org/pdf/2403.08306.pdf
+
+            for(long n = 1; n <= 10000; n++)
+            {
+                long n1 = n * n;
+                long n2 = (n + 1) * (n + 1);
+
+                long primes = 0;
+
+                for(long i = n1 + 1; i < n2; i++)
+                {
+                    if (i.IsPrime())
+                        primes++;
+                }
+
+                Console.WriteLine("n:{0}, n1: {1}, n2: {2}, primes between: {3}", n, n1, n2, primes);
             }
         }
 
