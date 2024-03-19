@@ -1,13 +1,9 @@
-﻿
-using Core;
-using System;
-using System.Collections.Generic;
-using System.Numerics;
+﻿using Core;
 using System.Reflection;
 
 namespace Rosalind
 {
-    public class AlgorithmicHeights : ProblemDomain
+    public class AlgorithmicHeights
     {
         #region Problems
 
@@ -17,7 +13,10 @@ namespace Rosalind
             // Given: A positive integer n <= 25.
             // Return: The value of F(n).
 
-            int n = ReadInputToInt32();
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.bins.txt") ?? throw new Exception("Resource not found: bins.txt");
+            using StreamReader sr = new(mrs);
+
+            int n = Convert.ToInt32(sr.ReadToEnd().Trim());
 
             Console.WriteLine("FinonacciRecursive({0}): {1}", n, Core.MathHelper.FibonacciRecursive(n));
 
@@ -53,7 +52,7 @@ namespace Rosalind
                 if (output[i] > -1) output[i]++;
             }
 
-            WriteOutput(String.Join(" ", output));
+            Console.WriteLine(String.Join(" ", output));
         }
 
         public static void ProblemDEG()
@@ -62,7 +61,10 @@ namespace Rosalind
             // Given: A simple graph with n <= 10^3 vertices in the edge list format.
             // Return: An array D[1..n] where D[i] is the degree of vertex i.
 
-            List<double[]> input = ReadInputToDoubleListArray();
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.deg.txt") ?? throw new Exception("Resource not found: deg.txt");
+            using StreamReader sr = new(mrs);
+
+            List<double[]> input = sr.ReadToEnd().Trim().ToDoubleListArray('\n', ' ');
             SortedDictionary<double, int> dic = new();
 
             for(int i = 1; i < input.Count; i++)
@@ -88,7 +90,7 @@ namespace Rosalind
                 }
             }
 
-            WriteOutput(String.Join(" ", dic.Values));
+            Console.WriteLine(String.Join(" ", dic.Values));
         }
         
         public static void ProblemINS()
@@ -98,7 +100,11 @@ namespace Rosalind
             // Return: The number of swaps performed by insertion sort algorithm on A[1..n].
             // NOTE: Manually strip out irrelevant first line of input provided.
 
-            int[] input = ReadInputToIntArray();
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.ins.txt") ?? throw new Exception("Resource not found: ins.txt");
+            using StreamReader sr = new(mrs);
+
+            int[] input = sr.ReadToEnd().Trim().ToIntArray(' ');
+
             int swaps = 0;
 
             int j = input.Length;
@@ -116,7 +122,7 @@ namespace Rosalind
                 input[k + 1] = sort;
             }
 
-            WriteOutput(swaps.ToString());
+            Console.WriteLine(swaps.ToString());
         }
 
         public static void ProblemDDEG()
@@ -124,7 +130,11 @@ namespace Rosalind
             // Given: A simple graph with n <= 10^3 vertices in the edge list format.
             // Return: An array D[1..n] where D[i] is the sum of the degrees of i's neighbors.
 
-            List<double[]> input = ReadInputToDoubleListArray();
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.ddeg.txt") ?? throw new Exception("Resource not found: ddeg.txt");
+            using StreamReader sr = new(mrs);
+
+            List<double[]> input = sr.ReadToEnd().Trim().ToDoubleListArray('\n', ' ');
+
             //SortedDictionary<double, int> dic = new();
 
             for (int i = 1; i < input.Count; i++)

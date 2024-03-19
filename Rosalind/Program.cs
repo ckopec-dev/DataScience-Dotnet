@@ -7,11 +7,8 @@
             string switchErr = "Switch missing or invalid.";
             
             // /Problem InputPath OutputPath
-            if (args != null && args.Length == 3)
+            if (args != null && args.Length == 1)
             {
-                ProblemDomain.InputPath = args[1];
-                ProblemDomain.OutputPath = args[2];
-
                 switch (args[0].ToLower())
                 {
                     // Algorithmic Heights
