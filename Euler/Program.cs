@@ -413,8 +413,7 @@ namespace Euler
 
         static void Problem13()
         {
-            Assembly asm = Assembly.GetExecutingAssembly();
-            Stream? mrs = asm.GetManifestResourceStream("Euler.Inputs.Problem13.txt") ?? throw new Exception("Resource not found: Problem13.txt");
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem13.txt") ?? throw new Exception("Resource not found: Problem13.txt");
             using StreamReader sr = new(mrs);
 
             BigInteger sum = BigInteger.Zero;

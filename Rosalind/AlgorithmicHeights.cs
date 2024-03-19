@@ -1,6 +1,9 @@
 ﻿
+using Core;
 using System;
 using System.Collections.Generic;
+using System.Numerics;
+using System.Reflection;
 
 namespace Rosalind
 {
@@ -27,7 +30,10 @@ namespace Rosalind
             // Given: Two positive integers n <= 10^5 and m <= 10^5, a sorted array A[1..n] of integers from −10^5 to 10^5 and a list of m integers −10%5 <= k1,k2,…,km<=10%5.
             // Return: For each ki, output an index 1<=j≤n s.t.A[j] = ki or "-1" if there is no such index.
 
-            List<double[]> input = ReadInputToDoubleListArray();
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.bins.txt") ?? throw new Exception("Resource not found: bins.txt");
+            using StreamReader sr = new(mrs);
+
+            List<double[]> input = sr.ReadToEnd().Trim().ToDoubleListArray('\n', ' ');
 
             Console.WriteLine("Input line count: {0}", input.Count);
             foreach (double[] row in input)
