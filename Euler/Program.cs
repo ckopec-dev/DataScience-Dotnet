@@ -431,7 +431,32 @@ namespace Euler
 
         static void Problem14()
         {
-            throw new NotImplementedException();
+            long max_n = 0;
+            long max_iter = 0;
+
+            for(long i = 1; i < 1000000; i++)
+            {
+                long n = i;
+                long iter = 0;
+
+                while (n > 1)
+                {
+                    iter++;
+                    
+                    if (n % 2 == 0)
+                        n /= 2;
+                    else
+                        n = 3 * n + 1;
+
+                    if (iter > max_iter)
+                    {
+                        max_n = i;
+                        max_iter = iter;
+                    }
+                }
+            }
+
+            Console.WriteLine("{0}: {1}", max_n, max_iter);
         }
 
         #endregion
