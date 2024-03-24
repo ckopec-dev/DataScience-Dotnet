@@ -31,6 +31,7 @@ namespace Euler
                     case "/problem12": Problem12(); break;
                     case "/problem13": Problem13(); break;
                     case "/problem14": Problem14(); break;
+                    case "/problem15": Problem15(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -457,6 +458,11 @@ namespace Euler
             }
 
             Console.WriteLine("{0}: {1}", max_n, max_iter);
+        }
+
+        static void Problem15()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
