@@ -34,6 +34,7 @@ namespace Euler
                     case "/problem15": Problem15(); break;
                     case "/problem16": Problem16(); break;
                     case "/problem17": Problem17(); break;
+                    case "/problem18": Problem18(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -473,6 +474,11 @@ namespace Euler
         }
 
         static void Problem17()
+        {
+            throw new NotImplementedException();
+        }
+
+        static void Problem18()
         {
             throw new NotImplementedException();
         }
