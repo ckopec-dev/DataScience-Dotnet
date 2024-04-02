@@ -466,7 +466,9 @@ namespace Euler
 
         static void Problem15()
         {
-            throw new NotImplementedException();
+            const int gridSize = 20;
+            BigInteger r = Statistics.BinomialCoefficient(gridSize + gridSize, gridSize);
+            Console.WriteLine(r);
         }
 
         static void Problem16()

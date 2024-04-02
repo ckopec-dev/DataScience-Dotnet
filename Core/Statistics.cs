@@ -1,4 +1,6 @@
 ﻿
+using System.Numerics;
+
 namespace Core
 {
     public static class Statistics
@@ -53,6 +55,24 @@ namespace Core
         public static decimal StdDeviation(decimal[] values) 
         {
             return (decimal)Math.Sqrt((double)Variance(values));
+        }
+
+        public static BigInteger BinomialCoefficient(long items, long size)
+        {
+            // https://en.wikipedia.org/wiki/Binomial_coefficient
+
+            if (size > items)
+                return BigInteger.Zero;
+
+            BigInteger result = BigInteger.One;
+
+            for(BigInteger i = 1; i <= size; i++)
+            {
+                result *= items--;
+                result /= i;
+            }
+
+            return result;
         }
     }
 }
