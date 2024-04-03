@@ -473,7 +473,19 @@ namespace Euler
 
         static void Problem16()
         {
-            throw new NotImplementedException();
+            BigInteger n = new(2);
+            const int power = 1000;
+            n = BigInteger.Pow(n, power);
+
+            string digits = n.ToString();
+            int sum = 0;
+
+            for (int i = 0; i < digits.Length; i++)
+            {
+                sum += Convert.ToInt32(digits.Substring(i, 1));
+            }
+
+            Console.WriteLine(sum);
         }
 
         static void Problem17()
