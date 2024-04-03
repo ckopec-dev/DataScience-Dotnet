@@ -490,7 +490,15 @@ namespace Euler
 
         static void Problem17()
         {
-            throw new NotImplementedException();
+            int len = 0;
+
+            for (int i = 1; i <= 1000; i++)
+            {
+                len += i.ToWords().Replace(" ", "").Length;
+                Console.WriteLine(i.ToWords());
+            }
+
+            Console.WriteLine(len);
         }
 
         static void Problem18()
