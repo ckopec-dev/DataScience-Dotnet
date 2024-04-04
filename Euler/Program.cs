@@ -1,4 +1,5 @@
 ﻿using Core;
+using System.CodeDom;
 using System.Numerics;
 using System.Reflection;
 
@@ -36,6 +37,7 @@ namespace Euler
                     case "/problem17": Problem17(); break;
                     case "/problem18": Problem18(); break;
                     case "/problem19": Problem19(); break;
+                    case "/problem20": Problem20(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -507,6 +509,11 @@ namespace Euler
         }
 
         static void Problem19()
+        {
+            throw new NotImplementedException();
+        }
+        
+        static void Problem20()
         {
             throw new NotImplementedException();
         }
