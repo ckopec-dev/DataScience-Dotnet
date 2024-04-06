@@ -505,7 +505,42 @@ namespace Euler
 
         static void Problem18()
         {
-            throw new NotImplementedException();
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem18.txt") ?? throw new Exception("Resource not found: Problem18.txt");
+            using StreamReader sr = new(mrs);
+
+            List<string> input = sr.ReadToEnd().ToList();
+
+            // Convert it to a list of int arrays.
+            List<int[]> data = new();
+            for (int i = 0; i < input.Count; i++)
+            {
+                int[] d = input[i].ToIntArray(' ');
+                data.Add(d);
+            }
+
+            // Start at the bottom and work up. 
+            for (int i = data.Count - 1; i >= 0; i--)
+            {
+                if (i == 0)
+                {
+                    Console.WriteLine(data[0][0]);
+                    return;
+                }
+
+                int idxNextRow = i - 1;
+
+                for (int j = 0; j < data[i - 1].Length; j++)
+                {
+                    if (data[i][j] > data[i][j + 1])
+                    {
+                        data[i - 1][j] += data[i][j];
+                    }
+                    else
+                    {
+                        data[i - 1][j] += data[i][j + 1];
+                    }
+                }
+            }
         }
 
         static void Problem19()

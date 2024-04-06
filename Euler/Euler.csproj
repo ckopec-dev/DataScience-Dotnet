@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Inputs\Problem18.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="ScottPlot" Version="4.1.68" />
     <PackageReference Include="ScottPlot.WinForms" Version="4.1.68" />
   </ItemGroup>
@@ -18,6 +22,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Inputs\Problem13.txt" />
+    <EmbeddedResource Include="Inputs\Problem18.txt" />
   </ItemGroup>
 
 </Project>
