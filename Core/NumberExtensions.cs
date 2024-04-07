@@ -7,6 +7,14 @@ namespace Core
 {
     public static class NumberExtensions
     {
+        public static bool IsApocalypseNumber(this BigInteger n)
+        {
+            if (n.ToString().Length == 666)
+                return true;
+            else
+                return false;
+        }
+
         public static string ToDelimitedString(this int[] numbers, char delimiter)
         {
             StringBuilder sb = new();

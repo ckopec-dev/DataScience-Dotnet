@@ -45,6 +45,7 @@ namespace Euler
                     case "/misc5": Misc5(); break;
                     case "/misc6": Misc6(); break;
                     case "/misc7": Misc7(); break;
+                    case "/misc8": Misc8(); break;
                     default: Console.WriteLine(switchErr); break;
                 }
             }
@@ -748,6 +749,34 @@ namespace Euler
 
                 Console.WriteLine("n:{0}, n1: {1}, n2: {2}, primes between: {3}", n, n1, n2, primes);
             }
+        }
+
+        static void Misc8()
+        {
+            // Apocalyptic numbers are of the form 2^n and contain '666' somewhere in the expansion.
+            // https://www.youtube.com/watch?v=0LkBwCSMsX4
+
+            // Unproven conjecture: 29784 is the last known non-apocalyptic power of two.
+
+            // Search for counter-examples...
+            // This takes a while to execute - would be a good candidate for multi-threaded or distributed computation.
+            // Other number theory experiments to consider:
+            // What about 3^n, 4^n, etc.
+            // What about other strings besides '666'? What does the frequency histogram look like?
+            for (int n = 40000; n <= 100000; n++)
+            {
+                if (n % 1000 == 0)
+                    Console.WriteLine("Checking n = {0}...", n);
+
+                BigInteger result = BigInteger.Pow(2, n);
+
+                if (!result.ToString().Contains("666"))
+                {
+                    Console.WriteLine("Found counter-example: {0} is NOT an apocalyptic number.", n);
+                    break;
+                }
+            }
+
         }
 
         #endregion
