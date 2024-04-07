@@ -546,7 +546,19 @@ namespace Euler
 
         static void Problem19()
         {
-            throw new NotImplementedException();
+            int totalSundays = 0;
+
+            DateTime dt = new(1901, 1, 1);
+
+            while (dt <= new DateTime(2000, 12, 31))
+            {
+                if (dt.DayOfWeek == DayOfWeek.Sunday)
+                    totalSundays++;
+
+                dt = dt.AddMonths(1);
+            }
+
+            Console.WriteLine(totalSundays);
         }
         
         static void Problem20()
@@ -776,7 +788,6 @@ namespace Euler
                     break;
                 }
             }
-
         }
 
         #endregion
