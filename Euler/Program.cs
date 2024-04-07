@@ -563,7 +563,14 @@ namespace Euler
         
         static void Problem20()
         {
-            throw new NotImplementedException();
+            BigInteger bi = BigInteger.One;
+
+            for (int i = 1; i <= 100; i++)
+            {
+                bi *= new BigInteger(i);
+            }
+
+            Console.WriteLine(bi.SumOfDigits().ToString());
         }
 
         #endregion
