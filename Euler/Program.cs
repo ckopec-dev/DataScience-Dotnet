@@ -16,6 +16,8 @@ namespace Euler
 
             if (args != null && args.Length == 1)
             {
+                // This would be a lot cleaner by handling this with reflection, but since I'm adding items sequentially there isn't much benefit.
+
                 switch (args[0].ToLower())
                 {
                     case "/problem1": Problem1(); break;
@@ -38,6 +40,7 @@ namespace Euler
                     case "/problem18": Problem18(); break;
                     case "/problem19": Problem19(); break;
                     case "/problem20": Problem20(); break;
+                    case "/problem21": Problem21(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -571,6 +574,33 @@ namespace Euler
             }
 
             Console.WriteLine(bi.SumOfDigits().ToString());
+        }
+
+        static void Problem21()
+        {
+            const int START = 1;
+            const int STOP = 10000;
+
+            List<int> numbers = new();
+
+            for (int a = START; a < STOP; a++)
+            {
+                int da = a.ProperDivisors().Sum();
+                int dofda = da.ProperDivisors().Sum();
+
+                if (dofda == a && a != da)
+                {
+                    Console.WriteLine("Found pair: a: {0}, b: {1}", a, da);
+
+                    if (!numbers.Contains(a))
+                        numbers.Add(a);
+
+                    if (da < 10000 && !numbers.Contains(da))
+                        numbers.Add(da);
+                }
+            }
+
+            Console.WriteLine(numbers.Sum());
         }
 
         #endregion
