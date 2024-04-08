@@ -1,7 +1,9 @@
 ﻿using Core;
 using System.CodeDom;
+using System.Globalization;
 using System.Numerics;
 using System.Reflection;
+using System.Transactions;
 
 namespace Euler
 {
@@ -41,6 +43,7 @@ namespace Euler
                     case "/problem19": Problem19(); break;
                     case "/problem20": Problem20(); break;
                     case "/problem21": Problem21(); break;
+                    case "/problem22": Problem22(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -601,6 +604,44 @@ namespace Euler
             }
 
             Console.WriteLine(numbers.Sum());
+        }
+
+        static void Problem22()
+        {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem22.txt") ?? throw new Exception("Resource not found: Problem22.txt");
+            using StreamReader sr = new(mrs);
+
+            string names = sr.ReadToEnd();
+            
+            // Remove quotes
+            names = names.Replace("\"", "");
+
+            // Parse
+            List<string> parsed = names.ToList(',');
+            Console.WriteLine("Found {0} names.", parsed.Count);
+
+            // Sort
+            parsed.Sort();
+
+            long total = 0;
+
+            for (int i = 1; i <= parsed.Count; i++)
+            {
+                string name = parsed[i - 1];
+                int name_sum = 0;
+
+                char[] chars = name.ToCharArray();
+                foreach(char c in chars)
+                {
+                    int char_val = (int)c - 64;
+                    name_sum += char_val;
+                }
+                Console.WriteLine("{0}: position: {1}, sum: {2}, position * sum: {3}", name, i, name_sum, i * name_sum);
+                
+                total += i * name_sum;
+            }
+
+            Console.WriteLine(total);
         }
 
         #endregion
