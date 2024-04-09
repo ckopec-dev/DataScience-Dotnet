@@ -85,9 +85,9 @@ namespace Collatz
                 dataY[digits - 1] = (double)(stSum / iterations);
             }
 
-            var plt = new ScottPlot.Plot(1200, 800);
-            plt.AddBar(dataY);
-            new ScottPlot.FormsPlotViewer(plt).ShowDialog();
+            var plt = new ScottPlot.Plot();
+            plt.Add.Bars(dataY);
+            plt.SavePng("d:\\temp\\AverageStoppingTime.png", 1200, 800);
         }
 
         static void CalculateTest()
@@ -105,9 +105,9 @@ namespace Collatz
         {
             double[] dataX = new double[] { 1, 2, 3, 4, 5 };
             double[] dataY = new double[] { 1, 4, 9, 16, 25 };
-            var plt = new ScottPlot.Plot(400, 300);
-            plt.AddScatter(dataX, dataY);
-            new ScottPlot.FormsPlotViewer(plt).ShowDialog();
+            var plt = new ScottPlot.Plot();
+            plt.Add.Scatter(dataX, dataY);
+            plt.SavePng("d:\\temp\\PlotTest.png", 400, 300);
         }
 
         static void StoppingTimeScatterPlot(int max)
@@ -123,9 +123,9 @@ namespace Collatz
                 dataY[n - 1] = Iterate(n, 2, 3, 1);
             }
 
-            var plt = new ScottPlot.Plot(1200, 800);
-            plt.AddScatter(dataX, dataY, null, 1, 5, ScottPlot.MarkerShape.filledCircle, ScottPlot.LineStyle.None, null);
-            new ScottPlot.FormsPlotViewer(plt).ShowDialog();
+            var plt = new ScottPlot.Plot();
+            plt.Add.Scatter(dataX, dataY);
+            plt.SavePng("d:\\temp\\StoppingTimeScatterPlot.png", 1200, 800);
         }
 
         static void StoppingTimeHistogram(int max, long evenDivisor, long oddMultiplier, long oddAddition)
@@ -172,9 +172,9 @@ namespace Collatz
                 dataY[item.Key] = item.Value;
             }
 
-            var plt = new ScottPlot.Plot(1200, 800);
-            plt.AddBar(dataY);
-            new ScottPlot.FormsPlotViewer(plt).ShowDialog();
+            var plt = new ScottPlot.Plot();
+            plt.Add.Bars(dataY);
+            plt.SavePng("d:\\temp\\StoppingTimeHistogram.png", 1200, 800);
         }
 
         #endregion

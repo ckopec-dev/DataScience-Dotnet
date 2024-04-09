@@ -1,9 +1,7 @@
-﻿using Core;
-using System.CodeDom;
-using System.Globalization;
+﻿using Combinatorics.Collections;
+using Core;
 using System.Numerics;
 using System.Reflection;
-using System.Transactions;
 
 namespace Euler
 {
@@ -45,6 +43,7 @@ namespace Euler
                     case "/problem21": Problem21(); break;
                     case "/problem22": Problem22(); break;
                     case "/problem23": Problem23(); break;
+                    case "/problem24": Problem24(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -688,6 +687,27 @@ namespace Euler
             Console.WriteLine(sum);
         }
 
+        static void Problem24()
+        {
+            int[] list = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+            Permutations<int> perms = new(list, GenerateOption.WithoutRepetition);
+
+            int i = 0;
+            foreach (List<int> p in perms.Cast<List<int>>())
+            {
+                i++;
+
+                if (i == 1000000)
+                {
+                    int[] a = p.ToArray();
+                    string pa = String.Join("", a);
+
+                    Console.WriteLine(pa);
+                }
+            }
+        }
+
         #endregion
 
         #region Misc experiments
@@ -797,9 +817,9 @@ namespace Euler
                 dataY[n - 1] = 4 * currentPi;
             }
 
-            var plt = new ScottPlot.Plot(1200, 800);
-            plt.AddScatter(dataX, dataY, null, 1, 5, ScottPlot.MarkerShape.filledCircle, ScottPlot.LineStyle.None, null);
-            new ScottPlot.FormsPlotViewer(plt).ShowDialog();
+            var plt = new ScottPlot.Plot();
+            plt.Add.Scatter(dataX, dataY);
+            plt.SavePng("d:\\temp\\Misc4.png", 1200, 800);
         }
 
         static void Misc5()
