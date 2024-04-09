@@ -44,6 +44,7 @@ namespace Euler
                     case "/problem20": Problem20(); break;
                     case "/problem21": Problem21(); break;
                     case "/problem22": Problem22(); break;
+                    case "/problem23": Problem23(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -642,6 +643,49 @@ namespace Euler
             }
 
             Console.WriteLine(total);
+        }
+
+        static void Problem23()
+        {
+            // Takes a while to execute. Would be good candidate for optimization and/or multithreading.
+
+            const int LIMIT = 28124;
+
+            List<int> abundant_nums = new();
+            for (int i = 1; i < LIMIT; i++)
+            {
+                if (i.ProperDivisors().Sum() > i)
+                    abundant_nums.Add(i);
+            }
+
+            int[] n = abundant_nums.ToArray();
+
+            int sum = 0;
+            for (int i = 1; i < LIMIT; i++)
+            {
+                bool summable = false;
+                for (int j = 0; j < n.Length; j++)
+                {
+                    if (summable)
+                        break;
+
+                    for (int k = 0; k < n.Length; k++)
+                    {
+                        if (n[j] + n[k] == i)
+                        {
+                            summable = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!summable)
+                {
+                    sum += i;
+                }
+            }
+
+            Console.WriteLine(sum);
         }
 
         #endregion
