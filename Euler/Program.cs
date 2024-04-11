@@ -44,6 +44,7 @@ namespace Euler
                     case "/problem22": Problem22(); break;
                     case "/problem23": Problem23(); break;
                     case "/problem24": Problem24(); break;
+                    case "/problem25": Problem25(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -706,6 +707,11 @@ namespace Euler
                     Console.WriteLine(pa);
                 }
             }
+        }
+
+        static void Problem25()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
