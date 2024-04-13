@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BigRational" Version="1.0.0.7" />
     <PackageReference Include="Combinatorics" Version="2.0.0" />
     <PackageReference Include="ScottPlot" Version="5.0.25" />
   </ItemGroup>

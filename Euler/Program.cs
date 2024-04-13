@@ -2,6 +2,7 @@
 using Core;
 using System.Numerics;
 using System.Reflection;
+using System.Text;
 
 namespace Euler
 {
@@ -732,7 +733,31 @@ namespace Euler
 
         static void Problem26()
         {
-            throw new NotImplementedException();
+            int max = 0;
+            int max_d = 3;
+
+            for (int d = 3; d < 1000; d += 2)
+            {
+                if (d % 5 == 0)
+                    continue;
+                
+                int x = 10 % d;
+                int y = 1;
+
+                while (x > 1)
+                {
+                    y++;
+                    x = (x * 10) % d;
+                }
+
+                if (y > max)
+                {
+                    max = y;
+                    max_d = d;
+                }
+            }
+
+            Console.WriteLine(max_d);
         }
 
         #endregion
