@@ -712,7 +712,22 @@ namespace Euler
 
         static void Problem25()
         {
-            throw new NotImplementedException();
+            int digit_limit = 1000;
+
+            BigInteger term = 0;
+            BigInteger previous_value = 0;
+            BigInteger current_value = 1;
+
+            while (current_value.NumberOfDigits() < digit_limit)
+            {
+                term++;
+
+                BigInteger temp_value = current_value;
+                current_value += previous_value;
+                previous_value = temp_value;
+            }
+
+            Console.WriteLine(term + 1);
         }
 
         static void Problem26()
