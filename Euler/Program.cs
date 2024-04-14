@@ -47,6 +47,7 @@ namespace Euler
                     case "/problem24": Problem24(); break;
                     case "/problem25": Problem25(); break;
                     case "/problem26": Problem26(); break;
+                    case "/problem27": Problem27(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -758,6 +759,49 @@ namespace Euler
             }
 
             Console.WriteLine(max_d);
+        }
+
+        static void Problem27()
+        {
+            int cap = 1000;
+
+            int maxFailA = (-1 * cap) - 1;
+            int maxFailB = (-1 * cap) - 1;
+            int maxFailCount = 0;
+
+            for (int a = (-1 * cap); a < cap; a++)
+            {
+                for (int b = (-1 * cap); b < cap; b++)
+                {
+                    bool prime = true;
+                    int n = 0;
+                    int counter = 0;
+
+                    while (prime)
+                    {
+                        counter++;
+
+                        int c = (n * n) + (a * n) + (b);
+
+                        if (!c.IsPrime())
+                        {
+                            if (counter > maxFailCount)
+                            {
+                                maxFailA = a;
+                                maxFailB = b;
+                                maxFailCount = counter;
+                                Console.WriteLine("a: {0}, b:{1}, new max fail #: {2}", maxFailA, maxFailB, maxFailCount);
+                            }
+                            break;
+                        }
+
+                        n++;
+                    }
+                }
+            }
+
+            Console.WriteLine("a: {0}, b:{1}, overall max fail #: {2}", maxFailA, maxFailB, maxFailCount);
+            Console.WriteLine("a * b = {0}", maxFailA * maxFailB);
         }
 
         #endregion
