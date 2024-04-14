@@ -48,6 +48,7 @@ namespace Euler
                     case "/problem25": Problem25(); break;
                     case "/problem26": Problem26(); break;
                     case "/problem27": Problem27(); break;
+                    case "/problem28": Problem28(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -802,6 +803,35 @@ namespace Euler
 
             Console.WriteLine("a: {0}, b:{1}, overall max fail #: {2}", maxFailA, maxFailB, maxFailCount);
             Console.WriteLine("a * b = {0}", maxFailA * maxFailB);
+        }
+
+        static void Problem28()
+        {
+            const int SQUARE_WIDTH = 1001;
+
+            // The upper right diagonal consists of odd squares. Skipping the center, sum them up e.g. 3^2, 5^2, 7^2.
+            // While doing this, sum up the even numbers. e.g. 2, 4, 6
+
+            int sum_ur = 0;
+            int sum_evens = 0;
+            int even = 0;
+
+            for (int i = 3; i <= SQUARE_WIDTH; i += 2)
+            {
+                sum_ur += i * i;
+                even += 2;
+                sum_evens += even;
+            }
+
+            // The upper left diagonal sum is the upper right diagonal sum minus sum_evens.
+            int sum_ul = sum_ur - sum_evens;
+            // Ditto for lower left and lower right.
+            int sum_ll = sum_ul - sum_evens;
+            int sum_lr = sum_ll - sum_evens;
+
+            // The sum is all the diagonals plus 1.
+            int sum_ttl = sum_ur + sum_ul + sum_ll + sum_lr + 1;
+            Console.WriteLine("sum_ttl: {0}", sum_ttl);
         }
 
         #endregion
