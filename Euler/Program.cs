@@ -49,6 +49,7 @@ namespace Euler
                     case "/problem26": Problem26(); break;
                     case "/problem27": Problem27(); break;
                     case "/problem28": Problem28(); break;
+                    case "/problem29": Problem29(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -832,6 +833,32 @@ namespace Euler
             // The sum is all the diagonals plus 1.
             int sum_ttl = sum_ur + sum_ul + sum_ll + sum_lr + 1;
             Console.WriteLine("sum_ttl: {0}", sum_ttl);
+        }
+
+        static void Problem29()
+        {
+            const long CAP = 100;
+
+            List<BigInteger> results = new();
+
+            for (BigInteger a = 2; a <= CAP; a++)
+            {
+                for (int b = 2; b <= CAP; b++)
+                {
+                    BigInteger c = BigInteger.Pow(a, b);
+
+                    // Add unique result (ignore dupes).
+                    if (!results.Contains(c))
+                        results.Add(c);
+                }
+            }
+
+            results.Sort();
+
+            foreach (BigInteger i in results)
+                Console.WriteLine(i);
+
+            Console.WriteLine("Distinct terms: {0}", results.Count);
         }
 
         #endregion
