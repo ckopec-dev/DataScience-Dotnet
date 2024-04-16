@@ -50,6 +50,7 @@ namespace Euler
                     case "/problem27": Problem27(); break;
                     case "/problem28": Problem28(); break;
                     case "/problem29": Problem29(); break;
+                    case "/problem30": Problem30(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -859,6 +860,31 @@ namespace Euler
                 Console.WriteLine(i);
 
             Console.WriteLine("Distinct terms: {0}", results.Count);
+        }
+
+        static void Problem30()
+        {
+            double exp = 5;
+            double grand_total = 0;
+            double limit = 1000000;
+
+            for (int n = 10; n < limit; n++)
+            {
+                double sum = 0;
+
+                // Raise each digit to the 4th power and add it to the sum.
+
+                for (int i = 0; i < n.ToString().Length; i++)
+                    sum += Math.Pow(Convert.ToDouble(n.ToString().Substring(i, 1)), exp);
+
+                if (sum == n)
+                {
+                    Console.WriteLine("n: {0}", n);
+                    grand_total += sum;
+                }
+            }
+
+            Console.WriteLine("Grand total: {0}", grand_total);
         }
 
         #endregion
