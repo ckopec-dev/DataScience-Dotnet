@@ -890,7 +890,52 @@ namespace Euler
 
         static void Problem31()
         {
-            throw new NotImplementedException();
+            int count = 1; // Only 1 way to use 200p coin.
+
+            // Use 0 to 2 100p coins.
+            for (int i = 0; i <= 2; i++)
+            {
+                // Use 0 to 4 50p coins.
+                for (int j = 0; j <= 4; j++)
+                {
+                    // Use 0 to 10 20p coins.
+                    for (int k = 0; k <= 10; k++)
+                    {
+                        Console.WriteLine("Processing i, j, k: {0}, {1}, {2}", i, j, k);
+
+                        // Use 0 to 20 10p coins.
+                        for (int m = 0; m <= 20; m++)
+                        {
+                            // Use 0 to 40 5p coins.
+                            for (int n = 0; n <= 40; n++)
+                            {
+                                // Use 0 to 100 2p coins.
+                                for (int p = 0; p <= 100; p++)
+                                {
+                                    // Use 0 to 200 1p coins.
+                                    for (int q = 0; q <= 200; q++)
+                                    {
+                                        int sum = 0;
+
+                                        sum += i * 100;
+                                        sum += j * 50;
+                                        sum += k * 20;
+                                        sum += m * 10;
+                                        sum += n * 5;
+                                        sum += p * 2;
+                                        sum += q; // * 1
+
+                                        if (sum == 200)
+                                            count++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            Console.WriteLine("Total count: {0}", count);
         }
 
         #endregion
