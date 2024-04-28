@@ -942,7 +942,34 @@ namespace Euler
 
         static void Problem32()
         {
-            throw new NotImplementedException();
+            List<long> nums = new();
+
+            for (int a = 1; a < 100000; a++)
+            {
+                for (int b = 1; b < 100000; b++)
+                {
+                    int c = a * b;
+
+                    string s = String.Format("{0}{1}{2}", a, b, c);
+
+                    if (s.Length > 9)
+                        break;
+
+                    if (s.Length == 9)
+                    {
+                        long n = Convert.ToInt64(s);
+                        if (n.IsPandigital())
+                        {
+                            Console.WriteLine("{0} x {1} = {2}", a, b, c);
+
+                            if (!nums.Contains(c))
+                                nums.Add(c);
+                        }
+                    }
+                }
+            }
+
+            Console.WriteLine("sum: {0}", nums.Sum());
         }
 
         static void Problem33()
