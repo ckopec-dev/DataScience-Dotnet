@@ -581,29 +581,25 @@ namespace Core
             return sb.ToString();
         }
 
-        public static bool IsPandigital(this long number)
+        public static bool IsPandigital(this long n)
         {
-            // We shall say that an n-digit number is pandigital if it makes use of all the digits 1 (or optionally zero) to n exactly once;
-            // for example, the 5 - digit number, 15234, is 1 through 5 pandigital.
+            // We shall say that an n-digit number is pandigital if it makes use of all the digits 1 to n exactly once;
+            // for example, the 5-digit number, 15234, is 1 through 5 pandigital.
 
-            List<int> nums = new();
+            if (n < 1 || n > 999999999)
+                return false;
 
-            int count = number.ToString().Length;
-
-            for (int i = 0; i < count; i++)
+            string s = n.ToString();
+            
+            for(int i = 1; i <= s.Length; i++)
             {
-                int n = number.GetDigit(i);
-
-                if (nums.Contains(n))
+                if (s.AllIndexesOf(i.ToString()).Count != 1)
+                {
                     return false;
-                else
-                    nums.Add(n);
+                }
             }
 
-            if (nums.Count == count)
-                return true;
-            else
-                return false;
+            return true;
         }
 
         public static int GetDigit(this int number, int index)
