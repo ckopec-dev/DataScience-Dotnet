@@ -944,34 +944,31 @@ namespace Euler
         {
             // Find the sum of all products whose multiplicand/multiplier/product identity can be written as a 1 through 9 pandigital.
 
-            long n = 152340;
-            Console.WriteLine("{0} is pandigital: {1}", n, n.IsPandigital());
+            List<long> nums = new();
 
-            //List<long> nums = new();
+            for (int a = 1; a < 10000; a++)
+            {
+                for (int b = 1; b < 10000; b++)
+                {
+                    int c = a * b;
 
-            //for (int a = 1; a < 1000; a++)
-            //{
-            //    for (int b = 1; b < 1000; b++)
-            //    {
-            //        int c = a * b;
+                    string s = String.Format("{0}{1}{2}", a, b, c);
 
-            //        string s = String.Format("{0}{1}{2}", a, b, c);
+                    if (s.Length == 9)
+                    {
+                        long n = Convert.ToInt64(s);
+                        if (n.IsPandigital())
+                        {
+                            Console.WriteLine("{0} x {1} = {2}", a, b, c);
 
-            //        if (s.Length == 9)
-            //        {
-            //            long n = Convert.ToInt64(s);
-            //            if (n.IsPandigital())
-            //            {
-            //                Console.WriteLine("{0} x {1} = {2}", a, b, c);
+                            if (!nums.Contains(c))
+                                nums.Add(c);
+                        }
+                    }
+                }
+            }
 
-            //                if (!nums.Contains(c))
-            //                    nums.Add(c);
-            //            }
-            //        }
-            //    }
-            //}
-
-            //Console.WriteLine("sum: {0}", nums.Sum());
+            Console.WriteLine("sum: {0}", nums.Sum());
         }
 
         static void Problem33()
