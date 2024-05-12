@@ -974,7 +974,44 @@ namespace Euler
 
         static void Problem33()
         {
-            throw new NotImplementedException();
+            List<int> numerators = new();
+            List<int> denominators = new();
+
+            for (int i = 10; i < 100; i++)
+            {
+                for (int j = 10; j < 100; j++)
+                {
+                    // The original value.
+                    decimal m = (decimal)i / (decimal)j;
+
+                    // Do the numerator + denominator share a common digit? If so, remove it from each, then divide and see if it matches the original value.
+                    List<int> common = i.CommonDigits(j);
+
+                    if (common.Count == 1 && j.RemoveDigit(common[0]) != 0)
+                    {
+                        int c = common[0];
+                        decimal i1 = (decimal)i.RemoveDigit(c);
+                        decimal j1 = (decimal)j.RemoveDigit(c);
+
+                        decimal n = i1 / j1;
+
+                        if (n > 0 && n < 1 && n == m && c != 0)
+                        {
+                            numerators.Add(i);
+                            denominators.Add(j);
+
+                            Console.WriteLine("i: {0}, j: {1}, i1: {2}, j1: {3}, m: {4}, n: {5}, c: {6}", i, j, i1, j1, m, n, c);
+                        }
+                    }
+                }
+            }
+
+            Console.WriteLine("Found {0} matches.", numerators.Count);
+
+            int prodNums = numerators.Product();
+            int prodDenoms = denominators.Product();
+
+            Console.WriteLine("num: {0}, den: {1}, reduced: {2}", prodNums, prodDenoms, prodDenoms / prodNums);
         }
 
         static void Problem34()
