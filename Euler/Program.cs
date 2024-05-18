@@ -1,5 +1,6 @@
 ﻿using Combinatorics.Collections;
 using Core;
+using SkiaSharp;
 using System.Numerics;
 using System.Reflection;
 using System.Text;
@@ -133,7 +134,7 @@ namespace Euler
             // Find the largest palindrome made from the product of two 
             // 3-digit numbers.
 
-            List<int> palindromes = new();
+            List<int> palindromes = [];
 
             for (int x = 999; x > 99; x--)
             {
@@ -526,10 +527,12 @@ namespace Euler
             Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem18.txt") ?? throw new Exception("Resource not found: Problem18.txt");
             using StreamReader sr = new(mrs);
 
+            #pragma warning disable IDE0305 // Simplify collection initialization
             List<string> input = sr.ReadToEnd().ToList();
+            #pragma warning restore IDE0305 // Simplify collection initialization
 
             // Convert it to a list of int arrays.
-            List<int[]> data = new();
+            List<int[]> data = [];
             for (int i = 0; i < input.Count; i++)
             {
                 int[] d = input[i].ToIntArray(' ');
@@ -595,7 +598,7 @@ namespace Euler
             const int START = 1;
             const int STOP = 10000;
 
-            List<int> numbers = new();
+            List<int> numbers = [];
 
             for (int a = START; a < STOP; a++)
             {
@@ -661,14 +664,14 @@ namespace Euler
 
             const int LIMIT = 28124;
 
-            List<int> abundant_nums = new();
+            List<int> abundant_nums = [];
             for (int i = 1; i < LIMIT; i++)
             {
                 if (i.ProperDivisors().Sum() > i)
                     abundant_nums.Add(i);
             }
 
-            int[] n = abundant_nums.ToArray();
+            int[] n = [.. abundant_nums];
 
             int sum = 0;
             for (int i = 1; i < LIMIT; i++)
@@ -700,7 +703,7 @@ namespace Euler
 
         static void Problem24()
         {
-            int[] list = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            int[] list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
             Permutations<int> perms = new(list, GenerateOption.WithoutRepetition);
 
@@ -711,7 +714,7 @@ namespace Euler
 
                 if (i == 1000000)
                 {
-                    int[] a = p.ToArray();
+                    int[] a = [.. p];
                     string pa = String.Join("", a);
 
                     Console.WriteLine(pa);
@@ -844,7 +847,7 @@ namespace Euler
         {
             const long CAP = 100;
 
-            List<BigInteger> results = new();
+            List<BigInteger> results = [];
 
             for (BigInteger a = 2; a <= CAP; a++)
             {
@@ -945,7 +948,7 @@ namespace Euler
         {
             // Find the sum of all products whose multiplicand/multiplier/product identity can be written as a 1 through 9 pandigital.
 
-            List<long> nums = new();
+            List<long> nums = [];
 
             for (int a = 1; a < 10000; a++)
             {
@@ -974,8 +977,8 @@ namespace Euler
 
         static void Problem33()
         {
-            List<int> numerators = new();
-            List<int> denominators = new();
+            List<int> numerators = [];
+            List<int> denominators = [];
 
             for (int i = 10; i < 100; i++)
             {
