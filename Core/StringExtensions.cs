@@ -82,7 +82,7 @@ namespace Core
         {
             // Converts a string (of multiple rows) to a list. Ignores blank rows.
 
-            List<string> list = new();
+            List<string> list = [];
 
             foreach (string s in data)
             {
@@ -95,8 +95,7 @@ namespace Core
 
         public static List<int> AllIndexesOf(this string str, string substring)
         {
-            List<int> indexes = new
-                ();
+            List<int> indexes = [];
 
             for (int index = 0; index < str.Length; index++)
             {
@@ -167,7 +166,7 @@ namespace Core
             int a1 = Convert.ToInt32(list[0]);
             int a2 = Convert.ToInt32(list[1]);
 
-            return new int[] { a1, a2 };
+            return [a1, a2];
         }
 
         public static string ToFriendlyDuration(this TimeSpan timeSpan, int numberDecimalPlaces)
@@ -221,7 +220,7 @@ namespace Core
 
             string[] rows = (Regex.Split(data, Environment.NewLine));
 
-            List<string> list = new();
+            List<string> list = [];
 
             foreach (string row in rows)
             {
@@ -238,7 +237,7 @@ namespace Core
             
             string[] rows = data.Split(delimiter);
 
-            List<string> list = new();
+            List<string> list = [];
 
             foreach (string row in rows)
             {
@@ -391,7 +390,7 @@ namespace Core
         {
             const string ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-            List<int> indexes = new();
+            List<int> indexes = [];
             for (int i = 0; i < word.Length; i++)
             {
                 indexes.Add(ALPHABET.IndexOf(word[i]) + 1);
