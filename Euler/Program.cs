@@ -9,6 +9,7 @@ namespace Euler
 {
     /// <summary>
     /// https://projecteuler.net/archives
+    /// Collapse all: CTRL + M + O
     /// </summary>
     internal class Program
     {
