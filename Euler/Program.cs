@@ -19,7 +19,7 @@ namespace Euler
 
             if (args != null && args.Length == 1)
             {
-                // This would be a lot cleaner by handling this with reflection, but since I'm adding items sequentially there isn't much benefit.
+                // This would be a lot cleaner by handling with reflection, but since I'm adding items sequentially there isn't much benefit.
 
                 switch (args[0].ToLower())
                 {
@@ -57,6 +57,7 @@ namespace Euler
                     case "/problem32": Problem32(); break;
                     case "/problem33": Problem33(); break;
                     case "/problem34": Problem34(); break;
+                    case "/problem35": Problem35(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -1019,6 +1020,11 @@ namespace Euler
         }
 
         static void Problem34()
+        {
+            throw new NotImplementedException();
+        }
+
+        static void Problem35()
         {
             throw new NotImplementedException();
         }
