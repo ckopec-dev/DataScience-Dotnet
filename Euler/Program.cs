@@ -1022,7 +1022,22 @@ namespace Euler
 
         static void Problem34()
         {
-            throw new NotImplementedException();
+            const int upperBound = 2540160;
+
+            BigInteger sum = new BigInteger(0);
+
+            for (int i = 3; i <= upperBound; i++)
+            {
+                if (i % 1000 == 0)
+                    Console.WriteLine("Calculating i = {0}. Current sum: {1}", i, sum);
+
+                if (i.SumOfFactorialDigits() == new BigInteger(i))
+                {
+                    sum += i;
+                }
+            }
+
+            Console.WriteLine(sum);
         }
 
         static void Problem35()
