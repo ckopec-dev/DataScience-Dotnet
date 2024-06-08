@@ -1043,7 +1043,22 @@ namespace Euler
 
         static void Problem35()
         {
-            throw new NotImplementedException();
+            const int cap = 1000000;
+
+            int count = 0;
+
+            for (int n = 2; n < cap; n++)
+            {
+                List<int> rotations = n.ToRotations();
+
+                if (rotations.ArePrime())
+                {
+                    Console.WriteLine(n);
+                    count++;
+                }
+            }
+
+            Console.WriteLine("Count: {0}", count);
         }
 
         static void Problem36()
