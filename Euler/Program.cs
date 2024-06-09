@@ -1,6 +1,7 @@
 ﻿using Combinatorics.Collections;
 using Core;
 using SkiaSharp;
+using System.ComponentModel;
 using System.Numerics;
 using System.Reflection;
 using System.Text;
@@ -1063,7 +1064,25 @@ namespace Euler
 
         static void Problem36()
         {
-            throw new NotImplementedException();
+            long sum = 0;
+
+            for (int i = 1; i < 1000000; i++)
+            {
+                if (i.IsPalindrome())
+                {
+                    string base2 = Convert.ToString(i, 2);
+
+                    if (!base2.StartsWith("0"))
+                    {
+                        if (base2.IsPalindrome())
+                        {
+                            sum += i;
+                        }
+                    }
+                }
+            }
+
+            Console.WriteLine(sum);
         }
 
         static void Problem37()
