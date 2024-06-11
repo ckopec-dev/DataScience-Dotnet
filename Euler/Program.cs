@@ -1087,7 +1087,22 @@ namespace Euler
 
         static void Problem37()
         {
-            throw new NotImplementedException();
+            List<long> tps = new List<long>();
+
+            long num = 10;
+
+            while (tps.Count < 11)
+            {
+                num++;
+
+                if (num.IsTruncatablePrime())
+                {
+                    Console.WriteLine("Found truncatable prime: {0}", num);
+                    tps.Add(num);
+                }
+            }
+
+            Console.WriteLine(tps.Sum());
         }
 
         #endregion
