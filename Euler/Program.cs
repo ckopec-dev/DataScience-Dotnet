@@ -61,6 +61,7 @@ namespace Euler
                     case "/problem35": Problem35(); break;
                     case "/problem36": Problem36(); break;
                     case "/problem37": Problem37(); break;
+                    case "/problem38": Problem38(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -1103,6 +1104,48 @@ namespace Euler
             }
 
             Console.WriteLine(tps.Sum());
+        }
+
+        static void Problem38()
+        {
+            long largest = 0;
+
+            for (int n = 2; n <= 99999; n++)
+            {
+                if (n % 1000 == 0)
+                    Console.WriteLine("Processing n = {0}", n);
+
+                for (int i = 2; i <= 7; i++)
+                {
+                    // The array is 1 to i.
+                    List<int> m = new List<int>();
+                    for (int j = 1; j <= i; j++)
+                    {
+                        m.Add(j);
+                    }
+
+                    try
+                    {
+                        long p = n.PandigitalMultiple(m);
+
+                        if (p.ToString().Length != 9)
+                            continue;
+
+                        if (p.IsPandigital())
+                        {
+                            if (p > largest)
+                            {
+                                largest = p;
+                                Console.WriteLine("Current largest: {0}, n = {1}, i = {2}", p, n, i);
+                            }
+                        }
+                    }
+                    catch (OverflowException)
+                    {
+                        continue;
+                    }
+                }
+            }
         }
 
         #endregion
