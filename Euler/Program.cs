@@ -1074,7 +1074,7 @@ namespace Euler
                 {
                     string base2 = Convert.ToString(i, 2);
 
-                    if (!base2.StartsWith("0"))
+                    if (!base2.StartsWith('0'))
                     {
                         if (base2.IsPalindrome())
                         {
@@ -1151,7 +1151,7 @@ namespace Euler
 
         static void Problem39()
         {
-            int max_p = 0;
+            int max_p;
             int max_solutions = 3;          // as given in example for p = 120
 
             const int P_LOWER_BOUND = 3;    // 3
