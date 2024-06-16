@@ -62,6 +62,7 @@ namespace Euler
                     case "/problem36": Problem36(); break;
                     case "/problem37": Problem37(); break;
                     case "/problem38": Problem38(); break;
+                    case "/problem39": Problem39(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -1027,7 +1028,7 @@ namespace Euler
         {
             const int upperBound = 2540160;
 
-            BigInteger sum = new BigInteger(0);
+            BigInteger sum = new(0);
 
             for (int i = 3; i <= upperBound; i++)
             {
@@ -1088,7 +1089,7 @@ namespace Euler
 
         static void Problem37()
         {
-            List<long> tps = new List<long>();
+            List<long> tps = [];
 
             long num = 10;
 
@@ -1118,7 +1119,7 @@ namespace Euler
                 for (int i = 2; i <= 7; i++)
                 {
                     // The array is 1 to i.
-                    List<int> m = new List<int>();
+                    List<int> m = [];
                     for (int j = 1; j <= i; j++)
                     {
                         m.Add(j);
@@ -1144,6 +1145,60 @@ namespace Euler
                     {
                         continue;
                     }
+                }
+            }
+        }
+
+        static void Problem39()
+        {
+            int max_p = 0;
+            int max_solutions = 3;          // as given in example for p = 120
+
+            const int P_LOWER_BOUND = 3;    // 3
+            const int P_UPPER_BOUND = 1000; // 1000
+
+            for (int p = P_LOWER_BOUND; p <= P_UPPER_BOUND; p++)
+            {
+                int solutionCount = 0;
+                List<int[]> solutions = [];
+
+                for (int a = 1; a < p / 2; a++)
+                {
+                    for (int b = 1; b < p / 2; b++)
+                    {
+                        for (int c = 1; c < p / 2; c++)
+                        {
+                            if (a * a + b * b == c * c && a + b + c == p)
+                            {
+                                int[] candidate1 = [a, b, c];
+                                int[] candidate2 = [b, a, c];
+
+                                bool exists = false;
+
+                                foreach (int[] sol in solutions)
+                                {
+                                    if (sol[0] == candidate1[0] && sol[1] == candidate1[1] && sol[2] == candidate1[2])
+                                        exists = true;
+                                    if (sol[0] == candidate2[0] && sol[1] == candidate2[1] && sol[2] == candidate2[2])
+                                        exists = true;
+                                }
+
+                                if (!exists)
+                                {
+                                    solutions.Add(candidate1);
+                                    solutionCount++;
+                                    Console.WriteLine("New solution: p({0}) = {1},{2},{3}", p, a, b, c);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (solutionCount > max_solutions)
+                {
+                    max_p = p;
+                    max_solutions = solutionCount;
+                    Console.WriteLine("Found new max p: {0}, solutions: {1}", max_p, max_solutions);
                 }
             }
         }
