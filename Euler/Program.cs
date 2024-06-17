@@ -63,6 +63,7 @@ namespace Euler
                     case "/problem37": Problem37(); break;
                     case "/problem38": Problem38(); break;
                     case "/problem39": Problem39(); break;
+                    case "/problem40": Problem40(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -1201,6 +1202,11 @@ namespace Euler
                     Console.WriteLine("Found new max p: {0}, solutions: {1}", max_p, max_solutions);
                 }
             }
+        }
+
+        static void Problem40()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
