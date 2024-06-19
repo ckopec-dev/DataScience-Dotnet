@@ -1206,7 +1206,27 @@ namespace Euler
 
         static void Problem40()
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new();
+
+            for (int i = 1; i <= 1000000; i++)
+            {
+                sb.Append(i);
+            }
+
+            // d1 × d10 × d100 × d1000 × d10000 × d100000 × d1000000
+
+            string c = sb.ToString();
+
+            int sum = 1;
+
+            sum *= Convert.ToInt32(c.Substring(9, 1));
+            sum *= Convert.ToInt32(c.Substring(99, 1));
+            sum *= Convert.ToInt32(c.Substring(999, 1));
+            sum *= Convert.ToInt32(c.Substring(9999, 1));
+            sum *= Convert.ToInt32(c.Substring(99999, 1));
+            sum *= Convert.ToInt32(c.Substring(999999, 1));
+
+            Console.WriteLine(sum);
         }
 
         #endregion
