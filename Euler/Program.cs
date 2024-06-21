@@ -64,6 +64,7 @@ namespace Euler
                     case "/problem38": Problem38(); break;
                     case "/problem39": Problem39(); break;
                     case "/problem40": Problem40(); break;
+                    case "/problem41": Problem41(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -1227,6 +1228,11 @@ namespace Euler
             sum *= Convert.ToInt32(c.Substring(999999, 1));
 
             Console.WriteLine(sum);
+        }
+
+        static void Problem41()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
