@@ -1233,7 +1233,19 @@ namespace Euler
 
         static void Problem41()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("1235 is pandigital: {0}", 1235L.IsPandigital());
+
+            for (long i = 999999999; i > 0; i--)
+            {
+                if (i % 100000 == 0)
+                    Console.WriteLine("Search down to {0}.", i);
+
+                if (i.IsPandigital() && i.IsPrime())
+                {
+                    Console.WriteLine(i);
+                    break;
+                }
+            }
         }
 
         static void Problem42()
