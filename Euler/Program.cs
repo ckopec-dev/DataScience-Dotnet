@@ -1250,7 +1250,36 @@ namespace Euler
 
         static void Problem42()
         {
-            throw new NotImplementedException();
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem42.txt") ?? throw new Exception("Resource not found: Problem42.txt");
+            using StreamReader sr = new(mrs);
+
+            string words = sr.ReadToEnd();
+
+            // Remove quotes
+            words = words.Replace("\"", "");
+
+            // Parse
+            List<string> parsed = words.ToList(',');
+            Console.WriteLine("Found {0} words.", parsed.Count);
+
+            List<int> triange_nums = [];
+
+            for (int n = 1; n < 1000; n++)
+            {
+                triange_nums.Add(n * (n + 1) / 2);
+            }
+
+            int ttl = 0;
+
+            foreach (string w in parsed)
+            {
+                int wv = w.WordValue();
+
+                if (triange_nums.Contains(wv))
+                    ttl++;
+            }
+
+            Console.WriteLine(ttl);
         }
 
         #endregion
