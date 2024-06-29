@@ -973,7 +973,7 @@ namespace Euler
                     if (s.Length == 9)
                     {
                         long n = Convert.ToInt64(s);
-                        if (n.IsPandigital())
+                        if (n.IsPandigital(1,9))
                         {
                             Console.WriteLine("{0} x {1} = {2}", a, b, c);
 
@@ -1137,7 +1137,7 @@ namespace Euler
                         if (p.ToString().Length != 9)
                             continue;
 
-                        if (p.IsPandigital())
+                        if (p.IsPandigital(1, 9))
                         {
                             if (p > largest)
                             {
@@ -1235,14 +1235,14 @@ namespace Euler
 
         static void Problem41()
         {
-            Console.WriteLine("1235 is pandigital: {0}", 1235L.IsPandigital());
+            Console.WriteLine("1235 is pandigital: {0}", 1235L.IsPandigital(1, 9));
 
             for (long i = 999999999; i > 0; i--)
             {
                 if (i % 100000 == 0)
                     Console.WriteLine("Search down to {0}.", i);
 
-                if (i.IsPandigital() && i.IsPrime())
+                if (i.IsPandigital(1, 9) && i.IsPrime())
                 {
                     Console.WriteLine(i);
                     break;
@@ -1287,6 +1287,64 @@ namespace Euler
         static void Problem43()
         {
             throw new NotImplementedException();
+            //long sum = 0;
+            //long counter = 0;
+
+            //long loVal = 1023456789;
+            //long hiVal = 9876543210; // performance test value: 1033456789;
+
+            //long total = hiVal - loVal;
+
+            //DateTime dtStart = DateTime.Now;
+
+            ////ParallelOptions options = new ParallelOptions();
+            ////options.MaxDegreeOfParallelism = 4;
+
+            ////Parallel.For(loVal, hiVal, options, i =>
+            //for(long i = loVal; i <= hiVal; i++)
+            //{
+            //    counter++;
+
+            //    if (i % 1000000 == 0)
+            //        Console.WriteLine("Searching at {0}. Current sum: {1}. Current thread: {2}. Processing {3} of {4}. {5} remaining.", i, sum, Thread.CurrentThread.ManagedThreadId,
+            //            counter, total, total - counter);
+
+            //    //Console.WriteLine("Found pandigital: {0}.", i);
+
+            //    //Let d1 be the 1st digit, d2 be the 2nd digit, and so on. In this way, we note the following:
+
+            //    //d2d3d4 = 406 is divisible by 2
+            //    //d3d4d5 = 063 is divisible by 3
+            //    //d4d5d6 = 635 is divisible by 5
+            //    //d5d6d7 = 357 is divisible by 7
+            //    //d6d7d8 = 572 is divisible by 11
+            //    //d7d8d9 = 728 is divisible by 13
+            //    //d8d9d10 = 289 is divisible by 17
+
+            //    if (i.IsPandigital(0, 9))
+            //    {
+            //        Console.WriteLine("{0} is pandigital", i);
+                    
+            //        if
+            //            (Convert.ToInt32(i.ToInt32(1, 1).ToString() + i.ToInt32(2, 1) + i.ToInt32(3, 1)) % 2 == 0 &&
+            //            Convert.ToInt32(i.ToInt32(2, 1).ToString() + i.ToInt32(3, 1) + i.ToInt32(4, 1)) % 3 == 0 &&
+            //            Convert.ToInt32(i.ToInt32(3, 1).ToString() + i.ToInt32(4, 1) + i.ToInt32(5, 1)) % 5 == 0 &&
+            //            Convert.ToInt32(i.ToInt32(4, 1).ToString() + i.ToInt32(5, 1) + i.ToInt32(6, 1)) % 7 == 0 &&
+            //            Convert.ToInt32(i.ToInt32(5, 1).ToString() + i.ToInt32(6, 1) + i.ToInt32(7, 1)) % 11 == 0 &&
+            //            Convert.ToInt32(i.ToInt32(6, 1).ToString() + i.ToInt32(7, 1) + i.ToInt32(8, 1)) % 13 == 0 &&
+            //            Convert.ToInt32(i.ToInt32(7, 1).ToString() + i.ToInt32(8, 1) + i.ToInt32(9, 1)) % 17 == 0
+            //        )
+            //        {
+            //            sum += i;
+            //            Console.WriteLine("Found solution: {0}. Current sum: {1}. Current thread: {2}.", i, sum, Thread.CurrentThread.ManagedThreadId);
+            //        }
+            //    }
+            //}
+
+            //TimeSpan duration = DateTime.Now - dtStart;
+            //Console.WriteLine("Execution completed in {0} seconds.", duration.TotalSeconds);
+
+            //Console.WriteLine("Final sum: {0}.", sum);
         }
 
         static void Problem44()

@@ -57,7 +57,7 @@ namespace Core
 
         public static List<int> ToIntList(this string n, char delimiter)
         {
-            List<int> retval = new();
+            List<int> retval = [];
 
             if (String.IsNullOrWhiteSpace(n))
                 return retval;
@@ -94,7 +94,7 @@ namespace Core
         {
             // Also known as binary coded decimal. Each decimal digit is represented as a 4-bit nibble.
 
-            List<string> nibbles = new();
+            List<string> nibbles = [];
             List<int> digits = n.ToListOfDigits();
 
             foreach (int d in digits)
@@ -107,7 +107,8 @@ namespace Core
 
         public static int ToInt32FromNibbleList(this List<string> nibbleList)
         {
-            List<int> digits = new();
+            List<int> list = [];
+            List<int> digits = list;
 
             foreach (string n in nibbleList)
             {
@@ -158,7 +159,7 @@ namespace Core
 
         public static List<long> Factor(this long n)
         {
-            List<long> result = new();
+            List<long> result = [];
 
             while (n % 2 == 0)
             {
@@ -378,10 +379,10 @@ namespace Core
             // Int max size is 2,147,483,647
             // Some redundant code once we get in the 100s. If exdpanding this to support longs, it would be useful to chunk it out into a helper function.
 
-            string[] list = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
-                "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+            string[] list = [ "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
+                "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" ];
 
-            Dictionary<int, string> d = new();
+            Dictionary<int, string> d = [];
 
             // Add everything under 20.
             for (int i = 0; i <= 20; i++)
@@ -469,7 +470,7 @@ namespace Core
 
         public static List<long> ProperDivisors(this long number)
         {
-            List<long> divisors = new();
+            List<long> divisors = [];
 
             for (long i = 1; i < number; i++)
             {
@@ -482,7 +483,7 @@ namespace Core
 
         public static List<int> ProperDivisors(this int number)
         {
-            List<int> divisors = new();
+            List<int> divisors = [];
 
             for (int i = 1; i < number; i++)
             {
@@ -581,9 +582,9 @@ namespace Core
             return sb.ToString();
         }
 
-        public static bool IsPandigital(this long n)
+        public static bool IsPandigital(this long n, int lowDigit, int highDigit)
         {
-            // We shall say that an n-digit number is pandigital if it makes use of all the digits 1 to n exactly once;
+            // We shall say that an n-digit number is pandigital if it makes use of all the digits lowDigit to highDigit exactly once;
             // for example, the 5-digit number, 15234, is 1 through 5 pandigital.
 
             if (n < 1 || n > 999999999)
@@ -591,7 +592,7 @@ namespace Core
 
             string s = n.ToString();
             
-            for(int i = 1; i <= s.Length; i++)
+            for(int i = lowDigit; i <= highDigit; i++)
             {
                 if (s.AllIndexesOf(i.ToString()).Count != 1)
                 {
@@ -654,7 +655,7 @@ namespace Core
             string s1 = number.ToString();
             string s2 = numberToMatch.ToString();
 
-            List<int> result = new();
+            List<int> result = [];
 
             for (int i = 0; i < s1.Length; i++)
             {
@@ -738,7 +739,7 @@ namespace Core
             if (val < 0)
                 throw new Exception("Negative values are not supported.");
 
-            List<int> vals = new();
+            List<int> vals = [];
 
             string v = val.ToString();
 
@@ -774,7 +775,7 @@ namespace Core
         {
             // Given a number such as 197, return all rotations of its digits. E.g. 197, 971, 719
 
-            List<int> r = new();
+            List<int> r = [];
 
             List<int> digits = val.ToListOfDigits();
 
@@ -964,7 +965,7 @@ namespace Core
             if (intList.Count <= 1)
                 return false;
 
-            List<int> list = new();
+            List<int> list = [];
 
             foreach (int i in intList)
             {
@@ -983,7 +984,7 @@ namespace Core
 
         public static List<double[]> ToDoubleListArray(this string val, char rowDelimiter, char colDelimiter)
         {
-            List<double[]> data = new();
+            List<double[]> data = [];
 
             string[] lines = val.Split(rowDelimiter);
 

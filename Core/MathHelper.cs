@@ -20,7 +20,7 @@ namespace Core
 
         public static List<long> ProperDivisors(long n)
         {
-            List<long> d = new();
+            List<long> d = [];
 
             if (n == 0)
                 return d;
@@ -118,10 +118,7 @@ namespace Core
             if (square[2, 0] + square[1, 1] + square[0, 2] != sum) return false;
 
             // Require unique values
-            List<long> values = new()
-            {
-                square[0, 0]
-            };
+            List<long> values = GetValues(square);
             if (values.Contains(square[0, 1])) return false; else values.Add(square[0, 1]);
             if (values.Contains(square[0, 2])) return false; else values.Add(square[0, 2]);
 
@@ -134,6 +131,14 @@ namespace Core
             if (values.Contains(square[2, 2])) return false; else values.Add(square[2, 2]);
 
             return true;
+        }
+
+        private static List<long> GetValues(long[,] square)
+        {
+            return
+            [
+                square[0, 0]
+            ];
         }
 
         public static bool AreFriendly(long m, long n)
