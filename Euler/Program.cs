@@ -1235,14 +1235,14 @@ namespace Euler
 
         static void Problem41()
         {
-            Console.WriteLine("1235 is pandigital: {0}", 1235L.IsPandigital(1, 9));
+            Console.WriteLine("2143 is pandigital: {0}", 2143L.IsPandigital(1, 4));
 
-            for (long i = 999999999; i > 0; i--)
+            for (long i = 9876543210; i > 0; i--)
             {
                 if (i % 100000 == 0)
                     Console.WriteLine("Search down to {0}.", i);
 
-                if (i.IsPandigital(1, 9) && i.IsPrime())
+                if (i.IsPandigital(1, i.ToString().Length) && i.IsPrime())
                 {
                     Console.WriteLine(i);
                     break;
