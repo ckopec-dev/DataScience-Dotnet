@@ -587,9 +587,6 @@ namespace Core
             // We shall say that an n-digit number is pandigital if it makes use of all the digits lowDigit to highDigit exactly once;
             // for example, the 5-digit number, 15234, is 1 through 5 pandigital.
 
-            if (n < 1 || n > 999999999)
-                return false;
-
             string s = n.ToString();
             
             for(int i = lowDigit; i <= highDigit; i++)

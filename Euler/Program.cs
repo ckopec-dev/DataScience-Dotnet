@@ -1296,17 +1296,16 @@ namespace Euler
 
             DateTime dtStart = DateTime.Now;
 
-            //ParallelOptions options = new ParallelOptions();
-            //options.MaxDegreeOfParallelism = 4;
+            ParallelOptions options = new ParallelOptions();
+            options.MaxDegreeOfParallelism = 4;
 
-            //Parallel.For(loVal, hiVal, options, i =>
-            for (long i = loVal; i <= hiVal; i++)
+            Parallel.For(loVal, hiVal, options, i =>
             {
                 counter++;
 
-                //if (i % 1000000 == 0)
-                //    Console.WriteLine("Searching at {0}. Current sum: {1}. Current thread: {2}. Processing {3} of {4}. {5} remaining.", i, sum, Thread.CurrentThread.ManagedThreadId,
-                //        counter, total, total - counter);
+                if (i % 1000000 == 0)
+                    Console.WriteLine("Searching at {0}. Current sum: {1}. Current thread: {2}. Processing {3} of {4}. {5} remaining.", i, sum, Thread.CurrentThread.ManagedThreadId,
+                        counter, total, total - counter);
 
                 //Console.WriteLine("Found pandigital: {0}.", i);
 
@@ -1320,28 +1319,23 @@ namespace Euler
                 //d7d8d9 = 728 is divisible by 13
                 //d8d9d10 = 289 is divisible by 17
 
-                Console.WriteLine("{0} is pandigital: {1}", i, i.IsPandigital(0, 9));
-                return;
-
-                //if (i.IsPandigital(0, 9))
-                //{
-                    
-
-                //    if
-                //        (Convert.ToInt32(i.ToInt32(1, 1).ToString() + i.ToInt32(2, 1) + i.ToInt32(3, 1)) % 2 == 0 &&
-                //        Convert.ToInt32(i.ToInt32(2, 1).ToString() + i.ToInt32(3, 1) + i.ToInt32(4, 1)) % 3 == 0 &&
-                //        Convert.ToInt32(i.ToInt32(3, 1).ToString() + i.ToInt32(4, 1) + i.ToInt32(5, 1)) % 5 == 0 &&
-                //        Convert.ToInt32(i.ToInt32(4, 1).ToString() + i.ToInt32(5, 1) + i.ToInt32(6, 1)) % 7 == 0 &&
-                //        Convert.ToInt32(i.ToInt32(5, 1).ToString() + i.ToInt32(6, 1) + i.ToInt32(7, 1)) % 11 == 0 &&
-                //        Convert.ToInt32(i.ToInt32(6, 1).ToString() + i.ToInt32(7, 1) + i.ToInt32(8, 1)) % 13 == 0 &&
-                //        Convert.ToInt32(i.ToInt32(7, 1).ToString() + i.ToInt32(8, 1) + i.ToInt32(9, 1)) % 17 == 0
-                //    )
-                //    {
-                //        sum += i;
-                //        Console.WriteLine("Found solution: {0}. Current sum: {1}. Current thread: {2}.", i, sum, Thread.CurrentThread.ManagedThreadId);
-                //    }
-                //}
-            }
+                if (i.IsPandigital(0, 9))
+                {
+                    if
+                        (Convert.ToInt32(i.ToInt32(1, 1).ToString() + i.ToInt32(2, 1) + i.ToInt32(3, 1)) % 2 == 0 &&
+                        Convert.ToInt32(i.ToInt32(2, 1).ToString() + i.ToInt32(3, 1) + i.ToInt32(4, 1)) % 3 == 0 &&
+                        Convert.ToInt32(i.ToInt32(3, 1).ToString() + i.ToInt32(4, 1) + i.ToInt32(5, 1)) % 5 == 0 &&
+                        Convert.ToInt32(i.ToInt32(4, 1).ToString() + i.ToInt32(5, 1) + i.ToInt32(6, 1)) % 7 == 0 &&
+                        Convert.ToInt32(i.ToInt32(5, 1).ToString() + i.ToInt32(6, 1) + i.ToInt32(7, 1)) % 11 == 0 &&
+                        Convert.ToInt32(i.ToInt32(6, 1).ToString() + i.ToInt32(7, 1) + i.ToInt32(8, 1)) % 13 == 0 &&
+                        Convert.ToInt32(i.ToInt32(7, 1).ToString() + i.ToInt32(8, 1) + i.ToInt32(9, 1)) % 17 == 0
+                    )
+                    {
+                        sum += i;
+                        Console.WriteLine("Found solution: {0}. Current sum: {1}. Current thread: {2}.", i, sum, Thread.CurrentThread.ManagedThreadId);
+                    }
+                }
+            });
 
             TimeSpan duration = DateTime.Now - dtStart;
             Console.WriteLine("Execution completed in {0} seconds.", duration.TotalSeconds);
