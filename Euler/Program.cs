@@ -1296,18 +1296,18 @@ namespace Euler
 
             DateTime dtStart = DateTime.Now;
 
-            ParallelOptions options = new ParallelOptions();
-            options.MaxDegreeOfParallelism = 4;
+            ParallelOptions options = new()
+            {
+                MaxDegreeOfParallelism = 4
+            };
 
             Parallel.For(loVal, hiVal, options, i =>
             {
                 counter++;
 
                 if (i % 1000000 == 0)
-                    Console.WriteLine("Searching at {0}. Current sum: {1}. Current thread: {2}. Processing {3} of {4}. {5} remaining.", i, sum, Thread.CurrentThread.ManagedThreadId,
+                    Console.WriteLine("Searching at {0}. Current sum: {1}. Current thread: {2}. Processing {3} of {4}. {5} remaining.", i, sum, Environment.CurrentManagedThreadId,
                         counter, total, total - counter);
-
-                //Console.WriteLine("Found pandigital: {0}.", i);
 
                 //Let d1 be the 1st digit, d2 be the 2nd digit, and so on. In this way, we note the following:
 
@@ -1332,7 +1332,7 @@ namespace Euler
                     )
                     {
                         sum += i;
-                        Console.WriteLine("Found solution: {0}. Current sum: {1}. Current thread: {2}.", i, sum, Thread.CurrentThread.ManagedThreadId);
+                        Console.WriteLine("Found solution: {0}. Current sum: {1}. Current thread: {2}.", i, sum, Environment.CurrentManagedThreadId);
                     }
                 }
             });

@@ -36,7 +36,7 @@ namespace Test
 
         static void BubbleSortTest()
         {
-            int[] ints = { 5, 3, 7, 1 };
+            int[] ints = [5, 3, 7, 1];
 
             Core.SortHelper.BubbleSort(ints);
 
@@ -72,7 +72,7 @@ namespace Test
         {
             Random r = new();
             const uint dataPoints = 5;
-            Histogram<uint> hist = new();
+            Histogram<uint> hist = [];
 
             for (uint i = 0; i < dataPoints; i++)
             {
