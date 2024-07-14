@@ -1347,7 +1347,44 @@ namespace Euler
 
         static void Problem44()
         {
-            throw new NotImplementedException();
+            ParallelOptions options = new ParallelOptions();
+            options.MaxDegreeOfParallelism = 4;
+            long counter = 0;
+
+            List<long> pent_nums = new List<long>();
+            for (long n = 1; n < 2500; n++)
+            {
+                pent_nums.Add(n * (3 * n - 1) / 2);
+            }
+
+            long lowestD = long.MaxValue;
+
+            Parallel.For(0, pent_nums.Count, options, j =>
+            {
+                counter++;
+
+                Console.WriteLine("Processing {0} of {1}.", counter, pent_nums.Count + 1);
+
+                for (int k = 0; k < pent_nums.Count; k++)
+                {
+                    //Console.WriteLine("j: {0}, k: {0}", pent_nums[j], pent_nums[k]);
+
+                    long s = pent_nums[j] + pent_nums[k];
+                    long d = pent_nums[k] - pent_nums[j];
+
+                    if (pent_nums.Contains(s) && pent_nums.Contains(d))
+                    {
+                        long D = pent_nums[k] - pent_nums[j];
+                        if (D < 0)
+                            D *= -1;
+
+                        if (D < lowestD)
+                            lowestD = D;
+                    }
+                }
+            });
+
+            Console.WriteLine(lowestD);
         }
 
         static void Problem45()
