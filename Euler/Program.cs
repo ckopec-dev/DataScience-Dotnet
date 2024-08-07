@@ -70,6 +70,7 @@ namespace Euler
                     case "/problem44": Problem44(); break;
                     case "/problem45": Problem45(); break;
                     case "/problem46": Problem46(); break;
+                    case "/problem47": Problem47(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -1367,8 +1368,6 @@ namespace Euler
 
                 for (int k = 0; k < pent_nums.Count; k++)
                 {
-                    //Console.WriteLine("j: {0}, k: {0}", pent_nums[j], pent_nums[k]);
-
                     long s = pent_nums[j] + pent_nums[k];
                     long d = pent_nums[k] - pent_nums[j];
 
@@ -1393,6 +1392,11 @@ namespace Euler
         }
 
         static void Problem46()
+        {
+            throw new NotImplementedException();
+        }
+
+        static void Problem47()
         {
             throw new NotImplementedException();
         }
