@@ -1388,7 +1388,32 @@ namespace Euler
 
         static void Problem45()
         {
-            throw new NotImplementedException();
+            // Triangle Tn = n(n + 1) / 2     1, 3, 6, 10, 15, ...
+            // Pentagonal Pn = n(3n−1) / 2    1, 5, 12, 22, 35, ...
+            // Hexagonal Hn = n(2n−1)        1, 6, 15, 28, 45, ...
+            
+            List<long> t_nums = new List<long>();
+            List<long> p_nums = new List<long>();
+            List<long> h_nums = new List<long>();
+
+            for (int n = 1; n <= 1000000; n++)
+            {
+                t_nums.Add(n * ((long)n + 1) / 2);
+                p_nums.Add(n * (3 * (long)n - 1) / 2);
+                h_nums.Add(n * (2 * (long)n - 1));
+            }
+
+            for (int n = 286; n < 1000000; n++)
+            {
+                if (n % 10000 == 0)
+                    Console.WriteLine("Processing batch {0}.", n);
+
+                if (p_nums.Contains(t_nums[n]) && h_nums.Contains(t_nums[n]))
+                {
+                    Console.WriteLine("n: {0}, Tn: {1}", n + 1, t_nums[n]);
+                    break;
+                }
+            }
         }
 
         static void Problem46()
