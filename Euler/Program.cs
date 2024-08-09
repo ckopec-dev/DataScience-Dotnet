@@ -1348,11 +1348,13 @@ namespace Euler
 
         static void Problem44()
         {
-            ParallelOptions options = new ParallelOptions();
-            options.MaxDegreeOfParallelism = 4;
+            ParallelOptions options = new()
+            {
+                MaxDegreeOfParallelism = 4
+            };
             long counter = 0;
 
-            List<long> pent_nums = new List<long>();
+            List<long> pent_nums = [];
             for (long n = 1; n < 2500; n++)
             {
                 pent_nums.Add(n * (3 * n - 1) / 2);
@@ -1392,9 +1394,9 @@ namespace Euler
             // Pentagonal Pn = n(3n−1) / 2    1, 5, 12, 22, 35, ...
             // Hexagonal Hn = n(2n−1)        1, 6, 15, 28, 45, ...
             
-            List<long> t_nums = new List<long>();
-            List<long> p_nums = new List<long>();
-            List<long> h_nums = new List<long>();
+            List<long> t_nums = [];
+            List<long> p_nums = [];
+            List<long> h_nums = [];
 
             for (int n = 1; n <= 1000000; n++)
             {
