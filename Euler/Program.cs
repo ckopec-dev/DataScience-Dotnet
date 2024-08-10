@@ -1420,7 +1420,58 @@ namespace Euler
 
         static void Problem46()
         {
-            throw new NotImplementedException();
+            long n = 9;
+
+            while (true)
+            {
+                if (n % 1000 == 0)
+                    Console.WriteLine("Searching at n = {0}.", n);
+
+                // Only consider composites.
+                if (n.IsPrime())
+                {
+                    n += 2;
+                    continue;
+                }
+
+                bool found = false;
+
+                // For each prime less than n.
+                for (long p = n - 2; p > 1; p--)
+                {
+                    if (p.IsPrime())
+                    {
+                        long q = n - p;
+
+                        // Is q twice a square?
+                        q = q / 2;
+
+                        // Now is q a square?
+                        double r = Math.Sqrt(q);
+
+                        if (r % 1 == 0)
+                        {
+                            //Console.WriteLine("n: {0}, p: {1}", n, p);
+                            found = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!found)
+                {
+                    Console.WriteLine("n: {0}", n);
+                    break;
+                }
+
+                n += 2;
+
+                if (n > 1000000)
+                {
+                    Console.WriteLine("Overflow condition reached. Halting.");
+                    break;
+                }
+            }
         }
 
         static void Problem47()
