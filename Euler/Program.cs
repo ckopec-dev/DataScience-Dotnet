@@ -1476,7 +1476,26 @@ namespace Euler
 
         static void Problem47()
         {
-            throw new NotImplementedException();
+            for (long p1 = 2; p1 < 1000000; p1++)
+            {
+                if (p1 % 1000 == 0)
+                    Console.WriteLine("Searching p1 = {0}.", p1);
+
+                long p2 = p1 + 1;
+                long p3 = p2 + 1;
+                long p4 = p3 + 1;
+
+                List<long> uniqueFactors1 = p1.Factor().Distinct().ToList();
+                List<long> uniqueFactors2 = p2.Factor().Distinct().ToList();
+                List<long> uniqueFactors3 = p3.Factor().Distinct().ToList();
+                List<long> uniqueFactors4 = p4.Factor().Distinct().ToList();
+
+                if (uniqueFactors1.Count == 4 && uniqueFactors2.Count == 4 && uniqueFactors3.Count == 4 && uniqueFactors4.Count == 4)
+                {
+                    Console.WriteLine("p1: {0}", p1);
+                    break;
+                }
+            }
         }
 
         #endregion
