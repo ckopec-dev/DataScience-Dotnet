@@ -71,6 +71,7 @@ namespace Euler
                     case "/problem45": Problem45(); break;
                     case "/problem46": Problem46(); break;
                     case "/problem47": Problem47(); break;
+                    case "/problem48": Problem48(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -1496,6 +1497,11 @@ namespace Euler
                     break;
                 }
             }
+        }
+
+        static void Problem48()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
