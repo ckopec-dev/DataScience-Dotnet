@@ -1445,14 +1445,13 @@ namespace Euler
                         long q = n - p;
 
                         // Is q twice a square?
-                        q = q / 2;
+                        q /= 2;
 
                         // Now is q a square?
                         double r = Math.Sqrt(q);
 
                         if (r % 1 == 0)
                         {
-                            //Console.WriteLine("n: {0}, p: {1}", n, p);
                             found = true;
                             break;
                         }
@@ -1501,7 +1500,25 @@ namespace Euler
 
         static void Problem48()
         {
-            throw new NotImplementedException();
+            BigInteger sum = new(0);
+
+            for (int i = 1; i <= 1000; i++)
+            {
+                BigInteger b = new(i);
+
+                sum += BigInteger.Pow(b, i);
+            }
+
+            string num = sum.ToString();
+
+            Console.WriteLine("Full num: {0}", num);
+
+            // Get last 10 digits.
+            num = num[^10..];
+            if (num.Length != 10)
+                throw new Exception("Invalid length.");
+
+            Console.WriteLine("Last 10 digits: {0}", num);
         }
 
         #endregion
