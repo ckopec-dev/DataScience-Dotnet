@@ -72,6 +72,7 @@ namespace Euler
                     case "/problem46": Problem46(); break;
                     case "/problem47": Problem47(); break;
                     case "/problem48": Problem48(); break;
+                    case "/problem49": Problem49(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -1519,6 +1520,42 @@ namespace Euler
                 throw new Exception("Invalid length.");
 
             Console.WriteLine("Last 10 digits: {0}", num);
+        }
+
+        static void Problem49()
+        {
+            List<int> primes = [];
+
+            for (int n = 1000; n < 10000; n++)
+            {
+                if (n.IsPrime())
+                {
+                    primes.Add(n);
+                }
+            }
+
+            for (int x = 0; x < primes.Count; x++)
+                for (int y = 0; y < primes.Count; y++)
+                    for (int z = 0; z < primes.Count; z++)
+                    {
+                        // Only check different sets of numbers.
+                        if (primes[x] == primes[y] || primes[y] == primes[z] || primes[x] == primes[z])
+                            continue;
+
+                        if (primes[y] != primes[x] + 3330 || primes[z] != primes[y] + 3330)
+                            continue;
+
+                        // Are x, y, and z permutations of each other?
+                        if (primes[x].HasSameDigits(primes[y]) && primes[x].HasSameDigits(primes[z]))
+                        {
+                            StringBuilder sb = new();
+                            sb.Append(primes[x]);
+                            sb.Append(primes[y]);
+                            sb.Append(primes[z]);
+
+                            Console.WriteLine("{0}, {1}, {2}, cat: {3}", primes[x], primes[y], primes[z], sb.ToString());
+                        }
+                    }
         }
 
         #endregion

@@ -7,6 +7,27 @@ namespace Core
 {
     public static class NumberExtensions
     {
+        public static bool HasSameDigits(this int num1, int num2)
+        {
+            int n1 = num1.ToString().Length;
+            int n2 = num2.ToString().Length;
+
+            if (n1 != n2)
+                return false;
+
+            char[] c1 = num1.ToString().ToCharArray();
+            char[] c2 = num2.ToString().ToCharArray();
+
+            Array.Sort(c1);
+            Array.Sort(c2);
+
+            for (int i = 0; i < n1; i++)
+                if (c1[i] != c2[i])
+                    return false;
+
+            return true;
+        }
+
         public static bool IsApocalypseNumber(this BigInteger n)
         {
             if (n.ToString().Length == 666)
