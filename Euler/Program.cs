@@ -73,6 +73,7 @@ namespace Euler
                     case "/problem47": Problem47(); break;
                     case "/problem48": Problem48(); break;
                     case "/problem49": Problem49(); break;
+                    case "/problem50": Problem50(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -1556,6 +1557,68 @@ namespace Euler
                             Console.WriteLine("{0}, {1}, {2}, cat: {3}", primes[x], primes[y], primes[z], sb.ToString());
                         }
                     }
+        }
+
+        static void Problem50()
+        {
+            int n = 1000000;
+
+            // First, get all the primes less than n.
+            Console.WriteLine("Building prime cache...");
+            List<int> primes = [];
+            for (int i = 2; i < n; i++)
+            {
+                if (i.IsPrime())
+                {
+                    primes.Add(i);
+                }
+            }
+
+            Console.WriteLine("Found {0} primes.", primes.Count);
+            // For n = 100, the list now contains 25 primes, so the longest possible sum has 25 terms.
+            // To check terms of length 24, count terms 1-24, 2-25.
+            // To check terms of length 23, count terms 1-23, 2-24, 3-25.
+            // To check terms of length 22, count terms 1-22, 2-23, 3-24, 4-25.
+            // Etc.
+
+            int len = primes.Count - 1;
+            int j = 2;
+
+            while (len >= 2)
+            {
+                if ((len > 1000 && len % 100 == 0) || len <= 1000)
+                {
+                    Console.WriteLine("Checking terms of length {0}.", len);
+                }
+
+                int k = len;
+
+                for (int i = 1; i <= j; i++)
+                {
+                    int sum = 0;
+                    for (int m = k - 1; m >= i - 1; m--) // Count them largest to smallest, so we can bail once the sum hits n and we can eliminate unneccessary calculations.
+                    {
+                        sum += primes[m];
+
+                        if (sum >= n)
+                        {
+                            break;
+                        }
+                    }
+
+                    // Do these terms sum up to a prime number that is less than n? If so, this is the result.
+                    if (sum < n && sum.IsPrime())
+                    {
+                        Console.WriteLine("Counting terms {0}-{1}, sum: {2}, prime: {3}", i, k, sum, sum.IsPrime());
+                        return;
+                    }
+
+                    k++;
+                }
+
+                j++;
+                len--;
+            }
         }
 
         #endregion
