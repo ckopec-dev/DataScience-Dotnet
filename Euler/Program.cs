@@ -74,6 +74,7 @@ namespace Euler
                     case "/problem48": Problem48(); break;
                     case "/problem49": Problem49(); break;
                     case "/problem50": Problem50(); break;
+                    case "/problem51": Problem51(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -1618,6 +1619,100 @@ namespace Euler
 
                 j++;
                 len--;
+            }
+        }
+
+        static void Problem51()
+        {
+            const int familyCountToFind = 8;
+            int[] inputSet = { 0, 1, 2, 3, 4, 5 };
+            int len = inputSet.Length;
+            int lowerBound = Convert.ToInt32("1".PadRight(len, '0'));
+            int upperBound = Convert.ToInt32("1".PadRight(len + 1, '0'));
+
+            List<int> primes = new List<int>();
+            Console.WriteLine("Generating prime table.");
+            for (int i = lowerBound; i < upperBound; i++)
+            {
+                if (i.IsPrime())
+                {
+                    primes.Add(i);
+                }
+            }
+
+            Console.WriteLine("Found {0} primes.", primes.Count);
+
+            int count = 0;
+
+            List<int> results = new List<int>();
+
+            // Check each prime.
+            foreach (int p in primes)
+            {
+                count++;
+
+                // Check each number of stars in each prime.
+                for (int starCount = inputSet.Length - 1; starCount > 0; starCount--)
+                {
+                    if (count % 100 == 0 || p >= 120383)
+                    {
+                        Console.WriteLine("Checking prime {0}, number {1} of {2} with {3} stars.", p, count, primes.Count, starCount);
+                    }
+
+                    Combinations<int> combos = new Combinations<int>(inputSet, starCount, GenerateOption.WithoutRepetition);
+
+                    // Check each combination.
+                    foreach (IList<int> combo in combos)
+                    {
+                        int[] array = combo.Cast<int>().ToArray();
+
+                        int familyCount = 0;
+                        List<int> familyMembers = new List<int>();
+
+                        for (int i = 0; i < 10; i++)
+                        {
+                            int pTest = p;
+
+                            foreach (int index in array)
+                            {
+                                if (index >= pTest.ToString().Length)
+                                    continue;
+                                pTest = pTest.ReplaceDigit(index, i);
+                            }
+
+                            if (pTest.ToString().Length != p.ToString().Length)
+                                continue;
+
+                            if (primes.Contains(pTest))
+                            {
+                                familyCount++;
+                                familyMembers.Add(pTest);
+                            }
+
+                            if (familyCount == familyCountToFind)
+                            {
+                                Console.WriteLine("Found matching family count for prime {0}: {1}!", p, familyCount);
+                                results.Add(p);
+
+                                familyMembers.Sort();
+                                Console.WriteLine("Family members:");
+                                foreach (int m in familyMembers)
+                                    Console.WriteLine(m);
+
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (results.Count == 0)
+                Console.WriteLine("Matching family count not found.");
+            else
+            {
+                results.Sort();
+                foreach (var result in results)
+                    Console.WriteLine("Match: {0}", results[0]);
             }
         }
 
