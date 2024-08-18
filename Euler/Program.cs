@@ -1625,12 +1625,12 @@ namespace Euler
         static void Problem51()
         {
             const int familyCountToFind = 8;
-            int[] inputSet = { 0, 1, 2, 3, 4, 5 };
+            int[] inputSet = [0, 1, 2, 3, 4, 5];
             int len = inputSet.Length;
             int lowerBound = Convert.ToInt32("1".PadRight(len, '0'));
             int upperBound = Convert.ToInt32("1".PadRight(len + 1, '0'));
 
-            List<int> primes = new List<int>();
+            List<int> primes = [];
             Console.WriteLine("Generating prime table.");
             for (int i = lowerBound; i < upperBound; i++)
             {
@@ -1644,7 +1644,7 @@ namespace Euler
 
             int count = 0;
 
-            List<int> results = new List<int>();
+            List<int> results = [];
 
             // Check each prime.
             foreach (int p in primes)
@@ -1659,15 +1659,15 @@ namespace Euler
                         Console.WriteLine("Checking prime {0}, number {1} of {2} with {3} stars.", p, count, primes.Count, starCount);
                     }
 
-                    Combinations<int> combos = new Combinations<int>(inputSet, starCount, GenerateOption.WithoutRepetition);
+                    Combinations<int> combos = new(inputSet, starCount, GenerateOption.WithoutRepetition);
 
                     // Check each combination.
-                    foreach (IList<int> combo in combos)
+                    foreach (IList<int> combo in combos.Cast<IList<int>>())
                     {
                         int[] array = combo.Cast<int>().ToArray();
 
                         int familyCount = 0;
-                        List<int> familyMembers = new List<int>();
+                        List<int> familyMembers = [];
 
                         for (int i = 0; i < 10; i++)
                         {
@@ -1711,7 +1711,7 @@ namespace Euler
             else
             {
                 results.Sort();
-                foreach (var result in results)
+                foreach (int result in results)
                     Console.WriteLine("Match: {0}", results[0]);
             }
         }
