@@ -1711,8 +1711,10 @@ namespace Euler
             else
             {
                 results.Sort();
-                foreach (int result in results)
+                for (int i = 0; i < results.Count; i++)
+                {
                     Console.WriteLine("Match: {0}", results[0]);
+                }
             }
         }
 
