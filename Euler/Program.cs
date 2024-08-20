@@ -75,6 +75,7 @@ namespace Euler
                     case "/problem49": Problem49(); break;
                     case "/problem50": Problem50(); break;
                     case "/problem51": Problem51(); break;
+                    case "/problem52": Problem52(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -1716,6 +1717,11 @@ namespace Euler
                     Console.WriteLine("Match: {0}", results[0]);
                 }
             }
+        }
+
+        static void Problem52()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
