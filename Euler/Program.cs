@@ -1722,7 +1722,30 @@ namespace Euler
 
         static void Problem52()
         {
-            throw new NotImplementedException();
+            int inclusiveLowerBound = 100001;
+            int exclusiveUpperBound = 10000000;
+
+            for (int x = inclusiveLowerBound; x < exclusiveUpperBound; x++)
+            {
+                List<int> list = [];
+
+                int x2 = 2 * x;
+
+                list.Add(3 * x);
+                list.Add(4 * x);
+                list.Add(5 * x);
+                list.Add(6 * x);
+
+                bool match = x2.SameDigits(list);
+
+                if (match)
+                {
+                    Console.WriteLine("Found solution. x = {0}", x);
+                    return;
+                }
+            }
+
+            Console.WriteLine("No solution found from {0} to {1}", inclusiveLowerBound, exclusiveUpperBound);
         }
 
         static void Problem53()
