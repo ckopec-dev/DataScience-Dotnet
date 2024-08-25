@@ -1750,7 +1750,26 @@ namespace Euler
 
         static void Problem53()
         {
-            throw new NotImplementedException();
+            int count = 0;
+
+            for (int n = 1; n <= 100; n++)
+            {
+                for (int r = 1; r <= n; r++)
+                {
+                    Console.WriteLine("n: {0}, r: {1}", n, r);
+
+                    BigInteger valN = new(n);
+                    BigInteger valR = new(r);
+
+
+                    BigInteger val = valN.Factorial() / ((valR.Factorial() * (valN - valR).Factorial()));
+
+                    if (val > 1000000)
+                        count++;
+                }
+            }
+
+            Console.WriteLine("Count: {0}", count);
         }
 
         #endregion
