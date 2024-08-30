@@ -1775,6 +1775,12 @@ namespace Euler
 
         static void Problem54()
         {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem54.txt") ?? throw new Exception("Resource not found: Problem54.txt");
+            using StreamReader sr = new(mrs);
+
+            //string words = sr.ReadToEnd();
+            // read to list of poker hands
+
             throw new NotImplementedException();
         }
 
