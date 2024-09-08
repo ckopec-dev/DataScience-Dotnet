@@ -211,7 +211,7 @@ namespace Core.GameTheory
                 // For aggregate winners (e.g. full house, the higher rank component gets sorted highest.
 
                 PokerRank r = GetRank();
-
+                
                 switch (r)
                 {
                     case PokerRank.RoyalFlush:
@@ -228,15 +228,18 @@ namespace Core.GameTheory
                         // The non-winner appears first, followed by the winners
 
                         List<Card> winners = [];
-
-                        if (r == PokerRank.FourOfAKind)
-                            winners = [.. FourOfAKind().OrderBy(static i => i.Value)];
-                        if (r == PokerRank.ThreeOfAKind)
-                            winners = [.. ThreeOfAKind().OrderBy(static i => i.Value)];
-                        if (r == PokerRank.TwoPair)
-                            winners = [.. TwoPair().OrderBy(static i => i.Value)];
-                        if (r == PokerRank.OnePair)
-                            winners = [.. OnePair().OrderBy(static i => i.Value)];
+                        List<Card>? hand = FourOfAKind();
+                        if (r == PokerRank.FourOfAKind && hand != null)
+                            winners = [.. hand.OrderBy(static i => i.Value)];
+                        hand = ThreeOfAKind();
+                        if (r == PokerRank.ThreeOfAKind && hand != null)
+                            winners = [.. hand.OrderBy(static i => i.Value)];
+                        hand = TwoPair();
+                        if (r == PokerRank.TwoPair && hand != null)
+                            winners = [.. hand.OrderBy(static i => i.Value)];
+                        hand = OnePair();
+                        if (r == PokerRank.OnePair && hand != null)
+                            winners = [.. hand.OrderBy(static i => i.Value)];
 
                         List<Card> nonwinners = [];
                         foreach (Card c in Cards)
