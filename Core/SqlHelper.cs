@@ -29,6 +29,7 @@ namespace Core
                 cnn.Open();
                 da.Fill(ds);
                 ds.Dispose();
+                cmd.Parameters.Clear();
                 cnn.Close();
             }
 
