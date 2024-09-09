@@ -120,7 +120,7 @@ namespace Core
 
         public static List<SqlParameter> ToSqlParameterList(this List<ObjectParameter> parameters)
         {
-            List<SqlParameter> p = new();
+            List<SqlParameter> p = [];
 
             foreach (ObjectParameter o in parameters)
                 p.Add(new SqlParameter(o.Name, o.Value));
@@ -130,7 +130,7 @@ namespace Core
 
         public static List<string> ToSearchTerms(this string searchString)
         {
-            List<string> lst = new();
+            List<string> lst = [];
 
             if (!String.IsNullOrWhiteSpace(searchString))
             {
