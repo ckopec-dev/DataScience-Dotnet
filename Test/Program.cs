@@ -11,14 +11,14 @@ namespace Test
     {
         static void Main()
         {
-            PrimeTest();
-            ProperDivisorsTest();
-            BubbleSortTest();
-            EasterTest();
-            MagicSquareTest();
-            DayNumberTest();
-            HistogramTest();
-            EulerMascheroniTest();
+            //PrimeTest();
+            //ProperDivisorsTest();
+            //BubbleSortTest();
+            //EasterTest();
+            //MagicSquareTest();
+            //DayNumberTest();
+            //HistogramTest();
+            //EulerMascheroniTest();
         }
 
         static void PrimeTest()
