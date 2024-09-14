@@ -80,11 +80,11 @@ namespace Core
         {
             SqlConnection conn = new(connectionString);
 
-            using SqlCommand cmd = new(sqlStatement, conn);
+            SqlCommand cmd = new(sqlStatement, conn);
             cmd.Parameters.AddRange(parameters);
 
             conn.Open();
-            using SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
 
             return reader;
         }
