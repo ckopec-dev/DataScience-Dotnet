@@ -76,6 +76,19 @@ namespace Core
             return rowsAffected;
         }
 
+        public static SqlDataReader ExecuteReader(string connectionString, string sqlStatement, params SqlParameter[] parameters)
+        {
+            SqlConnection conn = new(connectionString);
+
+            using SqlCommand cmd = new(sqlStatement, conn);
+            cmd.Parameters.AddRange(parameters);
+
+            conn.Open();
+            using SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            return reader;
+        }
+
         private static SqlCommand GetSqlCommand(SqlConnection cnn, string sql, List<SqlParameter> parameters)
         {
             SqlCommand cmd = new(sql, cnn)
