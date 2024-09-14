@@ -1,9 +1,12 @@
 ﻿using Combinatorics.Collections;
 using Core;
+using Core.GameTheory;
 using SkiaSharp;
 using System.ComponentModel;
+using System.Diagnostics.SymbolStore;
 using System.Numerics;
 using System.Reflection;
+using System.Reflection.PortableExecutable;
 using System.Text;
 
 namespace Euler
@@ -1778,10 +1781,101 @@ namespace Euler
             Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem54.txt") ?? throw new Exception("Resource not found: Problem54.txt");
             using StreamReader sr = new(mrs);
 
-            //string words = sr.ReadToEnd();
-            // read to list of poker hands
+            //Deck deck = new Deck();
+            //deck.Shuffle();
 
-            throw new NotImplementedException();
+            //PokerHand pokerHand = deck.DealPokerHand();
+
+            //PokerHand pokerHand = new PokerHand(new string[] { "5H", "5C", "6S", "7S", "KD" });
+
+            //Console.WriteLine("Hand:\n{0}", pokerHand);
+
+            //List<Card> cardsRanked;
+
+            //cardsRanked = pokerHand.OnePair();
+            //Console.WriteLine("One Pair:\n{0}", PokerHand.CardsToString(cardsRanked));
+
+            //cardsRanked = pokerHand.TwoPair();
+            //Console.WriteLine("Two Pair:\n{0}", PokerHand.CardsToString(cardsRanked));
+
+            //cardsRanked = pokerHand.ThreeOfAKind();
+            //Console.WriteLine("Three of a Kind:\n{0}", PokerHand.CardsToString(cardsRanked));
+
+            //cardsRanked = pokerHand.Straight();
+            //Console.WriteLine("Straight:\n{0}", PokerHand.CardsToString(cardsRanked));
+
+            //cardsRanked = pokerHand.Flush();
+            //Console.WriteLine("Flush:\n{0}", PokerHand.CardsToString(cardsRanked));
+
+            //cardsRanked = pokerHand.FullHouse();
+            //Console.WriteLine("Full House:\n{0}", PokerHand.CardsToString(cardsRanked));
+
+            //cardsRanked = pokerHand.FourOfAKind();
+            //Console.WriteLine("Four of a Kind:\n{0}", PokerHand.CardsToString(cardsRanked));
+
+            //cardsRanked = pokerHand.StraightFlush();
+            //Console.WriteLine("Straight Flush:\n{0}", PokerHand.CardsToString(cardsRanked));
+
+            //cardsRanked = pokerHand.RoyalFlush();
+            //Console.WriteLine("Royal Flush:\n{0}", PokerHand.CardsToString(cardsRanked));
+
+            //Console.WriteLine("Rank: {0}", pokerHand.GetRank());
+
+            //PokerHand hand1 = new PokerHand(new string[] { "2H", "2D", "4C", "4D", "4S" });
+            //PokerHand hand2 = new PokerHand(new string[] { "3C", "3D", "3S", "9S", "9D" });
+
+            //Console.WriteLine("Hand 1:\n{0}", hand1);
+            //Console.WriteLine("Hand 2:\n{0}", hand2);
+
+            //PokerHand winner = PokerHand.FindWinner(hand1, hand2);
+
+            //if (winner == null)
+            //    Console.WriteLine("Winner: Draw");
+            //else if (winner.Equals(hand1))
+            //    Console.WriteLine("Winner: Hand 1");
+            //else if (winner.Equals(hand2))
+            //    Console.WriteLine("Winner: Hand 2");
+
+            List<string> input = [];
+
+            while (!sr.EndOfStream)
+            {
+                string? hand = sr.ReadLine();
+                if (hand != null)
+                    input.Add(hand);
+            }
+            
+            int player1Wins = 0;
+
+            for (int handNum = 1; handNum <= input.Count; handNum++)
+            {
+                string game = input[handNum - 1];
+
+                StringBuilder sb = new();
+
+                sb.Append(String.Format("Game: {0}, Cards: {1}", handNum, game));
+
+                string[] cards = game.Split(' ');
+
+                PokerHand hand1 = new([cards[0], cards[1], cards[2], cards[3], cards[4]]);
+                PokerHand hand2 = new([cards[5], cards[6], cards[7], cards[8], cards[9]]);
+
+                PokerHand? winner = PokerHand.FindWinner(hand1, hand2);
+
+                if (winner == null)
+                    sb.Append(", Winner: Draw");
+                else if (winner.Equals(hand1))
+                {
+                    sb.Append(", Winner: Player 1");
+                    player1Wins++;
+                }
+                else if (winner.Equals(hand2))
+                    sb.Append(", Winner: Player 2");
+
+                Console.WriteLine(sb.ToString());
+            }
+
+            Console.WriteLine("Total Player 1 Wins: {0}", player1Wins);
         }
 
         #endregion
