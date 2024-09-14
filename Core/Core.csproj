@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Configurations>Debug;Release;Debug - Miner1</Configurations>
+    <Configurations>Debug;Release;Debug - Miner1;Debug - Miner2;Debug - Miner3</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
