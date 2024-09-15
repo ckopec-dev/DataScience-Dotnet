@@ -1,12 +1,9 @@
 ﻿using Combinatorics.Collections;
 using Core;
 using Core.GameTheory;
-using SkiaSharp;
-using System.ComponentModel;
-using System.Diagnostics.SymbolStore;
 using System.Numerics;
 using System.Reflection;
-using System.Reflection.PortableExecutable;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Euler
@@ -23,80 +20,43 @@ namespace Euler
 
             if (args != null && args.Length == 1)
             {
-                // This would be a lot cleaner by handling with reflection, but since I'm adding items sequentially there isn't much benefit.
-
-                switch (args[0].ToLower())
-                {
-                    case "/problem1": Problem1(); break;
-                    case "/problem2": Problem2(); break;
-                    case "/problem3": Problem3(); break;
-                    case "/problem4": Problem4(); break;
-                    case "/problem5": Problem5(); break;
-                    case "/problem6": Problem6(); break;
-                    case "/problem7": Problem7(); break;
-                    case "/problem8": Problem8(); break;
-                    case "/problem9": Problem9(); break;
-                    case "/problem10": Problem10(); break;
-                    case "/problem11": Problem11(); break;
-                    case "/problem12": Problem12(); break;
-                    case "/problem13": Problem13(); break;
-                    case "/problem14": Problem14(); break;
-                    case "/problem15": Problem15(); break;
-                    case "/problem16": Problem16(); break;
-                    case "/problem17": Problem17(); break;
-                    case "/problem18": Problem18(); break;
-                    case "/problem19": Problem19(); break;
-                    case "/problem20": Problem20(); break;
-                    case "/problem21": Problem21(); break;
-                    case "/problem22": Problem22(); break;
-                    case "/problem23": Problem23(); break;
-                    case "/problem24": Problem24(); break;
-                    case "/problem25": Problem25(); break;
-                    case "/problem26": Problem26(); break;
-                    case "/problem27": Problem27(); break;
-                    case "/problem28": Problem28(); break;
-                    case "/problem29": Problem29(); break;
-                    case "/problem30": Problem30(); break;
-                    case "/problem31": Problem31(); break;
-                    case "/problem32": Problem32(); break;
-                    case "/problem33": Problem33(); break;
-                    case "/problem34": Problem34(); break;
-                    case "/problem35": Problem35(); break;
-                    case "/problem36": Problem36(); break;
-                    case "/problem37": Problem37(); break;
-                    case "/problem38": Problem38(); break;
-                    case "/problem39": Problem39(); break;
-                    case "/problem40": Problem40(); break;
-                    case "/problem41": Problem41(); break;
-                    case "/problem42": Problem42(); break;
-                    case "/problem43": Problem43(); break;
-                    case "/problem44": Problem44(); break;
-                    case "/problem45": Problem45(); break;
-                    case "/problem46": Problem46(); break;
-                    case "/problem47": Problem47(); break;
-                    case "/problem48": Problem48(); break;
-                    case "/problem49": Problem49(); break;
-                    case "/problem50": Problem50(); break;
-                    case "/problem51": Problem51(); break;
-                    case "/problem52": Problem52(); break;
-                    case "/problem53": Problem53(); break;
-                    case "/problem54": Problem54(); break;
-                    case "/problem55": Problem55(); break;
-                    case "/misc1": Misc1(); break;
-                    case "/misc2": Misc2(); break;
-                    case "/misc3": Misc3(); break;
-                    case "/misc4": Misc4(); break;
-                    case "/misc5": Misc5(); break;
-                    case "/misc6": Misc6(); break;
-                    case "/misc7": Misc7(); break;
-                    case "/misc8": Misc8(); break;
-                    default: Console.WriteLine(switchErr); break;
-                }
+                CallMethod(args[0]);
             }
             else
             {
                 Console.WriteLine(switchErr);
             }
+        }
+
+        static void CallMethod(string cmd)
+        {
+            string arg0 = cmd.ToLower();
+            string? prefix = null, suffix = null;
+
+            if (arg0.Contains("problem", StringComparison.CurrentCultureIgnoreCase))
+            {
+                prefix = "Problem";
+                suffix = arg0.Split("problem")[1];
+            }
+            else if (arg0.Contains("misc"))
+            {
+                prefix = "Misc";
+                suffix = arg0.Split("misc")[1];
+            }
+
+            if (prefix == null || suffix == null)
+            {
+                throw new Exception("Invalid command: " + cmd);
+            }
+
+            string methodName = prefix + suffix;
+            Console.WriteLine("Invoking {0}.", methodName);
+            MethodInfo? method = typeof(Program).GetMethod(methodName, BindingFlags.Static | BindingFlags.NonPublic);
+            if (method == null)
+            {
+                throw new Exception("Method not found: " + methodName);
+            }
+            method?.Invoke(null, null);
         }
 
         #region Problems
@@ -2136,6 +2096,29 @@ namespace Euler
                     break;
                 }
             }
+        }
+
+        static void Misc9()
+        {
+            string s = "Problem123";
+
+            string[] parts = s.Split("Problem");
+            Console.WriteLine("0: {0}, 1: {1}", parts[0], parts[1]);
+
+            Type t = typeof(Program);
+
+            foreach(MethodInfo mi in t.GetMethods(BindingFlags.Static | BindingFlags.NonPublic))
+            {
+                Console.WriteLine(mi.Name);
+            }
+
+            MethodInfo? method = typeof(Program).GetMethod("Problem55", BindingFlags.Static | BindingFlags.NonPublic);
+            method?.Invoke(null, null);
+        }
+
+        static void Misc10()
+        {
+            Console.WriteLine("Reflection test.");
         }
 
         #endregion
