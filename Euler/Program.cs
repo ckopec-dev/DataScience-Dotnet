@@ -81,6 +81,7 @@ namespace Euler
                     case "/problem52": Problem52(); break;
                     case "/problem53": Problem53(); break;
                     case "/problem54": Problem54(); break;
+                    case "/problem55": Problem55(); break;
                     case "/misc1": Misc1(); break;
                     case "/misc2": Misc2(); break;
                     case "/misc3": Misc3(); break;
@@ -1876,6 +1877,41 @@ namespace Euler
             }
 
             Console.WriteLine("Total Player 1 Wins: {0}", player1Wins);
+        }
+
+        static void Problem55()
+        {
+            int count = 0;
+
+            // A number that never forms a palindrome through the reverse and add process is called a Lychrel number.
+
+            for (BigInteger b = 0; b < 10000; b++)
+            {
+                Console.WriteLine("Checking {0}.", b);
+                BigInteger bBase = b;
+                bool isLychrelNum = true;
+
+                for (int i = 0; i < 50; i++)
+                {
+                    BigInteger bRev = bBase.Reverse();
+                    BigInteger sum = bBase + bRev;
+
+                    if (sum.IsPalindrome())
+                    {
+                        isLychrelNum = false;
+                        break;
+                    }
+                    else
+                    {
+                        bBase = sum;
+                    }
+                }
+
+                if (isLychrelNum)
+                    count++;
+            }
+
+            Console.WriteLine("Count: {0}", count);
         }
 
         #endregion

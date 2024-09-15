@@ -313,6 +313,27 @@ namespace Core
             return true;
         }
 
+        public static long Reverse(this long number)
+        {
+            char[] charArray = number.ToString().ToCharArray();
+            Array.Reverse(charArray);
+            string numberReversed = new(charArray);
+
+            return Convert.ToInt64(numberReversed);
+        }
+
+        public static BigInteger Reverse(this BigInteger number)
+        {
+            char[] charArray = number.ToString().ToCharArray();
+            Array.Reverse(charArray);
+            string numberReversed = new(charArray);
+
+            if (numberReversed == null)
+                return BigInteger.Zero;
+
+            return BigInteger.Parse(numberReversed);
+        }
+
         public static bool IsPalindrome(this int number)
         {
             return ((long)number).IsPalindrome();
@@ -320,9 +341,7 @@ namespace Core
 
         public static bool IsPalindrome(this long number)
         {
-            char[] charArray = number.ToString().ToCharArray();
-            Array.Reverse(charArray);
-            string numberReversed = new(charArray);
+            string numberReversed = number.Reverse().ToString();
 
             if (number.ToString() == numberReversed)
                 return true;
@@ -334,21 +353,10 @@ namespace Core
         {
             BigInteger reversed = number.Reverse();
 
-            if (number == reversed)
+            if (number.ToString() == reversed.ToString())
                 return true;
             else
                 return false;
-        }
-
-        public static BigInteger Reverse(this BigInteger number)
-        {
-            byte[] byteArray = number.ToByteArray();
-
-            Array.Reverse(byteArray);
-
-            BigInteger b = new(byteArray);
-
-            return b;
         }
 
         public static bool IsTruncatablePrime(this long number)
