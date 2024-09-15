@@ -51,17 +51,16 @@ namespace Euler
 
             string methodName = prefix + suffix;
             Console.WriteLine("Invoking {0}.", methodName);
-            MethodInfo? method = typeof(Program).GetMethod(methodName, BindingFlags.Static | BindingFlags.NonPublic);
-            if (method == null)
-            {
-                throw new Exception("Method not found: " + methodName);
-            }
+            MethodInfo? method = typeof(Program).GetMethod(methodName, BindingFlags.Static | BindingFlags.NonPublic) ?? throw new Exception("Method not found: " + methodName);
             method?.Invoke(null, null);
         }
+
+        #pragma warning disable IDE0051 // Remove unused private members
 
         #region Problems
 
         static void Problem1()
+
         {
             // If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9.
             // The sum of these multiples is 23.
@@ -2126,5 +2125,7 @@ namespace Euler
         #region Helpers
 
         #endregion
+
+        #pragma warning restore IDE0051 // Remove unused private members
     }
 }
