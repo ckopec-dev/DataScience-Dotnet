@@ -3,7 +3,6 @@ using Core;
 using Core.GameTheory;
 using System.Numerics;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Euler
@@ -700,7 +699,7 @@ namespace Euler
                 if (i == 1000000)
                 {
                     int[] a = [.. p];
-                    string pa = String.Join("", a);
+                    String pa = String.Join("", a);
 
                     Console.WriteLine(pa);
                 }
@@ -1871,6 +1870,30 @@ namespace Euler
             }
 
             Console.WriteLine("Count: {0}", count);
+        }
+
+        static void Problem56()
+        {
+            int maxDigits = 1;
+
+            for(BigInteger a = 2; a < 100; a++)
+            {
+                for(int b = 2; b < 100; b++)
+                {
+                    BigInteger c = BigInteger.Pow(a, b);
+
+                    int digits = c.SumOfDigits();
+
+                    Console.WriteLine("{0}^{1}={2}, sum of digits: {3}", a, b, c, digits);
+
+                    if (digits > maxDigits)
+                    {
+                        maxDigits = digits;
+                    }
+                }
+            }
+
+            Console.WriteLine("maxDigits: {0}", maxDigits);
         }
 
         #endregion
