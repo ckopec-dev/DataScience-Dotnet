@@ -103,8 +103,8 @@ namespace Collatz
 
         static void PlotTest()
         {
-            double[] dataX = new double[] { 1, 2, 3, 4, 5 };
-            double[] dataY = new double[] { 1, 4, 9, 16, 25 };
+            double[] dataX = [1, 2, 3, 4, 5];
+            double[] dataY = [1, 4, 9, 16, 25];
             var plt = new ScottPlot.Plot();
             plt.Add.Scatter(dataX, dataY);
             plt.SavePng("d:\\temp\\PlotTest.png", 400, 300);
@@ -138,7 +138,7 @@ namespace Collatz
 
             // Store calculations in a dictionary and then convert to dual arrays when done.
 
-            Dictionary<long, long> buckets = new();
+            Dictionary<long, long> buckets = [];
 
             for (long n = 1; n <= max; n++)
             {
