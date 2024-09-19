@@ -1896,6 +1896,11 @@ namespace Euler
             Console.WriteLine("maxDigits: {0}", maxDigits);
         }
 
+        static void Problem57()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         #region Misc experiments
