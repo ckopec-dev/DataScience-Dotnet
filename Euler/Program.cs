@@ -1901,6 +1901,11 @@ namespace Euler
             throw new NotImplementedException();
         }
 
+        static void Problem58()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         #region Misc experiments
