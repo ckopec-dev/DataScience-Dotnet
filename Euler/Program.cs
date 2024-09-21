@@ -1898,7 +1898,22 @@ namespace Euler
 
         static void Problem57()
         {
-            throw new NotImplementedException();
+            long ttl = 0;
+
+            BigInteger numerator = 3;
+            BigInteger denominator = 2;
+
+            for (int i = 2; i <= 1000; i++)
+            {
+                BigInteger sum = (numerator + denominator);
+                numerator = sum + denominator;
+                denominator = sum;
+                
+                if ((int)BigInteger.Log10(numerator) > (int)BigInteger.Log10(denominator))
+                    ttl++;
+            }
+
+            Console.WriteLine(ttl);
         }
 
         static void Problem58()
