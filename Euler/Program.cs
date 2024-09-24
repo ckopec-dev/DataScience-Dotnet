@@ -1,6 +1,7 @@
 ﻿using Combinatorics.Collections;
 using Core;
 using Core.GameTheory;
+using Microsoft.Data.SqlClient.DataClassification;
 using System.Numerics;
 using System.Reflection;
 using System.Text;
@@ -1918,7 +1919,32 @@ namespace Euler
 
         static void Problem58()
         {
-            throw new NotImplementedException();
+            // We're only interested in the diagonal values, so all other numbers can be skipped.
+
+            const int total_layers = 6; // The size of the square to be analyzed.
+            int skip = 2;               // The distance between corners.
+            int step = 0;               // Cycles from 1-4 since a square has 4 corners.
+            int layer = 1;              // A complete layer of the square.
+
+            for (int i = 1; i <= 100; i += skip)
+            {
+                Console.WriteLine("step {0}, layer {1}: {2}", step, layer, i);
+
+                // 1 is a special case since it starts at the center of the spiral.
+                if (step == 0 && layer == 1)
+                    layer++;
+
+                step++;
+                if (step > 4)
+                {
+                    step = 1;
+                    skip += 2;
+                    layer++;
+                }
+
+                if (layer > total_layers)
+                    break;
+            }
         }
 
         #endregion
