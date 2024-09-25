@@ -1921,18 +1921,49 @@ namespace Euler
         {
             // We're only interested in the diagonal values, so all other numbers can be skipped.
 
-            const int total_layers = 6; // The size of the square to be analyzed.
-            int skip = 2;               // The distance between corners.
-            int step = 0;               // Cycles from 1-4 since a square has 4 corners.
-            int layer = 1;              // A complete layer of the square.
+            const int TOTAL_LAYERS = 100000;    // The size of the square to be analyzed.
+            int skip = 2;                       // The distance between corners.
+            int step = 0;                       // Cycles from 1-4 since a square has 4 corners.
+            int layer = 1;                      // A complete layer of the square.
+            int primes = 0;                     // The number of primes in a given layer.
+            int corners = 0;                    // The number of all corners. This is always going to be the number of layers times 4.
+            
+            // It is interesting to note that the odd squares lie along the bottom right diagonal, but what is more interesting is that out of the
+            // numbers lying along both diagonals are prime; that is, a ratio of 8/13 ~= 62%.
 
-            for (int i = 1; i <= 100; i += skip)
+            // If one complete new layer is wrapped around the spiral above, a square spiral with side length
+            // will be formed.If this process is continued, what is the side length of the square spiral for which the ratio of primes along both diagonals first falls below 10%?
+
+            for (int i = 1; i <= int.MaxValue; i += skip)
             {
-                Console.WriteLine("step {0}, layer {1}: {2}", step, layer, i);
+                //Console.WriteLine("step {0}, layer {1}: {2}", step, layer, i);
 
                 // 1 is a special case since it starts at the center of the spiral.
                 if (step == 0 && layer == 1)
                     layer++;
+
+                // Count all i that are prime. Ratio is prime(i) / i. E.g.. 
+                if (i.IsPrime())
+                    primes++;
+                corners++;
+
+                if (step == 4)
+                {
+                    // Lower right corner. This marks the end of a layer.
+                    double ratio = (double)primes / (double)corners * 100d;
+
+                    Console.WriteLine("Layer completed (lower right corner reached): step: {0}, layer: {1}, i: {2}, primes: {3}, corners: {4}, ratio: {5:0.00}", 
+                        step, layer, i, primes, corners, ratio);
+
+                    // We are done with the last layer.
+                    if (layer == TOTAL_LAYERS || ratio <= 10d)
+                    {
+                        // The side length is the square root of the final lower right corner.
+                        Console.WriteLine("Side length: {0}", Math.Sqrt((double)i));
+
+                        break;
+                    }
+                }
 
                 step++;
                 if (step > 4)
@@ -1941,9 +1972,6 @@ namespace Euler
                     skip += 2;
                     layer++;
                 }
-
-                if (layer > total_layers)
-                    break;
             }
         }
 
