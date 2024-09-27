@@ -1975,6 +1975,11 @@ namespace Euler
             }
         }
 
+        static void Problem59()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         #region Misc experiments
