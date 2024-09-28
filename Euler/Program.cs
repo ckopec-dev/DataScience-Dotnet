@@ -1738,9 +1738,6 @@ namespace Euler
 
         static void Problem54()
         {
-            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem54.txt") ?? throw new Exception("Resource not found: Problem54.txt");
-            using StreamReader sr = new(mrs);
-
             //Deck deck = new Deck();
             //deck.Shuffle();
 
@@ -1795,6 +1792,9 @@ namespace Euler
             //    Console.WriteLine("Winner: Hand 1");
             //else if (winner.Equals(hand2))
             //    Console.WriteLine("Winner: Hand 2");
+
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem54.txt") ?? throw new Exception("Resource not found: Problem54.txt");
+            using StreamReader sr = new(mrs);
 
             List<string> input = [];
 
@@ -1977,6 +1977,9 @@ namespace Euler
 
         static void Problem59()
         {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem59.txt") ?? throw new Exception("Resource not found: Problem59.txt");
+            using StreamReader sr = new(mrs);
+
             throw new NotImplementedException();
         }
 
