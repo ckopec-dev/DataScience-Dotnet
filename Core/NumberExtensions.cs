@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.IdentityModel.Tokens;
 using System.Globalization;
 using System.Numerics;
 using System.Text;
@@ -827,7 +828,7 @@ namespace Core
             return s;
         }
 
-        public static char[] ToCharArray(this string[] vals)
+        public static char[] ToCharArray(this int[] vals)
         {
             char[] c = new char[vals.Length];
             for (long i = 0; i < vals.LongLength; i++)
@@ -1062,6 +1063,22 @@ namespace Core
                 return true;
             else
                 return false;
+        }
+
+        public static string EncryptXOR(this string message, string password)
+        {
+            var msg = Encoding.UTF8.GetBytes(message);
+            var pwd = Encoding.UTF8.GetBytes(password);
+
+            return Convert.ToBase64String(msg.Select((b, i) => (byte)(b ^ pwd[i % pwd.Length])).ToArray());
+        }
+
+        public static string DecryptXOR(this string message, string password)
+        {
+            var msg = Convert.FromBase64String(message);
+            var pwd = Encoding.UTF8.GetBytes(password);
+
+            return Encoding.UTF8.GetString(msg.Select((b, i) => (byte)(b ^ pwd[i % pwd.Length])).ToArray());
         }
 
         #region Trig methods 

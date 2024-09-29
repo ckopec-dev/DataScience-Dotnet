@@ -1980,7 +1980,17 @@ namespace Euler
             Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem59.txt") ?? throw new Exception("Resource not found: Problem59.txt");
             using StreamReader sr = new(mrs);
 
-            //sr.ReadToEnd().Split(',').T
+            //int[] chars = sr.ReadToEnd().ToIntArray(',');
+           
+            // Test encryption/decryption
+            string message = "This is a test message";
+            string password = "abc123";
+            string encrypted = message.EncryptXOR(password);
+            
+            Console.WriteLine("Encrytped: {0}", encrypted);
+            Console.WriteLine("Decrypted: {0}", encrypted.DecryptXOR(password));
+            
+            
             throw new NotImplementedException();
         }
 
