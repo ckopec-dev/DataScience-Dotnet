@@ -827,6 +827,14 @@ namespace Core
             return s;
         }
 
+        public static char[] ToCharArray(this string[] vals)
+        {
+            char[] c = new char[vals.Length];
+            for (long i = 0; i < vals.LongLength; i++)
+                c[i] = Convert.ToChar(vals[i]);
+            return c;
+        }
+
         public static long[] ToLongArray(this string[] vals)
         {
             long[] s = new long[vals.LongLength];

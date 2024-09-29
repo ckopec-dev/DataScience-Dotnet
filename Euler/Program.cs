@@ -1980,6 +1980,7 @@ namespace Euler
             Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem59.txt") ?? throw new Exception("Resource not found: Problem59.txt");
             using StreamReader sr = new(mrs);
 
+            //sr.ReadToEnd().Split(',').T
             throw new NotImplementedException();
         }
 
