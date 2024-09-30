@@ -2,6 +2,7 @@
 using Core;
 using Core.GameTheory;
 using Microsoft.Data.SqlClient.DataClassification;
+using SkiaSharp;
 using System.Numerics;
 using System.Reflection;
 using System.Text;
@@ -1977,21 +1978,83 @@ namespace Euler
 
         static void Problem59()
         {
-            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem59.txt") ?? throw new Exception("Resource not found: Problem59.txt");
-            using StreamReader sr = new(mrs);
-
-            //int[] chars = sr.ReadToEnd().ToIntArray(',');
-           
-            // Test encryption/decryption
+            /* Test encryption/decryption
             string message = "This is a test message";
             string password = "abc123";
             string encrypted = message.EncryptXOR(password);
             
             Console.WriteLine("Encrytped: {0}", encrypted);
             Console.WriteLine("Decrypted: {0}", encrypted.DecryptXOR(password));
+            */
+
+            /*
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem59.txt") ?? throw new Exception("Resource not found: Problem59.txt");
+            using StreamReader sr = new(mrs);
+
+            int[] ascii_vals = sr.ReadToEnd().ToIntArray(',');
+            char[] chars = new char[ascii_vals.Length];
             
+            for(int i = 0; i < ascii_vals.Length; i++)
+            {
+                chars[i] = (char)ascii_vals[i];
+            }
+            */
+
+            // ******************************
+
+            // XOR encoding: https://en.wikipedia.org/wiki/XOR_cipher
+            // Character encoding: https://learn.microsoft.com/en-us/dotnet/standard/base-types/character-encoding
+
+            // *** BELOW DOES NOT WORK... ***
+
+            /*
+            string encrypted = new(chars);
+            Console.WriteLine(encrypted);
+
+            // lowercase chars: 97-122
+            for(int i = 97; i <= 122; i++)
+            {
+                for(int j = 97; j <= 122; j++)
+                {
+                    for(int k = 97; k <= 122; k++)
+                    {
+                        StringBuilder sb = new();
+
+                        sb.Append((char)i);
+                        sb.Append((char)j);
+                        sb.Append((char)k);
+
+                        string pwd = sb.ToString();
+                        Console.WriteLine(pwd);
+
+                        string decrypted = encrypted.DecryptXOR(pwd);
+
+                        if (decrypted.Contains("the"))
+                        {
+                            Console.WriteLine(decrypted);
+                            return;
+                        }
+                    }
+                }
+            }
+
+            */
+
+
+            /* This is the easy way to do it... */
             
-            throw new NotImplementedException();
+            string str = "Geeks";
+
+            int result = str[0];
+            Console.WriteLine(str[0]);
+            for (int i = 1; i < str.Length; i++)
+            {
+                Console.WriteLine(str[i]);
+                result = result ^ str[i];
+            }
+
+            Console.WriteLine(result);
+
         }
 
         #endregion

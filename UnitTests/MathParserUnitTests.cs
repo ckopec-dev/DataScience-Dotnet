@@ -3,7 +3,7 @@ using Experimental.MathParser;
 namespace UnitTests
 {
     [TestClass]
-    public class UnitTest1
+    public class MathParserUnitTests
     {
         [TestMethod]
         public void TokenizerTest()
