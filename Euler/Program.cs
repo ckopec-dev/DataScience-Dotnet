@@ -1978,83 +1978,84 @@ namespace Euler
 
         static void Problem59()
         {
-            /* Test encryption/decryption
-            string message = "This is a test message";
-            string password = "abc123";
-            string encrypted = message.EncryptXOR(password);
-            
-            Console.WriteLine("Encrytped: {0}", encrypted);
-            Console.WriteLine("Decrypted: {0}", encrypted.DecryptXOR(password));
-            */
-
-            /*
-            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem59.txt") ?? throw new Exception("Resource not found: Problem59.txt");
-            using StreamReader sr = new(mrs);
-
-            int[] ascii_vals = sr.ReadToEnd().ToIntArray(',');
-            char[] chars = new char[ascii_vals.Length];
-            
-            for(int i = 0; i < ascii_vals.Length; i++)
-            {
-                chars[i] = (char)ascii_vals[i];
-            }
-            */
-
             // ******************************
 
             // XOR encoding: https://en.wikipedia.org/wiki/XOR_cipher
             // Character encoding: https://learn.microsoft.com/en-us/dotnet/standard/base-types/character-encoding
 
-            // *** BELOW DOES NOT WORK... ***
+            /* This is the easy way to do it... */
+            // From https://www.geeksforgeeks.org/program-to-find-the-xor-of-ascii-values-of-characters-in-a-string/
+            //string str = "Geeks";
 
-            /*
-            string encrypted = new(chars);
-            Console.WriteLine(encrypted);
+            //int result = str[0];
+            //Console.WriteLine(str[0]);
+            //for (int i = 1; i < str.Length; i++)
+            //{
+            //    Console.WriteLine(str[i]);
+            //    result = result ^ str[i];
+            //}
 
-            // lowercase chars: 97-122
-            for(int i = 97; i <= 122; i++)
+            //Console.WriteLine(result);
+
+            // ******************************
+
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem59.txt") ?? throw new Exception("Resource not found: Problem59.txt");
+            using StreamReader sr = new(mrs);
+
+            int[] ascii_vals = sr.ReadToEnd().ToIntArray(',');
+
+            // Lowercase ascii values are 97-122
+            int iter = 0;
+
+            for (int m = 97; m <= 122; m++)
             {
-                for(int j = 97; j <= 122; j++)
+                for(int n = 97; n <= 122; n++)
                 {
-                    for(int k = 97; k <= 122; k++)
+                    for (int o = 97; o <= 122; o++)
                     {
-                        StringBuilder sb = new();
+                        string decrypted = String.Empty;
 
-                        sb.Append((char)i);
-                        sb.Append((char)j);
-                        sb.Append((char)k);
+                        for (int i = 0; i < ascii_vals.Length; i++)
+                        {
+                            int result = -1;
 
-                        string pwd = sb.ToString();
-                        Console.WriteLine(pwd);
+                            if (iter == 0)
+                            {
+                                result = m ^ ascii_vals[i];
+                                iter++;
+                            }
+                            else if (iter == 1)
+                            {
+                                result = n ^ ascii_vals[i];
+                                iter++;
+                            }
+                            else
+                            {
+                                result = o ^ ascii_vals[i];
+                                iter = 0;
+                            }
 
-                        string decrypted = encrypted.DecryptXOR(pwd);
+                            decrypted += (char)result;
+                        }
 
-                        if (decrypted.Contains("the"))
+                        if (decrypted.Contains("and") && decrypted.Contains("the") && decrypted.Contains("that"))
                         {
                             Console.WriteLine(decrypted);
+
+                            int sum = 0;
+
+                            for (int i = 0; i < decrypted.Length; i++)
+                            {
+                                sum += decrypted[i];
+                            }
+
+                            Console.WriteLine("Sum of ascii vals: {0}", sum);
+
                             return;
                         }
                     }
                 }
             }
-
-            */
-
-
-            /* This is the easy way to do it... */
-            
-            string str = "Geeks";
-
-            int result = str[0];
-            Console.WriteLine(str[0]);
-            for (int i = 1; i < str.Length; i++)
-            {
-                Console.WriteLine(str[i]);
-                result = result ^ str[i];
-            }
-
-            Console.WriteLine(result);
-
         }
 
         #endregion
@@ -2303,10 +2304,6 @@ namespace Euler
         {
             Console.WriteLine("Reflection test.");
         }
-
-        #endregion
-
-        #region Helpers
 
         #endregion
 
