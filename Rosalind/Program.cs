@@ -6,7 +6,6 @@
         {
             string switchErr = "Switch missing or invalid.";
             
-            // /Problem InputPath OutputPath
             if (args != null && args.Length == 1)
             {
                 switch (args[0].ToLower())

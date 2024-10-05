@@ -65,24 +65,24 @@ namespace Rosalind
             using StreamReader sr = new(mrs);
 
             List<double[]> input = sr.ReadToEnd().Trim().ToDoubleListArray('\n', ' ');
-            SortedDictionary<double, int> dic = new();
+            SortedDictionary<double, int> dic = [];
 
             for(int i = 1; i < input.Count; i++)
             {
                 // How many edges on this vertex?
                 
-                if (dic.ContainsKey(input[i][0]))
+                if (dic.TryGetValue(input[i][0], out int value))
                 {
-                    dic[input[i][0]]++;
+                    dic[input[i][0]] = ++value;
                 }
                 else
                 {
                     dic.Add(input[i][0], 1);
                 }
 
-                if (dic.ContainsKey(input[i][1]))
+                if (dic.TryGetValue(input[i][1], out int value2))
                 {
-                    dic[input[i][1]]++;
+                    dic[input[i][1]] = ++value2;
                 }
                 else
                 {

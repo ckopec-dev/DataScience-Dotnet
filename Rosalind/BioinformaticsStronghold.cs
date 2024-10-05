@@ -25,9 +25,10 @@ namespace Rosalind
             Console.WriteLine(String.Join(" ", input.AllIndexesOf("A").Count, input.AllIndexesOf("C").Count, input.AllIndexesOf("G").Count, input.AllIndexesOf("T").Count));
         }
 
-        #endregion
-
-        #region Helpers
+        public static void ProblemRNA()
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
     }
