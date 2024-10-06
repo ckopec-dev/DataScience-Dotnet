@@ -1,5 +1,4 @@
-﻿
-using Core;
+﻿using Core;
 using System.Reflection;
 
 namespace Rosalind
@@ -27,6 +26,15 @@ namespace Rosalind
 
         public static void ProblemRNA()
         {
+            // https://rosalind.info/problems/rna/
+            // Given: A DNA string t having length at most 1000 nt.
+            // Return: The transcribed RNA string of t.
+
+            // Example input: GATGGAACTTGACTACGTAAATT
+            // Example output: GAUGGAACUUGACUACGUAAAUU
+
+
+
             throw new NotImplementedException();
         }
 
