@@ -9,7 +9,7 @@ namespace Core.Bioinformatics
         
         public string Code 
         { 
-            get { return _Code; }
+            get { return _Code.ToUpper(); }
             set 
             {
                 if (IsValidDna(value))
@@ -31,6 +31,11 @@ namespace Core.Bioinformatics
         public override string ToString()
         {
             return Code;
+        }
+
+        public Rna ToRna()
+        {
+            return new Rna(Code.Replace("T", "U"));
         }
 
         public static bool IsValidDna(string code)

@@ -1,4 +1,5 @@
 ﻿using Core;
+using Core.Bioinformatics;
 using System.Reflection;
 
 namespace Rosalind
@@ -19,7 +20,7 @@ namespace Rosalind
             Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.dna.txt") ?? throw new Exception("Resource not found: dna.txt");
             using StreamReader sr = new(mrs);
 
-            string input = sr.ReadToEnd();
+            string input = sr.ReadToEnd().Trim();
 
             Console.WriteLine(String.Join(" ", input.AllIndexesOf("A").Count, input.AllIndexesOf("C").Count, input.AllIndexesOf("G").Count, input.AllIndexesOf("T").Count));
         }
@@ -33,9 +34,14 @@ namespace Rosalind
             // Example input: GATGGAACTTGACTACGTAAATT
             // Example output: GAUGGAACUUGACUACGUAAAUU
 
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.rna.txt") ?? throw new Exception("Resource not found: rna.txt");
+            using StreamReader sr = new(mrs);
 
+            string input = sr.ReadToEnd().Trim();
 
-            throw new NotImplementedException();
+            Dna dna = new(input);
+
+            Console.WriteLine(dna.ToRna());
         }
 
         #endregion

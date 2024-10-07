@@ -22,6 +22,7 @@
 
                     // Bioinformatics Stronghold
                     case "/dna": BioinformaticsStronghold.ProblemDNA(); break;
+                    case "/rna": BioinformaticsStronghold.ProblemRNA(); break;
 
                     default: Console.WriteLine(switchErr); break;
                 }

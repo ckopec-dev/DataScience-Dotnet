@@ -9,7 +9,7 @@ namespace Core.Bioinformatics
 
         public string Code
         {
-            get { return _Code; }
+            get { return _Code.ToUpper(); }
             set
             {
                 if (IsValidRna(value))
