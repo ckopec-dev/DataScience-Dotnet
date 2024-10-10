@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /Euler/LegacyCode.txt
 /Rosalind/LegacyCode.txt
+/UnitTests/Secrets.cs
