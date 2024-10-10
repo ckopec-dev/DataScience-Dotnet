@@ -17,7 +17,7 @@ namespace UnitTests
         [ExpectedException(typeof(ArgumentException))]
         public void TestInvalidInitialization()
         {
-            Dna dna = new("not valid dna");
+            _ = new Dna("not valid dna");
         }
     }
 }

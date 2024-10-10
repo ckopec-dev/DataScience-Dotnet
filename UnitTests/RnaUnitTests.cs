@@ -16,7 +16,7 @@ namespace UnitTests
         [ExpectedException(typeof(ArgumentException))]
         public void TestInvalidInitialization()
         {
-            Rna rna = new("not valid rna");
+            _ = new Rna("not valid rna");
         }
     }
 }
