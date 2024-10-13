@@ -9,16 +9,16 @@ namespace UnitTests
         [TestMethod]
         public void LoginTest()
         {
-            RestClient client = new(
-            Secrets.SalesforceDomain,
-            Secrets.SalesforceClientId,
-            Secrets.SalesforceClientSecret,
-            Secrets.SalesforceUsername,
-            Secrets.SalesforcePassword
-            );
+            RestClient client = new();
 
-            AuthToken? result = client.Login();
-            Assert.IsNotNull(result);
+            bool result = client.Login(
+                Secrets.SalesforceDomain,
+                Secrets.SalesforceClientId,
+                Secrets.SalesforceClientSecret,
+                Secrets.SalesforceUsername,
+                Secrets.SalesforcePassword);
+            
+            Assert.AreEqual(result, true);
         }
     }
 }
