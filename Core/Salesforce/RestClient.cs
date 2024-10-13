@@ -7,9 +7,9 @@ namespace Core.Salesforce
     {
         readonly HttpClient _HttpClient = new();
         AuthToken? _AuthToken = null;
-
+        
         public AuthToken? AuthToken { get { return _AuthToken; } }
-
+        
         public bool Login(string domain, string clientId, string clientSecret, string username, string password)
         {
             string endpoint = String.Format("https://{0}.my.salesforce.com/services/oauth2/token", domain);
@@ -35,6 +35,16 @@ namespace Core.Salesforce
             }
 
             return false;
+        }
+
+        private void AddCompressRequestHeader(HttpRequestMessage request)
+        {
+            request.Headers.Add("Content_Encoding", "gzip");
+        }
+
+        private void AddCompressResponseHeader(HttpRequestMessage request)
+        {
+            request.Headers.Add("Accept-Encoding", "gzip");
         }
     }
 }
