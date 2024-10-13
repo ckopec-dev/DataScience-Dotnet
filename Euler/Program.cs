@@ -2062,6 +2062,28 @@ namespace Euler
         static void Problem60()
         {
             // Find the lowest sum for a set of five primes for which any two primes concatenate to produce another prime.
+
+            bool found = false;
+            long m = 1, n = 1, o = 1, p = 1;
+
+            while(!found)
+            {
+                m++;
+                while(!found)
+                {
+                    n++;
+                    while (!found)
+                    {
+                        o++;
+                        while(!found)
+                        {
+                            p++;
+
+
+                        }
+                    }
+                }
+            }
         }
 
         #endregion
