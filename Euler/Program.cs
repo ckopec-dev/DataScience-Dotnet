@@ -1,9 +1,7 @@
 ﻿using Combinatorics.Collections;
 using Core;
 using Core.GameTheory;
-using Microsoft.Data.SqlClient.DataClassification;
-using ScottPlot.Plottables;
-using SkiaSharp;
+using System.Diagnostics;
 using System.Numerics;
 using System.Reflection;
 using System.Text;
@@ -51,10 +49,15 @@ namespace Euler
                 throw new Exception("Invalid command: " + cmd);
             }
 
+            Stopwatch watch = Stopwatch.StartNew();
+
             string methodName = prefix + suffix;
             Console.WriteLine("Invoking {0}.", methodName);
             MethodInfo? method = typeof(Program).GetMethod(methodName, BindingFlags.Static | BindingFlags.NonPublic) ?? throw new Exception("Method not found: " + methodName);
             method?.Invoke(null, null);
+            
+            watch.Stop();
+            Console.WriteLine("Invocation completed in {0}.", watch.Elapsed.ToFriendlyDuration(2));
         }
 
         #pragma warning disable IDE0051 // Remove unused private members
@@ -2063,27 +2066,81 @@ namespace Euler
         {
             // Find the lowest sum for a set of five primes for which any two primes concatenate to produce another prime.
 
-            bool found = false;
-            long m = 1, n = 1, o = 1, p = 1;
+            const int MAX_PRIME_SIZE = 1000;
+            const int GROUP_SIZE = 4;
+            const int CHOOSE_SIZE = 2;
+            List<int> primes = [];
 
-            while(!found)
+            Console.WriteLine("Searching for primes less than {0}.", MAX_PRIME_SIZE);
+            for(int i = 2; i < MAX_PRIME_SIZE; i++)
             {
-                m++;
-                while(!found)
+                if (i.IsPrime())
+                    primes.Add(i);  
+            }
+
+            Console.WriteLine("Found {0} primes.", primes.Count);
+
+            // Get all combinations of GROUP_SIZE primes.
+            Combinations<int> combs = new(primes, GROUP_SIZE, GenerateOption.WithoutRepetition);
+            
+            Console.WriteLine("Found {0} combinations of size {1}.", combs.Count, GROUP_SIZE);
+
+            // Sanity check for GROUP_SIZE = 4
+            /*
+            foreach (IList<int> i in combs.Cast<IList<int>>())
+            {
+                Console.WriteLine(String.Format("{0}, {1}, {2}, {3}", i[0], i[1], i[2], i[3]));
+            }
+            */
+
+            int searchIndex = 0;
+
+            // Get all variations of CHOOSE_SIZE combs.
+            foreach (IList<int> c in combs.Cast<IList<int>>())
+            {
+                searchIndex++;
+                if (searchIndex % 10000 == 0)
+                    Console.WriteLine("Search index: {0}", searchIndex);
+
+                int[] ints = [.. c];
+                //Console.WriteLine(ints.ToSpaceDelimitedString());
+
+                Variations<int> vars = new(ints, CHOOSE_SIZE, GenerateOption.WithoutRepetition);
+
+                // Santity check for CHOOSE_SIZE = 2
+                /*
+                foreach (IList<int> i in vars.Cast<IList<int>>())
                 {
-                    n++;
-                    while (!found)
+                    Console.WriteLine(String.Format("{0}, {1}", i[0], i[1]));
+                }
+                */
+
+                bool allArePrime = true;
+
+                // Concat each variation together
+                foreach (IList<int> v in vars.Cast<IList<int>>())
+                {
+                    StringBuilder sb = new();
+                    foreach (int j in v)
                     {
-                        o++;
-                        while(!found)
-                        {
-                            p++;
-
-
-                        }
+                        sb.Append(j);
                     }
+
+                    // This call looks expensive, but I tried converting it to use a lookup array and that was much slower.
+                    bool isPrime = Convert.ToInt32(sb.ToString()).IsPrime();
+
+                    if (allArePrime)
+                        allArePrime = isPrime;
+                }
+
+                if (allArePrime)
+                {
+                    Console.WriteLine("Sum of group {0}: {1}", ints.ToSpaceDelimitedString(), ints.Sum());
+                    return;
                 }
             }
+
+            Console.WriteLine("Failed to find group match.");
         }
 
         #endregion
