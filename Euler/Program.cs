@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Numerics;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 
 namespace Euler
 {
@@ -2066,8 +2067,10 @@ namespace Euler
         {
             // Find the lowest sum for a set of five primes for which any two primes concatenate to produce another prime.
 
-            const int MAX_PRIME_SIZE = 1000;
-            const int GROUP_SIZE = 4;
+            // Could be faster if converted to multithreading, but would need modification to keep track of the smallest result found.
+
+            const int MAX_PRIME_SIZE = 10000;
+            const int GROUP_SIZE = 5;
             const int CHOOSE_SIZE = 2;
             List<int> primes = [];
 
