@@ -2096,7 +2096,7 @@ namespace Euler
             }
             */
 
-            int searchIndex = 0;
+            long searchIndex = 0;
 
             // Get all variations of CHOOSE_SIZE combs.
             foreach (IList<int> c in combs.Cast<IList<int>>())
