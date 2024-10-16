@@ -37,6 +37,27 @@ namespace Core.Salesforce
             return false;
         }
 
+        public List<Version> Versions(string domain)
+        {
+            string endpoint = String.Format("https://{0}.my.salesforce.com/services/data/", domain);
+
+            HttpResponseMessage message = _HttpClient.GetAsync(endpoint).Result;
+            string response = message.Content.ReadAsStringAsync().Result;
+
+            var dict = JsonSerializer.Deserialize<List<Dictionary<string, string>>>(response);
+            List<Version> list = [];
+
+            if (dict != null)
+            {
+                foreach(var item in dict)
+                {
+                    list.Add(new Version(item["label"], item["url"], Convert.ToDecimal(item["version"])));
+                }
+            }
+
+            return list;
+        }
+
         private void AddCompressRequestHeader(HttpRequestMessage request)
         {
             request.Headers.Add("Content_Encoding", "gzip");
