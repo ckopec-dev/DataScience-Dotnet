@@ -2069,81 +2069,83 @@ namespace Euler
 
             // Could be faster if converted to multithreading, but would need modification to keep track of the smallest result found.
 
-            const int MAX_PRIME_SIZE = 10000;
-            const int GROUP_SIZE = 5;
-            const int CHOOSE_SIZE = 2;
-            List<int> primes = [];
+            throw new NotImplementedException();
 
-            Console.WriteLine("Searching for primes less than {0}.", MAX_PRIME_SIZE);
-            for(int i = 2; i < MAX_PRIME_SIZE; i++)
-            {
-                if (i.IsPrime())
-                    primes.Add(i);  
-            }
+            //const int MAX_PRIME_SIZE = 10000;
+            //const int GROUP_SIZE = 5;
+            //const int CHOOSE_SIZE = 2;
+            //List<int> primes = [];
 
-            Console.WriteLine("Found {0} primes.", primes.Count);
+            //Console.WriteLine("Searching for primes less than {0}.", MAX_PRIME_SIZE);
+            //for(int i = 2; i < MAX_PRIME_SIZE; i++)
+            //{
+            //    if (i.IsPrime())
+            //        primes.Add(i);  
+            //}
 
-            // Get all combinations of GROUP_SIZE primes.
-            Combinations<int> combs = new(primes, GROUP_SIZE, GenerateOption.WithoutRepetition);
+            //Console.WriteLine("Found {0} primes.", primes.Count);
+
+            //// Get all combinations of GROUP_SIZE primes.
+            //Combinations<int> combs = new(primes, GROUP_SIZE, GenerateOption.WithoutRepetition);
             
-            Console.WriteLine("Found {0} combinations of size {1}.", combs.Count, GROUP_SIZE);
+            //Console.WriteLine("Found {0} combinations of size {1}.", combs.Count, GROUP_SIZE);
 
-            // Sanity check for GROUP_SIZE = 4
-            /*
-            foreach (IList<int> i in combs.Cast<IList<int>>())
-            {
-                Console.WriteLine(String.Format("{0}, {1}, {2}, {3}", i[0], i[1], i[2], i[3]));
-            }
-            */
+            //// Sanity check for GROUP_SIZE = 4
+            ///*
+            //foreach (IList<int> i in combs.Cast<IList<int>>())
+            //{
+            //    Console.WriteLine(String.Format("{0}, {1}, {2}, {3}", i[0], i[1], i[2], i[3]));
+            //}
+            //*/
 
-            long searchIndex = 0;
+            //long searchIndex = 0;
 
-            // Get all variations of CHOOSE_SIZE combs.
-            foreach (IList<int> c in combs.Cast<IList<int>>())
-            {
-                searchIndex++;
-                if (searchIndex % 10000 == 0)
-                    Console.WriteLine("Search index: {0}", searchIndex);
+            //// Get all variations of CHOOSE_SIZE combs.
+            //foreach (IList<int> c in combs.Cast<IList<int>>())
+            //{
+            //    searchIndex++;
+            //    if (searchIndex % 10000 == 0)
+            //        Console.WriteLine("Search index: {0}", searchIndex);
 
-                int[] ints = [.. c];
-                //Console.WriteLine(ints.ToSpaceDelimitedString());
+            //    int[] ints = [.. c];
+            //    //Console.WriteLine(ints.ToSpaceDelimitedString());
 
-                Variations<int> vars = new(ints, CHOOSE_SIZE, GenerateOption.WithoutRepetition);
+            //    Variations<int> vars = new(ints, CHOOSE_SIZE, GenerateOption.WithoutRepetition);
 
-                // Santity check for CHOOSE_SIZE = 2
-                /*
-                foreach (IList<int> i in vars.Cast<IList<int>>())
-                {
-                    Console.WriteLine(String.Format("{0}, {1}", i[0], i[1]));
-                }
-                */
+            //    // Santity check for CHOOSE_SIZE = 2
+            //    /*
+            //    foreach (IList<int> i in vars.Cast<IList<int>>())
+            //    {
+            //        Console.WriteLine(String.Format("{0}, {1}", i[0], i[1]));
+            //    }
+            //    */
 
-                bool allArePrime = true;
+            //    bool allArePrime = true;
 
-                // Concat each variation together
-                foreach (IList<int> v in vars.Cast<IList<int>>())
-                {
-                    StringBuilder sb = new();
-                    foreach (int j in v)
-                    {
-                        sb.Append(j);
-                    }
+            //    // Concat each variation together
+            //    foreach (IList<int> v in vars.Cast<IList<int>>())
+            //    {
+            //        StringBuilder sb = new();
+            //        foreach (int j in v)
+            //        {
+            //            sb.Append(j);
+            //        }
 
-                    // This call looks expensive, but I tried converting it to use a lookup array and that was much slower.
-                    bool isPrime = Convert.ToInt32(sb.ToString()).IsPrime();
+            //        // This call looks expensive, but I tried converting it to use a lookup array and that was much slower.
+            //        bool isPrime = Convert.ToInt32(sb.ToString()).IsPrime();
 
-                    if (allArePrime)
-                        allArePrime = isPrime;
-                }
+            //        if (allArePrime)
+            //            allArePrime = isPrime;
+            //    }
 
-                if (allArePrime)
-                {
-                    Console.WriteLine("Sum of group {0}: {1}", ints.ToSpaceDelimitedString(), ints.Sum());
-                    return;
-                }
-            }
+            //    if (allArePrime)
+            //    {
+            //        Console.WriteLine("Sum of group {0}: {1}", ints.ToSpaceDelimitedString(), ints.Sum());
+            //        return;
+            //    }
+            //}
 
-            Console.WriteLine("Failed to find group match.");
+            //Console.WriteLine("Failed to find group match.");
         }
 
         #endregion
