@@ -6,7 +6,7 @@ namespace UnitTests
     [TestClass]
     public class SalesforceHelperUnitTests
     {
-        RestClient client = new();
+        readonly RestClient client = new();
         
         [TestMethod]
         public void LoginTest()

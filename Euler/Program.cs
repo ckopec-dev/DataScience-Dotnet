@@ -2067,85 +2067,62 @@ namespace Euler
         {
             // Find the lowest sum for a set of five primes for which any two primes concatenate to produce another prime.
 
-            // Could be faster if converted to multithreading, but would need modification to keep track of the smallest result found.
+            const int MAX_PRIME_SIZE = 10000;
+            List<int> primes = [];
 
-            throw new NotImplementedException();
+            Console.WriteLine("Searching for primes less than {0}.", MAX_PRIME_SIZE);
+            for (int i = 2; i < MAX_PRIME_SIZE; i++)
+            {
+                if (i.IsPrime())
+                    primes.Add(i);
+            }
+            Console.WriteLine("Found {0} primes.", primes.Count);
+            //23,176,087,681,495
+            for (int a = 0; a < primes.Count; a++)
+            {
+                for (int b = a; b < primes.Count; b++)
+                {
+                    Console.WriteLine("{0} a: {1}, b: {2}", DateTime.Now, a, b);
 
-            //const int MAX_PRIME_SIZE = 10000;
-            //const int GROUP_SIZE = 5;
-            //const int CHOOSE_SIZE = 2;
-            //List<int> primes = [];
+                    for (int c = b; c < primes.Count; c++)
+                    {
+                        for (int d = c; d < primes.Count; d++)
+                        {
+                            for (int e = d; e < primes.Count; e++)
+                            {
+                                //if (
+                                //    Convert.ToInt32(primes[a].ToString() + primes[b].ToString()).IsPrime() &&
+                                //    Convert.ToInt32(primes[a].ToString() + primes[c].ToString()).IsPrime() &&
+                                //    Convert.ToInt32(primes[a].ToString() + primes[d].ToString()).IsPrime() &&
+                                //    Convert.ToInt32(primes[a].ToString() + primes[e].ToString()).IsPrime() &&
+                                //    Convert.ToInt32(primes[b].ToString() + primes[c].ToString()).IsPrime() &&
+                                //    Convert.ToInt32(primes[b].ToString() + primes[d].ToString()).IsPrime() &&
+                                //    Convert.ToInt32(primes[b].ToString() + primes[e].ToString()).IsPrime() &&
+                                //    Convert.ToInt32(primes[c].ToString() + primes[d].ToString()).IsPrime() &&
+                                //    Convert.ToInt32(primes[c].ToString() + primes[e].ToString()).IsPrime() &&
+                                //    Convert.ToInt32(primes[d].ToString() + primes[e].ToString()).IsPrime() &&
 
-            //Console.WriteLine("Searching for primes less than {0}.", MAX_PRIME_SIZE);
-            //for(int i = 2; i < MAX_PRIME_SIZE; i++)
-            //{
-            //    if (i.IsPrime())
-            //        primes.Add(i);  
-            //}
-
-            //Console.WriteLine("Found {0} primes.", primes.Count);
-
-            //// Get all combinations of GROUP_SIZE primes.
-            //Combinations<int> combs = new(primes, GROUP_SIZE, GenerateOption.WithoutRepetition);
-            
-            //Console.WriteLine("Found {0} combinations of size {1}.", combs.Count, GROUP_SIZE);
-
-            //// Sanity check for GROUP_SIZE = 4
-            ///*
-            //foreach (IList<int> i in combs.Cast<IList<int>>())
-            //{
-            //    Console.WriteLine(String.Format("{0}, {1}, {2}, {3}", i[0], i[1], i[2], i[3]));
-            //}
-            //*/
-
-            //long searchIndex = 0;
-
-            //// Get all variations of CHOOSE_SIZE combs.
-            //foreach (IList<int> c in combs.Cast<IList<int>>())
-            //{
-            //    searchIndex++;
-            //    if (searchIndex % 10000 == 0)
-            //        Console.WriteLine("Search index: {0}", searchIndex);
-
-            //    int[] ints = [.. c];
-            //    //Console.WriteLine(ints.ToSpaceDelimitedString());
-
-            //    Variations<int> vars = new(ints, CHOOSE_SIZE, GenerateOption.WithoutRepetition);
-
-            //    // Santity check for CHOOSE_SIZE = 2
-            //    /*
-            //    foreach (IList<int> i in vars.Cast<IList<int>>())
-            //    {
-            //        Console.WriteLine(String.Format("{0}, {1}", i[0], i[1]));
-            //    }
-            //    */
-
-            //    bool allArePrime = true;
-
-            //    // Concat each variation together
-            //    foreach (IList<int> v in vars.Cast<IList<int>>())
-            //    {
-            //        StringBuilder sb = new();
-            //        foreach (int j in v)
-            //        {
-            //            sb.Append(j);
-            //        }
-
-            //        // This call looks expensive, but I tried converting it to use a lookup array and that was much slower.
-            //        bool isPrime = Convert.ToInt32(sb.ToString()).IsPrime();
-
-            //        if (allArePrime)
-            //            allArePrime = isPrime;
-            //    }
-
-            //    if (allArePrime)
-            //    {
-            //        Console.WriteLine("Sum of group {0}: {1}", ints.ToSpaceDelimitedString(), ints.Sum());
-            //        return;
-            //    }
-            //}
-
-            //Console.WriteLine("Failed to find group match.");
+                                //    Convert.ToInt32(primes[b].ToString() + primes[a].ToString()).IsPrime() &&
+                                //    Convert.ToInt32(primes[c].ToString() + primes[a].ToString()).IsPrime() &&
+                                //    Convert.ToInt32(primes[d].ToString() + primes[a].ToString()).IsPrime() &&
+                                //    Convert.ToInt32(primes[e].ToString() + primes[a].ToString()).IsPrime() &&
+                                //    Convert.ToInt32(primes[c].ToString() + primes[b].ToString()).IsPrime() &&
+                                //    Convert.ToInt32(primes[d].ToString() + primes[b].ToString()).IsPrime() &&
+                                //    Convert.ToInt32(primes[e].ToString() + primes[b].ToString()).IsPrime() &&
+                                //    Convert.ToInt32(primes[d].ToString() + primes[c].ToString()).IsPrime() &&
+                                //    Convert.ToInt32(primes[e].ToString() + primes[c].ToString()).IsPrime() &&
+                                //    Convert.ToInt32(primes[e].ToString() + primes[d].ToString()).IsPrime()
+                                //)
+                                //{
+                                //    Console.WriteLine("Solution found: {0}: {1} + {2} + {3} + {4} + {5}", primes[a] + primes[b] + primes[c] + primes[d] + primes[e],
+                                //        primes[a], primes[b], primes[c], primes[d], primes[e]);
+                                //    return;
+                                //}
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         #endregion
