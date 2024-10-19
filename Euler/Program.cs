@@ -2,6 +2,7 @@
 using Core;
 using Core.GameTheory;
 using System.Diagnostics;
+using System.Linq;
 using System.Numerics;
 using System.Reflection;
 using System.Text;
@@ -2067,63 +2068,73 @@ namespace Euler
         {
             // Find the lowest sum for a set of five primes for which any two primes concatenate to produce another prime.
 
-            const int MAX_PRIME_SIZE = 10000;
+            const int MAX_PRIME_SIZE = 100000000;
+            const int MAX_ROOT = 1500;
             List<int> primes = [];
+            HashSet<int> set = [];
 
             Console.WriteLine("Searching for primes less than {0}.", MAX_PRIME_SIZE);
-            for (int i = 2; i < MAX_PRIME_SIZE; i++)
-            {
-                if (i.IsPrime())
-                    primes.Add(i);
-            }
-            Console.WriteLine("Found {0} primes.", primes.Count);
-            //23,176,087,681,495, this takes 1.51 hours with empty loops.
 
-            for (int a = 0; a < primes.Count; a++)
+            bool[] prime = new bool[MAX_PRIME_SIZE + 1];
+
+            for (int i = 0; i <= MAX_PRIME_SIZE; i++)
+                prime[i] = true;
+
+            for (int p = 2; p * p <= MAX_PRIME_SIZE; p++)
             {
-                for (int b = a; b < primes.Count; b++)
+                if (prime[p] == true)
                 {
-                    Console.WriteLine("{0} a: {1}, b: {2}", DateTime.Now, a, b);
-
-                    for (int c = b; c < primes.Count; c++)
+                    for (int i = p * p; i <= MAX_PRIME_SIZE; i += p)
+                        prime[i] = false;
+                }
+            }
+            
+            for (int i = 2; i <= MAX_PRIME_SIZE; i++)
+            {
+                if (prime[i] == true)
+                {
+                    primes.Add(i);
+                    set.Add(i);
+                }
+            }
+  
+            for (int a = 0; a < MAX_ROOT; a++)
+            {
+                for (int b = a; b < MAX_ROOT; b++)
+                {
+                    Console.WriteLine("a: {0}, b: {1}", primes[a], primes[b]);
+                    if (set.Contains(primes[a].Concatenate(primes[b])) && 
+                        set.Contains(primes[b].Concatenate(primes[a])))
                     {
-                        for (int d = c; d < primes.Count; d++)
+                        for(int c = b; c < MAX_ROOT; c++)
                         {
-                            for (int e = d; e < primes.Count; e++)
+                            if (set.Contains(primes[a].Concatenate(primes[c])) && set.Contains(primes[b].Concatenate(primes[c])) &&
+                                set.Contains(primes[c].Concatenate(primes[a])) && set.Contains(primes[c].Concatenate(primes[b])))
                             {
-                                if (primes[a].Concatenate(primes[b]).IsPrime() &&
-                                    primes[a].Concatenate(primes[c]).IsPrime() &&
-                                    primes[a].Concatenate(primes[d]).IsPrime() &&
-                                    primes[a].Concatenate(primes[e]).IsPrime() &&
-                                    primes[b].Concatenate(primes[c]).IsPrime() &&
-                                    primes[b].Concatenate(primes[d]).IsPrime() &&
-                                    primes[b].Concatenate(primes[e]).IsPrime() &&
-                                    primes[c].Concatenate(primes[d]).IsPrime() &&
-                                    primes[c].Concatenate(primes[e]).IsPrime() &&
-                                    primes[d].Concatenate(primes[e]).IsPrime() &&
-
-
-                                    primes[b].Concatenate(primes[a]).IsPrime() &&
-                                    primes[c].Concatenate(primes[a]).IsPrime() &&
-                                    primes[d].Concatenate(primes[a]).IsPrime() &&
-                                    primes[e].Concatenate(primes[a]).IsPrime() &&
-                                    primes[c].Concatenate(primes[b]).IsPrime() &&
-                                    primes[d].Concatenate(primes[b]).IsPrime() &&
-                                    primes[e].Concatenate(primes[b]).IsPrime() &&
-                                    primes[d].Concatenate(primes[c]).IsPrime() &&
-                                    primes[e].Concatenate(primes[c]).IsPrime() &&
-                                    primes[e].Concatenate(primes[d]).IsPrime()
-                                )
+                                for (int d = c; d < MAX_ROOT; d++)
                                 {
-                                    Console.WriteLine("Solution found: {0}: {1} + {2} + {3} + {4} + {5}", primes[a] + primes[b] + primes[c] + primes[d] + primes[e],
-                                        primes[a], primes[b], primes[c], primes[d], primes[e]);
-                                    return;
+                                    if (set.Contains(primes[a].Concatenate(primes[d])) && set.Contains(primes[b].Concatenate(primes[d])) && set.Contains(primes[c].Concatenate(primes[d])) &&
+                                        set.Contains(primes[d].Concatenate(primes[a])) && set.Contains(primes[d].Concatenate(primes[b])) && set.Contains(primes[d].Concatenate(primes[c])))
+                                    {
+                                        for (int e = d; e < MAX_ROOT; e++)
+                                        {
+                                            if (set.Contains(primes[a].Concatenate(primes[e])) && set.Contains(primes[b].Concatenate(primes[e])) && set.Contains(primes[c].Concatenate(primes[e])) && set.Contains(primes[d].Concatenate(primes[e])) &&
+                                                set.Contains(primes[e].Concatenate(primes[a])) && set.Contains(primes[e].Concatenate(primes[b])) && set.Contains(primes[e].Concatenate(primes[c])) && set.Contains(primes[e].Concatenate(primes[d])))
+                                            {
+                                                Console.WriteLine("Solution found: {0}: {1} + {2} + {3} + {4} + {5}", primes[a] + primes[b] + primes[c] + primes[d] + primes[e],
+                                                    primes[a], primes[b], primes[c], primes[d], primes[e]);
+                                                return;
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
+            
+            Console.WriteLine("Solution not found.");
         }
 
         #endregion
