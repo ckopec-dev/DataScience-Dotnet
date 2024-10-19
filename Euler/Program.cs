@@ -2077,7 +2077,8 @@ namespace Euler
                     primes.Add(i);
             }
             Console.WriteLine("Found {0} primes.", primes.Count);
-            //23,176,087,681,495
+            //23,176,087,681,495, this takes 1.51 hours with empty loops.
+
             for (int a = 0; a < primes.Count; a++)
             {
                 for (int b = a; b < primes.Count; b++)
@@ -2090,34 +2091,34 @@ namespace Euler
                         {
                             for (int e = d; e < primes.Count; e++)
                             {
-                                //if (
-                                //    Convert.ToInt32(primes[a].ToString() + primes[b].ToString()).IsPrime() &&
-                                //    Convert.ToInt32(primes[a].ToString() + primes[c].ToString()).IsPrime() &&
-                                //    Convert.ToInt32(primes[a].ToString() + primes[d].ToString()).IsPrime() &&
-                                //    Convert.ToInt32(primes[a].ToString() + primes[e].ToString()).IsPrime() &&
-                                //    Convert.ToInt32(primes[b].ToString() + primes[c].ToString()).IsPrime() &&
-                                //    Convert.ToInt32(primes[b].ToString() + primes[d].ToString()).IsPrime() &&
-                                //    Convert.ToInt32(primes[b].ToString() + primes[e].ToString()).IsPrime() &&
-                                //    Convert.ToInt32(primes[c].ToString() + primes[d].ToString()).IsPrime() &&
-                                //    Convert.ToInt32(primes[c].ToString() + primes[e].ToString()).IsPrime() &&
-                                //    Convert.ToInt32(primes[d].ToString() + primes[e].ToString()).IsPrime() &&
+                                if (primes[a].Concatenate(primes[b]).IsPrime() &&
+                                    primes[a].Concatenate(primes[c]).IsPrime() &&
+                                    primes[a].Concatenate(primes[d]).IsPrime() &&
+                                    primes[a].Concatenate(primes[e]).IsPrime() &&
+                                    primes[b].Concatenate(primes[c]).IsPrime() &&
+                                    primes[b].Concatenate(primes[d]).IsPrime() &&
+                                    primes[b].Concatenate(primes[e]).IsPrime() &&
+                                    primes[c].Concatenate(primes[d]).IsPrime() &&
+                                    primes[c].Concatenate(primes[e]).IsPrime() &&
+                                    primes[d].Concatenate(primes[e]).IsPrime() &&
 
-                                //    Convert.ToInt32(primes[b].ToString() + primes[a].ToString()).IsPrime() &&
-                                //    Convert.ToInt32(primes[c].ToString() + primes[a].ToString()).IsPrime() &&
-                                //    Convert.ToInt32(primes[d].ToString() + primes[a].ToString()).IsPrime() &&
-                                //    Convert.ToInt32(primes[e].ToString() + primes[a].ToString()).IsPrime() &&
-                                //    Convert.ToInt32(primes[c].ToString() + primes[b].ToString()).IsPrime() &&
-                                //    Convert.ToInt32(primes[d].ToString() + primes[b].ToString()).IsPrime() &&
-                                //    Convert.ToInt32(primes[e].ToString() + primes[b].ToString()).IsPrime() &&
-                                //    Convert.ToInt32(primes[d].ToString() + primes[c].ToString()).IsPrime() &&
-                                //    Convert.ToInt32(primes[e].ToString() + primes[c].ToString()).IsPrime() &&
-                                //    Convert.ToInt32(primes[e].ToString() + primes[d].ToString()).IsPrime()
-                                //)
-                                //{
-                                //    Console.WriteLine("Solution found: {0}: {1} + {2} + {3} + {4} + {5}", primes[a] + primes[b] + primes[c] + primes[d] + primes[e],
-                                //        primes[a], primes[b], primes[c], primes[d], primes[e]);
-                                //    return;
-                                //}
+
+                                    primes[b].Concatenate(primes[a]).IsPrime() &&
+                                    primes[c].Concatenate(primes[a]).IsPrime() &&
+                                    primes[d].Concatenate(primes[a]).IsPrime() &&
+                                    primes[e].Concatenate(primes[a]).IsPrime() &&
+                                    primes[c].Concatenate(primes[b]).IsPrime() &&
+                                    primes[d].Concatenate(primes[b]).IsPrime() &&
+                                    primes[e].Concatenate(primes[b]).IsPrime() &&
+                                    primes[d].Concatenate(primes[c]).IsPrime() &&
+                                    primes[e].Concatenate(primes[c]).IsPrime() &&
+                                    primes[e].Concatenate(primes[d]).IsPrime()
+                                )
+                                {
+                                    Console.WriteLine("Solution found: {0}: {1} + {2} + {3} + {4} + {5}", primes[a] + primes[b] + primes[c] + primes[d] + primes[e],
+                                        primes[a], primes[b], primes[c], primes[d], primes[e]);
+                                    return;
+                                }
                             }
                         }
                     }
@@ -2370,6 +2371,14 @@ namespace Euler
         static void Misc10()
         {
             Console.WriteLine("Reflection test.");
+        }
+
+        static void Misc11()
+        {
+            for(int i = 0; i <= 100; i++)
+            {
+                Console.WriteLine("{0} is prime: {1}, is probably prime: {2}. Same? {3}", i, i.IsPrime(), i.IsProbablyPrime(), i.IsPrime() == i.IsProbablyPrime());
+            }
         }
 
         #endregion

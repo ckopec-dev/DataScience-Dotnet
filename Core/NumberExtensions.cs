@@ -8,6 +8,18 @@ namespace Core
 {
     public static class NumberExtensions
     {
+        public static int Concatenate(this int num1, int num2)
+        {
+            int num2Length = 10;
+
+            while (num2Length <= num2)
+            {
+                num2Length *= 10;
+            }
+
+            return (num1 * num2Length) + num2;
+        }
+
         public static bool HasSameDigits(this int num1, int num2)
         {
             int n1 = num1.ToString().Length;
@@ -256,10 +268,14 @@ namespace Core
             if (number < 2)
                 return false;
 
-            if ((number % 2) == 0)
+            if (number == 2 || number == 3 || number == 5 || number == 7)
+                return true;
+
+            if (number % 2 == 0)
             {
-                return number == 2;
+                return false;
             }
+
             long sqrt = (long)Math.Sqrt(number);
             for (long t = 3; t <= sqrt; t += 2)
             {
@@ -268,7 +284,41 @@ namespace Core
                     return false;
                 }
             }
-            return number != 1;
+
+            return true;
+        }
+
+        public static bool IsProbablyPrime(this int number)
+        {
+            return number.IsProbablyPrime(10);
+        }
+
+        public static bool IsProbablyPrime(this int number, int certainty)
+        {
+            if (number < 2)
+                return false;
+            if (number == 2 || number == 3 || number == 5 || number == 7)
+                return true;
+
+            Random rnd = new();
+            
+            checked
+            {
+                for (int i = 0; i < certainty; i++)
+                {
+                    long j = rnd.Next(2, number);
+
+                    long k = j;
+                    for (int power = 1; power < number - 1; power++)
+                    {
+                        k = (k * j) % number;
+                    }
+
+                    if (k != 1) return false;
+                }
+            }
+
+            return true;
         }
 
         public static bool IsEven(this int number)
