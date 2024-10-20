@@ -22,6 +22,8 @@ namespace Rosalind
 
             string input = sr.ReadToEnd().Trim();
 
+            Dna dna = new(input);
+
             Console.WriteLine(String.Join(" ", input.AllIndexesOf("A").Count, input.AllIndexesOf("C").Count, input.AllIndexesOf("G").Count, input.AllIndexesOf("T").Count));
         }
 

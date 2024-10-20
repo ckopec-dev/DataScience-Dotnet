@@ -3,9 +3,9 @@ using System.Text.RegularExpressions;
 
 namespace Core.Bioinformatics
 {
-    public class Dna
+    public class Dna : NucleicAcid
     {
-        private string _Code = String.Empty;
+        
         
         public string Code 
         { 
@@ -18,7 +18,7 @@ namespace Core.Bioinformatics
                     throw new ArgumentException("Invalid dna string.");
             }
         }
-        
+
         public Dna()
         {
         }

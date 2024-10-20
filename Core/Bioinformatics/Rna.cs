@@ -3,10 +3,8 @@ using System.Text.RegularExpressions;
 
 namespace Core.Bioinformatics
 {
-    public class Rna
+    public class Rna : NucleicAcid
     {
-        private string _Code = String.Empty;
-
         public string Code
         {
             get { return _Code.ToUpper(); }
