@@ -5,7 +5,7 @@ namespace Core.Bioinformatics
 {
     public class Rna : NucleicAcid
     {
-        public string Code
+        public override string Code
         {
             get { return _Code.ToUpper(); }
             set
