@@ -11,6 +11,11 @@ namespace Core.Bioinformatics
             set { _Code = value; }
         }
 
+        public char[] Nucleotides
+        {
+            get { return Code.ToCharArray(); }
+        }
+
         public Dictionary<char, int> NucleotideCounts
         {
             get

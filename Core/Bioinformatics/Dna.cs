@@ -17,6 +17,28 @@ namespace Core.Bioinformatics
             }
         }
 
+        public string ReverseCompliment
+        {
+            get
+            {
+                char[] reverse = Code.Reverse().ToCharArray();
+
+                for(int i = 0; i < reverse.Length; i++)
+                {
+                    reverse[i] = reverse[i] switch
+                    {
+                        'A' => 'T',
+                        'T' => 'A',
+                        'C' => 'G',
+                        'G' => 'C',
+                        _ => throw new Exception(String.Format("Invalid nucleotide found: '{0}'.", reverse[i])),
+                    };
+                }
+
+                return new string(reverse);
+            }
+        }
+
         public Dna()
         {
         }

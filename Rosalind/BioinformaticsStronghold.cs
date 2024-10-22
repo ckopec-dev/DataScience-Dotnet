@@ -46,6 +46,25 @@ namespace Rosalind
             Console.WriteLine(dna.ToRna());
         }
 
+        public static void ProblemREVC()
+        {
+            // https://rosalind.info/problems/revc/
+            // Given: A DNA string s of length at most 1000 bp.
+            // Return: The reverse complement of s.
+
+            // Example input: AAAACCCGGT
+            // Example output: ACCGGGTTTT
+
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.revc.txt") ?? throw new Exception("Resource not found: revc.txt");
+            using StreamReader sr = new(mrs);
+
+            string input = sr.ReadToEnd().Trim();
+
+            Dna dna = new(input);
+
+            Console.WriteLine(dna.ReverseCompliment);
+        }
+
         #endregion
     }
 }
