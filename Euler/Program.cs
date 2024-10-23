@@ -2137,6 +2137,11 @@ namespace Euler
             Console.WriteLine("Solution not found.");
         }
 
+        static void Problem61()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         #region Misc experiments
