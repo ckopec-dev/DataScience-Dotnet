@@ -2139,6 +2139,24 @@ namespace Euler
 
         static void Problem61()
         {
+            for(int a = 1000; a < 10000; a++)
+            {
+                Console.WriteLine("a: {0}", a);
+                for(int b = a + 1; b < 10000; b++)
+                {
+                    Console.WriteLine("b: {0}", b);
+                    for (int c = b + 1; c < 10000; c++)
+                    {
+                        for(int d = c + 1; d < 10000; d++)
+                        {
+
+                        }
+                    }
+                }
+            }
+
+            Console.WriteLine("Search completed.");
+
             throw new NotImplementedException();
         }
 
