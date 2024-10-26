@@ -1,6 +1,7 @@
 ﻿using Combinatorics.Collections;
 using Core;
 using Core.GameTheory;
+using Microsoft.Identity.Client;
 using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
@@ -2139,25 +2140,51 @@ namespace Euler
 
         static void Problem61()
         {
-            for(int a = 1000; a < 10000; a++)
-            {
-                Console.WriteLine("a: {0}", a);
-                for(int b = a + 1; b < 10000; b++)
-                {
-                    Console.WriteLine("b: {0}", b);
-                    for (int c = b + 1; c < 10000; c++)
-                    {
-                        for(int d = c + 1; d < 10000; d++)
-                        {
+            // Get a list of all members of each type.
+            // Find ordered set that uses one of each type and is cyclical.
 
-                        }
-                    }
-                }
-            }
+            
+
+
+
+
+            // Triangles
+            //double p3n = 0, p4n = 0, p5n = 0;
+            //for(double n3 = 1; p3n < 10000; n3++)
+            //{
+            //    p3n = n3 * (n3 + 1) / 2;
+
+            //    if (p3n.ToString().Length != 4)
+            //        continue;
+
+            //    Console.WriteLine("n3: {0}, p3n: {1}", n3, p3n);
+
+            //    p4n = 0;
+            //    for (double n4 = 1; p4n < 10000; n4++)
+            //    {
+            //        p4n = n4 * n4;
+
+            //        if (p4n.ToString().Length != 4)
+            //            continue;
+
+            //        Console.WriteLine("n4: {0}, p4n: {1}", n4, p4n);
+
+            //        p5n = 0;
+            //        for (double n5 = 1; p5n < 10000; n5++)
+            //        {
+            //            p5n = n5 * (3 * n5 - 1) / 2;
+
+            //            if (p5n.ToString().Length != 4)
+            //                continue;
+
+            //            Console.WriteLine("n5: {0}, p5n: {1}", n5, p5n);
+            //        }
+            //    }
+            //}
 
             Console.WriteLine("Search completed.");
 
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         #endregion
