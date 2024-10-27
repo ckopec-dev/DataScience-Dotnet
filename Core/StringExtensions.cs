@@ -8,6 +8,18 @@ namespace Core
 {
     public static class StringExtensions
     {
+        public static string Left(this string s, int length)
+        {
+            return s.Substring(0, length);
+        }
+
+        public static string Right(this string s, int length)
+        {
+            // E.g. helloworld, 2 returns "ld"
+
+            return s.Substring(s.Length - length);
+        }
+
         public static string ToProperCase(this string s)
         {
             StringBuilder sb = new();

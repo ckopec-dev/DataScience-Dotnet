@@ -2143,7 +2143,22 @@ namespace Euler
             // Get a list of all members of each type.
             // Find ordered set that uses one of each type and is cyclical.
 
-            
+            // See https://www.codeproject.com/Articles/26050/Permutations-Combinations-and-Variations-using-C-G
+            //Permutations of { A A C}
+            //without Repetition; size = 3
+            //{ A A C}
+            //{ A C A}
+            //{ C A A}
+
+            //Permutations<int> perms = new Permutations<int>(set, GenerateOption.WithoutRepetition);
+
+            //foreach(IList<int> p in perms)
+            //{
+            //    for(int i = 0; i < p.Count; i++)
+            //    {
+            //        Console.WriteLine(p[i]);
+            //    }
+            //}
 
 
 

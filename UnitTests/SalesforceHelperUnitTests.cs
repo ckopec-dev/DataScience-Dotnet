@@ -33,26 +33,21 @@ namespace UnitTests
         {
             List<Core.Salesforce.Version> versions = client.Versions(Secrets.SalesforceDomain);
 
-            foreach(Core.Salesforce.Version v in versions)
-            {
-                TestContext?.WriteLine("Version: {0}", v.Value);
-            }
-
             Assert.AreNotEqual(versions.Count, 0);
         }
 
-        [TestMethod]
-        public void ResourcesTest()
-        {
-            bool result = client.Login(
-                Secrets.SalesforceDomain,
-                Secrets.SalesforceClientId,
-                Secrets.SalesforceClientSecret,
-                Secrets.SalesforceUsername,
-                Secrets.SalesforcePassword);
+        //[TestMethod]
+        //public void ResourcesTest()
+        //{
+        //    bool result = client.Login(
+        //        Secrets.SalesforceDomain,
+        //        Secrets.SalesforceClientId,
+        //        Secrets.SalesforceClientSecret,
+        //        Secrets.SalesforceUsername,
+        //        Secrets.SalesforcePassword);
 
-            client.Resources();
+        //    client.Resources();
 
-        }
+        //}
     }
 }

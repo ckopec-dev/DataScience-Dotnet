@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿using Combinatorics.Collections;
+using System.Drawing;
+using System.Globalization;
 using System.Numerics;
 using System.Text;
 
@@ -8,12 +10,24 @@ namespace Core
     {
         public static bool IsCyclicSet(this List<int> set, int cycleSize)
         {
-            if (cycleSize != 2)
-                throw new Exception("The value of cycleSize is not supported.");
+            bool isCyclic = true;
 
+            for(int i = 0; i < set.Count; i++)
+            {
+                if (i == set.Count - 1)
+                {
+                    // It's the last item in the set, so the cycle continues with the first item of the set.
+                    if (set[i].ToString().Right(cycleSize) != set[0].ToString().Left(cycleSize))
+                        isCyclic = false;
+                }
+                else
+                {
+                    if (set[i].ToString().Right(cycleSize) != set[i + 1].ToString().Left(cycleSize))
+                        isCyclic = false;
+                }
+            }
 
-
-            throw new NotImplementedException();
+            return isCyclic;
         }
 
         public static int Concatenate(this int num1, int num2)

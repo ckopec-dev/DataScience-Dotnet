@@ -4,23 +4,33 @@ using System.Text.Json;
 
 namespace Core.Salesforce
 {
+    /// <summary>
+    /// General url syntax: https://mydomainname.my.salesforce.com/services/data/vXX.X/resource/
+    /// </summary>
     public class RestClient()
     {
-        public const string DEFAULT_VERSION = "v62.0";
         readonly HttpClient _HttpClient = new();
         AuthToken? _AuthToken = null;
-        private string? _Version;
+        private string _VersionUrl = "/services/data/v62.0";
+        private bool _CompressRequest = false;
+        private bool _CompressResponse = false;
 
-        public string Version
+        public string VersionUrl
         {
-            get
-            {
-                if (_Version == null)
-                    return DEFAULT_VERSION;
-                else
-                    return "v" + _Version;
-            }
-            set { _Version = value; }   
+            get { return _VersionUrl; }
+            set { _VersionUrl = value; }   
+        }
+
+        public bool CompressRequest
+        {
+            get { return _CompressRequest; }
+            set { _CompressRequest = value; }
+        }
+
+        public bool CompressResponse
+        {
+            get { return _CompressResponse; } 
+            set { _CompressResponse = value; }
         }
 
         public AuthToken? AuthToken { get { return _AuthToken; } }
@@ -29,6 +39,7 @@ namespace Core.Salesforce
         {
             string endpoint = String.Format("https://{0}.my.salesforce.com/services/oauth2/token", domain);
 
+            Console.WriteLine("Login endpoint: {0}", endpoint);
             HttpContent content = new FormUrlEncodedContent(new Dictionary<string, string>
             {
                   {"grant_type", "password"},
@@ -40,6 +51,7 @@ namespace Core.Salesforce
 
             HttpResponseMessage message = _HttpClient.PostAsync(endpoint, content).Result;
             string response = message.Content.ReadAsStringAsync().Result;
+            Console.WriteLine("Login response: {0}", response);
 
             var dict = JsonSerializer.Deserialize<Dictionary<string, string>>(response);
             if (dict != null)
@@ -55,9 +67,14 @@ namespace Core.Salesforce
         public List<Version> Versions(string domain)
         {
             string endpoint = String.Format("https://{0}.my.salesforce.com/services/data/", domain);
+            Console.WriteLine("Versions endpoint: {0}", endpoint);
 
-            HttpResponseMessage message = _HttpClient.GetAsync(endpoint).Result;
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, endpoint);
+
+            HttpResponseMessage message = _HttpClient.SendAsync(request).Result;
+
             string response = message.Content.ReadAsStringAsync().Result;
+            Console.WriteLine("Versions response: {0}", response);
 
             var dict = JsonSerializer.Deserialize<List<Dictionary<string, string>>>(response);
             List<Version> list = [];
@@ -81,9 +98,9 @@ namespace Core.Salesforce
             if (AuthToken == null)
                 throw new NotAuthorizedException();
 
-            string endpoint = String.Format("{0}/{1}/", AuthToken.InstanceUrl, Version);
-
-            Console.WriteLine(endpoint);
+            string endpoint = String.Format("{0}/{1}/", AuthToken.InstanceUrl, VersionUrl);
+            Console.WriteLine("Resources endpoint: {0}", endpoint);
+            
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, endpoint);
             request.Headers.Add("Authorization", "Bearer " + AuthToken.Token);
             request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -91,8 +108,9 @@ namespace Core.Salesforce
             HttpResponseMessage message = _HttpClient.SendAsync(request).Result;
             
             string response = message.Content.ReadAsStringAsync().Result;
+            Console.WriteLine("Resources response: {0}", response);
 
-            Console.WriteLine(response);
+            throw new NotImplementedException();
         }
 
         private void AddCompressRequestHeader(HttpRequestMessage request)
