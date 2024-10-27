@@ -1,13 +1,28 @@
 ﻿
+using System.Net.Http.Headers;
 using System.Text.Json;
 
 namespace Core.Salesforce
 {
     public class RestClient()
     {
+        public const string DEFAULT_VERSION = "v62.0";
         readonly HttpClient _HttpClient = new();
         AuthToken? _AuthToken = null;
-        
+        private string? _Version;
+
+        public string Version
+        {
+            get
+            {
+                if (_Version == null)
+                    return DEFAULT_VERSION;
+                else
+                    return "v" + _Version;
+            }
+            set { _Version = value; }   
+        }
+
         public AuthToken? AuthToken { get { return _AuthToken; } }
         
         public bool Login(string domain, string clientId, string clientSecret, string username, string password)
@@ -56,6 +71,28 @@ namespace Core.Salesforce
             }
 
             return list;
+        }
+
+        public void Resources()
+        {
+            // curl https://MyDomainName.my.salesforce.com/services/data/v53.0/ -H "Authorization: Bearer
+            // access_token" -H "X - PrettyPrint:1"
+
+            if (AuthToken == null)
+                throw new NotAuthorizedException();
+
+            string endpoint = String.Format("{0}/{1}/", AuthToken.InstanceUrl, Version);
+
+            Console.WriteLine(endpoint);
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, endpoint);
+            request.Headers.Add("Authorization", "Bearer " + AuthToken.Token);
+            request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage message = _HttpClient.SendAsync(request).Result;
+            
+            string response = message.Content.ReadAsStringAsync().Result;
+
+            Console.WriteLine(response);
         }
 
         private void AddCompressRequestHeader(HttpRequestMessage request)

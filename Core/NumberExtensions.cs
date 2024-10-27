@@ -1,6 +1,4 @@
-﻿
-using Microsoft.IdentityModel.Tokens;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Numerics;
 using System.Text;
 
@@ -8,6 +6,16 @@ namespace Core
 {
     public static class NumberExtensions
     {
+        public static bool IsCyclicSet(this List<int> set, int cycleSize)
+        {
+            if (cycleSize != 2)
+                throw new Exception("The value of cycleSize is not supported.");
+
+
+
+            throw new NotImplementedException();
+        }
+
         public static int Concatenate(this int num1, int num2)
         {
             int num2Length = 10;
