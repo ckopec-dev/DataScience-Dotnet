@@ -9,6 +9,8 @@ namespace Core
     {
         public static string Left(this string s, int length)
         {
+            // E.g. helloworld, 2 returns "he"
+
             return s[..length];
         }
 

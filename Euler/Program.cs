@@ -2156,15 +2156,67 @@ namespace Euler
                     nums.Add(fn);
             }
 
+            i = 1;
+            fn = new();
 
+            while (fn.Number < 10000)
+            {
+                i++;
+                fn = FigurateCalculator.Square(i);
+                if (fn.Number >= 1000 && fn.Number < 10000)
+                    nums.Add(fn);
+            }
 
+            i = 1;
+            fn = new();
 
+            while (fn.Number < 10000)
+            {
+                i++;
+                fn = FigurateCalculator.Pentagonal(i);
+                if (fn.Number >= 1000 && fn.Number < 10000)
+                    nums.Add(fn);
+            }
 
-            foreach(FigurateNumber n in nums)
+            i = 1;
+            fn = new();
+
+            while (fn.Number < 10000)
+            {
+                i++;
+                fn = FigurateCalculator.Heptagonal(i);
+                if (fn.Number >= 1000 && fn.Number < 10000)
+                    nums.Add(fn);
+            }
+
+            i = 1;
+            fn = new();
+
+            while (fn.Number < 10000)
+            {
+                i++;
+                fn = FigurateCalculator.Octagonal(i);
+                if (fn.Number >= 1000 && fn.Number < 10000)
+                    nums.Add(fn);
+            }
+
+            i = 1;
+            fn = new();
+
+            while (fn.Number < 10000)
+            {
+                i++;
+                fn = FigurateCalculator.Hexagonal(i);
+                if (fn.Number >= 1000 && fn.Number < 10000)
+                    nums.Add(fn);
+            }
+
+            foreach (FigurateNumber n in nums)
             {
                 Console.WriteLine("{0}: {1}", n.Type, n.Number);
             }
-            
+
+            Console.WriteLine("Total figurate numbers: {0}", nums.Count);
 
 
 
@@ -2175,7 +2227,10 @@ namespace Euler
             //{ A C A}
             //{ C A A}
 
-            //Permutations<int> perms = new Permutations<int>(set, GenerateOption.WithoutRepetition);
+            List<int> ints = FigurateNumber.ToList(nums);
+            Permutations<int> perms = new(ints, GenerateOption.WithoutRepetition);
+            Console.WriteLine("Permutations: {0}", perms.Count);
+
 
             //foreach(IList<int> p in perms)
             //{
@@ -2185,44 +2240,6 @@ namespace Euler
             //    }
             //}
 
-
-
-
-            // Triangles
-            //double p3n = 0, p4n = 0, p5n = 0;
-            //for(double n3 = 1; p3n < 10000; n3++)
-            //{
-            //    p3n = n3 * (n3 + 1) / 2;
-
-            //    if (p3n.ToString().Length != 4)
-            //        continue;
-
-            //    Console.WriteLine("n3: {0}, p3n: {1}", n3, p3n);
-
-            //    p4n = 0;
-            //    for (double n4 = 1; p4n < 10000; n4++)
-            //    {
-            //        p4n = n4 * n4;
-
-            //        if (p4n.ToString().Length != 4)
-            //            continue;
-
-            //        Console.WriteLine("n4: {0}, p4n: {1}", n4, p4n);
-
-            //        p5n = 0;
-            //        for (double n5 = 1; p5n < 10000; n5++)
-            //        {
-            //            p5n = n5 * (3 * n5 - 1) / 2;
-
-            //            if (p5n.ToString().Length != 4)
-            //                continue;
-
-            //            Console.WriteLine("n5: {0}, p5n: {1}", n5, p5n);
-            //        }
-            //    }
-            //}
-
-            //Console.WriteLine("Search completed.");
 
             //throw new NotImplementedException();
         }
