@@ -8,6 +8,6 @@ namespace Core
         Pentagonal,
         Hexagonal,
         Heptagonal,
-        Orctagonal
+        Octagonal
     }
 }

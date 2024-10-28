@@ -1,5 +1,4 @@
-﻿
-using System.Globalization;
+﻿using System.Globalization;
 using System.IO.Compression;
 using System.Text.RegularExpressions;
 using System.Text;
@@ -10,14 +9,14 @@ namespace Core
     {
         public static string Left(this string s, int length)
         {
-            return s.Substring(0, length);
+            return s[..length];
         }
 
         public static string Right(this string s, int length)
         {
             // E.g. helloworld, 2 returns "ld"
 
-            return s.Substring(s.Length - length);
+            return s[^length..];
         }
 
         public static string ToProperCase(this string s)

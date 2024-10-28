@@ -30,7 +30,7 @@ namespace Core
 
         public static FigurateNumber Octagonal(int n)
         {
-            return new FigurateNumber(n * (3 * n - 2), FigurateType.Orctagonal);
+            return new FigurateNumber(n * (3 * n - 2), FigurateType.Octagonal);
         }
     }
 }

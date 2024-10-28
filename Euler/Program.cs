@@ -2143,6 +2143,31 @@ namespace Euler
             // Get a list of all members of each type.
             // Find ordered set that uses one of each type and is cyclical.
 
+            List<FigurateNumber> nums = [];
+
+            int i = 1;
+            FigurateNumber fn = new();
+
+            while (fn.Number < 10000)
+            {
+                i++;
+                fn = FigurateCalculator.Triangle(i);
+                if (fn.Number >= 1000 && fn.Number < 10000)
+                    nums.Add(fn);
+            }
+
+
+
+
+
+            foreach(FigurateNumber n in nums)
+            {
+                Console.WriteLine("{0}: {1}", n.Type, n.Number);
+            }
+            
+
+
+
             // See https://www.codeproject.com/Articles/26050/Permutations-Combinations-and-Variations-using-C-G
             //Permutations of { A A C}
             //without Repetition; size = 3
@@ -2197,7 +2222,7 @@ namespace Euler
             //    }
             //}
 
-            Console.WriteLine("Search completed.");
+            //Console.WriteLine("Search completed.");
 
             //throw new NotImplementedException();
         }

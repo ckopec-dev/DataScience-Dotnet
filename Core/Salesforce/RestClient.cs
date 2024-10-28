@@ -69,7 +69,8 @@ namespace Core.Salesforce
             string endpoint = String.Format("https://{0}.my.salesforce.com/services/data/", domain);
             Console.WriteLine("Versions endpoint: {0}", endpoint);
 
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, endpoint);
+            HttpRequestMessage request = new(HttpMethod.Get, endpoint);
+            AddHeaders(request);
 
             HttpResponseMessage message = _HttpClient.SendAsync(request).Result;
 
@@ -101,9 +102,8 @@ namespace Core.Salesforce
             string endpoint = String.Format("{0}/{1}/", AuthToken.InstanceUrl, VersionUrl);
             Console.WriteLine("Resources endpoint: {0}", endpoint);
             
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, endpoint);
-            request.Headers.Add("Authorization", "Bearer " + AuthToken.Token);
-            request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpRequestMessage request = new(HttpMethod.Get, endpoint);
+            AddHeaders(request);
 
             HttpResponseMessage message = _HttpClient.SendAsync(request).Result;
             
@@ -113,14 +113,18 @@ namespace Core.Salesforce
             throw new NotImplementedException();
         }
 
-        private void AddCompressRequestHeader(HttpRequestMessage request)
+        private void AddHeaders(HttpRequestMessage request)
         {
-            request.Headers.Add("Content_Encoding", "gzip");
-        }
+            if (CompressRequest)
+                request.Headers.Add("Content_Encoding", "gzip");
+            if (CompressResponse)
+                request.Headers.Add("Accept-Encoding", "gzip");
 
-        private void AddCompressResponseHeader(HttpRequestMessage request)
-        {
-            request.Headers.Add("Accept-Encoding", "gzip");
+            if (AuthToken != null)
+            {
+                request.Headers.Add("Authorization", "Bearer " + AuthToken.Token);
+                request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            }
         }
     }
 }
