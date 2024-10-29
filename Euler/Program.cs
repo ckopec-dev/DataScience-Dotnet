@@ -2219,7 +2219,6 @@ namespace Euler
             Console.WriteLine("Total figurate numbers: {0}", nums.Count);
 
 
-
             // See https://www.codeproject.com/Articles/26050/Permutations-Combinations-and-Variations-using-C-G
             //Permutations of { A A C}
             //without Repetition; size = 3
@@ -2227,18 +2226,10 @@ namespace Euler
             //{ A C A}
             //{ C A A}
 
-            List<int> ints = FigurateNumber.ToList(nums);
-            Permutations<int> perms = new(ints, GenerateOption.WithoutRepetition);
-            Console.WriteLine("Permutations: {0}", perms.Count);
+            //List<int> ints = FigurateNumber.ToList(nums);
+            //Permutations<int> perms = new(ints, GenerateOption.WithoutRepetition);
+            //Console.WriteLine("Permutations: {0}", perms.Count);
 
-
-            //foreach(IList<int> p in perms)
-            //{
-            //    for(int i = 0; i < p.Count; i++)
-            //    {
-            //        Console.WriteLine(p[i]);
-            //    }
-            //}
 
 
             //throw new NotImplementedException();
