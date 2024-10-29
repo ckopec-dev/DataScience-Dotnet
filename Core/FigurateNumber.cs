@@ -27,5 +27,10 @@ namespace Core
 
             return ints;
         }
+
+        public override string ToString()
+        {
+            return String.Format("Number: {0}, Type: {1}", Number, Type);
+        }
     }
 }

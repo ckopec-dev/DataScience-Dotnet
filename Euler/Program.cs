@@ -2218,7 +2218,6 @@ namespace Euler
 
             Console.WriteLine("Total figurate numbers: {0}", nums.Count);
 
-
             // See https://www.codeproject.com/Articles/26050/Permutations-Combinations-and-Variations-using-C-G
             //Permutations of { A A C}
             //without Repetition; size = 3
@@ -2230,8 +2229,27 @@ namespace Euler
             //Permutations<int> perms = new(ints, GenerateOption.WithoutRepetition);
             //Console.WriteLine("Permutations: {0}", perms.Count);
 
+            // Test each triangle number. Eliminate all numbers that do not have a cycle with this number and are not a triangle number. How many are left?
 
+            int totalCandidates = 0;
 
+            foreach (FigurateNumber triangle in nums.Where(i => i.Type == FigurateType.Triangle))
+            {
+                //Console.WriteLine("{0}: {1}", triangle.Type, triangle.Number);
+
+                foreach(FigurateNumber other in nums.Where(i => i.Type != FigurateType.Triangle))
+                {
+                    List<int> pair = [triangle.Number, other.Number];
+                    
+                    if (pair.IsCyclicSet(2))
+                    {
+                        Console.WriteLine("Candidate pair: {0} - {1}", triangle, other);
+                        totalCandidates++;
+                    }
+                }
+            }
+
+            Console.WriteLine("Total triangle candidates: {0}", totalCandidates);
             //throw new NotImplementedException();
         }
 
