@@ -2250,6 +2250,28 @@ namespace Euler
             }
 
             Console.WriteLine("Total triangle candidates: {0}", totalCandidates);
+
+            totalCandidates = 0;
+
+            foreach (FigurateNumber square in nums.Where(i => i.Type == FigurateType.Square))
+            {
+                //Console.WriteLine("{0}: {1}", triangle.Type, triangle.Number);
+
+                foreach (FigurateNumber other in nums.Where(i => i.Type != FigurateType.Square))
+                {
+                    List<int> pair = [square.Number, other.Number];
+
+                    if (pair.IsCyclicSet(2))
+                    {
+                        Console.WriteLine("Candidate pair: {0} - {1}", square, other);
+                        totalCandidates++;
+                    }
+                }
+            }
+
+            Console.WriteLine("Total square candidates: {0}", totalCandidates);
+
+
             //throw new NotImplementedException();
         }
 
