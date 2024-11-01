@@ -2240,7 +2240,7 @@ namespace Euler
                 foreach(FigurateNumber other in nums.Where(i => i.Type != FigurateType.Triangle))
                 {
                     List<int> pair = [triangle.Number, other.Number];
-                    
+
                     if (pair.IsCyclicSet(2))
                     {
                         Console.WriteLine("Candidate pair: {0} - {1}", triangle, other);
@@ -2271,7 +2271,41 @@ namespace Euler
 
             Console.WriteLine("Total square candidates: {0}", totalCandidates);
 
+            totalCandidates = 0;
 
+            foreach (FigurateNumber pent in nums.Where(i => i.Type == FigurateType.Pentagonal))
+            {
+                foreach (FigurateNumber other in nums.Where(i => i.Type != FigurateType.Pentagonal))
+                {
+                    List<int> pair = [pent.Number, other.Number];
+
+                    if (pair.IsCyclicSet(2))
+                    {
+                        Console.WriteLine("Candidate pair: {0} - {1}", pent, other);
+                        totalCandidates++;
+                    }
+                }
+            }
+
+            Console.WriteLine("Total pent candidates: {0}", totalCandidates);
+
+            totalCandidates = 0;
+
+            foreach (FigurateNumber hex in nums.Where(i => i.Type == FigurateType.Hexagonal))
+            {
+                foreach (FigurateNumber other in nums.Where(i => i.Type != FigurateType.Hexagonal))
+                {
+                    List<int> pair = [hex.Number, other.Number];
+
+                    if (pair.IsCyclicSet(2))
+                    {
+                        Console.WriteLine("Candidate pair: {0} - {1}", hex, other);
+                        totalCandidates++;
+                    }
+                }
+            }
+
+            Console.WriteLine("Total hex candidates: {0}", totalCandidates);
             //throw new NotImplementedException();
         }
 
