@@ -2261,6 +2261,13 @@ namespace Euler
                 {
                     List<int> pair = [square.Number, other.Number];
 
+                    if (square.Number == 1089 && other.Number == 4510)
+                    {
+                        Console.WriteLine("1089 and 4510 are cyclic? {0}", pair.IsCyclicSet(2));
+
+                        return;
+                    }
+
                     if (pair.IsCyclicSet(2))
                     {
                         Console.WriteLine("Candidate pair: {0} - {1}", square, other);
@@ -2306,6 +2313,43 @@ namespace Euler
             }
 
             Console.WriteLine("Total hex candidates: {0}", totalCandidates);
+
+            totalCandidates = 0;
+
+            foreach (FigurateNumber hep in nums.Where(i => i.Type == FigurateType.Heptagonal))
+            {
+                foreach (FigurateNumber other in nums.Where(i => i.Type != FigurateType.Heptagonal))
+                {
+                    List<int> pair = [hep.Number, other.Number];
+
+                    if (pair.IsCyclicSet(2))
+                    {
+                        Console.WriteLine("Candidate pair: {0} - {1}", hep, other);
+                        totalCandidates++;
+                    }
+                }
+            }
+
+            Console.WriteLine("Total hep candidates: {0}", totalCandidates);
+
+            totalCandidates = 0;
+
+            foreach (FigurateNumber oct in nums.Where(i => i.Type == FigurateType.Octagonal))
+            {
+                foreach (FigurateNumber other in nums.Where(i => i.Type != FigurateType.Octagonal))
+                {
+                    List<int> pair = [oct.Number, other.Number];
+
+                    if (pair.IsCyclicSet(2))
+                    {
+                        Console.WriteLine("Candidate pair: {0} - {1}", oct, other);
+                        totalCandidates++;
+                    }
+                }
+            }
+
+            Console.WriteLine("Total oct candidates: {0}", totalCandidates);
+
             //throw new NotImplementedException();
         }
 
