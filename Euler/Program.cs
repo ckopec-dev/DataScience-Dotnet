@@ -2233,7 +2233,7 @@ namespace Euler
 
             
 
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         #endregion
