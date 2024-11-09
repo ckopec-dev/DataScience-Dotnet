@@ -91,7 +91,7 @@ namespace Core.Salesforce
             return list;
         }
 
-        public void Resources()
+        public Dictionary<string, string>? Resources()
         {
             // curl https://MyDomainName.my.salesforce.com/services/data/v53.0/ -H "Authorization: Bearer
             // access_token" -H "X - PrettyPrint:1"
@@ -110,7 +110,7 @@ namespace Core.Salesforce
             string response = message.Content.ReadAsStringAsync().Result;
             Console.WriteLine("Resources response: {0}", response);
 
-            throw new NotImplementedException();
+            return JsonSerializer.Deserialize<Dictionary<string, string>>(response);
         }
 
         private void AddHeaders(HttpRequestMessage request)

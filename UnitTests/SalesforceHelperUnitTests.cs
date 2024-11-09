@@ -15,6 +15,16 @@ namespace UnitTests
             set { testContextInstance = value; }
         }
 
+        private void LoginHelper()
+        {
+            bool result = client.Login(
+                Secrets.SalesforceDomain,
+                Secrets.SalesforceClientId,
+                Secrets.SalesforceClientSecret,
+                Secrets.SalesforceUsername,
+                Secrets.SalesforcePassword);
+        }
+
         [TestMethod]
         public void LoginTest()
         {
@@ -36,18 +46,14 @@ namespace UnitTests
             Assert.AreNotEqual(versions.Count, 0);
         }
 
-        //[TestMethod]
-        //public void ResourcesTest()
-        //{
-        //    bool result = client.Login(
-        //        Secrets.SalesforceDomain,
-        //        Secrets.SalesforceClientId,
-        //        Secrets.SalesforceClientSecret,
-        //        Secrets.SalesforceUsername,
-        //        Secrets.SalesforcePassword);
+        [TestMethod]
+        public void ResourcesTest()
+        {
+            LoginHelper();
 
-        //    client.Resources();
+            var resources = client.Resources();
 
-        //}
+            Assert.AreNotEqual(resources, null);
+        }
     }
 }
