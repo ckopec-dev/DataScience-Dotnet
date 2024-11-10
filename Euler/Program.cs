@@ -2162,11 +2162,11 @@ namespace Euler
                 }
             }
             Console.WriteLine("Total triangle numbers: {0}", count);
-
+            
             i = 1;
             fn = new();
             count = 0;
-
+            
             while (fn.Number < 10000)
             {
                 i++;
@@ -2182,7 +2182,7 @@ namespace Euler
             i = 1;
             fn = new();
             count = 0;
-
+            
             while (fn.Number < 10000)
             {
                 i++;
@@ -2198,7 +2198,7 @@ namespace Euler
             i = 1;
             fn = new();
             count = 0;
-
+            
             while (fn.Number < 10000)
             {
                 i++;
@@ -2214,7 +2214,7 @@ namespace Euler
             i = 1;
             fn = new();
             count = 0;
-
+            
             while (fn.Number < 10000)
             {
                 i++;
@@ -2230,7 +2230,7 @@ namespace Euler
             i = 1;
             fn = new();
             count = 0;
-
+            
             while (fn.Number < 10000)
             {
                 i++;
@@ -2242,29 +2242,6 @@ namespace Euler
                 }
             }
             Console.WriteLine("Total oct numbers: {0}", count);
-
-            /* Loop test
-            Total triangle numbers: 96
-            Total square numbers: 68
-            Total pent numbers: 56
-            Total hex numbers: 48
-            Total hep numbers: 43
-            Total oct numbers: 40
-            */
-
-            // This takes 49 seconds. Iterating over objects and filtering with linq takes 25 minutes.
-            //for(int tri = 0; tri < 96; tri++)
-            //{
-            //    Console.WriteLine(tri);
-            //    for (int sq = 0; sq < 68; sq++)
-            //        for (int pent = 0; pent < 56; pent++)
-            //            for (int hex = 0; hex < 48; hex++)
-            //                for (int hep = 0; hep < 43; hep++)
-            //                    for (int oct = 0; oct < 40; oct++)
-            //                    {
-            //                    }
-            //}
-
 
             count = 0;
             foreach (FigurateNumber triangle in nums.Where(i => i.Type == FigurateType.Triangle))
@@ -2282,35 +2259,27 @@ namespace Euler
                             {
                                 foreach (FigurateNumber oct in nums.Where(i => i.Type == FigurateType.Octagonal))
                                 {
-                                    //List<int> set = [triangle.Number, square.Number, pent.Number, hex.Number, hep.Number, oct.Number];
+                                    List<int> set = [triangle.Number, square.Number, pent.Number, hex.Number, hep.Number, oct.Number];
 
-                                    //// Need to iterate over all orders of the set
-                                    //// See https://www.codeproject.com/Articles/26050/Permutations-Combinations-and-Variations-using-C-G
+                                    // Need to iterate over all orders of the set
+                                    // See https://www.codeproject.com/Articles/26050/Permutations-Combinations-and-Variations-using-C-G
 
-                                    //Permutations<int> perms = new(set, GenerateOption.WithoutRepetition);
+                                    Permutations<int> perms = new(set, GenerateOption.WithoutRepetition);
 
-                                    //foreach (List<int> p in perms.Cast<List<int>>())
-                                    //{
-                                    //    if (p.IsCyclicSet(2))
-                                    //    {
-                                    //        Console.WriteLine("Found set: {0}", p.PrettyPrint());
-                                    //        return;
-                                    //    }
-                                    //}
+                                    foreach (List<int> p in perms.Cast<List<int>>())
+                                    {
+                                        if (p.IsCyclicSet(2))
+                                        {
+                                            Console.WriteLine("Found set: {0}", p.PrettyPrint());
+                                            return;
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
-            //Console.WriteLine("Set not found.");
-
-
-
-
-
-
-            //throw new NotImplementedException();
         }
 
         #endregion
