@@ -5,5 +5,10 @@ namespace Core
     {
         public int VertexA { get; set; } = vertexA;
         public int VertexB { get; set; } = vertexB;
+
+        public override string ToString()
+        {
+            return String.Format("{0} {1}", VertexA, VertexB);
+        }
     }
 }
