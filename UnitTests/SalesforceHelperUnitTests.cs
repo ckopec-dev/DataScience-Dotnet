@@ -17,7 +17,7 @@ namespace UnitTests
 
         private void LoginHelper()
         {
-            bool result = client.Login(
+            client.Login(
                 Secrets.SalesforceDomain,
                 Secrets.SalesforceClientId,
                 Secrets.SalesforceClientSecret,

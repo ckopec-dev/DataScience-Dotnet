@@ -2,9 +2,11 @@
 using Core;
 using Core.GameTheory;
 using Microsoft.Identity.Client;
+using ScottPlot.Hatches;
 using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
+using System.Numerics.Generic;
 using System.Reflection;
 using System.Text;
 using System.Threading;
@@ -2147,91 +2149,166 @@ namespace Euler
 
             int i = 1;
             FigurateNumber fn = new();
+            int count = 0;
 
             while (fn.Number < 10000)
             {
                 i++;
                 fn = FigurateCalculator.Triangle(i);
                 if (fn.Number >= 1000 && fn.Number < 10000)
+                {
                     nums.Add(fn);
+                    count++;
+                }
             }
+            Console.WriteLine("Total triangle numbers: {0}", count);
 
             i = 1;
             fn = new();
+            count = 0;
 
             while (fn.Number < 10000)
             {
                 i++;
                 fn = FigurateCalculator.Square(i);
                 if (fn.Number >= 1000 && fn.Number < 10000)
+                {
                     nums.Add(fn);
+                    count++;
+                }
             }
+            Console.WriteLine("Total square numbers: {0}", count);
 
             i = 1;
             fn = new();
+            count = 0;
 
             while (fn.Number < 10000)
             {
                 i++;
                 fn = FigurateCalculator.Pentagonal(i);
                 if (fn.Number >= 1000 && fn.Number < 10000)
+                {
                     nums.Add(fn);
+                    count++;
+                }
             }
+            Console.WriteLine("Total pent numbers: {0}", count);
 
             i = 1;
             fn = new();
-
-            while (fn.Number < 10000)
-            {
-                i++;
-                fn = FigurateCalculator.Heptagonal(i);
-                if (fn.Number >= 1000 && fn.Number < 10000)
-                    nums.Add(fn);
-            }
-
-            i = 1;
-            fn = new();
-
-            while (fn.Number < 10000)
-            {
-                i++;
-                fn = FigurateCalculator.Octagonal(i);
-                if (fn.Number >= 1000 && fn.Number < 10000)
-                    nums.Add(fn);
-            }
-
-            i = 1;
-            fn = new();
+            count = 0;
 
             while (fn.Number < 10000)
             {
                 i++;
                 fn = FigurateCalculator.Hexagonal(i);
                 if (fn.Number >= 1000 && fn.Number < 10000)
+                {
                     nums.Add(fn);
+                    count++;
+                }
             }
+            Console.WriteLine("Total hex numbers: {0}", count);
 
-            foreach (FigurateNumber n in nums)
+            i = 1;
+            fn = new();
+            count = 0;
+
+            while (fn.Number < 10000)
             {
-                Console.WriteLine("{0}: {1}", n.Type, n.Number);
+                i++;
+                fn = FigurateCalculator.Heptagonal(i);
+                if (fn.Number >= 1000 && fn.Number < 10000)
+                {
+                    nums.Add(fn);
+                    count++;
+                }
             }
+            Console.WriteLine("Total hep numbers: {0}", count);
 
-            Console.WriteLine("Total figurate numbers: {0}", nums.Count);
+            i = 1;
+            fn = new();
+            count = 0;
 
-            // See https://www.codeproject.com/Articles/26050/Permutations-Combinations-and-Variations-using-C-G
-            //Permutations of { A A C}
-            //without Repetition; size = 3
-            //{ A A C}
-            //{ A C A}
-            //{ C A A}
+            while (fn.Number < 10000)
+            {
+                i++;
+                fn = FigurateCalculator.Octagonal(i);
+                if (fn.Number >= 1000 && fn.Number < 10000)
+                {
+                    nums.Add(fn);
+                    count++;
+                }
+            }
+            Console.WriteLine("Total oct numbers: {0}", count);
 
-            //List<int> ints = FigurateNumber.ToList(nums);
-            //Permutations<int> perms = new(ints, GenerateOption.WithoutRepetition);
-            //Console.WriteLine("Permutations: {0}", perms.Count);
+            /* Loop test
+            Total triangle numbers: 96
+            Total square numbers: 68
+            Total pent numbers: 56
+            Total hex numbers: 48
+            Total hep numbers: 43
+            Total oct numbers: 40
+            */
 
-            // Test each triangle number. Eliminate all numbers that do not have a cycle with this number and are not a triangle number. How many are left?
+            // This takes 49 seconds. Iterating over objects and filtering with linq takes 25 minutes.
+            //for(int tri = 0; tri < 96; tri++)
+            //{
+            //    Console.WriteLine(tri);
+            //    for (int sq = 0; sq < 68; sq++)
+            //        for (int pent = 0; pent < 56; pent++)
+            //            for (int hex = 0; hex < 48; hex++)
+            //                for (int hep = 0; hep < 43; hep++)
+            //                    for (int oct = 0; oct < 40; oct++)
+            //                    {
+            //                    }
+            //}
 
-            
+
+            count = 0;
+            foreach (FigurateNumber triangle in nums.Where(i => i.Type == FigurateType.Triangle))
+            {
+                count++;
+                Console.WriteLine(count);
+
+                foreach (FigurateNumber square in nums.Where(i => i.Type == FigurateType.Square))
+                {
+                    foreach (FigurateNumber pent in nums.Where(i => i.Type == FigurateType.Pentagonal))
+                    {
+                        foreach (FigurateNumber hex in nums.Where(i => i.Type == FigurateType.Hexagonal))
+                        {
+                            foreach (FigurateNumber hep in nums.Where(i => i.Type == FigurateType.Heptagonal))
+                            {
+                                foreach (FigurateNumber oct in nums.Where(i => i.Type == FigurateType.Octagonal))
+                                {
+                                    //List<int> set = [triangle.Number, square.Number, pent.Number, hex.Number, hep.Number, oct.Number];
+
+                                    //// Need to iterate over all orders of the set
+                                    //// See https://www.codeproject.com/Articles/26050/Permutations-Combinations-and-Variations-using-C-G
+
+                                    //Permutations<int> perms = new(set, GenerateOption.WithoutRepetition);
+
+                                    //foreach (List<int> p in perms.Cast<List<int>>())
+                                    //{
+                                    //    if (p.IsCyclicSet(2))
+                                    //    {
+                                    //        Console.WriteLine("Found set: {0}", p.PrettyPrint());
+                                    //        return;
+                                    //    }
+                                    //}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            //Console.WriteLine("Set not found.");
+
+
+
+
+
 
             //throw new NotImplementedException();
         }

@@ -6,11 +6,15 @@ namespace Core
 {
     public static class NumberExtensions
     {
+        public static string PrettyPrint(this List<int> list)
+        {
+            return String.Format("{{ {0} }}", String.Join(", ", list));
+        }
+
         public static bool IsCyclicSet(this List<int> set, int cycleSize)
         {
             for(int i = 0; i < set.Count; i++)
             {
-                Console.WriteLine(i);
                 if (i == set.Count - 1)
                 {
                     // It's the last item in the set, so the cycle continues with the first item of the set.
@@ -23,7 +27,6 @@ namespace Core
                 }
                 else
                 {
-                    Console.WriteLine("Last item in set: false");
                     if (set[i].ToString().Right(cycleSize) != set[i + 1].ToString().Left(cycleSize))
                         return false;
                 }
