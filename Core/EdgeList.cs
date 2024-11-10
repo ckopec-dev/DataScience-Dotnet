@@ -39,7 +39,7 @@ namespace Core
 
         public int VertexCount { get; set; }
         public int EdgeCount { get; set; }
-
+        
         public EdgeList(List<string> lines)
         {
             //VertexCount = lines[0][0];
