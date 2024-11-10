@@ -1,8 +1,39 @@
 ﻿
+using System;
+using System.Reflection;
+
 namespace Core
 {
     public static class DateTimeExtensions
     {
+        public static bool IsUSStockMarketOpen(this DateTime date)
+        {
+            // The U.S.stock market is closed on: New Year's Day, Martin Luther King, Jr. Day, Presidents Day (Washington's Birthday), Good Friday, Memorial Day, Independence Day, Labor Day, Thanksgiving Day, and Christmas Day.
+            // If a holiday falls on a weekend, the stock market may close on the previous Friday, as is often the case for Good Friday and Easter.
+            // Create boolean IsUSStockMarketHoliday datetime extension.Also include Saturdays and Sundays.
+
+            if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
+                return false;
+
+            // If it isn't in this list, the assumption is a true result. As of creation, the list only goes back to 2012.
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Core.Data.USStockMarketHolidays.txt") ?? throw new Exception("Resource not found: USStockMarketHolidays.txt");
+            using StreamReader sr = new(mrs);
+
+            while(!sr.EndOfStream)
+            {
+                string? holiday = sr.ReadLine();
+                if (holiday != null)
+                {
+                    DateTime h = Convert.ToDateTime(holiday);
+
+                    if (date == h)
+                        return false;
+                }
+            }
+
+            return true;
+        }
+
         public static bool IsLeapYear(this DateTime date)
         {
             int year = date.Year;
