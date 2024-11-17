@@ -1,4 +1,6 @@
 ﻿
+using System.Text;
+
 namespace Core
 {
     /// <summary>
@@ -73,7 +75,16 @@ namespace Core
 
         public override string? ToString()
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new();
+
+            sb.AppendLine(String.Format("{0} {1}", VertexCount, EdgeCount));
+
+            foreach(Edge e in Edges)
+            {
+                sb.AppendLine(String.Format("{0} {1} {2}", e.VertexA, e.VertexB, e.Weight).Trim());
+            }
+
+            return sb.ToString();
         }
     }
 }
