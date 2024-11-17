@@ -41,12 +41,34 @@ namespace Core
         public int EdgeCount { get; set; }
         public List<Edge> Edges { get; set; }
         
-        public EdgeList(List<string> lines)
+        public EdgeList()
         {
-            //VertexCount = lines[0][0];
-            //EdgeCount = lines[0][1];
+            VertexCount = 0;
+            EdgeCount = 0;
+            Edges = [];
+        }
 
-            throw new NotImplementedException();
+        public EdgeList(int vertexCount, int edgeCount, List<Edge> edges)
+        {
+            VertexCount = vertexCount;
+            EdgeCount = edgeCount;
+            Edges = edges;
+        }
+
+        public EdgeList(List<string> list)
+        {
+            VertexCount = list[0][0];
+            EdgeCount = list[0][1];
+            Edges = [];
+
+            for (int i = 2; i < list.Count; i++)
+            {
+                int[] vals = list[i].ToIntArray(' ');
+                if (vals.Length == 2)
+                    Edges.Add(new Edge(vals[0], vals[1]));
+                if (vals.Length == 3)
+                    Edges.Add(new Edge(vals[0], vals[1], vals[2]));
+            }
         }
 
         public override string? ToString()
