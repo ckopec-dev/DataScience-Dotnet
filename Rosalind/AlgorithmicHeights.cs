@@ -133,6 +133,10 @@ namespace Rosalind
             Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.ddeg.txt") ?? throw new Exception("Resource not found: ddeg.txt");
             using StreamReader sr = new(mrs);
 
+            //string input = sr.ReadToEnd().ToDoubleListArray()
+            EdgeList e = new();
+
+
             //List<double[]> input = sr.ReadToEnd().Trim().ToDoubleListArray('\n', ' ');
 
             ////SortedDictionary<double, int> dic = new();

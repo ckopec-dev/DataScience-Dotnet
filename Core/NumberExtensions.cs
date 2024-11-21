@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.Numerics;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 namespace Core
@@ -1092,6 +1093,37 @@ namespace Core
             }
 
             return false;
+        }
+
+        public static List<int[]> ToIntListArray(this string val, char rowDelimiter, char colDelimiter)
+        {
+            List<int[]> data = [];
+
+            string[] lines = val.Split(rowDelimiter);
+
+            //Console.WriteLine("lines: {0}", lines);
+            for (int i = 1; i <= lines.Length; i++)
+            {
+                string[] fields = lines[i - 1].Split(colDelimiter);
+
+                int[] d = new int[fields.Length];
+
+                for (int j = 0; j < fields.Length; j++)
+                {
+                    try
+                    {
+                        d[j] = Convert.ToInt32(fields[j].Trim());
+                    }
+                    catch
+                    {
+                        throw new InvalidDataException(String.Format("Line {0} is in incorrect format.", i));
+                    }
+                }
+
+                data.Add(d);
+            }
+
+            return data;
         }
 
         public static List<double[]> ToDoubleListArray(this string val, char rowDelimiter, char colDelimiter)
