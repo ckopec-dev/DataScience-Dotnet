@@ -59,11 +59,12 @@ namespace Core
 
         public EdgeList(List<string> list)
         {
-            VertexCount = list[0][0];
-            EdgeCount = list[0][1];
+            int[] firstRow = list[0].ToIntArray(' ');
+            VertexCount = firstRow[0];
+            EdgeCount = firstRow[1];
             Edges = [];
 
-            for (int i = 2; i < list.Count; i++)
+            for (int i = 1; i < list.Count; i++)
             {
                 int[] vals = list[i].ToIntArray(' ');
                 if (vals.Length == 2)
