@@ -39,10 +39,16 @@ namespace Core
 
         */
 
+        #region Fields
+
         public int VertexCount { get; set; }
         public int EdgeCount { get; set; }
         public List<Edge> Edges { get; set; }
-        
+
+        #endregion
+
+        #region Ctors/Dtors
+
         public EdgeList()
         {
             VertexCount = 0;
@@ -74,6 +80,10 @@ namespace Core
             }
         }
 
+        #endregion
+
+        #region Public methods
+
         public override string? ToString()
         {
             StringBuilder sb = new();
@@ -87,5 +97,7 @@ namespace Core
 
             return sb.ToString();
         }
+
+        #endregion
     }
 }

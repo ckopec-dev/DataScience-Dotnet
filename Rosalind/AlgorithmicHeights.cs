@@ -135,12 +135,18 @@ namespace Rosalind
 
             #pragma warning disable IDE0305 // Simplify collection initialization
             List<string> lst = sr.ReadToEnd().ToList();
-#pragma warning restore IDE0305 // Simplify collection initialization
+            #pragma warning restore IDE0305 // Simplify collection initialization
             
             EdgeList e = new(lst);
 
-            Console.WriteLine(e);
-            
+            for(int i = 0; i < e.VertexCount; i++)
+            {
+                // For each vertex, count the number of edges of each connected vertex and print out the results.
+
+
+            }
+
+
             //throw new NotImplementedException();
         }
 
