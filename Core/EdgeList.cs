@@ -47,6 +47,25 @@ namespace Core
 
         #endregion
 
+        #region Properties
+
+        public List<Vertex> Vertices 
+        {
+            get
+            {
+                List<Vertex> list = [];
+
+                for (int i = 0; i < VertexCount; i++)
+                {
+                    list.Add(new Vertex()); 
+                }
+
+                return list;
+            }
+        }
+
+        #endregion
+
         #region Ctors/Dtors
 
         public EdgeList()

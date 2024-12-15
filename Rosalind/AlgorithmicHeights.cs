@@ -143,7 +143,7 @@ namespace Rosalind
             {
                 // For each vertex, count the number of edges of each connected vertex and print out the results.
 
-
+                Console.WriteLine("i: {0}", i);
             }
 
 
