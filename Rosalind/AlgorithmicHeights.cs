@@ -139,9 +139,13 @@ namespace Rosalind
             
             EdgeList e = new(lst);
 
-            // todo: transition to graph class. edgelist becomes more of a helper class to graph. tbd.
+            // todo: implement quikgraph
+            // see:
+            // https://github.com/KeRNeLith/QuikGraph/wiki
+            // https://github.com/KeRNeLith/QuikGraph/wiki/README
+            // https://github.com/KeRNeLith/QuikGraph/wiki/Creating-Graphs
 
-            for(int i = 0; i < e.VertexCount; i++)
+            for (int i = 0; i < e.VertexCount; i++)
             {
                 // For each vertex, count the number of edges of each connected vertex and print out the results.
 
