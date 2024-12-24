@@ -7,13 +7,14 @@ namespace UnitTests
     public class SalesforceHelperUnitTests
     {
         readonly RestClient client = new();
-        private TestContext? testContextInstance;
 
-        public TestContext? TestContext
-        {
-            get { return testContextInstance; }
-            set { testContextInstance = value; }
-        }
+        //public TestContext? TestContext { get; set; }
+
+        //public TestContext? TestContext
+        //{
+        //    get { return testContextInstance; }
+        //    set { testContextInstance = value; }
+        //}
 
         private void LoginHelper()
         {
@@ -34,8 +35,8 @@ namespace UnitTests
                 Secrets.SalesforceClientSecret,
                 Secrets.SalesforceUsername,
                 Secrets.SalesforcePassword);
-            
-            Assert.AreEqual(result, true);
+
+            Assert.IsTrue(result);
         }
 
         [TestMethod]
@@ -43,7 +44,7 @@ namespace UnitTests
         {
             List<Core.Salesforce.Version> versions = client.Versions(Secrets.SalesforceDomain);
 
-            Assert.AreNotEqual(versions.Count, 0);
+            Assert.AreNotEqual(0, versions.Count);
         }
 
         [TestMethod]
@@ -53,7 +54,7 @@ namespace UnitTests
 
             var resources = client.Resources();
 
-            Assert.AreNotEqual(resources, null);
+            Assert.IsNotNull(resources);
         }
     }
 }
