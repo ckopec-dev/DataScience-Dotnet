@@ -1,4 +1,5 @@
 ﻿using Core;
+using QuikGraph;
 using System.Reflection;
 
 namespace Rosalind
@@ -138,22 +139,16 @@ namespace Rosalind
             #pragma warning restore IDE0305 // Simplify collection initialization
             
             EdgeList e = new(lst);
+            var graph = e.ToAdjacencyGraph();
 
-            // todo: implement quikgraph
-            // see:
-            // https://github.com/KeRNeLith/QuikGraph/wiki
-            // https://github.com/KeRNeLith/QuikGraph/wiki/README
-            // https://github.com/KeRNeLith/QuikGraph/wiki/Creating-Graphs
-
-            for (int i = 0; i < e.VertexCount; i++)
+            // For each vertex, count the number of edges of each connected vertex and print out the results.
+            foreach (int vertex in graph.Vertices)
             {
-                // For each vertex, count the number of edges of each connected vertex and print out the results.
-
-                Console.WriteLine("i: {0}", i);
+                foreach (Edge<int> edge in graph.OutEdges(vertex))
+                {
+                    Console.WriteLine(edge);
+                }
             }
-
-
-            //throw new NotImplementedException();
         }
 
         #endregion

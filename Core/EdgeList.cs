@@ -1,5 +1,4 @@
 ﻿using QuikGraph;
-using System.Security.Cryptography;
 using System.Text;
 
 namespace Core
@@ -118,9 +117,12 @@ namespace Core
             return sb.ToString();
         }
 
-        public AdjacencyGraph<int, Edge<int>> ToGraph()
+        public AdjacencyGraph<int, Edge<int>> ToAdjacencyGraph()
         {
-            
+            // https://github.com/KeRNeLith/QuikGraph/wiki
+            // https://github.com/KeRNeLith/QuikGraph/wiki/README
+            // https://github.com/KeRNeLith/QuikGraph/wiki/Creating-Graphs
+
             AdjacencyGraph<int, Edge<int>> graph = new();
 
             for (int i = 1; i <= VertexCount; i++)
