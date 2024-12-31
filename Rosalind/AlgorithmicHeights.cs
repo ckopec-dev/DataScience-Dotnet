@@ -1,5 +1,6 @@
 ﻿using Core;
 using QuikGraph;
+using System.Globalization;
 using System.Reflection;
 
 namespace Rosalind
@@ -141,13 +142,36 @@ namespace Rosalind
             EdgeList e = new(lst);
             var graph = e.ToAdjacencyGraph();
 
+            // TODO: format output
+
             // For each vertex, count the number of edges of each connected vertex and print out the results.
-            foreach (int vertex in graph.Vertices)
+            for (int i = 1; i <= graph.Vertices.Count(); ++i)
             {
-                foreach (Edge<int> edge in graph.OutEdges(vertex))
+                Console.WriteLine("Vertex {0}", i);
+
+                int sum = 0;
+
+                foreach (var ed in graph.Edges.Where(j => j.Source == i || j.Target == i))
                 {
-                    Console.WriteLine(edge);
+                    // Each result is a neighbor. 
+                    // Sum the neighbor's edge count.
+
+                    Console.WriteLine("\t{0}, {1}", ed.Source, ed.Target);
+
+                    if (ed.Source == i)
+                    {
+                        // The target is the neighbor.
+                        sum += graph.Edges.Where(k => k.Source == ed.Target || k.Target == ed.Target).Count();
+                    }
+                    else
+                    {
+                        // The source is the neighbor.
+                        sum += graph.Edges.Where(k => k.Source == ed.Source || k.Target == ed.Source).Count();
+
+                    }
                 }
+
+                Console.WriteLine("\tSum: {0}", sum);
             }
         }
 
