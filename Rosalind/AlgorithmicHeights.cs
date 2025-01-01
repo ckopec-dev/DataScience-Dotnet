@@ -2,6 +2,7 @@
 using QuikGraph;
 using System.Globalization;
 using System.Reflection;
+using System.Text;
 
 namespace Rosalind
 {
@@ -142,12 +143,12 @@ namespace Rosalind
             EdgeList e = new(lst);
             var graph = e.ToAdjacencyGraph();
 
-            // TODO: format output
-
+            StringBuilder sb = new();
+            
             // For each vertex, count the number of edges of each connected vertex and print out the results.
             for (int i = 1; i <= graph.Vertices.Count(); ++i)
             {
-                Console.WriteLine("Vertex {0}", i);
+                //Console.WriteLine("Vertex {0}", i);
 
                 int sum = 0;
 
@@ -156,7 +157,7 @@ namespace Rosalind
                     // Each result is a neighbor. 
                     // Sum the neighbor's edge count.
 
-                    Console.WriteLine("\t{0}, {1}", ed.Source, ed.Target);
+                    //Console.WriteLine("\t{0}, {1}", ed.Source, ed.Target);
 
                     if (ed.Source == i)
                     {
@@ -171,8 +172,11 @@ namespace Rosalind
                     }
                 }
 
-                Console.WriteLine("\tSum: {0}", sum);
+                sb.Append(sum + " ");
+                
             }
+
+            Console.WriteLine(sb.ToString().Trim());
         }
 
         #endregion
