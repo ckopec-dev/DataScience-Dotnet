@@ -2284,7 +2284,29 @@ namespace Euler
 
         static void Problem62()
         {
-            throw new NotImplementedException();
+            // Find the smallest cube for which exactly five permutations of its digits are cube.
+
+            // Calculate cubes from 1 to n and store the result in a list.
+            // For each new cube, count how many in the list are permutation.
+
+            long i = 0;
+            List<long> cubes = [];
+            
+            while (true)
+            {
+                i++;
+                long cube = i * i * i;
+
+                var matches = cubes.Where(j => j.IsPermutation(cube));
+                
+                cubes.Add(cube);
+
+                if (matches.Count() >= 5)
+                {
+                    Console.WriteLine("{0}: {1}, First match: {2}", i, matches.Count(), matches.First());
+                    break;
+                }
+            }
         }
 
         #endregion

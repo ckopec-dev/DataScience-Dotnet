@@ -2,6 +2,7 @@
 using System.IO.Compression;
 using System.Text.RegularExpressions;
 using System.Text;
+using System.Runtime.CompilerServices;
 
 namespace Core
 {
@@ -418,6 +419,29 @@ namespace Core
                 return true;
             else
                 return false;
+        }
+
+        public static bool IsPermutation(this long n, long numToMatch)
+        {
+            return IsPermutation(n.ToString(), numToMatch.ToString());
+        }
+
+        public static bool IsPermutation(this string str, string strToMatch)
+        {
+            if (str.Length != strToMatch.Length)
+                return false;
+
+            char[] c1 = str.ToCharArray();
+            char[] c2 = strToMatch.ToCharArray();
+
+            Array.Sort(c1);
+            Array.Sort(c2);
+
+            for (int i = 0; i < c1.Length; i++)
+                if (c1[i] != c2[i])
+                    return false;
+
+            return true;
         }
 
         public static string ToBase64(this string plainText)
