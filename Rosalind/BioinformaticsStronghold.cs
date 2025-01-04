@@ -65,6 +65,11 @@ namespace Rosalind
             Console.WriteLine(dna.ReverseCompliment);
         }
 
+        public static void ProblemFIB()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }
