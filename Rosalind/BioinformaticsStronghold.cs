@@ -67,6 +67,16 @@ namespace Rosalind
 
         public static void ProblemFIB()
         {
+            const int TOTAL_MONTHS = 5;
+            //const int LITTER_PAIRS = 3;
+
+            int total_rabbits = 0;
+
+            for (int month = 1; month <= TOTAL_MONTHS; month++)
+            {
+                Console.WriteLine("Month {0}: {1}", month, total_rabbits);
+            }
+
             throw new NotImplementedException();
         }
 
