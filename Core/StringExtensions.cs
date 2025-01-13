@@ -3,6 +3,7 @@ using System.IO.Compression;
 using System.Text.RegularExpressions;
 using System.Text;
 using System.Runtime.CompilerServices;
+using System.Text.Json;
 
 namespace Core
 {
@@ -456,6 +457,18 @@ namespace Core
             var base64EncodedBytes = Convert.FromBase64String(base64EncodedData);
 
             return Encoding.UTF8.GetString(base64EncodedBytes);
+        }
+
+        public static string ToPrettyJson(this string unprettyJson)
+        {
+            var options = new JsonSerializerOptions()
+            {
+                WriteIndented = true
+            };
+
+            var jsonElement = JsonSerializer.Deserialize<JsonElement>(unprettyJson);
+
+            return JsonSerializer.Serialize(jsonElement, options);
         }
     }
 }
