@@ -1,5 +1,4 @@
-﻿using Core;
-using Core.Bioinformatics;
+﻿using Core.Bioinformatics;
 using System.Reflection;
 
 namespace Rosalind
@@ -67,14 +66,23 @@ namespace Rosalind
 
         public static void ProblemFIB()
         {
-            const int TOTAL_MONTHS = 5;
-            //const int LITTER_PAIRS = 3;
+            // Population rules:
+            // The population begins in the first month with a pair of newborn rabbits.
+            // Rabbits reach reproductive age after one month.
+            // In any given month, every rabbit of reproductive age mates with another rabbit of reproductive age.
+            // Exactly one month after two rabbits mate, they produce n pairs of one male and one female rabbit per pair.
+            // Rabbits never die or stop reproducing.
 
-            int total_rabbits = 0;
+            const int TOTAL_MONTHS = 5;
+            const int LITTER_PAIRS = 1;
+
+            int total_adult_pairs = 0;
+            int total_newborn_pairs = 1;
 
             for (int month = 1; month <= TOTAL_MONTHS; month++)
             {
-                Console.WriteLine("Month {0}: {1}", month, total_rabbits);
+                Console.WriteLine("Month {0}: ({1}) adult pair(s), ({2} newborn pair(s), ({3} total pair(s)",
+                    month, total_adult_pairs, total_newborn_pairs, total_adult_pairs + total_newborn_pairs);
             }
 
             throw new NotImplementedException();
