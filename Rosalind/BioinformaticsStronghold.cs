@@ -76,16 +76,20 @@ namespace Rosalind
             const int TOTAL_MONTHS = 5;
             const int LITTER_PAIRS = 1;
 
-            int total_adult_pairs = 0;
-            int total_newborn_pairs = 1;
+            int adult_pairs = 0;
+            int newborn_pairs = 1;
 
             for (int month = 1; month <= TOTAL_MONTHS; month++)
             {
-                Console.WriteLine("Month {0}: ({1}) adult pair(s), ({2} newborn pair(s), ({3} total pair(s)",
-                    month, total_adult_pairs, total_newborn_pairs, total_adult_pairs + total_newborn_pairs);
+                Console.WriteLine("Month {0}: {1} adult pair(s), {2} newborn pair(s), ({3} total pair(s)",
+                    month, adult_pairs, newborn_pairs, adult_pairs + newborn_pairs);
+
+                // All existing newborns turn into adults.
+                adult_pairs += newborn_pairs;
+                newborn_pairs = 0;
             }
 
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         #endregion
