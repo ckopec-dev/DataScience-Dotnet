@@ -74,24 +74,24 @@ namespace Rosalind
             // Exactly one month after two rabbits mate, they produce n pairs of one male and one female rabbit per pair.
             // Rabbits never die or stop reproducing.
 
-            const int TOTAL_MONTHS = 6;
-            const int LITTER_PAIRS = 1;
+            const long TOTAL_MONTHS = 31;
+            const long LITTER_PAIRS = 5;
 
-            int adult_pairs = 0;
-            int pregnant_pairs = 0;
-            int newborn_pairs = 1;
+            long adult_pairs = 0;
+            long pregnant_pairs = 0;
+            long newborn_pairs = 1;
 
-            for (int month = 1; month <= TOTAL_MONTHS; month++)
+            for (long month = 1; month <= TOTAL_MONTHS; month++)
             {
                 Console.WriteLine("Month {0}: {1} adult pair(s), {2} pregnant pairs, {3} newborn pair(s), ({4} total pair(s)",
                     month, adult_pairs, pregnant_pairs, newborn_pairs, adult_pairs + newborn_pairs);
 
-                int current_adult_pairs = adult_pairs;
-                int current_pregnant_pairs = pregnant_pairs;
-                int current_newborn_pairs = newborn_pairs;
+                long current_adult_pairs = adult_pairs;
+                long current_pregnant_pairs = pregnant_pairs;
+                long current_newborn_pairs = newborn_pairs;
 
-                // All pregnant pairs produce newborns.
-                newborn_pairs = current_pregnant_pairs;
+                // All pregnant pairs produce LITTER_PAIRS newborns.
+                newborn_pairs = current_pregnant_pairs * LITTER_PAIRS;
 
                 // All newborns mature into adults.
                 adult_pairs += current_newborn_pairs;
