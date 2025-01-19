@@ -69,27 +69,36 @@ namespace Rosalind
             // Population rules:
             // The population begins in the first month with a pair of newborn rabbits.
             // Rabbits reach reproductive age after one month.
+            
             // In any given month, every rabbit of reproductive age mates with another rabbit of reproductive age.
             // Exactly one month after two rabbits mate, they produce n pairs of one male and one female rabbit per pair.
             // Rabbits never die or stop reproducing.
 
-            const int TOTAL_MONTHS = 5;
+            const int TOTAL_MONTHS = 6;
             const int LITTER_PAIRS = 1;
 
             int adult_pairs = 0;
+            int pregnant_pairs = 0;
             int newborn_pairs = 1;
 
             for (int month = 1; month <= TOTAL_MONTHS; month++)
             {
-                Console.WriteLine("Month {0}: {1} adult pair(s), {2} newborn pair(s), ({3} total pair(s)",
-                    month, adult_pairs, newborn_pairs, adult_pairs + newborn_pairs);
+                Console.WriteLine("Month {0}: {1} adult pair(s), {2} pregnant pairs, {3} newborn pair(s), ({4} total pair(s)",
+                    month, adult_pairs, pregnant_pairs, newborn_pairs, adult_pairs + newborn_pairs);
 
-                // All existing newborns turn into adults.
-                adult_pairs += newborn_pairs;
-                newborn_pairs = 0;
+                int current_adult_pairs = adult_pairs;
+                int current_pregnant_pairs = pregnant_pairs;
+                int current_newborn_pairs = newborn_pairs;
+
+                // All pregnant pairs produce newborns.
+                newborn_pairs = current_pregnant_pairs;
+
+                // All newborns mature into adults.
+                adult_pairs += current_newborn_pairs;
+
+                // All adults mate.
+                pregnant_pairs = adult_pairs;
             }
-
-            //throw new NotImplementedException();
         }
 
         #endregion
