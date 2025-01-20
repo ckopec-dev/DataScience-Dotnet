@@ -2311,9 +2311,30 @@ namespace Euler
 
         static void Problem63()
         {
+            // Range is small enough to brute force.
+            
+            long count = 0;
 
+            for (int i = 1; i <= 30; i++)
+            {
+                BigInteger p = 0;
+                BigInteger b = 1;
 
-            throw new NotImplementedException();
+                while (p.ToString().Length < (i + 1))
+                {
+                    p = BigInteger.Pow(b, i);
+
+                    if (p.ToString().Length == i)
+                    {
+                        Console.WriteLine("{0}^{1}: {2}", b, i, p);
+                        count++;
+                    }
+
+                    b++;
+                }
+            }
+
+            Console.WriteLine("count: {0}", count);
         }
 
         #endregion
