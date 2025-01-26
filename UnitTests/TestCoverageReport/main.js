@@ -221,7 +221,7 @@ var assemblies = [
   {
     "name": "Core",
     "classes": [
-      { "name": "Core.Bioinformatics.Dna", "rp": "Core_Dna.html", "cl": 14, "ucl": 25, "cal": 39, "tl": 69, "cb": 2, "tb": 14, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Bioinformatics.Dna", "rp": "Core_Dna.html", "cl": 24, "ucl": 15, "cal": 39, "tl": 69, "cb": 2, "tb": 14, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Bioinformatics.NucleicAcid", "rp": "Core_NucleicAcid.html", "cl": 1, "ucl": 12, "cal": 13, "tl": 36, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Bioinformatics.Rna", "rp": "Core_Rna.html", "cl": 14, "ucl": 7, "cal": 21, "tl": 42, "cb": 2, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.CompressionHelper", "rp": "Core_CompressionHelper.html", "cl": 0, "ucl": 38, "cal": 38, "tl": 63, "cb": 0, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -252,7 +252,7 @@ var assemblies = [
       { "name": "Core.SortHelper", "rp": "Core_SortHelper.html", "cl": 0, "ucl": 117, "cal": 117, "tl": 176, "cb": 0, "tb": 50, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.SqlHelper", "rp": "Core_SqlHelper.html", "cl": 0, "ucl": 105, "cal": 105, "tl": 169, "cb": 0, "tb": 18, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Statistics", "rp": "Core_Statistics.html", "cl": 0, "ucl": 46, "cal": 46, "tl": 78, "cb": 0, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.StringExtensions", "rp": "Core_StringExtensions.html", "cl": 6, "ucl": 282, "cal": 288, "tl": 461, "cb": 0, "tb": 84, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.StringExtensions", "rp": "Core_StringExtensions.html", "cl": 10, "ucl": 403, "cal": 413, "tl": 474, "cb": 0, "tb": 166, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.TimeSpanExtensions", "rp": "Core_TimeSpanExtensions.html", "cl": 0, "ucl": 10, "cal": 10, "tl": 20, "cb": 0, "tb": 6, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Vertex", "rp": "Core_Vertex.html", "cl": 0, "ucl": 3, "cal": 3, "tl": 10, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
     ]},
@@ -382,6 +382,12 @@ var riskHotspots = [
       { "value": 10, "exceeded": false },
     ]},
   {
+    "assembly": "Core", "class": "Core.StringExtensions", "reportPath": "Core_StringExtensions.html", "methodName": "LargestCommonSubstring(System.Collections.Generic.List`1<System.String>)", "methodShortName": "LargestCommonSubstring(...)", "fileIndex": 0, "line": 330,
+    "metrics": [
+      { "value": 110, "exceeded": true },
+      { "value": 10, "exceeded": false },
+    ]},
+  {
     "assembly": "Core", "class": "Core.StringExtensions", "reportPath": "Core_StringExtensions.html", "methodName": "LargestCommonSubstring(System.Collections.Generic.List`1<System.String>)", "methodShortName": "LargestCommonSubstring(...)", "fileIndex": 0, "line": 329,
     "metrics": [
       { "value": 110, "exceeded": true },
@@ -425,6 +431,12 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.SortHelper", "reportPath": "Core_SortHelper.html", "methodName": "Partition(System.Int32[],System.Int32,System.Int32)", "methodShortName": "Partition(...)", "fileIndex": 0, "line": 146,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.StringExtensions", "reportPath": "Core_StringExtensions.html", "methodName": "ToCsvValue(T)", "methodShortName": "ToCsvValue(...)", "fileIndex": 0, "line": 142,
     "metrics": [
       { "value": 72, "exceeded": true },
       { "value": 8, "exceeded": false },
@@ -563,6 +575,36 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.SqlHelper", "reportPath": "Core_SqlHelper.html", "methodName": "ToSearchTerms(System.String)", "methodShortName": "ToSearchTerms(...)", "fileIndex": 0, "line": 143,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.StringExtensions", "reportPath": "Core_StringExtensions.html", "methodName": "ToProperCase(System.String)", "methodShortName": "ToProperCase(...)", "fileIndex": 0, "line": 27,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.StringExtensions", "reportPath": "Core_StringExtensions.html", "methodName": "ContainsAny(System.String,System.String)", "methodShortName": "ContainsAny(...)", "fileIndex": 0, "line": 164,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.StringExtensions", "reportPath": "Core_StringExtensions.html", "methodName": "ToFriendlyDuration(System.TimeSpan,System.Int32)", "methodShortName": "ToFriendlyDuration(...)", "fileIndex": 0, "line": 188,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.StringExtensions", "reportPath": "Core_StringExtensions.html", "methodName": "Merge(System.Collections.Generic.List`1<System.String>,System.Char)", "methodShortName": "Merge(...)", "fileIndex": 0, "line": 295,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.StringExtensions", "reportPath": "Core_StringExtensions.html", "methodName": "IsPermutation(System.String,System.String)", "methodShortName": "IsPermutation(...)", "fileIndex": 0, "line": 431,
     "metrics": [
       { "value": 42, "exceeded": true },
       { "value": 6, "exceeded": false },

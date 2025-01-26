@@ -25,6 +25,7 @@
                     case "/rna": BioinformaticsStronghold.ProblemRNA(); break;
                     case "/revc": BioinformaticsStronghold.ProblemREVC(); break;
                     case "/fib": BioinformaticsStronghold.ProblemFIB(); break;
+                    case "/gc": BioinformaticsStronghold.ProblemGC(); break;
 
                     default: Console.WriteLine(switchErr); break;
                 }

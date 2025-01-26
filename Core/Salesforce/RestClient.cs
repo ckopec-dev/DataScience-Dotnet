@@ -1,10 +1,10 @@
-﻿
-using System.Net.Http.Headers;
+﻿using System.Net.Http.Headers;
 using System.Text.Json;
 
 namespace Core.Salesforce
 {
     /// <summary>
+    /// See https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_rest.htm
     /// General url syntax: https://mydomainname.my.salesforce.com/services/data/vXX.X/resource/
     /// </summary>
     public class RestClient()

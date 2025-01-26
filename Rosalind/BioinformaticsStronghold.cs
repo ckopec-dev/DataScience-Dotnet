@@ -86,9 +86,11 @@ namespace Rosalind
                 Console.WriteLine("Month {0}: {1} adult pair(s), {2} pregnant pairs, {3} newborn pair(s), ({4} total pair(s)",
                     month, adult_pairs, pregnant_pairs, newborn_pairs, adult_pairs + newborn_pairs);
 
+                #pragma warning disable IDE0059 // Unnecessary assignment of a value
                 long current_adult_pairs = adult_pairs;
                 long current_pregnant_pairs = pregnant_pairs;
                 long current_newborn_pairs = newborn_pairs;
+                #pragma warning restore IDE0059 // Unnecessary assignment of a value
 
                 // All pregnant pairs produce LITTER_PAIRS newborns.
                 newborn_pairs = current_pregnant_pairs * LITTER_PAIRS;
@@ -99,6 +101,16 @@ namespace Rosalind
                 // All adults mate.
                 pregnant_pairs = adult_pairs;
             }
+        }
+
+        public static void ProblemGC()
+        {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.gc.txt") ?? throw new Exception("Resource not found: gc.txt");
+            using StreamReader sr = new(mrs);
+
+            string input = sr.ReadToEnd().Trim();
+
+            throw new NotImplementedException();
         }
 
         #endregion
