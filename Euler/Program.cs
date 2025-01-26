@@ -2,7 +2,10 @@
 using Core;
 using Core.GameTheory;
 using Microsoft.Identity.Client;
+using ScottPlot.Colormaps;
+using ScottPlot;
 using ScottPlot.Hatches;
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
@@ -10,6 +13,7 @@ using System.Numerics.Generic;
 using System.Reflection;
 using System.Text;
 using System.Threading;
+using static QuikGraph.Algorithms.Assignment.HungarianAlgorithm;
 
 namespace Euler
 {
@@ -2335,6 +2339,16 @@ namespace Euler
             }
 
             Console.WriteLine("count: {0}", count);
+        }
+
+        static void Problem64()
+        {
+            // How to calculate the continued fraction for a square root:
+            // Set up the initial equation: Let x be the square root you want to expand, and set up an equation like this: x = a + (x - a) where "a" is the integer part of x.
+            // Isolate the fractional part: Rearrange the equation to isolate the fractional part of x.
+            // Repeat the process: Take the reciprocal of the fractional part and repeat steps 1 and 2, finding the integer part and the new fractional part.
+
+            throw new NotImplementedException();
         }
 
         #endregion
