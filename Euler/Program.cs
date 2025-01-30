@@ -1,19 +1,11 @@
 ﻿using Combinatorics.Collections;
+using ConsoleTables;
 using Core;
 using Core.GameTheory;
-using Microsoft.Identity.Client;
-using ScottPlot.Colormaps;
-using ScottPlot;
-using ScottPlot.Hatches;
-using System;
 using System.Diagnostics;
-using System.Linq;
 using System.Numerics;
-using System.Numerics.Generic;
 using System.Reflection;
 using System.Text;
-using System.Threading;
-using static QuikGraph.Algorithms.Assignment.HungarianAlgorithm;
 
 namespace Euler
 {
@@ -2343,12 +2335,43 @@ namespace Euler
 
         static void Problem64()
         {
+            // https://math.stackexchange.com/questions/265690/continued-fraction-of-a-square-root
             // How to calculate the continued fraction for a square root:
-            // Set up the initial equation: Let x be the square root you want to expand, and set up an equation like this: x = a + (x - a) where "a" is the integer part of x.
-            // Isolate the fractional part: Rearrange the equation to isolate the fractional part of x.
-            // Repeat the process: Take the reciprocal of the fractional part and repeat steps 1 and 2, finding the integer part and the new fractional part.
+            // E.g. x = sqrt(5)
 
-            throw new NotImplementedException();
+            // Step 1: Set up the initial equation: Let x be the square root you want to expand, and set up an equation like this: x = a + (x - a) where "a" is the integer part of x.
+            // x = Integer part + fractional part
+            // x = 2 + (x - 2)
+
+            // Step 2: Subtract 2 from x and take the reciprocol. I.e. calculate y = 1 / (x - 2).
+            // y = 4.24
+
+            // Step 3: Set x = y and go to step 1.
+
+            // First test: calculate x = 23
+            double x = 5;
+
+            Console.WriteLine("Calculating continued fraction for {0}.", x);
+            ConsoleTable table = new("step", "x", "root", "int", "1/root-int");
+            for (int a = 0; a <= 10m; a++)
+            {
+                // Take the square root of x.
+                double step1 = Math.Sqrt(x);
+
+                // Get the integer part of step1.
+                double step2 = Math.Truncate(step1);
+
+                // Subtract step2 from step 1 and take the reciprocol.
+                double step3 = 1 / (step1 - step2);
+
+                table.AddRow(a, x, step1, step2, step3);
+                
+                // Assign step3 to x.
+                x = step3;
+            }
+
+            table.Write();
+            //throw new NotImplementedException();
         }
 
         #endregion
