@@ -23,6 +23,8 @@
 
   <ItemGroup>
     <PackageReference Include="Combinatorics" Version="2.0.0" />
+    <PackageReference Include="ConsoleTables" Version="2.6.2" />
+    <PackageReference Include="ExtendedNumerics.BigDecimal" Version="3000.0.2.358" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
     <PackageReference Include="QuikGraph" Version="2.5.0" />
   </ItemGroup>

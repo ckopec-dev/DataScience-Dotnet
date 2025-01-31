@@ -2335,43 +2335,19 @@ namespace Euler
 
         static void Problem64()
         {
-            // https://math.stackexchange.com/questions/265690/continued-fraction-of-a-square-root
-            // How to calculate the continued fraction for a square root:
-            // E.g. x = sqrt(5)
+            int odd_periods = 0;
 
-            // Step 1: Set up the initial equation: Let x be the square root you want to expand, and set up an equation like this: x = a + (x - a) where "a" is the integer part of x.
-            // x = Integer part + fractional part
-            // x = 2 + (x - 2)
-
-            // Step 2: Subtract 2 from x and take the reciprocol. I.e. calculate y = 1 / (x - 2).
-            // y = 4.24
-
-            // Step 3: Set x = y and go to step 1.
-
-            // First test: calculate x = 23
-            double x = 5;
-
-            Console.WriteLine("Calculating continued fraction for {0}.", x);
-            ConsoleTable table = new("step", "x", "root", "int", "1/root-int");
-            for (int a = 0; a <= 10m; a++)
+            for(int i = 2; i <= 23; i++)
             {
-                // Take the square root of x.
-                double step1 = Math.Sqrt(x);
+                int root = i.ContinuedFraction(out List<int> repeat);
+                Console.WriteLine("{0}: {1}; {2}", i, root, String.Join(", ", repeat));
+                //Console.WriteLine("{0}, Period: {1}", i, period);
 
-                // Get the integer part of step1.
-                double step2 = Math.Truncate(step1);
-
-                // Subtract step2 from step 1 and take the reciprocol.
-                double step3 = 1 / (step1 - step2);
-
-                table.AddRow(a, x, step1, step2, step3);
-                
-                // Assign step3 to x.
-                x = step3;
+                //if (period % 2 == 1)
+                //    odd_periods++;
             }
 
-            table.Write();
-            //throw new NotImplementedException();
+            Console.WriteLine("Total odd periods: {0}", odd_periods);
         }
 
         #endregion
