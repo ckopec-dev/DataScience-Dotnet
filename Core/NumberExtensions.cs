@@ -1,8 +1,6 @@
-﻿using ConsoleTables;
-using ExtendedNumerics;
+﻿using ExtendedNumerics;
 using System.Globalization;
 using System.Numerics;
-using System.Reflection.Metadata;
 using System.Text;
 
 namespace Core
@@ -28,13 +26,13 @@ namespace Core
 
             // Step 3: Set x = y and go to step 1.
 
-            const int OVERFLOW = 1000;
+            const int OVERFLOW = 1000000;
 
             repeat = [];
 
             // Take the square root of x.
-            BigDecimal step1 = BigDecimal.SquareRoot(x, 100);
-            int original_root = (int)BigDecimal.Truncate(step1);
+            double step1 = Math.Sqrt(x);
+            int original_root = (int)Math.Truncate(step1);
 
             int a = -1;
 
@@ -49,7 +47,7 @@ namespace Core
                 }
 
                 // Get the integer part of step1.
-                BigDecimal step2 = BigDecimal.Truncate(step1);
+                double step2 = Math.Truncate(step1);
                 repeat.Add((int)step2);
 
                 // Subtract step2 from step 1 and take the reciprocol.
@@ -59,14 +57,17 @@ namespace Core
                     return 0;
                 }
 
-                BigDecimal step3 = 1m / (step1 - step2);
-                
+                double step3 = 1 / (step1 - step2);
+
+                Console.WriteLine(step3);
+
                 // Assign step3 to step1.
                 step1 = step3;
-                
+
                 // If we've seen this reciprocol before, the sequence is now repeating.
 
                 // Need better test of repeating digits...
+                // See https://learn.microsoft.com/en-us/dotnet/fundamentals/runtime-libraries/system-double-equals
                 if (a > 10)
                     break;
             }
