@@ -2335,21 +2335,19 @@ namespace Euler
 
         static void Problem64()
         {
-            //_ = 2.ContinuedFraction(out List<int> repeat);
-            
-            //int odd_periods = 0;
+            int odd_periods = 0;
 
-            //for(int i = 2; i <= 23; i++)
-            //{
-            //    int root = i.ContinuedFraction(out List<int> repeat);
-            //    Console.WriteLine("{0}: {1}; {2}", i, root, String.Join(", ", repeat));
-            //    //Console.WriteLine("{0}, Period: {1}", i, period);
+            for (int i = 2; i <= 10000; i++)
+            {
+                int root = i.ContinuedFraction(out List<int> repeat);
+                //Console.WriteLine("{0}: {1}; {2}", i, root, String.Join(", ", repeat));
+                Console.WriteLine("{0}: {1}", i, root);
 
-            //    //if (period % 2 == 1)
-            //    //    odd_periods++;
-            //}
+                if (repeat.Count % 2 == 1)
+                    odd_periods++;
+            }
 
-            //Console.WriteLine("Total odd periods: {0}", odd_periods);
+            Console.WriteLine("Total odd periods: {0}", odd_periods);
         }
 
         #endregion

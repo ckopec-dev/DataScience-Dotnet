@@ -1,5 +1,4 @@
-﻿using ExtendedNumerics;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Numerics;
 using System.Text;
 
@@ -7,6 +6,27 @@ namespace Core
 {
     public static class NumberExtensions
     {
+        public static bool HasMinimalDifference(this List<double> values, double n, double margin = 0.00001)
+        {
+            // Returns true if any member of the list has a minimal difference with n.
+            foreach (var v in values)
+            {
+                if (v.HasMinimalDifference(n, margin))
+                    return true;
+            }
+            return false;
+        }
+
+        public static bool HasMinimalDifference(this double value1, double value2, double margin = 0.00001)
+        {
+            double difference = Math.Abs(value1 * margin);
+
+            if (Math.Abs(value1 - value2) <= difference) 
+                return true;
+            else
+                return false;
+        }
+
         public static int ContinuedFraction(this int x, out List<int> repeat)
         {
             // Returns the integer value of the root.
@@ -30,6 +50,8 @@ namespace Core
 
             repeat = [];
 
+            List<double> recips = [];
+
             // Take the square root of x.
             double step1 = Math.Sqrt(x);
             int original_root = (int)Math.Truncate(step1);
@@ -48,18 +70,18 @@ namespace Core
 
                 // Get the integer part of step1.
                 double step2 = Math.Truncate(step1);
-                repeat.Add((int)step2);
+                
+                if (a > 0)
+                    repeat.Add((int)step2);
 
                 // Subtract step2 from step 1 and take the reciprocol.
                 // If step1 - step2 is 0, it's a rational root with period 0.
                 if (step1 - step2 == 0)
                 {
-                    return 0;
+                    return original_root;
                 }
 
                 double step3 = 1 / (step1 - step2);
-
-                Console.WriteLine(step3);
 
                 // Assign step3 to step1.
                 step1 = step3;
@@ -68,11 +90,15 @@ namespace Core
 
                 // Need better test of repeating digits...
                 // See https://learn.microsoft.com/en-us/dotnet/fundamentals/runtime-libraries/system-double-equals
-                if (a > 10)
-                    break;
+                if (recips.HasMinimalDifference(step3, 0.0000001))
+                {
+                    return original_root;
+                }
+                else
+                {
+                    recips.Add(step3);
+                }
             }
-
-            return original_root;
         }
 
         public static string PrettyPrint(this List<int> list)
