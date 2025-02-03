@@ -106,6 +106,11 @@ namespace Core
             return String.Format("{{ {0} }}", String.Join(", ", list));
         }
 
+        public static string PrettyPrint(this List<long> list)
+        {
+            return String.Format("{{ {0} }}", String.Join(", ", list));
+        }
+
         public static bool IsCyclicSet(this List<int> set, int cycleSize)
         {
             for(int i = 0; i < set.Count; i++)

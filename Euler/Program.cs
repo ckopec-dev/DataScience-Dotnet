@@ -2605,6 +2605,18 @@ namespace Euler
             }
         }
 
+        static void Misc12()
+        {
+            // From Recreations in the Theory of Numbers.
+            // Page 1, problem 1.
+
+            // Find the divisors of 16000001.
+
+            long n = 16000001;
+
+            Console.WriteLine(n.ProperDivisors().PrettyPrint());
+        }
+
         #endregion
 
         #pragma warning restore IDE0051 // Remove unused private members
