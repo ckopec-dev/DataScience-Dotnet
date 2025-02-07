@@ -46,59 +46,65 @@ namespace Core
 
             // Step 3: Set x = y and go to step 1.
 
-            const int OVERFLOW = 1000000;
+            //const int OVERFLOW = 1000000;
 
             repeat = [];
 
-            List<double> recips = [];
+            //List<double> recips = [];
 
             // Take the square root of x.
             double step1 = Math.Sqrt(x);
             int original_root = (int)Math.Truncate(step1);
 
-            int a = -1;
+            if (original_root * original_root == x) return x;
 
-            while (1 == 1)
-            {
-                a++;
 
-                // Guard against infinite loops
-                if (a > OVERFLOW)
-                {
-                    throw new Exception("Infinite loop detected. Aborting.");
-                }
+            //int a = -1;
 
-                // Get the integer part of step1.
-                double step2 = Math.Truncate(step1);
-                
-                if (a > 0)
-                    repeat.Add((int)step2);
+            //while (1 == 1)
+            //{
+            //    a++;
 
-                // Subtract step2 from step 1 and take the reciprocol.
-                // If step1 - step2 is 0, it's a rational root with period 0.
-                if (step1 - step2 == 0)
-                {
-                    return original_root;
-                }
+            //    // Guard against infinite loops
+            //    if (a > OVERFLOW)
+            //    {
+            //        throw new Exception("Infinite loop detected. Aborting.");
+            //    }
 
-                double step3 = 1 / (step1 - step2);
+            //    // Get the integer part of step1.
+            //    double step2 = Math.Truncate(step1);
 
-                // Assign step3 to step1.
-                step1 = step3;
+            //    if (a > 0)
+            //        repeat.Add((int)step2);
 
-                // If we've seen this reciprocol before, the sequence is now repeating.
+            //    // Subtract step2 from step 1 and take the reciprocol.
+            //    // If step1 - step2 is 0, it's a rational root with period 0.
+            //    if (step1 - step2 == 0)
+            //    {
+            //        return original_root;
+            //    }
 
-                // Need better test of repeating digits...
-                // See https://learn.microsoft.com/en-us/dotnet/fundamentals/runtime-libraries/system-double-equals
-                if (recips.HasMinimalDifference(step3, 0.0000001))
-                {
-                    return original_root;
-                }
-                else
-                {
-                    recips.Add(step3);
-                }
-            }
+            //    double step3 = 1 / (step1 - step2);
+
+            //    // Assign step3 to step1.
+            //    step1 = step3;
+
+            //    // If we've seen this reciprocol before, the sequence is now repeating.
+
+            //    // Need better test of repeating digits...
+            //    // See https://learn.microsoft.com/en-us/dotnet/fundamentals/runtime-libraries/system-double-equals
+            //    if (recips.HasMinimalDifference(step3, 0.0000001))
+            //    {
+            //        return original_root;
+            //    }
+            //    else
+            //    {
+            //        recips.Add(step3);
+            //    }
+            //}
+
+
+            throw new NotImplementedException();
         }
 
         public static string PrettyPrint(this List<int> list)
