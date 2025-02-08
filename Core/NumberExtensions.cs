@@ -27,82 +27,21 @@ namespace Core
                 return false;
         }
 
-        public static int ContinuedFraction(this int x, out List<int> repeat)
+        public static ulong ContinuedFraction(this ulong x, out List<int> repeat)
         {
             // Returns the integer value of the root.
             // Out repeat value is a list of the repeating values of the root.
             // E.g.: square root of 23 = 4;1,3,1,8
 
-            // https://math.stackexchange.com/questions/265690/continued-fraction-of-a-square-root
-            // How to calculate the continued fraction for a square root:
-            // E.g. x = sqrt(5)
-
-            // Step 1: Set up the initial equation: Let x be the square root you want to expand, and set up an equation like this: x = a + (x - a) where "a" is the integer part of x.
-            // x = Integer part + fractional part
-            // x = 2 + (x - 2)
-
-            // Step 2: Subtract 2 from x and take the reciprocol. I.e. calculate y = 1 / (x - 2).
-            // y = 4.24
-
-            // Step 3: Set x = y and go to step 1.
-
-            //const int OVERFLOW = 1000000;
-
             repeat = [];
 
-            //List<double> recips = [];
-
-            // Take the square root of x.
-            double step1 = Math.Sqrt(x);
-            int original_root = (int)Math.Truncate(step1);
+            ulong original_root = (ulong)Math.Truncate((double)x);
 
             if (original_root * original_root == x) return x;
 
-
-            //int a = -1;
-
-            //while (1 == 1)
-            //{
-            //    a++;
-
-            //    // Guard against infinite loops
-            //    if (a > OVERFLOW)
-            //    {
-            //        throw new Exception("Infinite loop detected. Aborting.");
-            //    }
-
-            //    // Get the integer part of step1.
-            //    double step2 = Math.Truncate(step1);
-
-            //    if (a > 0)
-            //        repeat.Add((int)step2);
-
-            //    // Subtract step2 from step 1 and take the reciprocol.
-            //    // If step1 - step2 is 0, it's a rational root with period 0.
-            //    if (step1 - step2 == 0)
-            //    {
-            //        return original_root;
-            //    }
-
-            //    double step3 = 1 / (step1 - step2);
-
-            //    // Assign step3 to step1.
-            //    step1 = step3;
-
-            //    // If we've seen this reciprocol before, the sequence is now repeating.
-
-            //    // Need better test of repeating digits...
-            //    // See https://learn.microsoft.com/en-us/dotnet/fundamentals/runtime-libraries/system-double-equals
-            //    if (recips.HasMinimalDifference(step3, 0.0000001))
-            //    {
-            //        return original_root;
-            //    }
-            //    else
-            //    {
-            //        recips.Add(step3);
-            //    }
-            //}
-
+            //ulong a = original_root;
+            //ulong numerator = 0;
+            //ulong denominator = 1;
 
             throw new NotImplementedException();
         }
