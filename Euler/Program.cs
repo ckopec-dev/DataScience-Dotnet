@@ -1460,10 +1460,10 @@ namespace Euler
                 long p3 = p2 + 1;
                 long p4 = p3 + 1;
 
-                List<long> uniqueFactors1 = p1.Factor().Distinct().ToList();
-                List<long> uniqueFactors2 = p2.Factor().Distinct().ToList();
-                List<long> uniqueFactors3 = p3.Factor().Distinct().ToList();
-                List<long> uniqueFactors4 = p4.Factor().Distinct().ToList();
+                List<long> uniqueFactors1 = [.. p1.Factor().Distinct()];
+                List<long> uniqueFactors2 = [.. p2.Factor().Distinct()];
+                List<long> uniqueFactors3 = [.. p3.Factor().Distinct()];
+                List<long> uniqueFactors4 = [.. p4.Factor().Distinct()];
 
                 if (uniqueFactors1.Count == 4 && uniqueFactors2.Count == 4 && uniqueFactors3.Count == 4 && uniqueFactors4.Count == 4)
                 {
@@ -1636,7 +1636,7 @@ namespace Euler
                     // Check each combination.
                     foreach (IList<int> combo in combos.Cast<IList<int>>())
                     {
-                        int[] array = combo.Cast<int>().ToArray();
+                        int[] array = [.. combo.Cast<int>()];
 
                         int familyCount = 0;
                         List<int> familyMembers = [];
@@ -2615,6 +2615,11 @@ namespace Euler
             long n = 16000001;
 
             Console.WriteLine(n.ProperDivisors().PrettyPrint());
+        }
+
+        static void Misc13()
+        {
+            // https://bbchallenge.org/story#goal
         }
 
         #endregion
