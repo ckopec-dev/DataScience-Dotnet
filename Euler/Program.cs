@@ -2620,6 +2620,9 @@ namespace Euler
         static void Misc13()
         {
             // https://bbchallenge.org/story#goal
+
+
+            throw new NotImplementedException();
         }
 
         #endregion
