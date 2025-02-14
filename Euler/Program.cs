@@ -2621,8 +2621,9 @@ namespace Euler
         {
             // https://bbchallenge.org/story#goal
 
+            TuringMachine tm = new();
 
-            throw new NotImplementedException();
+            Console.WriteLine(tm);
         }
 
         #endregion
