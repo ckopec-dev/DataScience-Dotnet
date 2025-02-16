@@ -5,7 +5,7 @@ namespace Core
     public class TuringMachine
     {
         public List<bool> Memory = [ false, false, false ];
-        public object? Assembly = null;
+        public List<State> Code = [];
         public int TapePosition = 1;
 
         public TuringMachine()
@@ -19,7 +19,7 @@ namespace Core
             TapePosition = 1;
         }
 
-        public void Load(object assemblyCode)
+        public void Load(string code)
         {
             // transitions + states
             throw new NotImplementedException();
@@ -60,7 +60,7 @@ namespace Core
 
             StringBuilder sb = new();
 
-            sb.AppendLine("### Current State ###");
+            sb.AppendLine("### Current Machine ###");
             sb.AppendLine(String.Format("Memory Size: {0}", Memory.Count));
             sb.Append("Memory: ");
             for(int i = 0; i < Memory.Count; i++)
@@ -70,6 +70,7 @@ namespace Core
                     sb.Append(Environment.NewLine);
             }
             sb.AppendLine(String.Format("Tape position: {0}", TapePosition));
+            sb.Append(Code);
 
             return sb.ToString();
         }
