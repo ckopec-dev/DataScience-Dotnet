@@ -27,7 +27,7 @@ namespace Core
                 return false;
         }
 
-        public static ulong ContinuedFraction(this ulong x, out List<int> repeat)
+        public static ulong ContinuedFraction(this ulong x, out List<ulong> repeat)
         {
             // Returns the integer value of the root.
             // Out repeat value is a list of the repeating values of the root.
@@ -35,15 +35,29 @@ namespace Core
 
             repeat = [];
 
-            ulong original_root = (ulong)Math.Truncate((double)x);
+            ulong original_root = (ulong)Math.Truncate(Math.Sqrt(x));
+            //Console.WriteLine("Original root: {0}", original_root);
 
             if (original_root * original_root == x) return x;
 
-            //ulong a = original_root;
-            //ulong numerator = 0;
-            //ulong denominator = 1;
+            ulong step_a = 0;
+            ulong a = original_root;
+            ulong numerator = 0;
+            ulong denominator = 1;
 
-            throw new NotImplementedException();
+            while (a != 2 * original_root)
+            {
+                //Console.WriteLine("step a({0}): n: {1}, d: {2}, a: {3}", step_a, numerator, denominator, a);
+
+                numerator = denominator * a - numerator;
+                denominator = (x - numerator * numerator) / denominator;
+                a = (original_root + numerator) / denominator;
+
+                repeat.Add(a);
+                step_a++;
+            }
+
+            return original_root;
         }
 
         public static string PrettyPrint(this List<int> list)
@@ -1231,7 +1245,7 @@ namespace Core
             var msg = Convert.FromBase64String(message);
             var pwd = Encoding.UTF8.GetBytes(password);
 
-            return Encoding.UTF8.GetString(msg.Select((b, i) => (byte)(b ^ pwd[i % pwd.Length])).ToArray());
+            return Encoding.UTF8.GetString([.. msg.Select((b, i) => (byte)(b ^ pwd[i % pwd.Length]))]);
         }
 
         #region Trig methods 

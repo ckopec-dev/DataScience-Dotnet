@@ -2337,14 +2337,13 @@ namespace Euler
         {
             int odd_periods = 0;
 
-            for (int i = 2; i <= 13; i++)
+            for (ulong i = 2; i <= 10000; i++)
             {
-                //int root = i.ContinuedFraction(out List<int> repeat);
-                //Console.WriteLine("{0}: {1}; {2}", i, root, String.Join(", ", repeat));
-                //Console.WriteLine("{0}: {1}", i, root);
+                ulong root = i.ContinuedFraction(out List<ulong> repeats);
+                Console.WriteLine("{0}: {1}, {2}", i, root, String.Join(',', repeats));
 
-                //if (repeat.Count % 2 == 1)
-                //    odd_periods++;
+                    if (repeats.Count % 2 == 1)
+                        odd_periods++;
             }
 
             Console.WriteLine("Total odd periods: {0}", odd_periods);
