@@ -113,6 +113,11 @@ namespace Rosalind
             throw new NotImplementedException();
         }
 
+        public static void ProblemHAMM()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Rosalind
+﻿using QuikGraph.Algorithms.Search;
+
+namespace Rosalind
 {
     internal class Program
     {
@@ -26,6 +28,7 @@
                     case "/revc": BioinformaticsStronghold.ProblemREVC(); break;
                     case "/fib": BioinformaticsStronghold.ProblemFIB(); break;
                     case "/gc": BioinformaticsStronghold.ProblemGC(); break;
+                    case "/hamm": BioinformaticsStronghold.ProblemHAMM(); break;
 
                     default: Console.WriteLine(switchErr); break;
                 }
