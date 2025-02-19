@@ -115,7 +115,18 @@ namespace Rosalind
 
         public static void ProblemHAMM()
         {
-            throw new NotImplementedException();
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.hamm.txt") ?? throw new Exception("Resource not found: hamm.txt");
+            using StreamReader sr = new(mrs);
+            
+            string? line1 = sr.ReadLine();
+            string? line2 = sr.ReadLine();
+
+            if (line1 == null || line2 == null) throw new Exception("Invalid resource.");
+            
+            Dna dna1 = new(line1);
+            Dna dna2 = new(line2);
+
+            Console.WriteLine("Hamming distance: {0}", Dna.HammingDistance(dna1, dna2));
         }
 
         #endregion

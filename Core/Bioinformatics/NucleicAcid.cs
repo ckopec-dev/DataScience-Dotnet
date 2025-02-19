@@ -22,7 +22,7 @@ namespace Core.Bioinformatics
             {
                 Dictionary<char, int> dic = [];
                 
-                char[] chars = _Code.Distinct().ToArray();
+                char[] chars = [.. _Code.Distinct()];
 
                 foreach (char c in chars)
                 {

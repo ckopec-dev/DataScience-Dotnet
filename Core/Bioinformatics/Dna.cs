@@ -65,5 +65,21 @@ namespace Core.Bioinformatics
 
             return rg.IsMatch(code);
         }
+
+        public static int HammingDistance(Dna dna1, Dna dna2)
+        {
+            int d = 0;
+
+            if (dna1.Nucleotides.Length != dna2.Nucleotides.Length)
+                throw new Exception("Dna lengths are unequal.");
+
+            for(int i = 0; i < dna1.Nucleotides.Length; i++)
+            {
+                if (dna1.Nucleotides[i] != dna2.Nucleotides[i])
+                    d++;
+            }
+
+            return d;
+        }
     }
 }
