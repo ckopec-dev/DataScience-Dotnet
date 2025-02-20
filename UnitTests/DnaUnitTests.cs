@@ -31,5 +31,12 @@ namespace UnitTests
         {
             Assert.ThrowsException<ArgumentException>(() => _ = new Dna("not valid dna"));
         }
+
+        [TestMethod]
+        public void TestReverseCompliment()
+        {
+            Dna dna = new("ATCG");
+            Assert.AreEqual("CGAT", dna.ReverseCompliment);
+        }
     }
 }
