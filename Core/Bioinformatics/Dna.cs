@@ -31,7 +31,7 @@ namespace Core.Bioinformatics
                         'T' => 'A',
                         'C' => 'G',
                         'G' => 'C',
-                        _ => throw new Exception(String.Format("Invalid nucleotide found: '{0}'.", reverse[i])),
+                        _ => throw new InvalidNucleotideException(),
                     };
                 }
 
