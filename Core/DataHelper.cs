@@ -2,7 +2,7 @@
 
 namespace Core
 {
-    class DataHelper
+    public class DataHelper
     {
         public static List<DateOnly> USStockMarketHolidays
         {

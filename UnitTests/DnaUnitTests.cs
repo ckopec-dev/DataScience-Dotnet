@@ -29,7 +29,7 @@ namespace UnitTests
         [TestMethod]
         public void TestInvalidInitialization()
         {
-            Assert.ThrowsException<ArgumentException>(() => _ = new Dna("not valid dna"));
+            Assert.ThrowsException<InvalidNucleotideException>(() => _ = new Dna("not valid dna"));
         }
 
         [TestMethod]

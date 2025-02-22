@@ -13,7 +13,7 @@ namespace Core.Bioinformatics
                 if (IsValidDna(value))
                     _Code = value;
                 else
-                    throw new ArgumentException("Invalid dna string.");
+                    throw new InvalidNucleotideException();
             }
         }
 
@@ -31,7 +31,7 @@ namespace Core.Bioinformatics
                         'T' => 'A',
                         'C' => 'G',
                         'G' => 'C',
-                        _ => throw new InvalidNucleotideException(),
+                        _ => throw new InvalidNucleotideException()
                     };
                 }
 

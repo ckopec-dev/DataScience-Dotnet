@@ -1,6 +1,6 @@
 ﻿namespace Core.Bioinformatics
 {
-    internal class InvalidNucleotideException : Exception
+    public class InvalidNucleotideException : Exception
     {
     }
 }
