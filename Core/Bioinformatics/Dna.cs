@@ -71,7 +71,7 @@ namespace Core.Bioinformatics
             int d = 0;
 
             if (dna1.Nucleotides.Length != dna2.Nucleotides.Length)
-                throw new Exception("Dna lengths are unequal.");
+                throw new InvalidComparisonException();
 
             for(int i = 0; i < dna1.Nucleotides.Length; i++)
             {

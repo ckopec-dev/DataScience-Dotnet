@@ -38,5 +38,23 @@ namespace UnitTests
             Dna dna = new("ATCG");
             Assert.AreEqual("CGAT", dna.ReverseCompliment);
         }
+
+        [TestMethod]
+        public void TestHammingDistance()
+        {
+            Dna dna1 = new("GAGCCTACTAACGGGAT");
+            Dna dna2 = new("CATCGTAATGACGGCCT");
+
+            Assert.AreEqual(7, Dna.HammingDistance(dna1, dna2));
+        }
+
+        [TestMethod]
+        public void TestHammingDistanceException()
+        {
+            Dna dna1 = new("GAGCCTACT");
+            Dna dna2 = new("CATCGTAATGACGGCCT");
+
+            Assert.ThrowsException<InvalidComparisonException>(() => Dna.HammingDistance(dna1, dna2));
+        }
     }
 }
