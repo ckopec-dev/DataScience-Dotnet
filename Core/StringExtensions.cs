@@ -2,13 +2,19 @@
 using System.IO.Compression;
 using System.Text.RegularExpressions;
 using System.Text;
-using System.Runtime.CompilerServices;
 using System.Text.Json;
 
 namespace Core
 {
     public static class StringExtensions
     {
+        public static string Between(this string s, string startString, string endString)
+        {
+            int p1 = s.IndexOf(startString) + startString.Length;
+            int p2 = s.IndexOf(endString);
+            return s[p1..p2];
+        }
+
         public static string Left(this string s, int length)
         {
             // E.g. helloworld, 2 returns "he"
@@ -131,7 +137,7 @@ namespace Core
 
             foreach (T item in items)
             {
-                string line = string.Join(",", properties.Select(p => p.GetValue(item, null).ToCsvValue()).ToArray());
+                string line = string.Join(",", [.. properties.Select(p => p.GetValue(item, null).ToCsvValue())]);
                 csvBuilder.AppendLine(line);
             }
 
@@ -285,7 +291,7 @@ namespace Core
 
             if (xmlString.StartsWith(byteOrderMarkUtf8))
             {
-                xmlString = xmlString.Remove(0, byteOrderMarkUtf8.Length);
+                xmlString = xmlString[byteOrderMarkUtf8.Length..];
             }
 
             return xmlString;
@@ -459,16 +465,16 @@ namespace Core
             return Encoding.UTF8.GetString(base64EncodedBytes);
         }
 
+        private static readonly JsonSerializerOptions s_writeOptions = new()
+        {
+            WriteIndented = true
+        };
+
         public static string ToPrettyJson(this string unprettyJson)
         {
-            var options = new JsonSerializerOptions()
-            {
-                WriteIndented = true
-            };
-
             var jsonElement = JsonSerializer.Deserialize<JsonElement>(unprettyJson);
 
-            return JsonSerializer.Serialize(jsonElement, options);
+            return JsonSerializer.Serialize(jsonElement, s_writeOptions);
         }
     }
 }
