@@ -35,6 +35,10 @@
     <EmbeddedResource Include="Inputs\Problem59.txt" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Plots\" />
+  </ItemGroup>
+
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="call $(ProjectDir)postbuild.bat $(ConfigurationName) $(SolutionDir) $(TargetName) $(Configuration)" />
   </Target>

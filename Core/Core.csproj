@@ -27,6 +27,7 @@
     <PackageReference Include="ExtendedNumerics.BigDecimal" Version="3000.0.3.40" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.1" />
     <PackageReference Include="QuikGraph" Version="2.5.0" />
+    <PackageReference Include="ScottPlot" Version="5.0.54" />
   </ItemGroup>
 
 </Project>

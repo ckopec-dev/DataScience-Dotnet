@@ -2,6 +2,9 @@
 using ConsoleTables;
 using Core;
 using Core.GameTheory;
+using Core.ScottPlotCustom;
+using ScottPlot;
+using SkiaSharp;
 using System.Diagnostics;
 using System.Numerics;
 using System.Reflection;
@@ -2625,8 +2628,51 @@ namespace Euler
             Console.WriteLine(tm);
         }
 
+        static void Misc14()
+        {
+            // Lorenz Attractor and differential equations
+            // References:
+            // https://www.youtube.com/watch?v=f0lkz2gSsIk
+            // https://en.wikipedia.org/wiki/Lorenz_system
+
+            const double sigma = 10, beta = 8 / 3;
+            double rho = 28;
+            const double iterations = 10000;
+            double x = 0.01, y = 0.01, z = 0.01;
+
+            double[] dataX = new double[(int)iterations];
+            double[] dataY = new double[(int)iterations];
+
+            for (int t = 0; t < iterations; t += 1)
+            {
+                const double dt = 0.01;
+                double dx = sigma * (y - x) * dt;
+                double dy = (x * (rho - z) - y) * dt;
+                double dz = x * y - (beta * z) * dt;
+
+                x += dx;
+                y += dy;
+                z += dz;
+
+                dataX[t] = x;
+                dataY[t] = y;
+            }
+
+            Plot plot = new();
+            plot.DataBackground.Color = Color.FromHtml("#000000");
+
+            RainbowPlot rainbowPlot = new(dataX, dataY)
+            {
+                Radius = .5f,
+                Colormap = new ScottPlot.Colormaps.Deep()
+            };
+            plot.Add.Plottable(rainbowPlot);
+
+            plot.SavePng(Path.Combine(NetworkHelper.ProjectPath(), "Plots", "Lorenz" + rho.ToString() + ".png"), 800, 600);
+        }
+
         #endregion
 
-        #pragma warning restore IDE0051 // Remove unused private members
+#pragma warning restore IDE0051 // Remove unused private members
     }
 }

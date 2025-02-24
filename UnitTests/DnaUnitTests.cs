@@ -29,7 +29,7 @@ namespace UnitTests
         [TestMethod]
         public void TestInvalidInitialization()
         {
-            Assert.ThrowsException<InvalidNucleotideException>(() => _ = new Dna("not valid dna"));
+            Assert.ThrowsExactly<InvalidNucleotideException>(() => _ = _ = new Dna("not valid dna"));
         }
 
         [TestMethod]
@@ -54,7 +54,7 @@ namespace UnitTests
             Dna dna1 = new("GAGCCTACT");
             Dna dna2 = new("CATCGTAATGACGGCCT");
 
-            Assert.ThrowsException<InvalidComparisonException>(() => Dna.HammingDistance(dna1, dna2));
+            Assert.ThrowsExactly<InvalidComparisonException>(() => _ = Dna.HammingDistance(dna1, dna2));
         }
     }
 }

@@ -12,5 +12,15 @@ namespace Core
 
             return content;
         }
+
+        public static string ProjectPath()
+        {
+            string workingDir = Environment.CurrentDirectory ?? throw new InvalidPathException();
+            DirectoryInfo? di = Directory.GetParent(workingDir) ?? throw new InvalidPathException();
+            DirectoryInfo? diParent = di.Parent ?? throw new InvalidPathException();
+            DirectoryInfo? diGrandparent = diParent.Parent ?? throw new InvalidPathException();
+            string projectDirectory = diGrandparent.FullName;
+            return projectDirectory;
+        }
     }
 }
