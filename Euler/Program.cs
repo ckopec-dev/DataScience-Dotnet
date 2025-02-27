@@ -2352,6 +2352,30 @@ namespace Euler
             Console.WriteLine("Total odd periods: {0}", odd_periods);
         }
 
+        static void Problem65()
+        {
+            BigInteger[] n = [0, 1, 2];
+            
+            for(uint i = 2; i <= 100; i++)
+            {
+                uint cf = 1;
+                if (i % 3 == 0)
+                    cf = (i / 3) * 2;
+
+                n[0] = n[1];
+                n[1] = n[2];
+
+                if (cf == 1)
+                    n[2] = n[0] + n[1];
+                else
+                    n[2] = n[0] + n[1] * cf;
+
+                int sum = n[2].SumOfDigits();
+
+                Console.WriteLine("i: {0}, n: {1}, cf: {2}, sum: {3}", i, n[2], cf, sum);
+            }
+        }
+
         #endregion
 
         #region Misc experiments
