@@ -26,6 +26,11 @@ namespace Rosalind
             Console.WriteLine(String.Join(" ", input.AllIndexesOf("A").Count, input.AllIndexesOf("C").Count, input.AllIndexesOf("G").Count, input.AllIndexesOf("T").Count));
         }
 
+        public static void ProblemGBK()
+        {
+            // GenBank web site has changed and this problem no longer works with it. Skipping.
+        }
+
         #endregion
 
         #region Helpers
