@@ -25,14 +25,10 @@ namespace Core.Bioinformatics
 
                 for(int i = 0; i < reverse.Length; i++)
                 {
-                    reverse[i] = reverse[i] switch
-                    {
-                        'A' => 'T',
-                        'T' => 'A',
-                        'C' => 'G',
-                        'G' => 'C',
-                        _ => throw new InvalidNucleotideException()
-                    };
+                    if (reverse[i] == 'A') reverse[i] = 'T'; 
+                    else if (reverse[i] == 'T') reverse[i] = 'A'; 
+                    else if (reverse[i] == 'C') reverse[i] = 'G';
+                    else if (reverse[i] == 'G') reverse[i] = 'C';
                 }
 
                 return new string(reverse);
