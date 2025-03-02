@@ -3,6 +3,8 @@ namespace Core
 {
     public static class NetworkHelper
     {
+        private static readonly Random _Random = new();
+
         public static async Task<string> GetHtmlAsync(string url)
         {
             using var client = new HttpClient();
@@ -21,6 +23,12 @@ namespace Core
             DirectoryInfo? diGrandparent = diParent.Parent ?? throw new InvalidPathException();
             string projectDirectory = diGrandparent.FullName;
             return projectDirectory;
+        }
+
+        public static void RandomSleep(int minMilliseconds, int maxMilliseconds)
+        {
+            int r = _Random.Next(minMilliseconds, maxMilliseconds);
+            Thread.Sleep(r);
         }
     }
 }
