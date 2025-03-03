@@ -6,6 +6,12 @@ namespace Core
 {
     public static class NumberExtensions
     {
+        public static bool IsSquare(this double n)
+        {
+            double root = Math.Sqrt(n);
+            return (root - Math.Floor(root)) == 0;
+        }
+
         public static bool HasMinimalDifference(this List<double> values, double n, double margin = 0.00001)
         {
             // Returns true if any member of the list has a minimal difference with n.

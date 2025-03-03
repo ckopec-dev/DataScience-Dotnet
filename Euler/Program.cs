@@ -1,10 +1,8 @@
 ﻿using Combinatorics.Collections;
-using ConsoleTables;
 using Core;
 using Core.GameTheory;
 using Core.ScottPlotCustom;
 using ScottPlot;
-using SkiaSharp;
 using System.Diagnostics;
 using System.Numerics;
 using System.Reflection;
@@ -2378,7 +2376,48 @@ namespace Euler
 
         static void Problem66()
         {
-            throw new NotImplementedException();
+            // x*x - dy*y = 1
+            // x*x - 1 = dy*y
+            // (x*x - 1) / d = y * y
+            // sqr((x*x - 1) / d) = y
+
+            // Brute force test, just to see how it goes...
+
+            double largest_x = 0;
+            double minimal_d = 0;
+            bool solution_found = false;
+
+            for (double d = 2; d <= 1000; d++)
+            {
+                // Ignore square values of d.
+                if (d.IsSquare())
+                    continue;
+
+                double x = 2;
+                while (!solution_found)
+                {
+                    double y = Math.Sqrt((x * x - 1) / d);
+
+                    if (Math.Floor(y) == y)
+                    {
+                        solution_found = true;
+
+                        Console.WriteLine("x: {0}, d: {1}, y: {2}", x, d, y);
+                        
+                        if (x > largest_x)
+                        {
+                            largest_x = x;
+                            minimal_d = d;
+                        }
+                    }
+
+                    x++;
+                }
+
+                solution_found = false;
+            }
+
+            Console.WriteLine("x: {0}, d: {1}", largest_x, minimal_d);
         }
 
         #endregion
