@@ -2381,7 +2381,9 @@ namespace Euler
             // (x*x - 1) / d = y * y
             // sqr((x*x - 1) / d) = y
 
-            // Brute force test, just to see how it goes...
+            // Brute force test, just to see how it goes (doesn't work)...
+
+            // https://en.wikipedia.org/wiki/Pell%27s_equation
 
             double largest_x = 0;
             double minimal_d = 0;
