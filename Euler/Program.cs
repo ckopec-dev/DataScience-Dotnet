@@ -2,6 +2,7 @@
 using Core;
 using Core.GameTheory;
 using Core.ScottPlotCustom;
+using ExtendedNumerics;
 using ScottPlot;
 using System.Diagnostics;
 using System.Numerics;
@@ -2381,45 +2382,55 @@ namespace Euler
             // (x*x - 1) / d = y * y
             // sqr((x*x - 1) / d) = y
 
-            // Brute force test, just to see how it goes (doesn't work)...
-
             // https://en.wikipedia.org/wiki/Pell%27s_equation
 
-            double largest_x = 0;
-            double minimal_d = 0;
-            bool solution_found = false;
+            // New brute force test. Probably won't work either,
+            // but problem might be poorly stated.
+            // Update: probably is indeed poorly worded. 
+            // This approach works up to D=61, but then fails, possibly 
+            // due to precision math problem.
+            // Update: changed to BigDecimal with 100 digits of precision.
+            // This approach will probably work but will take far too 
+            // long to execute considering d=109 requires 158 trillion iterations.
 
-            for (double d = 2; d <= 1000; d++)
+            const int D_LIMIT = 120;
+
+            BigDecimal largest_x = 0;
+            BigDecimal largest_y = 0;
+
+            for (BigDecimal d = 2; d <= D_LIMIT; d++)
             {
                 // Ignore square values of d.
-                if (d.IsSquare())
+                if (d.IsSquare(100))
                     continue;
 
-                double x = 2;
+                bool solution_found = false;
+                BigDecimal x = 2;
+
                 while (!solution_found)
                 {
-                    double y = Math.Sqrt((x * x - 1) / d);
+                    BigDecimal y = BigDecimal.SquareRoot((x * x - 1) / d, 100);
 
-                    if (Math.Floor(y) == y)
+                    if (BigDecimal.Floor(y) == y)
                     {
                         solution_found = true;
 
-                        Console.WriteLine("x: {0}, d: {1}, y: {2}", x, d, y);
+                        string s = String.Format("d: {0}, x: {1}, y: {2}", d, x, y);
                         
-                        if (x > largest_x)
+                        if (x > largest_x && y > largest_y)
                         {
+                            s = "* " + s;
+
                             largest_x = x;
-                            minimal_d = d;
+                            largest_y = y;
                         }
+
+                        Console.WriteLine(s);
                     }
 
                     x++;
                 }
-
-                solution_found = false;
             }
-
-            Console.WriteLine("x: {0}, d: {1}", largest_x, minimal_d);
         }
 
         #endregion

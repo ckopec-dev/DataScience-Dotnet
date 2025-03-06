@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using ExtendedNumerics;
+using System.Globalization;
 using System.Numerics;
 using System.Text;
 
@@ -10,6 +11,12 @@ namespace Core
         {
             double root = Math.Sqrt(n);
             return (root - Math.Floor(root)) == 0;
+        }
+
+        public static bool IsSquare(this BigDecimal n, int decimalPlaces)
+        {
+            BigDecimal root = BigDecimal.SquareRoot(n, decimalPlaces);
+            return (root - BigDecimal.Floor(root)) == 0;
         }
 
         public static bool HasMinimalDifference(this List<double> values, double n, double margin = 0.00001)
