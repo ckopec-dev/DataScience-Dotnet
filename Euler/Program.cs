@@ -2377,59 +2377,14 @@ namespace Euler
 
         static void Problem66()
         {
-            // x*x - dy*y = 1
-            // x*x - 1 = dy*y
-            // (x*x - 1) / d = y * y
-            // sqr((x*x - 1) / d) = y
-
             // https://en.wikipedia.org/wiki/Pell%27s_equation
 
-            // New brute force test. Probably won't work either,
-            // but problem might be poorly stated.
-            // Update: probably is indeed poorly worded. 
-            // This approach works up to D=61, but then fails, possibly 
-            // due to precision math problem.
-            // Update: changed to BigDecimal with 100 digits of precision.
-            // This approach will probably work but will take far too 
-            // long to execute considering d=109 requires 158 trillion iterations.
+            const int D_LIMIT = 1000;
 
-            const int D_LIMIT = 120;
-
-            BigDecimal largest_x = 0;
-            BigDecimal largest_y = 0;
-
-            for (BigDecimal d = 2; d <= D_LIMIT; d++)
+            for (int d = 2; d <= D_LIMIT; d++)
             {
-                // Ignore square values of d.
-                if (d.IsSquare(100))
-                    continue;
-
-                bool solution_found = false;
-                BigDecimal x = 2;
-
-                while (!solution_found)
-                {
-                    BigDecimal y = BigDecimal.SquareRoot((x * x - 1) / d, 100);
-
-                    if (BigDecimal.Floor(y) == y)
-                    {
-                        solution_found = true;
-
-                        string s = String.Format("d: {0}, x: {1}, y: {2}", d, x, y);
-                        
-                        if (x > largest_x && y > largest_y)
-                        {
-                            s = "* " + s;
-
-                            largest_x = x;
-                            largest_y = y;
-                        }
-
-                        Console.WriteLine(s);
-                    }
-
-                    x++;
-                }
+                Console.WriteLine("d: {0}", d);
+                
             }
         }
 
