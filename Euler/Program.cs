@@ -2379,12 +2379,14 @@ namespace Euler
         {
             // https://en.wikipedia.org/wiki/Pell%27s_equation
 
-            const int D_LIMIT = 1000;
+            const ulong D_LIMIT = 1000;
 
-            for (int d = 2; d <= D_LIMIT; d++)
+            for (ulong d = 2; d <= D_LIMIT; d++)
             {
                 Console.WriteLine("d: {0}", d);
-                
+
+                ulong root = d.ContinuedFraction(out List<ulong> repeats);
+                Console.WriteLine("{0}: {1}, {2}", d, root, String.Join(',', repeats));
             }
         }
 
