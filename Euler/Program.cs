@@ -2337,18 +2337,7 @@ namespace Euler
 
         static void Problem64()
         {
-            int odd_periods = 0;
-
-            for (ulong i = 2; i <= 10000; i++)
-            {
-                ulong root = i.ContinuedFraction(out List<ulong> repeats);
-                Console.WriteLine("{0}: {1}, {2}", i, root, String.Join(',', repeats));
-
-                    if (repeats.Count % 2 == 1)
-                        odd_periods++;
-            }
-
-            Console.WriteLine("Total odd periods: {0}", odd_periods);
+            
         }
 
         static void Problem65()
@@ -2381,12 +2370,18 @@ namespace Euler
 
             const ulong D_LIMIT = 1000;
 
-            for (ulong d = 2; d <= D_LIMIT; d++)
+            BigInteger dMax = 2;
+            BigInteger xMax = 3;
+
+            for (ulong d = 3; d <= D_LIMIT; d++)
             {
                 Console.WriteLine("d: {0}", d);
 
+                // Get the continued fraction
                 ulong root = d.ContinuedFraction(out List<ulong> repeats);
                 Console.WriteLine("{0}: {1}, {2}", d, root, String.Join(',', repeats));
+
+                
             }
         }
 
