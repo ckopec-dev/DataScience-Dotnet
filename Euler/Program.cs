@@ -2337,7 +2337,18 @@ namespace Euler
 
         static void Problem64()
         {
-            
+            int odd_periods = 0;
+
+            for (ulong i = 2; i <= 10000; i++)
+            {
+                ulong root = i.ContinuedFraction(out List<ulong> repeats);
+                Console.WriteLine("{0}: {1}, {2}", i, root, String.Join(',', repeats));
+
+                    if (repeats.Count % 2 == 1)
+                        odd_periods++;
+            }
+
+            Console.WriteLine("Total odd periods: {0}", odd_periods);
         }
 
         static void Problem65()
