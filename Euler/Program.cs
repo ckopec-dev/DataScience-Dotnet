@@ -2379,21 +2379,28 @@ namespace Euler
         {
             // https://en.wikipedia.org/wiki/Pell%27s_equation
 
-            const ulong D_LIMIT = 1000;
+            // Preliminary experiments...
 
-            BigInteger dMax = 2;
-            BigInteger xMax = 3;
+            /* Find solution to 92x^2 + 1 = y^2
 
-            for (ulong d = 3; d <= D_LIMIT; d++)
+            ulong x = 1, y = 1;
+            
+            for(x = 1; x < 1000000; x++)
             {
-                Console.WriteLine("d: {0}", d);
+                if (x % 100 == 0)
+                    Console.WriteLine("Searching x = {0}.", x);
 
-                // Get the continued fraction
-                ulong root = d.ContinuedFraction(out List<ulong> repeats);
-                Console.WriteLine("{0}: {1}, {2}", d, root, String.Join(',', repeats));
-
-                
+                for(y = 1; y < 1000000; y++)
+                {
+                    if(92 * x * x + 1 == y * y)
+                    {
+                        Console.WriteLine("Found solution: x = {0}, y = {1}.", x, y);
+                        return;
+                    }
+                }
             }
+
+            */
         }
 
         #endregion
