@@ -2401,6 +2401,26 @@ namespace Euler
             }
 
             */
+
+            /* Square root of n approximations
+             * x^2 - ny^2 = 1, solutions in the form of x/y approximate the square root of n.
+             * 
+            */
+
+            int n = 3;
+
+            for (long x = 1; x <= 100000; x++)
+            {
+                for (long y = 1; y <= 100000; y++)
+                {
+                    if (x * x - n * y * y == 1 || x * x - n * y * y == -1)
+                    {
+                        Console.WriteLine("{0} / {1} = {2}", x, y, (double)x / (double)y);
+                    }
+                }
+            }
+
+            Console.WriteLine("Math func: {0}", Math.Sqrt(n));
         }
 
         #endregion
