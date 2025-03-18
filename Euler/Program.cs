@@ -2376,60 +2376,7 @@ namespace Euler
 
         static void Problem66()
         {
-            // https://en.wikipedia.org/wiki/Pell%27s_equation
-
-            // Preliminary experiments...
-
-            /* Find solution to 92x^2 + 1 = y^2
-
-            ulong x = 1, y = 1;
             
-            for(x = 1; x < 1000000; x++)
-            {
-                if (x % 100 == 0)
-                    Console.WriteLine("Searching x = {0}.", x);
-
-                for(y = 1; y < 1000000; y++)
-                {
-                    if(92 * x * x + 1 == y * y)
-                    {
-                        Console.WriteLine("Found solution: x = {0}, y = {1}.", x, y);
-                        return;
-                    }
-                }
-            }
-
-            */
-
-            /* Square root of n approximations
-             * x^2 - ny^2 = 1, solutions in the form of x/y approximate the square root of n.
-            
-            int n = 3;
-
-            for (long x = 1; x <= 10000; x++)
-            {
-                for (long y = 1; y <= 10000; y++)
-                {
-                    if (x * x - n * y * y == 1 || x * x - n * y * y == -1)
-                    {
-                        Console.WriteLine("{0} / {1} = {2}", x, y, (double)x / (double)y);
-                    }
-                }
-            }
-
-            Console.WriteLine("Math func: {0}", Math.Sqrt(n));
-
-            */
-
-            for (ulong d = 2; d <= 100; d++)
-            {
-                if (d.IsPrime())
-                {
-                    Console.WriteLine("d: {0}", d);
-
-
-                }
-            }
         }
 
         #endregion
