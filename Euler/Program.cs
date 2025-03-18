@@ -2,7 +2,6 @@
 using Core;
 using Core.GameTheory;
 using Core.ScottPlotCustom;
-using ExtendedNumerics;
 using ScottPlot;
 using System.Diagnostics;
 using System.Numerics;
@@ -2404,14 +2403,12 @@ namespace Euler
 
             /* Square root of n approximations
              * x^2 - ny^2 = 1, solutions in the form of x/y approximate the square root of n.
-             * 
-            */
-
+            
             int n = 3;
 
-            for (long x = 1; x <= 100000; x++)
+            for (long x = 1; x <= 10000; x++)
             {
-                for (long y = 1; y <= 100000; y++)
+                for (long y = 1; y <= 10000; y++)
                 {
                     if (x * x - n * y * y == 1 || x * x - n * y * y == -1)
                     {
@@ -2421,6 +2418,18 @@ namespace Euler
             }
 
             Console.WriteLine("Math func: {0}", Math.Sqrt(n));
+
+            */
+
+            for (ulong d = 2; d <= 100; d++)
+            {
+                if (d.IsPrime())
+                {
+                    Console.WriteLine("d: {0}", d);
+
+
+                }
+            }
         }
 
         #endregion

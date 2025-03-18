@@ -362,7 +362,7 @@ namespace Core
             return ((long)number).IsPrime();
         }
 
-        public static bool IsPrime(this long number)
+        public static bool IsPrime(this ulong number)
         {
             if (number < 2)
                 return false;
@@ -375,8 +375,8 @@ namespace Core
                 return false;
             }
 
-            long sqrt = (long)Math.Sqrt(number);
-            for (long t = 3; t <= sqrt; t += 2)
+            ulong sqrt = (ulong)Math.Sqrt(number);
+            for (ulong t = 3; t <= sqrt; t += 2)
             {
                 if (number % t == 0)
                 {
@@ -385,6 +385,12 @@ namespace Core
             }
 
             return true;
+        }
+
+        public static bool IsPrime(this long number)
+        {
+
+            return IsPrime(number);
         }
 
         public static bool IsProbablyPrime(this int number)
