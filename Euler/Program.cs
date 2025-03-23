@@ -2423,6 +2423,48 @@ namespace Euler
             Console.WriteLine(maxD);
         }
 
+        static void Problem67()
+        {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem67.txt") ?? throw new ResourceNotFoundException();
+            using StreamReader sr = new(mrs);
+
+#pragma warning disable IDE0305 // Simplify collection initialization
+            List<string> input = sr.ReadToEnd().ToList();
+#pragma warning restore IDE0305 // Simplify collection initialization
+
+            // Convert it to a list of int arrays.
+            List<int[]> data = [];
+            for (int i = 0; i < input.Count; i++)
+            {
+                int[] d = input[i].ToIntArray(' ');
+                data.Add(d);
+            }
+
+            // Start at the bottom and work up. 
+            for (int i = data.Count - 1; i >= 0; i--)
+            {
+                if (i == 0)
+                {
+                    Console.WriteLine(data[0][0]);
+                    return;
+                }
+
+                int idxNextRow = i - 1;
+
+                for (int j = 0; j < data[i - 1].Length; j++)
+                {
+                    if (data[i][j] > data[i][j + 1])
+                    {
+                        data[i - 1][j] += data[i][j];
+                    }
+                    else
+                    {
+                        data[i - 1][j] += data[i][j + 1];
+                    }
+                }
+            }
+        }
+
         #endregion
 
         #region Misc experiments
