@@ -3,6 +3,7 @@ using Core;
 using Core.GameTheory;
 using Core.ScottPlotCustom;
 using ScottPlot;
+using ScottPlot.Plottables;
 using System.Diagnostics;
 using System.Numerics;
 using System.Reflection;
@@ -2376,7 +2377,50 @@ namespace Euler
 
         static void Problem66()
         {
-            
+            BigInteger cap = 1000;
+            BigInteger maxD= 2;
+            BigInteger maxX = 3;
+
+            for(BigInteger d = 3; d <= cap; d++)
+            {
+                BigInteger root = new BigInteger(Math.Floor(Math.Sqrt(((double)d))));
+                
+                if (root * root == d)
+                    continue;
+
+                BigInteger a = root;
+                BigInteger numerator = 0;
+                BigInteger denominator = 1;
+
+                BigInteger[] x = [0, 1, root];
+                BigInteger[] y = [0, 0, 1];
+
+                while(true)
+                {
+                    numerator = denominator * a - numerator;
+                    denominator = (d - numerator * numerator) / denominator;
+                    a = (root + numerator) / denominator;
+
+                    x[0] = x[1];
+                    x[1] = x[2];
+                    x[2] = x[1] * a + x[0];
+
+                    y[0] = y[1];
+                    y[1] = y[2];
+                    y[2] = y[1] * a + y[0];
+
+                    if (x[2] * x[2] == y[2] * y[2] * d + 1)
+                        break;
+                }
+
+                if (maxX < x[2])
+                {
+                    maxX = x[2];
+                    maxD = d;
+                }
+            }
+
+            Console.WriteLine(maxD);
         }
 
         #endregion
