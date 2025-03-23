@@ -18,6 +18,7 @@ namespace Rosalind
                     case "/deg": AlgorithmicHeights.ProblemDEG(); break;
                     case "/ins": AlgorithmicHeights.ProblemINS(); break;
                     case "/ddeg": AlgorithmicHeights.ProblemDDEG(); break;
+                    case "/maj": AlgorithmicHeights.ProblemMAJ(); break;
 
                     // Bioinformatics Armory
                     case "/ini": BioinformaticsArmory.ProblemINI(); break;

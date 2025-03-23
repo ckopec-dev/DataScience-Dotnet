@@ -14,7 +14,7 @@ namespace Rosalind
             // Given: A positive integer n <= 25.
             // Return: The value of F(n).
 
-            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.bins.txt") ?? throw new Exception("Resource not found: bins.txt");
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.bins.txt") ?? throw new ResourceNotFoundException();
             using StreamReader sr = new(mrs);
 
             int n = Convert.ToInt32(sr.ReadToEnd().Trim());
@@ -30,7 +30,7 @@ namespace Rosalind
             // Given: Two positive integers n <= 10^5 and m <= 10^5, a sorted array A[1..n] of integers from −10^5 to 10^5 and a list of m integers −10%5 <= k1,k2,…,km<=10%5.
             // Return: For each ki, output an index 1<=j≤n s.t.A[j] = ki or "-1" if there is no such index.
 
-            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.bins.txt") ?? throw new Exception("Resource not found: bins.txt");
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.bins.txt") ?? throw new ResourceNotFoundException();
             using StreamReader sr = new(mrs);
 
             List<double[]> input = sr.ReadToEnd().Trim().ToDoubleListArray('\n', ' ');
@@ -62,7 +62,7 @@ namespace Rosalind
             // Given: A simple graph with n <= 10^3 vertices in the edge list format.
             // Return: An array D[1..n] where D[i] is the degree of vertex i.
 
-            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.deg.txt") ?? throw new Exception("Resource not found: deg.txt");
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.deg.txt") ?? throw new ResourceNotFoundException();
             using StreamReader sr = new(mrs);
 
             List<double[]> input = sr.ReadToEnd().Trim().ToDoubleListArray('\n', ' ');
@@ -101,7 +101,7 @@ namespace Rosalind
             // Return: The number of swaps performed by insertion sort algorithm on A[1..n].
             // NOTE: Manually strip out irrelevant first line of input provided.
 
-            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.ins.txt") ?? throw new Exception("Resource not found: ins.txt");
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.ins.txt") ?? throw new ResourceNotFoundException();
             using StreamReader sr = new(mrs);
 
             int[] input = sr.ReadToEnd().Trim().ToIntArray(' ');
@@ -131,7 +131,7 @@ namespace Rosalind
             // Given: A simple graph with n <= 10^3 vertices in the edge list format.
             // Return: An array D[1..n] where D[i] is the sum of the degrees of i's neighbors.
 
-            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.ddeg.txt") ?? throw new Exception("Resource not found: ddeg.txt");
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.ddeg.txt") ?? throw new ResourceNotFoundException();
             using StreamReader sr = new(mrs);
 
             #pragma warning disable IDE0305 // Simplify collection initialization
@@ -175,6 +175,52 @@ namespace Rosalind
             }
 
             Console.WriteLine(sb.ToString().Trim());
+        }
+
+        public static void ProblemMAJ()
+        {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.maj.txt") ?? throw new ResourceNotFoundException();
+            using StreamReader sr = new(mrs);
+
+            string? header = sr.ReadLine();
+
+            if (header == null)
+                return;
+
+            int[] headerParts = header.ToIntArray(' ');
+            StringBuilder sb = new();
+
+            for (int k = 0; k < headerParts[0]; k++)
+            {
+                string? line = sr.ReadLine();
+                
+                if (line == null)
+                    break;
+
+                //Console.WriteLine(line);
+
+                int[] array = line.ToIntArray(' ');
+                bool found = false;
+
+                foreach (int i in array)
+                {
+                    int total = array.Count(c => c == i);
+
+                    if (total > headerParts[1] / 2)
+                    {
+                        sb.Append(i + " ");
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                {
+                    sb.Append("-1 ");
+                }
+            }
+
+            Console.Write(sb.ToString().Trim());
         }
 
         #endregion

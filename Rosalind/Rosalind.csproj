@@ -17,6 +17,7 @@
     <None Remove="Inputs\hamm.txt" />
     <None Remove="Inputs\ini.txt" />
     <None Remove="Inputs\ins.txt" />
+    <None Remove="Inputs\maj.txt" />
     <None Remove="Inputs\revc.txt" />
     <None Remove="Inputs\rna.txt" />
   </ItemGroup>
@@ -31,6 +32,7 @@
     <EmbeddedResource Include="Inputs\hamm.txt" />
     <EmbeddedResource Include="Inputs\ini.txt" />
     <EmbeddedResource Include="Inputs\ins.txt" />
+    <EmbeddedResource Include="Inputs\maj.txt" />
     <EmbeddedResource Include="Inputs\revc.txt" />
     <EmbeddedResource Include="Inputs\rna.txt" />
   </ItemGroup>

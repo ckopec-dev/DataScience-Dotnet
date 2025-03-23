@@ -2383,7 +2383,7 @@ namespace Euler
 
             for(BigInteger d = 3; d <= cap; d++)
             {
-                BigInteger root = new BigInteger(Math.Floor(Math.Sqrt(((double)d))));
+                BigInteger root = new(Math.Floor(Math.Sqrt(((double)d))));
                 
                 if (root * root == d)
                     continue;
