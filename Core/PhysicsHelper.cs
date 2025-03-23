@@ -7,6 +7,7 @@ namespace Core
         public const double EARTH_MASS = 5.9736E24; // in kg
         public const double MOON_MASS = .0735E24;   // in kg
         public const double DAY_SECONDS = 86400d;   // seconds in a day
+        public const double EARTH_GRAVITY = 9.8d;   // acceleration falling freely near the surface of the earth
 
         #region Kepler's 3rd law
 
@@ -86,6 +87,25 @@ namespace Core
             int month = n;
 
             return new DateTime(year, month, day);
+        }
+
+        #endregion
+
+        #region Motion
+
+        public static double Velocity(double meters, double seconds)
+        {
+            return meters / seconds;
+        }
+
+        public static double Acceleration(double velocityEnd, double velocityStart, double seconds)
+        {
+            return (velocityEnd - velocityStart) / seconds;
+        }
+
+        public static double FallDistance(double originalSpeed, double timeElapsed, double acceleration)
+        {
+            return originalSpeed * timeElapsed + acceleration * timeElapsed * timeElapsed / 2d;
         }
 
         #endregion
