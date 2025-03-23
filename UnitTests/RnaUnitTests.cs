@@ -6,17 +6,9 @@ namespace UnitTests
     public class RnaUnitTests
     {
         [TestMethod]
-        public void TestValidInitialization()
-        {
-            Rna rna = new("GAUGGAACUUGACUACGUAAAUU");
-            Assert.IsNotNull(rna);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void TestInvalidInitialization()
         {
-            _ = new Rna("not valid rna");
+            Assert.ThrowsExactly<InvalidNucleotideException>(() => _ = _ = new Rna("not valid rna"));
         }
     }
 }

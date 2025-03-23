@@ -7,26 +7,6 @@ namespace UnitTests
     public class DnaUnitTests
     {
         [TestMethod]
-        public void TestValidInitialization()
-        {
-            /*
-            Dna dna1 = new();
-            Assert.IsNotNull(dna1);
-
-            Dna dna2 = new("GATGGAACTTGACTACGTAAATT");
-            Assert.IsNotNull(dna2.Code);
-            
-            Assert.AreEqual("GATGGAACTTGACTACGTAAATT", dna2.ToString());
-
-            Rna rna = dna2.ToRna();
-            Assert.IsNotNull(rna);
-
-            //dna = new Dna("ATCG");
-            //Assert.AreEqual("TAGC", dna.ToString());
-            */
-        }
-
-        [TestMethod]
         public void TestInvalidInitialization()
         {
             Assert.ThrowsExactly<InvalidNucleotideException>(() => _ = _ = new Dna("not valid dna"));
@@ -35,7 +15,11 @@ namespace UnitTests
         [TestMethod]
         public void TestReverseCompliment()
         {
+            // Test plain constructor
+            _ = new Dna(); 
+
             Dna dna = new("ATCG");
+
             Assert.AreEqual("CGAT", dna.ReverseCompliment);
         }
 
@@ -55,6 +39,15 @@ namespace UnitTests
             Dna dna2 = new("CATCGTAATGACGGCCT");
 
             Assert.ThrowsExactly<InvalidComparisonException>(() => _ = Dna.HammingDistance(dna1, dna2));
+        }
+
+        [TestMethod]
+        public void TestToRna()
+        {
+            Dna dna = new("ATCG");
+            Rna rna = dna.ToRna();
+
+            Assert.AreEqual("AUCG", rna.Code);
         }
     }
 }

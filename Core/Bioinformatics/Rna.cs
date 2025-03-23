@@ -13,7 +13,7 @@ namespace Core.Bioinformatics
                 if (IsValidRna(value))
                     _Code = value;
                 else
-                    throw new ArgumentException("Invalid rna string.");
+                    throw new InvalidNucleotideException();
             }
         }
 
