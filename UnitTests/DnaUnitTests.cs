@@ -49,5 +49,13 @@ namespace UnitTests
 
             Assert.AreEqual("AUCG", rna.Code);
         }
+
+        [TestMethod]
+        public void TestNucleotides()
+        {
+            Dna dna = new("ATCG");
+            
+            Assert.AreEqual(4, dna.Nucleotides.Length);
+        }
     }
 }

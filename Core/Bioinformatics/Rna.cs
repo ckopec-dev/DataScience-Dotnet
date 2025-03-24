@@ -3,9 +3,11 @@ using System.Text.RegularExpressions;
 
 namespace Core.Bioinformatics
 {
-    public class Rna : NucleicAcid
+    public class Rna
     {
-        public override string Code
+        protected string _Code = String.Empty;
+
+        public string Code
         {
             get { return _Code.ToUpper(); }
             set
@@ -14,6 +16,28 @@ namespace Core.Bioinformatics
                     _Code = value;
                 else
                     throw new InvalidNucleotideException();
+            }
+        }
+
+        public char[] Nucleotides
+        {
+            get { return _Code.ToCharArray(); }
+        }
+
+        public Dictionary<char, int> NucleotideCounts
+        {
+            get
+            {
+                Dictionary<char, int> dic = [];
+
+                char[] chars = [.. _Code.Distinct()];
+
+                foreach (char c in chars)
+                {
+                    dic.Add(c, _Code.Count(i => i == c));
+                }
+
+                return dic;
             }
         }
 

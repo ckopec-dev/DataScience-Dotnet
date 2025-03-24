@@ -29,6 +29,10 @@
     <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="TestResults\" />
+  </ItemGroup>
+
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="call $(ProjectDir)postbuild.bat $(ConfigurationName) $(SolutionDir) $(TargetName) $(Configuration)" />
   </Target>
