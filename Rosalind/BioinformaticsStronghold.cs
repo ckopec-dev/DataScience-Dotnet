@@ -1,4 +1,5 @@
-﻿using Core.Bioinformatics;
+﻿using Core;
+using Core.Bioinformatics;
 using System.Reflection;
 
 namespace Rosalind
@@ -127,6 +128,81 @@ namespace Rosalind
             Dna dna2 = new(line2);
 
             Console.WriteLine("Hamming distance: {0}", Dna.HammingDistance(dna1, dna2));
+        }
+
+        public static void ProblemIPRB()
+        {
+            int k = 17; // = AA = 0
+            int m = 16; // Aa = 1
+            int n = 24; // aa = 2
+
+            Random rnd = new();
+
+            const int ttlIterations = 10000000;
+            int ttlDominants = 0;
+
+            for (int i = 0; i < ttlIterations; i++)
+            {
+                List<char> pop = [];
+
+                for (int j = 0; j < k; j++)
+                    pop.Add('k');
+                for (int j = 0; j < m; j++)
+                    pop.Add('m');
+                for (int j = 0; j < n; j++)
+                    pop.Add('n');
+
+                // For this iteration, is org1 a k, m, or n?
+                int idx = rnd.Next(pop.Count);
+                char org1 = pop[idx];
+
+                // What factor does org1 contribute?
+                char factor1;
+                if (org1 == 'k')
+                    factor1 = 'A';
+                else if (org1 == 'm')
+                {
+                    idx = rnd.Next(2);
+                    if (idx == 0)
+                        factor1 = 'A';
+                    else
+                        factor1 = 'a';
+                }
+                else
+                    factor1 = 'a';
+
+                // Find one instance of this organism(character) and remove it from the list.
+                pop.Remove(org1);
+
+                // Is org2 a k, m, or n?
+                idx = rnd.Next(pop.Count);
+                char org2 = pop[idx];
+
+                // What factor does org2 contribute?
+                char factor2;
+                if (org2 == 'k')
+                    factor2 = 'A';
+                else if (org2 == 'm')
+                {
+                    idx = rnd.Next(2);
+                    if (idx == 0)
+                        factor2 = 'A';
+                    else
+                        factor2 = 'a';
+                }
+                else
+                    factor2 = 'a';
+
+                bool dominant = false;
+
+                if (factor1 == 'A' || factor2 == 'A')
+                    dominant = true;
+
+                if (dominant)
+                    ttlDominants++;
+            }
+
+            Console.WriteLine("{0} dominants out of {1} pairings = {2}.", ttlDominants, ttlIterations, ((decimal)ttlDominants / (decimal)ttlIterations));
         }
 
         #endregion

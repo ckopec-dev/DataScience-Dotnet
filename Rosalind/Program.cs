@@ -31,6 +31,7 @@ namespace Rosalind
                     case "/fib": BioinformaticsStronghold.ProblemFIB(); break;
                     case "/gc": BioinformaticsStronghold.ProblemGC(); break;
                     case "/hamm": BioinformaticsStronghold.ProblemHAMM(); break;
+                    case "/iprb": BioinformaticsStronghold.ProblemIPRB(); break;
 
                     default: Console.WriteLine(switchErr); break;
                 }
