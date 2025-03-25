@@ -3,7 +3,7 @@ using Core;
 using Core.GameTheory;
 using Core.ScottPlotCustom;
 using ScottPlot;
-using ScottPlot.Plottables;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
 using System.Reflection;
@@ -2467,7 +2467,44 @@ namespace Euler
 
         static void Problem68()
         {
-            throw new NotImplementedException();
+            // 3-gon experiment...
+
+            // Get all permutations of 1..6
+            int[] inputSet = { 1, 2, 3, 4, 5, 6 };
+            Permutations<int> perms = new Permutations<int>(inputSet);
+            long max = 0;
+            string? line = null;
+
+            foreach(IList<int> p in perms)
+            {
+                // For each permutation, create the 3 lines.
+                List<int> line1 = [p[0], p[1], p[2]];
+                List<int> line2 = [p[3], p[2], p[4]];
+                List<int> line3 = [p[5], p[4], p[1]];
+
+                // Do each lines have the same sum?
+                if (line1.Sum() == line2.Sum() && 
+                    line2.Sum() == line3.Sum() &&
+                    line1.Sum() == 9 && 
+                    p[0] < p[3] && 
+                    p[0] < p[5])
+                {
+                    long val = Convert.ToInt64(String.Format("{0}{1}{2}{3}{4}{5}",
+                        p[0], p[1], p[2], p[3], p[2], p[4], p[5], p[4], p[1]));
+                    if (val > max)
+                    {
+                        max = val;
+                        line = String.Format("{0}: {1};{2};{3}",
+                            line1.Sum(),
+                            String.Join<int>(",", line1),
+                            String.Join<int>(",", line2),
+                            String.Join<int>(",", line3));
+                    }
+                }
+            }
+
+            if (line != null)
+                Console.WriteLine(line);
         }
 
         #endregion
