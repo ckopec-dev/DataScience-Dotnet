@@ -2467,7 +2467,7 @@ namespace Euler
 
         static void Problem68()
         {
-            // 3-gon experiment...
+            /* 3-gon experiment...
 
             // Get all permutations of 1..6
             int[] inputSet = [1, 2, 3, 4, 5, 6];
@@ -2505,6 +2505,58 @@ namespace Euler
 
             if (line != null)
                 Console.WriteLine(line);
+
+            */
+
+            // Get all permutations of 1..10
+            int[] inputSet = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            Permutations<int> perms = new(inputSet);
+            long max = 0;
+            string? line = null;
+
+            foreach (IList<int> p in perms.Cast<IList<int>>())
+            {
+                // For each permutation, create the 5 lines.
+                List<int> line1 = [p[0], p[1], p[2]];
+                List<int> line2 = [p[3], p[2], p[4]];
+                List<int> line3 = [p[5], p[4], p[6]];
+                List<int> line4 = [p[7], p[6], p[8]];
+                List<int> line5 = [p[9], p[8], p[1]];
+
+                // Do each lines have the same sum?
+                if (line1.Sum() == line2.Sum() &&
+                    line2.Sum() == line3.Sum() &&
+                    line3.Sum() == line4.Sum() && 
+                    line4.Sum() == line5.Sum() &&
+                    p[0] < p[3] &&
+                    p[0] < p[5] &&
+                    p[0] < p[7] &&
+                    p[0] < p[9] 
+                    )
+                {
+                    String strLine1 = String.Join<int>(",", line1);
+                    String strLine2 = String.Join<int>(",", line2);
+                    String strLine3 = String.Join<int>(",", line3);
+                    String strLine4 = String.Join<int>(",", line4);
+                    String strLine5 = String.Join<int>(",", line5);
+
+                    long val = Convert.ToInt64(String.Format("{0}{1}{2}{3}{4}",
+                        strLine1, strLine2, strLine3, 
+                        strLine4, strLine5).Replace(",", ""));
+                        
+                    if (val.ToString().Length == 16 && val > max)
+                    {
+                        max = val;
+                        line = String.Format("{0}: {1};{2};{3};{4};{5}",
+                            line1.Sum(), strLine1, strLine2, strLine3, 
+                            strLine4, strLine5);
+                        Console.WriteLine(line);
+                    }
+                }
+            }
+
+            if (line != null)
+                Console.WriteLine(line.Replace(",", "").Replace(";", ""));
         }
 
         #endregion
