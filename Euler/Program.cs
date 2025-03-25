@@ -2470,12 +2470,12 @@ namespace Euler
             // 3-gon experiment...
 
             // Get all permutations of 1..6
-            int[] inputSet = { 1, 2, 3, 4, 5, 6 };
-            Permutations<int> perms = new Permutations<int>(inputSet);
+            int[] inputSet = [1, 2, 3, 4, 5, 6];
+            Permutations<int> perms = new(inputSet);
             long max = 0;
             string? line = null;
 
-            foreach(IList<int> p in perms)
+            foreach (IList<int> p in perms.Cast<IList<int>>())
             {
                 // For each permutation, create the 3 lines.
                 List<int> line1 = [p[0], p[1], p[2]];
@@ -2489,7 +2489,7 @@ namespace Euler
                     p[0] < p[3] && 
                     p[0] < p[5])
                 {
-                    long val = Convert.ToInt64(String.Format("{0}{1}{2}{3}{4}{5}",
+                    long val = Convert.ToInt64(String.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}",
                         p[0], p[1], p[2], p[3], p[2], p[4], p[5], p[4], p[1]));
                     if (val > max)
                     {
