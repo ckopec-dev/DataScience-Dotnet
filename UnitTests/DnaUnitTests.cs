@@ -57,5 +57,21 @@ namespace UnitTests
             
             Assert.AreEqual(4, dna.Nucleotides.Length);
         }
+
+        [TestMethod]
+        public void TestToString()
+        {
+            Dna dna = new("ATCG");
+
+            Assert.AreEqual("ATCG", dna.ToString());
+        }
+
+        [TestMethod]
+        public void TestNucleotideCounts()
+        {
+            Dna dna = new("ATCG");
+
+            Assert.AreEqual(1, dna.NucleotideCounts['A']);
+        }
     }
 }

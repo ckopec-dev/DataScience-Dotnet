@@ -221,7 +221,7 @@ var assemblies = [
   {
     "name": "Core",
     "classes": [
-      { "name": "Core.Bioinformatics.Dna", "rp": "Core_Dna.html", "cl": 45, "ucl": 12, "cal": 57, "tl": 105, "cb": 18, "tb": 20, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Bioinformatics.Dna", "rp": "Core_Dna.html", "cl": 57, "ucl": 0, "cal": 57, "tl": 105, "cb": 20, "tb": 20, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Bioinformatics.Rna", "rp": "Core_Rna.html", "cl": 16, "ucl": 16, "cal": 32, "tl": 66, "cb": 2, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.CompressionHelper", "rp": "Core_CompressionHelper.html", "cl": 0, "ucl": 38, "cal": 38, "tl": 63, "cb": 0, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.ConvertUnits", "rp": "Core_ConvertUnits.html", "cl": 0, "ucl": 94, "cal": 94, "tl": 157, "cb": 0, "tb": 10, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
