@@ -7,6 +7,24 @@ namespace Core
 {
     public static class NumberExtensions
     {
+        public static uint Phi(this uint n)
+        {
+            uint result = 1;
+            for (uint i = 2; i < n; i++)
+                if (MathHelper.GCD(i, n) == 1)
+                    result++;
+            return result;
+        }
+
+        public static ulong Phi(this ulong n)
+        {
+            ulong result = 1;
+            for (ulong i = 2; i < n; i++)
+                if (MathHelper.GCD(i, n) == 1)
+                    result++;
+            return result;
+        }
+
         public static bool IsSquare(this double n)
         {
             double root = Math.Sqrt(n);

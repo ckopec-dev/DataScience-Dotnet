@@ -167,5 +167,19 @@ namespace Core
 
             return n == ProperDivisors(n).Sum();
         }
+
+        public static uint GCD(uint a, uint b)
+        {
+            if (a == 0)
+                return b;
+            return GCD(b % a, a);
+        }
+
+        public static ulong GCD(ulong a, ulong b)
+        {
+            if (a == 0)
+                return b;
+            return GCD(b % a, a);
+        }
     }
 }

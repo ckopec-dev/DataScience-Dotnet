@@ -2559,6 +2559,30 @@ namespace Euler
                 Console.WriteLine(line.Replace(",", "").Replace(";", ""));
         }
 
+        static void Problem69()
+        {
+            ulong max_n = 0;
+            double max_ratio = 0;
+            const ulong UPPER_LIMIT = 1000000;
+
+            for (ulong n = 2; n <= UPPER_LIMIT; n++)
+            {
+                ulong phi = n.Phi();
+                double ratio = (double)n / (double)phi;
+
+                if (ratio > max_ratio)
+                {
+                    max_n = n;
+                    max_ratio = ratio;
+                }
+
+                if (n % 1000 == 0)
+                    Console.WriteLine("n: {0}, phi(n): {1}, r: {2:0.0000}", n, phi, ratio);
+            }
+
+            Console.WriteLine("Max({0}): {1:0.0000}", max_n, max_ratio);
+        }
+
         #endregion
 
         #region Misc experiments
