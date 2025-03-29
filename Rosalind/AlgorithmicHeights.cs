@@ -1,4 +1,5 @@
 ﻿using Core;
+using SkiaSharp;
 using System.Reflection;
 using System.Text;
 
@@ -221,6 +222,29 @@ namespace Rosalind
             }
 
             Console.Write(sb.ToString().Trim());
+        }
+
+        public static void ProblemMER()
+        {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.mer.txt") ?? throw new ResourceNotFoundException();
+            using StreamReader sr = new(mrs);
+
+            sr.ReadLine();
+            string? line = sr.ReadLine() ?? throw new InvalidInputException();
+            int[] a = line.ToIntArray(' ');
+            sr.ReadLine();
+            line = sr.ReadLine();
+            if (line == null) throw new InvalidInputException();
+            int[] b = line.ToIntArray(' ');
+
+            List<int> list = [];
+            foreach (int i in a)
+                list.Add(i);
+            foreach (int i in b)
+                list.Add(i);
+            list.Sort();
+
+            Console.WriteLine(list.PrettyPrint().Replace(",", ""));
         }
 
         #endregion
