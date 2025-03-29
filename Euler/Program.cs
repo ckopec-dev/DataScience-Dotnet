@@ -2902,6 +2902,31 @@ namespace Euler
             plot.SavePng(Path.Combine(NetworkHelper.ProjectPath(), "Plots", "Lorenz" + rho.ToString() + ".png"), 800, 600);
         }
 
+        static void Misc15()
+        {
+            // From Recreations in the Theory of Numbers.
+            // Page 1, problem 2.
+
+            int found = 0;
+
+            while(found < 10)
+            {
+                ulong a = 48 * 48;
+                
+                for (ulong b = 1; b < 1000; b++)
+                {
+                    for(ulong c = 1; c < 1000; c++)
+                    {
+                        if (a + b * b == c * c)
+                        {
+                            found++;
+                            Console.WriteLine("{0}: a: 48, b: {1}, c: {2}", found, b, c);
+                        }
+                    }
+                }
+            }
+        }
+
         #endregion
 
 #pragma warning restore IDE0051 // Remove unused private members
