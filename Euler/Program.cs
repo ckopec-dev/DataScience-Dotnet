@@ -2585,7 +2585,28 @@ namespace Euler
 
         static void Problem70()
         {
-            throw new NotImplementedException();
+            const ulong UPPER_LIMIT = 10000000;
+            ulong min_n = 0;
+            double min_ratio = 10000000;
+
+            for (ulong n = 2; n <= UPPER_LIMIT; n++)
+            {
+                ulong phi = n.Phi();
+                double ratio = (double)n / (double)phi;
+
+                if (n.HasSameDigits(phi))
+                {
+                    if (ratio < min_ratio)
+                    {
+                        min_n = n;
+                        min_ratio = ratio;
+                    }
+
+                    Console.WriteLine("n: {0}, phi(n): {1}, r: {2:0.0000}", n, phi, ratio);
+                }
+            }
+
+            Console.WriteLine("Min({0}): {1:0.0000}", min_n, min_ratio);
         }
 
         #endregion
