@@ -1,4 +1,5 @@
 ﻿
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Core.Bioinformatics
@@ -61,6 +62,28 @@ namespace Core.Bioinformatics
             Regex rg = new(pattern);
 
             return rg.IsMatch(code);
+        }
+
+        public string ToProteinString()
+        {
+            StringBuilder sb = new();
+
+            for (int i = 0; i < _Code.Length; i += 3)
+            {
+                string codons = _Code.Substring(i, 3);
+                string amino_acid = DataHelper.RnaCodonTable[codons];
+
+                if (amino_acid.Equals("stop", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    break;
+                }
+                else
+                {
+                    sb.Append(amino_acid);
+                }
+            }
+
+            return sb.ToString();
         }
     }
 }

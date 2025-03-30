@@ -205,6 +205,16 @@ namespace Rosalind
             Console.WriteLine("{0} dominants out of {1} pairings = {2}.", ttlDominants, ttlIterations, ((decimal)ttlDominants / (decimal)ttlIterations));
         }
 
+        public static void ProblemPROT()
+        {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.prot.txt") ?? throw new Exception("Resource not found: hamm.txt");
+            using StreamReader sr = new(mrs);
+
+            Rna rna = new(sr.ReadToEnd());
+
+            Console.WriteLine(rna.ToProteinString());
+        }
+
         #endregion
     }
 }

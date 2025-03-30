@@ -18,6 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Data\RnaCodonTable.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Include="Data\USStockMarketHolidays.txt" />
   </ItemGroup>
 
