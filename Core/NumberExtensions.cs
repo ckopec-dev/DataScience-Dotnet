@@ -7,22 +7,29 @@ namespace Core
 {
     public static class NumberExtensions
     {
-        public static uint Phi(this uint n)
-        {
-            uint result = 1;
-            for (uint i = 2; i < n; i++)
-                if (MathHelper.GCD(i, n) == 1)
-                    result++;
-            return result;
-        }
-
         public static ulong Phi(this ulong n)
         {
-            ulong result = 1;
-            for (ulong i = 2; i < n; i++)
-                if (MathHelper.GCD(i, n) == 1)
-                    result++;
-            return result;
+            if (n < 3) return 1;
+            if (n == 3) return 2;
+
+            ulong totient = n;
+
+            if ((n & 1) == 0)
+            {
+                totient >>= 1;
+                while (((n >>= 1) & 1) == 0) ;
+            }
+
+            for (ulong i = 3; i * i <= n; i += 2)
+            {
+                if (n % i == 0)
+                {
+                    totient -= totient / i;
+                    while ((n /= i) % i == 0) ;
+                }
+            }
+            if (n > 1) totient -= totient / n;
+            return totient;
         }
 
         public static bool IsSquare(this double n)

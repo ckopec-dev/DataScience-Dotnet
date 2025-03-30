@@ -2583,6 +2583,11 @@ namespace Euler
             Console.WriteLine("Max({0}): {1:0.0000}", max_n, max_ratio);
         }
 
+        static void Problem70()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         #region Misc experiments
