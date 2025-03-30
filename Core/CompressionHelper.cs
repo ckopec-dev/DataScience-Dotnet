@@ -53,7 +53,7 @@ namespace Core
 
             using FileStream originalFileStream = fi.OpenRead();
             string currentFileName = fi.FullName;
-            string newFileName = currentFileName.Remove(currentFileName.Length - fi.Extension.Length);
+            string newFileName = currentFileName[..^fi.Extension.Length];
 
             using FileStream decompressedFileStream = File.Create(newFileName);
             using GZipStream decompressionStream = new(originalFileStream, CompressionMode.Decompress);
