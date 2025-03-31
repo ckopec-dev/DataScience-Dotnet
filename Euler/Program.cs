@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
 using System.Reflection;
+using System.Runtime.InteropServices.Marshalling;
 using System.Text;
 
 namespace Euler
@@ -2607,6 +2608,33 @@ namespace Euler
             }
 
             Console.WriteLine("Min({0}): {1:0.0000}", min_n, min_ratio);
+        }
+
+        static void Problem71()
+        {
+            const uint D_LIMIT = 8;
+
+            List<Fraction> fractions = [];
+
+            for(uint d = 1; d <= D_LIMIT; d++)
+            {
+                for(uint n = 1; n < d; n++)
+                {
+                    uint gcd = MathHelper.GCD(n, d);
+
+                    if (gcd == 1)
+                    {
+                        fractions.Add(new Fraction(n, d));
+                    }
+                }
+            }
+
+            List<Fraction> sorted_fractions = [.. fractions.OrderBy(i => i.Value)];
+
+            foreach(Fraction f in sorted_fractions)
+            {
+                Console.WriteLine("{0} / {1}: {2}", f.Numerator, f.Denominator, f.Value);
+            }
         }
 
         #endregion
