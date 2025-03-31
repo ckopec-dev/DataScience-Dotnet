@@ -2614,28 +2614,35 @@ namespace Euler
         {
             const uint D_LIMIT = 1000000;
 
+            // Brute force approach does not work in a reasonable amount of time.
+
+            // Approach 2...
+            // Value will be slightly less than 3/7 = 0.4285714285714286
+
             List<Fraction> fractions = [];
 
-            for(uint d = 1; d <= D_LIMIT; d++)
+            double target = 3d / 7d;
+
+            for (uint d = 1; d <= D_LIMIT; d++)
             {
                 if (d % 1000 == 0)
                     Console.WriteLine("d: {0}", d);
 
-                for(uint n = 1; n < d; n++)
-                {
-                    uint gcd = MathHelper.GCD(n, d);
+                uint n = (uint)Math.Floor(target * (double)d);
 
-                    if (gcd == 1)
-                    {
-                        fractions.Add(new Fraction(n, d));
-                    }
+                Console.WriteLine("n: {0}, d: {1}", n, d);
+
+                uint gcd = MathHelper.GCD(n, d);
+                if (gcd == 1)
+                {
+                    fractions.Add(new Fraction(n, d));
                 }
             }
 
             Console.WriteLine("Sorting...");
             List<Fraction> sorted_fractions = [.. fractions.OrderBy(i => i.Value)];
 
-            for(int i = 0; i < sorted_fractions.Count; i++)
+            for (int i = 0; i < sorted_fractions.Count; i++)
             {
                 if (sorted_fractions[i].Numerator == 3 &&
                     sorted_fractions[i].Denominator == 7)
