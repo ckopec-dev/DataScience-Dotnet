@@ -1,5 +1,4 @@
 ﻿using Core;
-using SkiaSharp;
 using System.Reflection;
 using System.Text;
 

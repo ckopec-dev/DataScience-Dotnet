@@ -2612,12 +2612,15 @@ namespace Euler
 
         static void Problem71()
         {
-            const uint D_LIMIT = 8;
+            const uint D_LIMIT = 1000000;
 
             List<Fraction> fractions = [];
 
             for(uint d = 1; d <= D_LIMIT; d++)
             {
+                if (d % 1000 == 0)
+                    Console.WriteLine("d: {0}", d);
+
                 for(uint n = 1; n < d; n++)
                 {
                     uint gcd = MathHelper.GCD(n, d);
@@ -2629,11 +2632,17 @@ namespace Euler
                 }
             }
 
+            Console.WriteLine("Sorting...");
             List<Fraction> sorted_fractions = [.. fractions.OrderBy(i => i.Value)];
 
-            foreach(Fraction f in sorted_fractions)
+            for(int i = 0; i < sorted_fractions.Count; i++)
             {
-                Console.WriteLine("{0} / {1}: {2}", f.Numerator, f.Denominator, f.Value);
+                if (sorted_fractions[i].Numerator == 3 &&
+                    sorted_fractions[i].Denominator == 7)
+                {
+                    Console.WriteLine(sorted_fractions[i - 1].Numerator);
+                    return;
+                }
             }
         }
 
