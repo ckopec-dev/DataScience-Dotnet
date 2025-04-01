@@ -246,6 +246,63 @@ namespace Rosalind
             Console.WriteLine(list.PrettyPrint().Replace(",", ""));
         }
 
+        public static void Problem2SUM()
+        {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.2sum.txt") ?? throw new ResourceNotFoundException();
+            using StreamReader sr = new(mrs);
+
+            string? header = sr.ReadLine() ?? throw new InvalidInputException();
+            int[] header_vals = header.ToIntArray(' ');
+            
+            for(int k = 0; k < header_vals[0]; k++)
+            {
+                string? line = sr.ReadLine() ?? throw new InvalidInputException();
+                Console.WriteLine(k);
+
+                int[] arr = line.ToIntArray(' ');
+
+                for(int n = 1; n <= header_vals[1]; n++)
+                {
+                    Console.WriteLine("k: {0}, n: {1}", k, n);
+
+                    
+                }
+            }
+            //var list = sr.ReadToEnd().ToIntListArray('\n', ' ');
+            //foreach(int[] iarray in list)
+            //{
+            //    bool found = false;
+
+            //    for(int i = 0; i < iarray.Length; i++)
+            //    {
+            //        if (i == 0 || i == 5053)
+            //        {
+            //            Console.WriteLine("{0}", iarray[i]);
+            //            //return;
+            //        }
+
+            //        if (found)
+            //            break;
+
+            //        for(int j = 1; j < iarray.Length; j++)
+            //        {
+            //            if (iarray[i] > n || iarray[j] > n)
+            //                continue;
+
+            //            if (iarray[i] == -iarray[j])
+            //            {
+            //                Console.WriteLine("{0} {1}", i + 1, j + 1);
+            //                found = true;
+            //                break;
+            //            }
+            //        }
+            //    }
+            //    return;
+            //    if (!found)
+            //        Console.WriteLine("-1");
+            //}
+        }
+
         #endregion
 
         #region Helpers
