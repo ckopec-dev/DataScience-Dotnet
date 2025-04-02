@@ -257,50 +257,33 @@ namespace Rosalind
             for(int k = 0; k < header_vals[0]; k++)
             {
                 string? line = sr.ReadLine() ?? throw new InvalidInputException();
-                Console.WriteLine(k);
-
+                
                 int[] arr = line.ToIntArray(' ');
+                string? answer = null;
 
-                for(int n = 1; n <= header_vals[1]; n++)
+                for(int p = 1; p < header_vals[1]; p++)
                 {
-                    Console.WriteLine("k: {0}, n: {1}", k, n);
-
-                    
+                    for(int q = p + 1; q <= header_vals[1]; q++)
+                    {
+                        Console.WriteLine("arr({0}): {1}, arr({2}): {3}, n: {4}", 
+                            p, arr[p -1], q, arr[q -1], header_vals[1]);
+                        if (1 <= p && p < q && q <= header_vals[1])
+                        {
+                            if (arr[p - 1] == -arr[q - 1])
+                            {
+                                answer = String.Format("{0} {1}", p, q);
+                                p = header_vals[1]; // Break outter loop
+                                break;
+                            }
+                        }
+                    }
                 }
+
+                if (answer == null)
+                    Console.WriteLine("-1");
+                else
+                    Console.WriteLine(answer);
             }
-            //var list = sr.ReadToEnd().ToIntListArray('\n', ' ');
-            //foreach(int[] iarray in list)
-            //{
-            //    bool found = false;
-
-            //    for(int i = 0; i < iarray.Length; i++)
-            //    {
-            //        if (i == 0 || i == 5053)
-            //        {
-            //            Console.WriteLine("{0}", iarray[i]);
-            //            //return;
-            //        }
-
-            //        if (found)
-            //            break;
-
-            //        for(int j = 1; j < iarray.Length; j++)
-            //        {
-            //            if (iarray[i] > n || iarray[j] > n)
-            //                continue;
-
-            //            if (iarray[i] == -iarray[j])
-            //            {
-            //                Console.WriteLine("{0} {1}", i + 1, j + 1);
-            //                found = true;
-            //                break;
-            //            }
-            //        }
-            //    }
-            //    return;
-            //    if (!found)
-            //        Console.WriteLine("-1");
-            //}
         }
 
         #endregion
