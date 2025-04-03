@@ -2653,6 +2653,56 @@ namespace Euler
             }
         }
 
+        static void Problem72()
+        {
+            List<Fraction> fractions = [];
+
+            const uint D_LIMIT = 1000000;
+
+            uint count_n = 0;
+
+            for (uint d = 1; d <= D_LIMIT; d++)
+            {
+                if (d % 1000 == 0)
+                    Console.WriteLine("d: {0}", d);
+
+                Console.WriteLine("d: {0}", d);
+
+                count_n += (d - 1);
+                //for(uint n = 1; n < d; n++)
+                //{
+                //    Console.WriteLine("\t n: {0}", n);
+
+                //    count_n++;
+                //}
+
+
+                //28 - 7 = 21
+                // 7 = d - 1
+                /*
+                1 0
+                2 1
+                3 1 2
+                4 1 2 3
+                5 1 2 3 4
+
+
+                */
+                //uint n = (uint)Math.Floor(target * (double)d);
+
+
+
+                //uint gcd = MathHelper.GCD(n, d);
+                //if (gcd == 1)
+                //{
+                //    fractions.Add(new Fraction(n, d));
+                //}
+            }
+
+            Console.WriteLine("count_n: {0}", count_n);
+            Console.WriteLine("solution: {0}", count_n - D_LIMIT + 1);
+        }
+
         #endregion
 
         #region Misc experiments
