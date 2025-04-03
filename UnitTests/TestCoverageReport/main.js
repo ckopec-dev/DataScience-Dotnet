@@ -222,16 +222,17 @@ var assemblies = [
     "name": "Core",
     "classes": [
       { "name": "Core.Bioinformatics.Dna", "rp": "Core_Dna.html", "cl": 57, "ucl": 0, "cal": 57, "tl": 105, "cb": 20, "tb": 20, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Bioinformatics.Rna", "rp": "Core_Rna.html", "cl": 46, "ucl": 15, "cal": 61, "tl": 89, "cb": 8, "tb": 12, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Bioinformatics.Rna", "rp": "Core_Rna.html", "cl": 61, "ucl": 0, "cal": 61, "tl": 89, "cb": 12, "tb": 12, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.CompressionHelper", "rp": "Core_CompressionHelper.html", "cl": 11, "ucl": 27, "cal": 38, "tl": 63, "cb": 0, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.ConvertUnits", "rp": "Core_ConvertUnits.html", "cl": 0, "ucl": 94, "cal": 94, "tl": 157, "cb": 0, "tb": 10, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.DataHelper", "rp": "Core_DataHelper.html", "cl": 0, "ucl": 29, "cal": 29, "tl": 51, "cb": 0, "tb": 14, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.DataHelper", "rp": "Core_DataHelper.html", "cl": 15, "ucl": 14, "cal": 29, "tl": 51, "cb": 5, "tb": 14, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.DateTimeExtensions", "rp": "Core_DateTimeExtensions.html", "cl": 0, "ucl": 72, "cal": 72, "tl": 130, "cb": 0, "tb": 26, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Edge", "rp": "Core_Edge.html", "cl": 0, "ucl": 7, "cal": 7, "tl": 15, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.EdgeList", "rp": "Core_EdgeList.html", "cl": 0, "ucl": 59, "cal": 59, "tl": 143, "cb": 0, "tb": 14, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.FigurateCalculator", "rp": "Core_FigurateCalculator.html", "cl": 0, "ucl": 18, "cal": 18, "tl": 36, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.FigurateNumber", "rp": "Core_FigurateNumber.html", "cl": 0, "ucl": 19, "cal": 19, "tl": 36, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.FileHelper", "rp": "Core_FileHelper.html", "cl": 0, "ucl": 27, "cal": 27, "tl": 45, "cb": 0, "tb": 12, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Fraction", "rp": "Core_Fraction.html", "cl": 0, "ucl": 26, "cal": 26, "tl": 43, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.GameOfLife", "rp": "Core_GameOfLife.html", "cl": 0, "ucl": 102, "cal": 102, "tl": 168, "cb": 0, "tb": 66, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.GameTheory.Card", "rp": "Core_Card.html", "cl": 0, "ucl": 82, "cal": 82, "tl": 106, "cb": 0, "tb": 96, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.GameTheory.Deck", "rp": "Core_Deck.html", "cl": 0, "ucl": 29, "cal": 29, "tl": 48, "cb": 0, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -529,12 +530,6 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.ConvertUnits", "reportPath": "Core_ConvertUnits.html", "methodName": "ToMetricFactor(Core.MetricPrefix,System.Decimal)", "methodShortName": "ToMetricFactor(...)", "fileIndex": 0, "line": 84,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.DataHelper", "reportPath": "Core_DataHelper.html", "methodName": "get_RnaCodonTable()", "methodShortName": "get_RnaCodonTable()", "fileIndex": 0, "line": 30,
     "metrics": [
       { "value": 42, "exceeded": true },
       { "value": 6, "exceeded": false },

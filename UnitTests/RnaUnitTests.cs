@@ -36,5 +36,13 @@ namespace UnitTests
 
             Assert.AreEqual(1, rna.NucleotideCounts['A']);
         }
+
+        [TestMethod]
+        public void TestToProteinString()
+        {
+            Rna rna = new("AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA");
+
+            Assert.AreEqual("MAMAPRTEINSTRING", rna.ToProteinString());
+        }
     }
 }

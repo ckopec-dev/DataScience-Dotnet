@@ -271,9 +271,6 @@ namespace Rosalind
                             continue;
                         }
 
-                        //Console.WriteLine("p({0}): {1}, q({2}): {3}", 
-                        //    p, q, arr[p -1], arr[q -1]);
-
                         if (arr[p -1] == -arr[q - 1])
                         {
                             answer = String.Format("{0} {1}", p, q);
