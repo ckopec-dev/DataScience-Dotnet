@@ -253,6 +253,7 @@ namespace Rosalind
 
             string? header = sr.ReadLine() ?? throw new InvalidInputException();
             int[] header_vals = header.ToIntArray(' ');
+            int n = header_vals[1];
             
             for(int k = 0; k < header_vals[0]; k++)
             {
@@ -261,20 +262,23 @@ namespace Rosalind
                 int[] arr = line.ToIntArray(' ');
                 string? answer = null;
 
-                for(int p = 1; p < header_vals[1]; p++)
+                for(int p = 1; p < n; p++)
                 {
-                    for(int q = p + 1; q <= header_vals[1]; q++)
+                    for(int q = p + 1; q <= n; q++)
                     {
-                        Console.WriteLine("arr({0}): {1}, arr({2}): {3}, n: {4}", 
-                            p, arr[p -1], q, arr[q -1], header_vals[1]);
-                        if (1 <= p && p < q && q <= header_vals[1])
+                        if (!(q <= n))
                         {
-                            if (arr[p - 1] == -arr[q - 1])
-                            {
-                                answer = String.Format("{0} {1}", p, q);
-                                p = header_vals[1]; // Break outter loop
-                                break;
-                            }
+                            continue;
+                        }
+
+                        //Console.WriteLine("p({0}): {1}, q({2}): {3}", 
+                        //    p, q, arr[p -1], arr[q -1]);
+
+                        if (arr[p -1] == -arr[q - 1])
+                        {
+                            answer = String.Format("{0} {1}", p, q);
+                            p = n;
+                            break;
                         }
                     }
                 }
