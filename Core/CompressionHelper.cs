@@ -25,39 +25,5 @@ namespace Core
             using ZipArchive archive = new(existingZipToOpen, ZipArchiveMode.Update);
             archive.CreateEntry(fileToAppendPath);
         }
-
-        public static void CreateGZ(string directoryPath)
-        {
-            DirectoryInfo di = new(directoryPath);
-            
-            foreach (FileInfo fileToCompress in di.GetFiles())
-            {
-                using FileStream originalFileStream = fileToCompress.OpenRead();
-                if ((File.GetAttributes(fileToCompress.FullName) &
-                   FileAttributes.Hidden) != FileAttributes.Hidden & fileToCompress.Extension != ".gz")
-                {
-                    using (FileStream compressedFileStream = File.Create(fileToCompress.FullName + ".gz"))
-                    {
-                        using GZipStream compressionStream = new(compressedFileStream,
-                           CompressionMode.Compress);
-                        originalFileStream.CopyTo(compressionStream);
-                    }
-                    FileInfo info = new(directoryPath + Path.DirectorySeparatorChar + fileToCompress.Name + ".gz");
-                }
-            }
-        }
-
-        public static void ExtractGZ(string filePath)
-        {
-            FileInfo fi = new(filePath);
-
-            using FileStream originalFileStream = fi.OpenRead();
-            string currentFileName = fi.FullName;
-            string newFileName = currentFileName[..^fi.Extension.Length];
-
-            using FileStream decompressedFileStream = File.Create(newFileName);
-            using GZipStream decompressionStream = new(originalFileStream, CompressionMode.Decompress);
-            decompressionStream.CopyTo(decompressedFileStream);
-        }
     }
 }
