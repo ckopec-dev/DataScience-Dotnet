@@ -3,11 +3,9 @@ using Core;
 using Core.GameTheory;
 using Core.ScottPlotCustom;
 using ScottPlot;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
 using System.Reflection;
-using System.Runtime.InteropServices.Marshalling;
 using System.Text;
 
 namespace Euler
@@ -2655,52 +2653,33 @@ namespace Euler
 
         static void Problem72()
         {
-            List<Fraction> fractions = [];
-
             const uint D_LIMIT = 1000000;
 
-            uint count_n = 0;
+            long[] phi = new long[D_LIMIT + 1];
 
-            for (uint d = 1; d <= D_LIMIT; d++)
+            for(long i = 0; i < phi.Length; i++)
             {
-                if (d % 1000 == 0)
-                    Console.WriteLine("d: {0}", d);
-
-                Console.WriteLine("d: {0}", d);
-
-                count_n += (d - 1);
-                //for(uint n = 1; n < d; n++)
-                //{
-                //    Console.WriteLine("\t n: {0}", n);
-
-                //    count_n++;
-                //}
-
-
-                //28 - 7 = 21
-                // 7 = d - 1
-                /*
-                1 0
-                2 1
-                3 1 2
-                4 1 2 3
-                5 1 2 3 4
-
-
-                */
-                //uint n = (uint)Math.Floor(target * (double)d);
-
-
-
-                //uint gcd = MathHelper.GCD(n, d);
-                //if (gcd == 1)
-                //{
-                //    fractions.Add(new Fraction(n, d));
-                //}
+                phi[i] = i;
+                Console.WriteLine("phi[{0}] = {1}", i, phi[i]);
             }
 
-            Console.WriteLine("count_n: {0}", count_n);
-            Console.WriteLine("solution: {0}", count_n - D_LIMIT + 1);
+            for(long i = 2; i <= D_LIMIT; i++)
+            {
+                if (phi[i] == i)
+                {
+                    for(long j = 1; j * i <= D_LIMIT; j++)
+                    {
+                        phi[j * i] -= phi[j * i] / i;
+                    }
+                }
+            }
+
+            long[] sums = new long[phi.Length];
+            for(long i = 2; i <= D_LIMIT; i++)
+            {
+                sums[i] = sums[i - 1] + phi[i];
+                Console.WriteLine("sums[{0}]: {1}", i, sums[i]);
+            }
         }
 
         #endregion
