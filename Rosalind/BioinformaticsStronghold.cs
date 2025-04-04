@@ -207,12 +207,25 @@ namespace Rosalind
 
         public static void ProblemPROT()
         {
-            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.prot.txt") ?? throw new Exception("Resource not found: hamm.txt");
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.prot.txt") ?? throw new ResourceNotFoundException();
             using StreamReader sr = new(mrs);
 
             Rna rna = new(sr.ReadToEnd());
 
             Console.WriteLine(rna.ToProteinString());
+        }
+
+        public static void ProblemSUBS()
+        {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.subs.txt") ?? throw new ResourceNotFoundException();
+            using StreamReader sr = new(mrs);
+
+            string? s = sr.ReadLine() ?? throw new ResourceNotFoundException();
+            string? t = sr.ReadLine() ?? throw new ResourceNotFoundException();
+
+            List<int> indexes = s.AllIndexesOf(t, 1);
+
+            Console.WriteLine(indexes.PrettyPrint().Replace(",", ""));
         }
 
         #endregion

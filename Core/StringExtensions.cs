@@ -116,6 +116,11 @@ namespace Core
 
         public static List<int> AllIndexesOf(this string str, string substring)
         {
+            return str.AllIndexesOf(substring, 0);
+        }
+
+        public static List<int> AllIndexesOf(this string str, string substring, int base_index)
+        {
             List<int> indexes = [];
 
             for (int index = 0; index < str.Length; index++)
@@ -123,7 +128,7 @@ namespace Core
                 index = str.IndexOf(substring, index);
                 if (index == -1)
                     return indexes;
-                indexes.Add(index);
+                indexes.Add(index + base_index);
             }
 
             return indexes;

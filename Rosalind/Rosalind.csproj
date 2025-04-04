@@ -23,6 +23,7 @@
     <None Remove="Inputs\prot.txt" />
     <None Remove="Inputs\revc.txt" />
     <None Remove="Inputs\rna.txt" />
+    <None Remove="Inputs\subs.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,6 +42,7 @@
     <EmbeddedResource Include="Inputs\prot.txt" />
     <EmbeddedResource Include="Inputs\revc.txt" />
     <EmbeddedResource Include="Inputs\rna.txt" />
+    <EmbeddedResource Include="Inputs\subs.txt" />
   </ItemGroup>
 
   <ItemGroup>
