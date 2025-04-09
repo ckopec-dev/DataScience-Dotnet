@@ -2684,7 +2684,56 @@ namespace Euler
 
         static void Problem73()
         {
-            throw new NotImplementedException();
+            const uint D_LIMIT = 12000;
+            
+            List<Fraction> fractions = [];
+
+            for (uint d = 1; d <= D_LIMIT; d++)
+            {
+                if (d % 1000 == 0)
+                    Console.WriteLine("d: {0}", d);
+
+                for (uint n = 1; n < d; n++)
+                {
+                    uint gcd = MathHelper.GCD(n, d);
+                    
+                    if (gcd == 1)
+                    {
+                        fractions.Add(new Fraction(n, d));
+                    }
+                }
+            }
+
+            Console.WriteLine("Sorting...");
+            List<Fraction> sorted_fractions = [.. fractions.OrderBy(i => i.Value)];
+
+            for(int i = 0; i < sorted_fractions.Count; i++)
+            {
+                Fraction f = sorted_fractions[i];
+
+                if (f.Numerator == 1 && f.Denominator == 3)
+                {
+                    int count = 0;
+
+                    while(true)
+                    {
+                        if (f.Numerator == 1 && f.Denominator == 2)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            count++;
+                            f = sorted_fractions[i + count];
+                            Console.WriteLine("{0:0.0000}", (double)f.Numerator / (double)f.Denominator);
+                        }
+                    }
+
+                    Console.WriteLine("Count: {0}", count -1);
+
+                    return;
+                }
+            }
         }
 
         #endregion
