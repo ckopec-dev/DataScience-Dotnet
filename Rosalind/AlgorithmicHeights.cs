@@ -287,6 +287,20 @@ namespace Rosalind
             }
         }
 
+        public static void ProblemBFS()
+        {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.bfs.txt") ?? throw new ResourceNotFoundException();
+            using StreamReader sr = new(mrs);
+
+            #pragma warning disable IDE0305 // Simplify collection initialization
+            List<string> lst = sr.ReadToEnd().ToList();
+            #pragma warning restore IDE0305 // Simplify collection initialization
+
+            EdgeList e = new(lst); 
+
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         #region Helpers
