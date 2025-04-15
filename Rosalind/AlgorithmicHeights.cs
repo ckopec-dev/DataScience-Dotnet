@@ -296,9 +296,28 @@ namespace Rosalind
             List<string> lst = sr.ReadToEnd().ToList();
             #pragma warning restore IDE0305 // Simplify collection initialization
 
-            EdgeList e = new(lst); 
+            EdgeList e = new(lst);
 
-            throw new NotImplementedException();
+            StringBuilder sb = new();
+
+            // The first vertex never needs to be calculated - it is
+            // both the origin and destination.
+            sb.Append("0 ");
+
+            // Loop through destinations
+            for(int i = 2; i <= e.VertexCount; i++)
+            {
+                Console.WriteLine("Vertex: {0}", i);
+
+                // Consider all paths from 1 to the destination. 
+                // Which is the shortest?
+
+                
+
+            }
+
+
+            Console.WriteLine(sb.ToString().Trim());
         }
 
         #endregion
