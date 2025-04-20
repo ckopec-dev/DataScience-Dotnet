@@ -292,11 +292,22 @@ namespace Rosalind
             Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.bfs.txt") ?? throw new ResourceNotFoundException();
             using StreamReader sr = new(mrs);
 
-            #pragma warning disable IDE0305 // Simplify collection initialization
-            List<string> lst = sr.ReadToEnd().ToList();
-            #pragma warning restore IDE0305 // Simplify collection initialization
+            // Ignore 1st row
+            sr.ReadLine();
 
-            EdgeList e = new(lst);
+            List<int> origins = [];
+            List<int> destinations = [];
+
+            // Load path info
+            while(!sr.EndOfStream)
+            {
+                string? line = sr.ReadLine() ?? throw new InvalidInputException();
+                
+                Console.WriteLine(line);
+                string[] split = line.Split(" ");
+                origins.Add(Convert.ToInt32(split[0])); 
+                destinations.Add(Convert.ToInt32(split[1]));
+            }
 
             StringBuilder sb = new();
 
@@ -304,18 +315,19 @@ namespace Rosalind
             // both the origin and destination.
             sb.Append("0 ");
 
-            // Loop through destinations
-            for(int i = 2; i <= e.VertexCount; i++)
+            // Find full paths for each vertex.
+            for(int i = 1; i <= origins.Count; i++)
             {
-                Console.WriteLine("Vertex: {0}", i);
+                Console.WriteLine("vertex {0}", i);
 
-                // Consider all paths from 1 to the destination. 
-                // Which is the shortest?
-
-                
-
+                // Create a queue to process all paths. 
+                // The queue starts populated with all origins that have a destination.
+                // Each queue item consists of an origin, a destination, and the current hop.
+                // The item is processed by finding all destinations and adding them to the queue.
+                // If the item has no more destinations,
+                // the hop count is compared to the current shortest path,
+                // and replaces it if it is shorter.
             }
-
 
             Console.WriteLine(sb.ToString().Trim());
         }
