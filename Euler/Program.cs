@@ -3085,6 +3085,27 @@ namespace Euler
             }
         }
 
+        static void Misc16()
+        {
+            // From Recreations in the Theory of Numbers.
+            // Page 1, problem 3.
+
+            // How many positive integers are less than and having no divisor
+            // in common with 5929?
+
+            uint count = 0;
+
+            for(uint n = 1; n < 5929; n++)
+            {
+                if (MathHelper.GCD(n, 5929) == 1)
+                {
+                    count++;
+                }
+            }
+
+            Console.WriteLine("Count: {0}", count);
+        }
+
         #endregion
 
 #pragma warning restore IDE0051 // Remove unused private members
