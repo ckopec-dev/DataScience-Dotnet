@@ -109,5 +109,19 @@ namespace Core
         }
 
         #endregion
+
+        #region Gravity
+
+        public static double Gravity(double mass1, double mass2, double distance)
+        {
+            // Mass1: in kilograms.
+            // Mass2: in kilograms.,
+            // Distance between the center of the two masses. In meters.
+            
+            // Returns newtons.
+            return G * (mass1 * mass2) / (distance * distance);
+        }
+
+        #endregion
     }
 }
