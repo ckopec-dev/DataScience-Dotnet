@@ -292,65 +292,69 @@ namespace Rosalind
             Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.bfs.txt") ?? throw new ResourceNotFoundException();
             using StreamReader sr = new(mrs);
 
-            // Ignore 1st row
-            sr.ReadLine();
+            DirectedGraph dg = new();
 
-            List<int> origins = [];
-            List<int> destinations = [];
+            throw new NotImplementedException();
 
-            // Load path info
-            while(!sr.EndOfStream)
-            {
-                string? line = sr.ReadLine() ?? throw new InvalidInputException();
+            //// Ignore 1st row
+            //sr.ReadLine();
+
+            //List<int> origins = [];
+            //List<int> destinations = [];
+
+            //// Load path info
+            //while(!sr.EndOfStream)
+            //{
+            //    string? line = sr.ReadLine() ?? throw new InvalidInputException();
                 
-                //Console.WriteLine(line);
-                string[] split = line.Split(" ");
-                origins.Add(Convert.ToInt32(split[0])); 
-                destinations.Add(Convert.ToInt32(split[1]));
-            }
+            //    //Console.WriteLine(line);
+            //    string[] split = line.Split(" ");
+            //    origins.Add(Convert.ToInt32(split[0])); 
+            //    destinations.Add(Convert.ToInt32(split[1]));
+            //}
 
-            StringBuilder sb = new();
+            //StringBuilder sb = new();
 
-            // The first vertex never needs to be calculated - it is
-            // both the origin and destination.
-            sb.Append("0 ");
+            //// The first vertex never needs to be calculated - it is
+            //// both the origin and destination.
+            //sb.Append("0 ");
 
-            // Find full paths for each vertex.
-            for(int d = 2; d <= destinations.Count; d++)
-            {
-                // Create a queue to process all paths. 
-                // Each queue item consists of an origin, a destination, and the current hop.
-                Queue<DirectedGraphQueueItem> q = [];
+            //// Find full paths for each vertex.
+            //for(int d = 2; d <= destinations.Count; d++)
+            //{
+            //    // Create a queue to process all paths. 
+            //    // Each queue item consists of an origin, a destination, and the current hop.
+            //    Queue<DirectedGraphQueueItem> q = [];
 
-                // Origin is always 1.
-                // Destination is 2-n.
+            //    // Origin is always 1.
+            //    // Destination is 2-n.
 
-                Console.WriteLine("origin: {0}, destination: {1}", 1, d);
+            //    Console.WriteLine("origin: {0}, destination: {1}", 1, d);
 
-                // For each destination, walk backwards toward the origin.
+            //    // For each destination, walk backwards toward the origin.
 
-                for(int i = 0; i < destinations.Count; i++)
-                {
-                    if (destinations[i] == d)
-                    {
-                        Console.WriteLine("found path from {0} to {1}", d, origins[i]);
+            //    for(int i = 0; i < destinations.Count; i++)
+            //    {
+            //        if (destinations[i] == d)
+            //        {
+            //            Console.WriteLine("found path from {0} to {1}", d, origins[i]);
 
-                        q.Enqueue(new DirectedGraphQueueItem(d, origins[i], 1));
-                    }
-                }
-
-                
-                // The item is processed by finding all destinations and adding them to the queue.
-                // If the item has no more destinations,
-                // the hop count is compared to the current shortest path,
-                // and replaces it if it is shorter.
-
-
+            //            q.Enqueue(new DirectedGraphQueueItem(d, origins[i], 1));
+            //        }
+            //    }
 
                 
-            }
+            //    // The item is processed by finding all destinations and adding them to the queue.
+            //    // If the item has no more destinations,
+            //    // the hop count is compared to the current shortest path,
+            //    // and replaces it if it is shorter.
 
-            Console.WriteLine(sb.ToString().Trim());
+
+
+                
+            //}
+
+            //Console.WriteLine(sb.ToString().Trim());
         }
 
         #endregion
