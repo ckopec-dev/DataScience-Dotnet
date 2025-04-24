@@ -296,8 +296,7 @@ namespace Rosalind
 
             for(int i = 1; i <= dg.Vertices; i++)
             {
-                if (i == 5)
-                    dg.PathsFrom(i, 1);
+                List<int> paths = dg.PathsFrom(i, 1);
             }
         }
 

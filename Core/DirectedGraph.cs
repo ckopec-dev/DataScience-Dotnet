@@ -31,23 +31,45 @@ namespace Core
             }
         }
 
-        public List<int> PathsFrom(int destinationVertexNumber, int depth)
+        public List<int> PathsFrom(int destinationVertexNumber, int originVertexNumber)
         {
-            // e.g. vertextNumber 5. 
-            // Find all destinations with that value.
+            return PathsFrom(destinationVertexNumber, originVertexNumber, 1, null);
+        }
 
+        public List<int> PathsFrom(int destinationVertexNumber, int originVertexNumber, int depth, string? fullPath)
+        {
             List<int> originIndexes = [];
             int newDepth = depth + 1;
-
+            List<int> depths = [];
+            
             for (int i = 0; i < Destinations.Count; i++)
             {
                 if (Destinations[i] == destinationVertexNumber)
                 {
-                    // this is a path. find next path.
-                    Console.WriteLine("Destination: {0}, Origin: {1}, Depth: {2}", destinationVertexNumber, Origins[i], depth);
+                    string currentPath = String.Format(
+                        "Destination: {0}, Origin: {1}, Depth: {2}", 
+                        destinationVertexNumber, Origins[i], depth);
+
+                    if (fullPath != null)
+                    {
+                        currentPath = fullPath + " -> " + currentPath;
+                    }
+                    
+                    
                     originIndexes.Add(i);
 
-                    originIndexes.AddRange(PathsFrom(Origins[i], newDepth));
+                    if (Destinations[i] == originVertexNumber || Origins[i] != originVertexNumber)
+                    {
+                        originIndexes.AddRange(PathsFrom(Origins[i], originVertexNumber, newDepth, currentPath));
+                    }
+                    else
+                    {
+                        Console.WriteLine(currentPath);
+
+                        //int finalDepth = newDepth - 1;
+                        //depths.Add(finalDepth);
+                        //Console.WriteLine("Final depth: {0}", finalDepth);
+                    }
                 }
             }
 
