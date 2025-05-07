@@ -222,11 +222,13 @@ var assemblies = [
     "name": "Core",
     "classes": [
       { "name": "Core.Bioinformatics.Dna", "rp": "Core_Dna.html", "cl": 57, "ucl": 0, "cal": 57, "tl": 105, "cb": 20, "tb": 20, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Bioinformatics.Rna", "rp": "Core_Rna.html", "cl": 61, "ucl": 0, "cal": 61, "tl": 89, "cb": 12, "tb": 12, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.CompressionHelper", "rp": "Core_CompressionHelper.html", "cl": 11, "ucl": 27, "cal": 38, "tl": 29, "cb": 0, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Bioinformatics.Rna", "rp": "Core_Rna.html", "cl": 47, "ucl": 0, "cal": 47, "tl": 89, "cb": 8, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.CompressionHelper", "rp": "Core_CompressionHelper.html", "cl": 11, "ucl": 0, "cal": 11, "tl": 29, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.ConvertUnits", "rp": "Core_ConvertUnits.html", "cl": 0, "ucl": 94, "cal": 94, "tl": 157, "cb": 0, "tb": 10, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.DataHelper", "rp": "Core_DataHelper.html", "cl": 15, "ucl": 14, "cal": 29, "tl": 51, "cb": 5, "tb": 14, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.DataHelper", "rp": "Core_DataHelper.html", "cl": 15, "ucl": 10, "cal": 25, "tl": 51, "cb": 5, "tb": 10, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.DateTimeExtensions", "rp": "Core_DateTimeExtensions.html", "cl": 0, "ucl": 72, "cal": 72, "tl": 130, "cb": 0, "tb": 26, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.DirectedGraph", "rp": "Core_DirectedGraph.html", "cl": 0, "ucl": 53, "cal": 53, "tl": 75, "cb": 0, "tb": 16, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.DirectedGraphPath", "rp": "Core_DirectedGraphPath.html", "cl": 0, "ucl": 7, "cal": 7, "tl": 15, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Edge", "rp": "Core_Edge.html", "cl": 0, "ucl": 7, "cal": 7, "tl": 15, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.EdgeList", "rp": "Core_EdgeList.html", "cl": 0, "ucl": 59, "cal": 59, "tl": 143, "cb": 0, "tb": 14, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.FigurateCalculator", "rp": "Core_FigurateCalculator.html", "cl": 0, "ucl": 18, "cal": 18, "tl": 36, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -243,10 +245,10 @@ var assemblies = [
       { "name": "Core.MathHelper", "rp": "Core_MathHelper.html", "cl": 0, "ucl": 110, "cal": 110, "tl": 185, "cb": 0, "tb": 82, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Motion", "rp": "Core_Motion.html", "cl": 0, "ucl": 18, "cal": 18, "tl": 52, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.NetworkHelper", "rp": "Core_NetworkHelper.html", "cl": 0, "ucl": 19, "cal": 19, "tl": 34, "cb": 0, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.NumberExtensions", "rp": "Core_NumberExtensions.html", "cl": 35, "ucl": 1247, "cal": 1282, "tl": 1370, "cb": 17, "tb": 892, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.NumberExtensions", "rp": "Core_NumberExtensions.html", "cl": 15, "ucl": 842, "cal": 857, "tl": 1370, "cb": 6, "tb": 342, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.ObjectParameter", "rp": "Core_ObjectParameter.html", "cl": 0, "ucl": 5, "cal": 5, "tl": 15, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Optics", "rp": "Core_Optics.html", "cl": 0, "ucl": 28, "cal": 28, "tl": 78, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.PhysicsHelper", "rp": "Core_PhysicsHelper.html", "cl": 0, "ucl": 46, "cal": 46, "tl": 113, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.PhysicsHelper", "rp": "Core_PhysicsHelper.html", "cl": 0, "ucl": 49, "cal": 49, "tl": 127, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Salesforce.AuthToken", "rp": "Core_AuthToken.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 9, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Salesforce.RestClient", "rp": "Core_RestClient.html", "cl": 69, "ucl": 7, "cal": 76, "tl": 131, "cb": 10, "tb": 14, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Salesforce.Version", "rp": "Core_Version.html", "cl": 4, "ucl": 0, "cal": 4, "tl": 10, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -254,7 +256,7 @@ var assemblies = [
       { "name": "Core.SortHelper", "rp": "Core_SortHelper.html", "cl": 0, "ucl": 117, "cal": 117, "tl": 176, "cb": 0, "tb": 50, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.SqlHelper", "rp": "Core_SqlHelper.html", "cl": 0, "ucl": 105, "cal": 105, "tl": 169, "cb": 0, "tb": 18, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Statistics", "rp": "Core_Statistics.html", "cl": 0, "ucl": 46, "cal": 46, "tl": 78, "cb": 0, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.StringExtensions", "rp": "Core_StringExtensions.html", "cl": 11, "ucl": 385, "cal": 396, "tl": 485, "cb": 0, "tb": 152, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.StringExtensions", "rp": "Core_StringExtensions.html", "cl": 11, "ucl": 293, "cal": 304, "tl": 485, "cb": 0, "tb": 84, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.TimeSpanExtensions", "rp": "Core_TimeSpanExtensions.html", "cl": 0, "ucl": 10, "cal": 10, "tl": 20, "cb": 0, "tb": 6, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.TuringMachine", "rp": "Core_TuringMachine.html", "cl": 0, "ucl": 38, "cal": 38, "tl": 78, "cb": 0, "tb": 6, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Vertex", "rp": "Core_Vertex.html", "cl": 0, "ucl": 3, "cal": 3, "tl": 10, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -289,18 +291,6 @@ var riskHotspots = [
       { "value": 58, "exceeded": true },
     ]},
   {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "ToWords(System.Int32)", "methodShortName": "ToWords(...)", "fileIndex": 0, "line": 562,
-    "metrics": [
-      { "value": 1482, "exceeded": true },
-      { "value": 38, "exceeded": true },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "ToWords(System.Int32)", "methodShortName": "ToWords(...)", "fileIndex": 0, "line": 580,
-    "metrics": [
-      { "value": 1482, "exceeded": true },
-      { "value": 38, "exceeded": true },
-    ]},
-  {
     "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "ToWords(System.Int32)", "methodShortName": "ToWords(...)", "fileIndex": 0, "line": 608,
     "metrics": [
       { "value": 1482, "exceeded": true },
@@ -319,18 +309,6 @@ var riskHotspots = [
       { "value": 35, "exceeded": true },
     ]},
   {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "ToRomanNumeral(System.Int32)", "methodShortName": "ToRomanNumeral(...)", "fileIndex": 0, "line": 255,
-    "metrics": [
-      { "value": 1190, "exceeded": true },
-      { "value": 34, "exceeded": true },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "ToRomanNumeral(System.Int32)", "methodShortName": "ToRomanNumeral(...)", "fileIndex": 0, "line": 273,
-    "metrics": [
-      { "value": 1190, "exceeded": true },
-      { "value": 34, "exceeded": true },
-    ]},
-  {
     "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "ToRomanNumeral(System.Int32)", "methodShortName": "ToRomanNumeral(...)", "fileIndex": 0, "line": 301,
     "metrics": [
       { "value": 1190, "exceeded": true },
@@ -347,30 +325,6 @@ var riskHotspots = [
     "metrics": [
       { "value": 342, "exceeded": true },
       { "value": 18, "exceeded": true },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "IsPrime(System.UInt64)", "methodShortName": "IsPrime(...)", "fileIndex": 0, "line": 366,
-    "metrics": [
-      { "value": 272, "exceeded": true },
-      { "value": 16, "exceeded": true },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "IsProbablyPrime(System.Int32,System.Int32)", "methodShortName": "IsProbablyPrime(...)", "fileIndex": 0, "line": 402,
-    "metrics": [
-      { "value": 272, "exceeded": true },
-      { "value": 16, "exceeded": true },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "IsPrime(System.UInt64)", "methodShortName": "IsPrime(...)", "fileIndex": 0, "line": 384,
-    "metrics": [
-      { "value": 272, "exceeded": true },
-      { "value": 16, "exceeded": true },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "IsProbablyPrime(System.Int32,System.Int32)", "methodShortName": "IsProbablyPrime(...)", "fileIndex": 0, "line": 420,
-    "metrics": [
-      { "value": 272, "exceeded": true },
-      { "value": 16, "exceeded": true },
     ]},
   {
     "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "Phi(System.UInt64)", "methodShortName": "Phi(...)", "fileIndex": 0, "line": 11,
@@ -409,19 +363,13 @@ var riskHotspots = [
       { "value": 12, "exceeded": false },
     ]},
   {
+    "assembly": "Core", "class": "Core.DirectedGraph", "reportPath": "Core_DirectedGraph.html", "methodName": "PathsFrom(System.Int32,System.Int32,System.Int32,System.String)", "methodShortName": "PathsFrom(...)", "fileIndex": 0, "line": 39,
+    "metrics": [
+      { "value": 110, "exceeded": true },
+      { "value": 10, "exceeded": false },
+    ]},
+  {
     "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "IsPrime(System.Int64)", "methodShortName": "IsPrime(...)", "fileIndex": 0, "line": 13,
-    "metrics": [
-      { "value": 110, "exceeded": true },
-      { "value": 10, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "IsTruncatablePrime(System.Int64)", "methodShortName": "IsTruncatablePrime(...)", "fileIndex": 0, "line": 519,
-    "metrics": [
-      { "value": 110, "exceeded": true },
-      { "value": 10, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "IsTruncatablePrime(System.Int64)", "methodShortName": "IsTruncatablePrime(...)", "fileIndex": 0, "line": 537,
     "metrics": [
       { "value": 110, "exceeded": true },
       { "value": 10, "exceeded": false },
@@ -440,12 +388,6 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.SortHelper", "reportPath": "Core_SortHelper.html", "methodName": "Heapify(System.Int32[],System.Int32,System.Int32)", "methodShortName": "Heapify(...)", "fileIndex": 0, "line": 127,
-    "metrics": [
-      { "value": 110, "exceeded": true },
-      { "value": 10, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.StringExtensions", "reportPath": "Core_StringExtensions.html", "methodName": "LargestCommonSubstring(System.Collections.Generic.List`1<System.String>)", "methodShortName": "LargestCommonSubstring(...)", "fileIndex": 0, "line": 336,
     "metrics": [
       { "value": 110, "exceeded": true },
       { "value": 10, "exceeded": false },
@@ -487,30 +429,6 @@ var riskHotspots = [
       { "value": 8, "exceeded": false },
     ]},
   {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "Factor(System.Int64)", "methodShortName": "Factor(...)", "fileIndex": 0, "line": 294,
-    "metrics": [
-      { "value": 72, "exceeded": true },
-      { "value": 8, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "CommonDigits(System.Int32,System.Int32)", "methodShortName": "CommonDigits(...)", "fileIndex": 0, "line": 833,
-    "metrics": [
-      { "value": 72, "exceeded": true },
-      { "value": 8, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "Factor(System.Int64)", "methodShortName": "Factor(...)", "fileIndex": 0, "line": 312,
-    "metrics": [
-      { "value": 72, "exceeded": true },
-      { "value": 8, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "CommonDigits(System.Int32,System.Int32)", "methodShortName": "CommonDigits(...)", "fileIndex": 0, "line": 851,
-    "metrics": [
-      { "value": 72, "exceeded": true },
-      { "value": 8, "exceeded": false },
-    ]},
-  {
     "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "Factor(System.Int64)", "methodShortName": "Factor(...)", "fileIndex": 0, "line": 340,
     "metrics": [
       { "value": 72, "exceeded": true },
@@ -524,12 +442,6 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.SortHelper", "reportPath": "Core_SortHelper.html", "methodName": "Partition(System.Int32[],System.Int32,System.Int32)", "methodShortName": "Partition(...)", "fileIndex": 0, "line": 146,
-    "metrics": [
-      { "value": 72, "exceeded": true },
-      { "value": 8, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.StringExtensions", "reportPath": "Core_StringExtensions.html", "methodName": "ToCsvValue(T)", "methodShortName": "ToCsvValue(...)", "fileIndex": 0, "line": 148,
     "metrics": [
       { "value": 72, "exceeded": true },
       { "value": 8, "exceeded": false },
@@ -554,6 +466,12 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.DateTimeExtensions", "reportPath": "Core_DateTimeExtensions.html", "methodName": "DayNumber(System.DateTime)", "methodShortName": "DayNumber(...)", "fileIndex": 0, "line": 74,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.DirectedGraph", "reportPath": "Core_DirectedGraph.html", "methodName": ".ctor(System.IO.StreamReader)", "methodShortName": ".ctor(...)", "fileIndex": 0, "line": 16,
     "metrics": [
       { "value": 42, "exceeded": true },
       { "value": 6, "exceeded": false },
@@ -590,102 +508,6 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "FibonacciRecursive(System.Int32)", "methodShortName": "FibonacciRecursive(...)", "fileIndex": 0, "line": 77,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "HasSameDigits(System.Int32,System.Int32)", "methodShortName": "HasSameDigits(...)", "fileIndex": 0, "line": 123,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "Factorial(System.Int32)", "methodShortName": "Factorial(...)", "fileIndex": 0, "line": 877,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "SumOfFactorialDigits(System.Int32)", "methodShortName": "SumOfFactorialDigits(...)", "fileIndex": 0, "line": 896,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "WordValue(System.String)", "methodShortName": "WordValue(...)", "fileIndex": 0, "line": 1027,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "AreDigitsInAscendingOrder(System.Int32)", "methodShortName": "AreDigitsInAscendingOrder(...)", "fileIndex": 0, "line": 1056,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "AreDigitsInDescendingOrder(System.Int32)", "methodShortName": "AreDigitsInDescendingOrder(...)", "fileIndex": 0, "line": 1075,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "Identical(System.Collections.Generic.List`1<System.Int32>)", "methodShortName": "Identical(...)", "fileIndex": 0, "line": 1140,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "HasDupes(System.Collections.Generic.List`1<System.Int32>)", "methodShortName": "HasDupes(...)", "fileIndex": 0, "line": 1154,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "HasSameDigits(System.Int32,System.Int32)", "methodShortName": "HasSameDigits(...)", "fileIndex": 0, "line": 141,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "Factorial(System.Int32)", "methodShortName": "Factorial(...)", "fileIndex": 0, "line": 895,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "SumOfFactorialDigits(System.Int32)", "methodShortName": "SumOfFactorialDigits(...)", "fileIndex": 0, "line": 914,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "WordValue(System.String)", "methodShortName": "WordValue(...)", "fileIndex": 0, "line": 1045,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "AreDigitsInAscendingOrder(System.Int32)", "methodShortName": "AreDigitsInAscendingOrder(...)", "fileIndex": 0, "line": 1074,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "AreDigitsInDescendingOrder(System.Int32)", "methodShortName": "AreDigitsInDescendingOrder(...)", "fileIndex": 0, "line": 1093,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "Identical(System.Collections.Generic.List`1<System.Int32>)", "methodShortName": "Identical(...)", "fileIndex": 0, "line": 1158,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "HasDupes(System.Collections.Generic.List`1<System.Int32>)", "methodShortName": "HasDupes(...)", "fileIndex": 0, "line": 1172,
     "metrics": [
       { "value": 42, "exceeded": true },
       { "value": 6, "exceeded": false },
@@ -776,30 +598,6 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.StringExtensions", "reportPath": "Core_StringExtensions.html", "methodName": "ToProperCase(System.String)", "methodShortName": "ToProperCase(...)", "fileIndex": 0, "line": 33,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.StringExtensions", "reportPath": "Core_StringExtensions.html", "methodName": "ContainsAny(System.String,System.String)", "methodShortName": "ContainsAny(...)", "fileIndex": 0, "line": 170,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.StringExtensions", "reportPath": "Core_StringExtensions.html", "methodName": "ToFriendlyDuration(System.TimeSpan,System.Int32)", "methodShortName": "ToFriendlyDuration(...)", "fileIndex": 0, "line": 194,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.StringExtensions", "reportPath": "Core_StringExtensions.html", "methodName": "Merge(System.Collections.Generic.List`1<System.String>,System.Char)", "methodShortName": "Merge(...)", "fileIndex": 0, "line": 301,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.StringExtensions", "reportPath": "Core_StringExtensions.html", "methodName": "IsPermutation(System.String,System.String)", "methodShortName": "IsPermutation(...)", "fileIndex": 0, "line": 437,
     "metrics": [
       { "value": 42, "exceeded": true },
       { "value": 6, "exceeded": false },

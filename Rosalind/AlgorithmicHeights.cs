@@ -296,7 +296,16 @@ namespace Rosalind
 
             for(int i = 1; i <= dg.Vertices; i++)
             {
+                if (i != 5)
+                    continue;
+
+                dg.Paths.Clear();
                 List<int> paths = dg.PathsFrom(i, 1);
+
+                foreach(DirectedGraphPath path in dg.Paths)
+                {
+                    Console.WriteLine(path);
+                }
             }
         }
 
