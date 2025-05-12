@@ -2784,6 +2784,22 @@ namespace Euler
             Console.WriteLine(how_many);
         }
 
+        static void Problem75()
+        {
+            throw new NotImplementedException();
+        }
+
+        static void Problem719()
+        {
+            throw new NotImplementedException();
+        }
+
+        static void Problem836()
+        {
+            // Apparently a joke...
+            Console.WriteLine("aprilfoolsjoke");
+        }
+
         #endregion
 
         #region Misc experiments
