@@ -2738,7 +2738,17 @@ namespace Euler
 
         static void Problem74()
         {
-            throw new NotImplementedException();
+            // preliminary experiments...
+
+            // 145 = the sum of the factorial of its digits
+            // 1! + 4! + 5! = 1 + 24 + 120 = 145
+            //Console.WriteLine(145.SumOfFactorialDigits());
+
+            BigInteger bi = 169.SumOfFactorialDigits();
+            Console.WriteLine(bi);
+            Console.WriteLine(bi.SumFactorialDigits());
+
+            //throw new NotImplementedException();
         }
 
         #endregion

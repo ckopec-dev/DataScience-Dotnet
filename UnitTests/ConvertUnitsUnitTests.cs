@@ -2,8 +2,8 @@
 
 namespace UnitTests
 {
-    [TestClass]
-    public class ConvertUnitsUnitTests
-    {
-    }
+    //[TestClass]
+    //public class ConvertUnitsUnitTests
+    //{
+    //}
 }

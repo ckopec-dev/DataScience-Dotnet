@@ -7,6 +7,23 @@ namespace Core
 {
     public static class NumberExtensions
     {
+        public static BigInteger SumFactorialDigits(this BigInteger n)
+        {
+            // Returns the sum of the factorial of n's digits.
+            // E.g. SumFactorialDigits(145) = 1! + 4! + 5! = 1 + 24 + 120 = 145.
+
+            List<int> digits = n.ToListOfDigits();
+
+            BigInteger sum = BigInteger.Zero;
+
+            foreach(int digit in digits)
+            {
+                sum += digit.Factorial();
+            }
+
+            return sum;
+        }
+
         public static ulong Phi(this ulong n)
         {
             if (n < 3) return 1;
@@ -957,6 +974,23 @@ namespace Core
 
                 return b;
             }
+        }
+
+        public static List<int> ToListOfDigits(this BigInteger val)
+        {
+            if (val < 0)
+                throw new Exception("Negative values are not supported.");
+
+            List<int> vals = [];
+
+            string v = val.ToString();
+
+            for (int i = 0; i < v.Length; i++)
+            {
+                vals.Add(Convert.ToInt32(v.Substring(i, 1)));
+            }
+
+            return vals;
         }
 
         public static List<int> ToListOfDigits(this int val)
