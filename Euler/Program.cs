@@ -6,6 +6,7 @@ using ScottPlot;
 using System.Diagnostics;
 using System.Numerics;
 using System.Reflection;
+using System.Runtime.InteropServices.Marshalling;
 using System.Text;
 
 namespace Euler
@@ -2791,7 +2792,30 @@ namespace Euler
 
         static void Problem719()
         {
-            throw new NotImplementedException();
+            // preliminary tests...
+
+            //string s = "8281";
+            //List<string> list = [.. s.Permute()];
+            //foreach(string l in list)
+            //{
+            //    Console.WriteLine(l);
+            //}
+
+            //ulong n = 8281;
+            //Console.WriteLine("{0}.IsSNumber: {1}", n, n.IsSNumber());
+
+            // Only check the squares.
+            const ulong LIMIT = 1000000;
+            ulong sum = 0;
+            for(ulong n = 1; n <= LIMIT; n++)
+            {
+                Console.WriteLine("n: {0}", n);
+                ulong sq = n * n;
+                if (sq.IsSNumber())
+                    sum += sq;
+            }
+
+            Console.WriteLine("sum: {0}", sum);
         }
 
         static void Problem836()

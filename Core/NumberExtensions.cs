@@ -18,10 +18,40 @@ namespace Core
             // sqr(81) = 8 + 1 = 9.
             // sqr(6724) = 6 + 72 + 4 = 82.
 
+            if (n < 10)
+                return false;
+
             if (n.IsPerfectSquare())
             {
-                throw new NotImplementedException();
+                double sqrt = Math.Floor(Math.Sqrt(n));
+                //Console.WriteLine("sqrt: {0}", sqrt);
+
+                string s = n.ToString();
+                List<string> list = [.. s.Permute()];
+                foreach (string l in list)
+                {
+                    string[] parts = l.Split(' ');
+
+                    if (parts.Length > 1)
+                    {
+                        //Console.WriteLine(l);
+
+                        ulong sum = 0;
+                        foreach(string p in parts)
+                        {
+                            sum += Convert.ToUInt64(p);
+                        }
+
+                        //Console.WriteLine("sum: {0}", sum);
+
+                        if (sum == sqrt)
+                            return true;
+                    }
+                }
+
+                return false;
             }
+            else
             {
                 return false;
             }

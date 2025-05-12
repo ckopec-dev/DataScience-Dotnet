@@ -8,6 +8,23 @@ namespace Core
 {
     public static class StringExtensions
     {
+        public static IEnumerable<string> Permute(this string s)
+        {
+            if (s.Length <= 1)
+            {
+                yield return s;
+                yield break;
+            }
+
+            var first = s[0];
+
+            foreach (var rem in Permute(s[1..]))
+            {
+                yield return first + rem;
+                yield return first + " " + rem;
+            }
+        }
+
         public static string Between(this string s, string startString, string endString)
         {
             int p1 = s.IndexOf(startString) + startString.Length;
