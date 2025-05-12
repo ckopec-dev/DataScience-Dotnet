@@ -2790,6 +2790,18 @@ namespace Euler
             throw new NotImplementedException();
         }
 
+        static void Problem97()
+        {
+            // preliminary experiments
+
+            BigInteger bi = BigInteger.Pow(2, 7830457);
+
+            bi *= 28433;
+            bi += 1;
+
+            Console.WriteLine(bi.ToString().Right(10));
+        }
+
         static void Problem719()
         {
             // preliminary tests...
