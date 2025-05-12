@@ -7,6 +7,30 @@ namespace Core
 {
     public static class NumberExtensions
     {
+        public static List<BigInteger> FactorialDigitCycle(this BigInteger n)
+        {
+            // Returns chain of numbers formed by recursively iterating SumFactorialDigits(n).
+            // Only non-repeating part of the chain is returned.
+            // Examples:
+            // 169 -> 363601 -> 1454 (-> 169)
+            // 78 -> 45360 -> 871 -> 45361 (-> 871)
+            // 540 -> 145 ( -> 145)
+
+            List<BigInteger> result = [];
+            BigInteger next = SumFactorialDigits(n);
+            result.Add(n);
+            bool repeat = false;
+
+            while(!repeat)
+            {
+                result.Add(next);
+                next = SumFactorialDigits(next);
+                repeat = result.Contains(next);
+            }
+
+            return result;
+        }
+
         public static BigInteger SumFactorialDigits(this BigInteger n)
         {
             // Returns the sum of the factorial of n's digits.

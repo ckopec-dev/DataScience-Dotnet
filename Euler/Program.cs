@@ -2744,11 +2744,44 @@ namespace Euler
             // 1! + 4! + 5! = 1 + 24 + 120 = 145
             //Console.WriteLine(145.SumOfFactorialDigits());
 
-            BigInteger bi = 169.SumOfFactorialDigits();
-            Console.WriteLine(bi);
-            Console.WriteLine(bi.SumFactorialDigits());
+            //BigInteger bi = 169.SumOfFactorialDigits();
+            //Console.WriteLine(bi);
+            //Console.WriteLine(bi.SumFactorialDigits());
 
-            //throw new NotImplementedException();
+            //BigInteger bi = 69;
+            //List<BigInteger> cycle = bi.FactorialDigitCycle();
+            //foreach (BigInteger n in cycle)
+            //{
+            //    Console.WriteLine(n);
+            //}
+
+            // How many chains, with a starting number below one million,
+            // contain exactly sixty non-repeating terms?
+
+            int how_many = 0;
+
+            // Simple parallelization performs poorly due to the small unit cost.
+            // For a possible solution, use partitions; see here:
+            // https://learn.microsoft.com/en-us/dotnet/standard/parallel-programming/how-to-speed-up-small-loop-bodies
+
+            //Parallel.For(1, 1000000, n =>
+            //{
+            //    Console.WriteLine(n);
+            //    BigInteger n_bi = new(n);
+            //    List<BigInteger> cycle = n_bi.FactorialDigitCycle();
+            //    if (cycle.Count == 60)
+            //        how_many++;
+            //});
+
+            for (BigInteger n = 1; n < 1000000; n++)
+            {
+                Console.WriteLine(n);
+                List<BigInteger> cycle = n.FactorialDigitCycle();
+                if (cycle.Count == 60)
+                    how_many++;
+            }
+
+            Console.WriteLine(how_many);
         }
 
         #endregion
