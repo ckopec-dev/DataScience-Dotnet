@@ -7,6 +7,40 @@ namespace Core
 {
     public static class NumberExtensions
     {
+        public static bool IsSNumber(this ulong n)
+        {
+            // We define an S-number to be a natural number, n,
+            // that is a perfect square and its square root can be obtained by
+            // splitting the decimal representation of n into 2 or more 
+            // numbers then adding the numbers.
+
+            // Examples:
+            // sqr(81) = 8 + 1 = 9.
+            // sqr(6724) = 6 + 72 + 4 = 82.
+
+            if (n.IsPerfectSquare())
+            {
+                throw new NotImplementedException();
+            }
+            {
+                return false;
+            }
+        }
+
+        public static bool IsPerfectSquare(this ulong n)
+        {
+            double sqrt = Math.Sqrt(n);
+
+            if (Math.Abs(Math.Ceiling(sqrt) - Math.Floor(sqrt)) < Double.Epsilon)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public static List<BigInteger> FactorialDigitCycle(this BigInteger n)
         {
             // Returns chain of numbers formed by recursively iterating SumFactorialDigits(n).
