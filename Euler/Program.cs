@@ -2843,7 +2843,23 @@ namespace Euler
         {
             // preliminary experiments...
 
-            throw new NotImplementedException();
+            //Console.WriteLine("{0}: {1}", 2025, MathHelper.IsConcatSquare(20, 25));
+            //Console.WriteLine("{0}: {1}", 9801, MathHelper.IsConcatSquare(98, 1));
+
+            // notes...
+
+            // problem does not specify if numbers a and b need to be of equal size.
+            // but i will assume they are for now.
+
+            const ulong LIMIT = 9999;
+            
+            for(ulong n = 10; n <=LIMIT; n++)
+            {
+                if (n.ToString().Length % 2 == 0)
+                {
+                    
+                }
+            }
         }
 
         #endregion
