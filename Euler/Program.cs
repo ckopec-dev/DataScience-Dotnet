@@ -2851,12 +2851,19 @@ namespace Euler
             // problem does not specify if numbers a and b need to be of equal size.
             // but i will assume they are for now.
 
+            // below solution works, but actual limit would require way too
+            // many iterations.
+            // limit for problem:
+            // T(16) = 9,999,999,999,999,999
+            // not gonna work. need different approach.
+            // for all solutions, a + b squared is a perfect square.
+            // so only need to check all perfect squares up to limit.
+            // Similar to approach used in Problem 719.
+
+            /* working code for T(4)
+            
             const ulong LIMIT = 9999;
             ulong sum = 0;
-            
-            // limit for problem:
-            //9,999,999,999,999,999
-            // not gonna work. need different approach
 
             for(ulong n = 10; n <=LIMIT; n++)
             {
@@ -2874,6 +2881,46 @@ namespace Euler
                     {
                         Console.WriteLine("n: {0}, a: {1}, b: {2}, y/n: {3}", n, a, b, iscc);
                         sum += n;
+                    }
+                }
+            }
+
+            Console.WriteLine("sum: {0}", sum);
+            
+            */
+
+            // Adjusted code to filter over perfect squares:
+
+            // This works for T(4) and seems to work for T(16), however
+            // the answer produced for T(16) is wrong.
+            // Possible problem is that the assumption of size equivalency
+            // of a and b is wrong...
+
+            // T(4) limit = sqr root of 10000 = 100;
+            // T(16) limit = sqr root of 10000000000000000 = 100000000 (100m);
+            const ulong LIMIT = 100000000;
+            ulong sum = 0;
+
+            for (ulong n = 1; n <= LIMIT; n++)
+            {
+                ulong n_sqr = n * n;
+                string n_str = n_sqr.ToString();
+
+                if (n_str.Length % 2 == 0)
+                {
+                    int half = Convert.ToInt32(n_str.Length / 2);
+                    ulong a = Convert.ToUInt64(n_str.Left(half));
+                    ulong b = Convert.ToUInt64(n_str.Right(half));
+
+                    bool iscc = MathHelper.IsConcatSquare(a, b);
+
+                    if (iscc)
+                    {
+                        Console.WriteLine("n_sqr: {0}, a: {1}, b: {2}, y/n: {3}", 
+                            n_sqr, a, b, iscc);
+
+                        // throw exception if overthrow
+                        sum = checked(sum + n_sqr);
                     }
                 }
             }
