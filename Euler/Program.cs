@@ -2790,10 +2790,25 @@ namespace Euler
             throw new NotImplementedException();
         }
 
+        static void Problem79()
+        {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem79.txt") ?? throw new ResourceNotFoundException();
+            using StreamReader sr = new(mrs);
+
+            //BigInteger sum = BigInteger.Zero;
+            while (!sr.EndOfStream)
+            {
+                string? line = sr.ReadLine();
+                if (line == null) break;
+                //BigInteger bi = BigInteger.Parse(line);
+                //sum += bi;
+            }
+
+            throw new NotImplementedException();
+        }
+
         static void Problem97()
         {
-            // preliminary experiments
-
             BigInteger bi = BigInteger.Pow(2, 7830457);
 
             bi *= 28433;
@@ -2804,18 +2819,6 @@ namespace Euler
 
         static void Problem719()
         {
-            // preliminary tests...
-
-            //string s = "8281";
-            //List<string> list = [.. s.Permute()];
-            //foreach(string l in list)
-            //{
-            //    Console.WriteLine(l);
-            //}
-
-            //ulong n = 8281;
-            //Console.WriteLine("{0}.IsSNumber: {1}", n, n.IsSNumber());
-
             // Only check the squares.
             const ulong LIMIT = 1000000;
             ulong sum = 0;
@@ -2834,6 +2837,13 @@ namespace Euler
         {
             // Apparently a joke...
             Console.WriteLine("aprilfoolsjoke");
+        }
+
+        static void Problem932()
+        {
+            // preliminary experiments...
+
+            throw new NotImplementedException();
         }
 
         #endregion
