@@ -2852,14 +2852,33 @@ namespace Euler
             // but i will assume they are for now.
 
             const ulong LIMIT = 9999;
+            ulong sum = 0;
             
+            // limit for problem:
+            //9,999,999,999,999,999
+            // not gonna work. need different approach
+
             for(ulong n = 10; n <=LIMIT; n++)
             {
-                if (n.ToString().Length % 2 == 0)
+                string n_str = n.ToString();
+                
+                if (n_str.Length % 2 == 0)
                 {
+                    int half = Convert.ToInt32(n_str.Length / 2);
+                    ulong a = Convert.ToUInt64(n_str.Left(half));
+                    ulong b = Convert.ToUInt64(n_str.Right(half));
+
+                    bool iscc = MathHelper.IsConcatSquare(a, b);
                     
+                    if (iscc)
+                    {
+                        Console.WriteLine("n: {0}, a: {1}, b: {2}, y/n: {3}", n, a, b, iscc);
+                        sum += n;
+                    }
                 }
             }
+
+            Console.WriteLine("sum: {0}", sum);
         }
 
         #endregion

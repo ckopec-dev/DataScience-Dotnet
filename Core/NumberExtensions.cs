@@ -7,6 +7,14 @@ namespace Core
 {
     public static class NumberExtensions
     {
+        public static bool IsPositive(this ulong n)
+        {
+            if (n > 0)
+                return true;
+            else
+                return false;
+        }
+
         public static bool IsSNumber(this ulong n)
         {
             // We define an S-number to be a natural number, n,

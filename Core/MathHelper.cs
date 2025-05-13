@@ -10,6 +10,8 @@ namespace Core
             // a ConcatSquare number if ab = (a + b)^2.
             // Example: 2025 = (20 + 25)^2.
 
+            if (a == 0 || b == 0) return false;
+
             ulong ab = Convert.ToUInt64(a.ToString() + b.ToString());
 
             if (ab == (a + b) * (a + b))
