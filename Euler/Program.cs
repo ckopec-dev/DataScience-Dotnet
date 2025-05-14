@@ -2841,63 +2841,6 @@ namespace Euler
 
         static void Problem932()
         {
-            // preliminary experiments...
-
-            //Console.WriteLine("{0}: {1}", 2025, MathHelper.IsConcatSquare(20, 25));
-            //Console.WriteLine("{0}: {1}", 9801, MathHelper.IsConcatSquare(98, 1));
-
-            // notes...
-
-            // problem does not specify if numbers a and b need to be of equal size.
-            // but i will assume they are for now.
-
-            // below solution works, but actual limit would require way too
-            // many iterations.
-            // limit for problem:
-            // T(16) = 9,999,999,999,999,999
-            // not gonna work. need different approach.
-            // for all solutions, a + b squared is a perfect square.
-            // so only need to check all perfect squares up to limit.
-            // Similar to approach used in Problem 719.
-
-            /* working code for T(4)
-            
-            const ulong LIMIT = 9999;
-            ulong sum = 0;
-
-            for(ulong n = 10; n <=LIMIT; n++)
-            {
-                string n_str = n.ToString();
-                
-                if (n_str.Length % 2 == 0)
-                {
-                    int half = Convert.ToInt32(n_str.Length / 2);
-                    ulong a = Convert.ToUInt64(n_str.Left(half));
-                    ulong b = Convert.ToUInt64(n_str.Right(half));
-
-                    bool iscc = MathHelper.IsConcatSquare(a, b);
-                    
-                    if (iscc)
-                    {
-                        Console.WriteLine("n: {0}, a: {1}, b: {2}, y/n: {3}", n, a, b, iscc);
-                        sum += n;
-                    }
-                }
-            }
-
-            Console.WriteLine("sum: {0}", sum);
-            
-            */
-
-            // Adjusted code to filter over perfect squares:
-
-            // This works for T(4) and seems to work for T(16), however
-            // the answer produced for T(16) is wrong.
-            // Possible problem is that the assumption of size equivalency
-            // of a and b is wrong...
-
-            // T(4) limit = sqr root of 10000 = 100;
-            // T(16) limit = sqr root of 10000000000000000 = 100000000 (100m);
             const ulong LIMIT = 100000000;
             ulong sum = 0;
 
@@ -2906,20 +2849,23 @@ namespace Euler
                 ulong n_sqr = n * n;
                 string n_str = n_sqr.ToString();
 
-                if (n_str.Length % 2 == 0)
+                if (n_str.Length < 2)
+                    continue;
+
+                // index range is 1 to len-1
+                for(int i = 1; i <= n_str.Length - 1; i++)
                 {
-                    int half = Convert.ToInt32(n_str.Length / 2);
-                    ulong a = Convert.ToUInt64(n_str.Left(half));
-                    ulong b = Convert.ToUInt64(n_str.Right(half));
+                    ulong a = Convert.ToUInt64(n_str.Left(i));
+                    ulong b = Convert.ToUInt64(n_str.Right(n_str.Length - i));
 
                     bool iscc = MathHelper.IsConcatSquare(a, b);
 
                     if (iscc)
                     {
-                        Console.WriteLine("n_sqr: {0}, a: {1}, b: {2}, y/n: {3}", 
+                        Console.WriteLine("n_sqr: {0}, a: {1}, b: {2}, y/n: {3}",
                             n_sqr, a, b, iscc);
 
-                        // throw exception if overthrow
+                        // throw exception if overflow
                         sum = checked(sum + n_sqr);
                     }
                 }
