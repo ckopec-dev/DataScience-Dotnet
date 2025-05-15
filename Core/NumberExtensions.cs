@@ -7,6 +7,52 @@ namespace Core
 {
     public static class NumberExtensions
     {
+        public static bool ReversiblePrimeSquare(this int n)
+        {
+            // We call a number a reversible prime square if:
+            //  It is not a palindrome, and
+            //  It is the square of a prime, and
+            //  Its reverse is also the square of a prime.
+
+            // E.g.: 169
+
+            //Console.WriteLine("IsPalindrome: {0}", n.IsPalindrome());
+            //Console.WriteLine("IsPrimeSquare: {0}", n.IsPrimeSquare());
+            //Console.WriteLine("ReverseIsPrimeSquare: {0}", n.Reverse().IsPrimeSquare());
+
+            if (!n.IsPalindrome() &&
+                n.IsPrimeSquare() && 
+                n.Reverse().IsPrimeSquare()
+                )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool IsPrimeSquare(this int n)
+        {
+            // Returns true if n is the square of a prime.
+            // E.g. 169 returns true because 13 * 13 = 169.
+
+            bool isPrimeSquare = false;
+
+            if (n.IsPerfectSquare())
+            {
+                int root = Convert.ToInt32(Math.Sqrt(n));
+                
+                if (root.IsPrime())
+                {
+                    isPrimeSquare = true;
+                }
+            }
+
+            return isPrimeSquare;
+        }
+
         public static int SquareDigitChain(this int n)
         {
             // A number chain is created by continuously adding the square of
@@ -553,6 +599,8 @@ namespace Core
 
         public static bool IsPrime(this int number)
         {
+            //Console.WriteLine("entering IsPrime(int)");
+
             return ((long)number).IsPrime();
         }
 
@@ -569,7 +617,7 @@ namespace Core
                 return false;
             }
 
-            ulong sqrt = (ulong)Math.Sqrt(number);
+            ulong sqrt = Convert.ToUInt64(Math.Sqrt(number));
             for (ulong t = 3; t <= sqrt; t += 2)
             {
                 if (number % t == 0)
@@ -583,8 +631,9 @@ namespace Core
 
         public static bool IsPrime(this long number)
         {
+            //Console.WriteLine("entering IsPrime(long)");
 
-            return IsPrime(number);
+            return ((ulong)number).IsPrime();
         }
 
         public static bool IsProbablyPrime(this int number)
@@ -661,6 +710,15 @@ namespace Core
                     return false;
 
             return true;
+        }
+
+        public static int Reverse(this int number)
+        {
+            char[] charArray = number.ToString().ToCharArray();
+            Array.Reverse(charArray);
+            string numberReversed = new(charArray);
+
+            return Convert.ToInt32(numberReversed);
         }
 
         public static long Reverse(this long number)

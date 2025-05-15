@@ -3,6 +3,7 @@ using Core;
 using Core.GameTheory;
 using Core.ScottPlotCustom;
 using ScottPlot;
+using ScottPlot.Hatches;
 using System.Diagnostics;
 using System.Numerics;
 using System.Reflection;
@@ -2885,6 +2886,38 @@ namespace Euler
                 ulong sq = n * n;
                 if (sq.IsSNumber())
                     sum += sq;
+            }
+
+            Console.WriteLine("sum: {0}", sum);
+        }
+
+        static void Problem808()
+        {
+            // preliminary experiments
+            //int n = 169;
+            //Console.WriteLine(n.ReversiblePrimeSquare());
+
+            // Find the sum of the first 50 reversible prime squares.
+
+            int count = 0;
+            int n = 2;
+            int sum = 0;
+
+            while(count <= 50)
+            {
+                if (n % 1000000 == 0)
+                {
+                    Console.WriteLine("n: {0}", n);
+                }
+
+                if (n.ReversiblePrimeSquare())
+                {
+                    count++;
+                    sum++;
+                    Console.WriteLine("found one. n: {0}", n);
+                }
+
+                n++;
             }
 
             Console.WriteLine("sum: {0}", sum);
