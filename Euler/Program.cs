@@ -2807,6 +2807,33 @@ namespace Euler
             throw new NotImplementedException();
         }
 
+        static void Problem92()
+        {
+            // This is vaguely similar to the hailstone conjecture.
+
+            /* Preliminary experiments
+            int n = 44;
+            Console.WriteLine(n.SquareDigitChain());
+            n = 85;
+            Console.WriteLine(n.SquareDigitChain());
+            */
+
+            // How many starting numbers below ten million will arrive at 89?
+
+            int count = 0;
+
+            for(int n = 1; n < 10000000; n++)
+            {
+                if (n % 10000 == 0)
+                    Console.WriteLine("n: {0}", n);
+
+                if (n.SquareDigitChain() == 89)
+                    count++;
+            }
+
+            Console.WriteLine("count: {0}", count);
+        }
+
         static void Problem97()
         {
             BigInteger bi = BigInteger.Pow(2, 7830457);
@@ -2815,6 +2842,36 @@ namespace Euler
             bi += 1;
 
             Console.WriteLine(bi.ToString().Right(10));
+        }
+
+        static void Problem700()
+        {
+            // preliminary experiments...
+
+            // 1504170715041707n mod 4503599627370517
+
+            BigInteger a = 1504170715041707;
+            BigInteger b = 4503599627370517;
+            BigInteger smallest = b;
+            BigInteger sum = 0;
+
+            for(BigInteger n = 1; n <= 10000000000; n++)
+            {
+                BigInteger result = (a * n) % b;
+
+                if (result < smallest)
+                {
+                    smallest = result;
+                    sum += result;
+                    Console.WriteLine("n: {0}, smallest: {1}", n, smallest);
+                }
+            }
+
+            // brute force does not work and more knowledge/research of
+            // number theory is required
+            Console.WriteLine("sum: {0}", sum);
+
+            throw new NotImplementedException();
         }
 
         static void Problem719()
@@ -2831,6 +2888,11 @@ namespace Euler
             }
 
             Console.WriteLine("sum: {0}", sum);
+        }
+
+        static void Problem816()
+        {
+            throw new NotImplementedException();
         }
 
         static void Problem836()

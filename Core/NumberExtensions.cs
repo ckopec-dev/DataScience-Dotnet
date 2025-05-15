@@ -7,6 +7,41 @@ namespace Core
 {
     public static class NumberExtensions
     {
+        public static int SquareDigitChain(this int n)
+        {
+            // A number chain is created by continuously adding the square of
+            // the digits in a number to form a new number until
+            // it has been seen before.
+
+            // EVERY starting number will eventually arrive at 1 or 89.
+
+            // Returns the final repeating number (i.e. 1 or 89).
+
+            // E.g.
+            // 44 -> 32 -> 13 -> 10 -> 1 -> 1
+
+            ArgumentOutOfRangeException.ThrowIfLessThan(n, 1);
+            if (n == 1 || n == 89) return n;
+
+            while (n != 1 && n != 89)
+            {
+                //Console.WriteLine(n);
+
+                List<int> digits = n.ToListOfDigits();
+
+                int sum = 0;
+
+                foreach(int digit in digits)
+                {
+                    sum += checked(digit * digit);
+                }
+
+                n = sum;
+            }
+
+            return n;
+        }
+
         public static bool IsPositive(this ulong n)
         {
             if (n > 0)
