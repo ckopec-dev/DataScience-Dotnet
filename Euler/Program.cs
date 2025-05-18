@@ -3,11 +3,9 @@ using Core;
 using Core.GameTheory;
 using Core.ScottPlotCustom;
 using ScottPlot;
-using ScottPlot.Hatches;
 using System.Diagnostics;
 using System.Numerics;
 using System.Reflection;
-using System.Runtime.InteropServices.Marshalling;
 using System.Text;
 
 namespace Euler
