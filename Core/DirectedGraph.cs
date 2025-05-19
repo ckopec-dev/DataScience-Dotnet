@@ -3,11 +3,11 @@ namespace Core
 {
     public class DirectedGraph
     {
-        public int Vertices { get; set; }
-        public int Edges { get; set; }
+        public int VertexCount { get; set; }
+        public int EdgeCount { get; set; }
         public List<int> Origins = [];
         public List<int> Destinations = [];
-        public List<DirectedGraphPath> Paths = [];
+        //public List<DirectedGraphPath> Paths = [];
 
         public DirectedGraph()
         {
@@ -17,8 +17,8 @@ namespace Core
         {
             string? line = sr.ReadLine() ?? throw new InvalidInputException();
             string[] header = line.Split(' ');
-            Vertices = int.Parse(header[0]);
-            Edges = int.Parse(header[1]);
+            VertexCount = int.Parse(header[0]);
+            EdgeCount = int.Parse(header[1]);
 
             while(!sr.EndOfStream)
             {
@@ -30,46 +30,48 @@ namespace Core
             }
         }
 
-        public List<int> PathsFrom(int destinationVertexNumber, int originVertexNumber)
-        {
-            return PathsFrom(destinationVertexNumber, originVertexNumber, 1, null);
-        }
 
-        public List<int> PathsFrom(int destinationVertexNumber, int originVertexNumber, int depth, string? fullPath)
-        {
-            List<int> originIndexes = [];
-            int newDepth = depth + 1;
+
+        //public List<int> PathsFrom(int destinationVertexNumber, int originVertexNumber)
+        //{
+        //    return PathsFrom(destinationVertexNumber, originVertexNumber, 1, null);
+        //}
+
+        //public List<int> PathsFrom(int destinationVertexNumber, int originVertexNumber, int depth, string? fullPath)
+        //{
+        //    List<int> originIndexes = [];
+        //    int newDepth = depth + 1;
             
-            for (int i = 0; i < Destinations.Count; i++)
-            {
-                if (Destinations[i] == destinationVertexNumber)
-                {
-                    string currentPath = String.Format(
-                        "Destination: {0}, Origin: {1}, Depth: {2}", 
-                        destinationVertexNumber, Origins[i], depth);
+        //    for (int i = 0; i < Destinations.Count; i++)
+        //    {
+        //        if (Destinations[i] == destinationVertexNumber)
+        //        {
+        //            string currentPath = String.Format(
+        //                "Destination: {0}, Origin: {1}, Depth: {2}", 
+        //                destinationVertexNumber, Origins[i], depth);
 
-                    Paths.Add(new(Origins[i], Destinations[i], depth));
+        //            Paths.Add(new(Origins[i], Destinations[i], depth));
                     
-                    if (fullPath != null)
-                    {
-                        currentPath = fullPath + " -> " + currentPath;
-                    }
+        //            if (fullPath != null)
+        //            {
+        //                currentPath = fullPath + " -> " + currentPath;
+        //            }
 
-                    originIndexes.Add(i);
+        //            originIndexes.Add(i);
 
-                    if (Destinations[i] == originVertexNumber ||
-                        Origins[i] != originVertexNumber)
-                    {
-                        originIndexes.AddRange(PathsFrom(Origins[i], originVertexNumber, newDepth, currentPath));
-                    }
-                    else
-                    {
-                        Console.WriteLine("path ended");
-                    }
-                }
-            }
+        //            if (Destinations[i] == originVertexNumber ||
+        //                Origins[i] != originVertexNumber)
+        //            {
+        //                originIndexes.AddRange(PathsFrom(Origins[i], originVertexNumber, newDepth, currentPath));
+        //            }
+        //            else
+        //            {
+        //                Console.WriteLine("path ended");
+        //            }
+        //        }
+        //    }
 
-            return originIndexes;
-        }
+        //    return originIndexes;
+        //}
     }
 }

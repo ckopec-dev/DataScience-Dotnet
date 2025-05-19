@@ -294,18 +294,18 @@ namespace Rosalind
 
             DirectedGraph dg = new(sr);
 
-            for(int i = 1; i <= dg.Vertices; i++)
+            for(int i = 1; i <= dg.VertexCount; i++)
             {
-                if (i != 5)
-                    continue;
+            //    if (i != 5)
+            //        continue;
 
-                dg.Paths.Clear();
-                List<int> paths = dg.PathsFrom(i, 1);
+            //    dg.Paths.Clear();
+            //    List<int> paths = dg.PathsFrom(i, 1);
 
-                foreach(DirectedGraphPath path in dg.Paths)
-                {
-                    Console.WriteLine(path);
-                }
+            //    foreach(DirectedGraphPath path in dg.Paths)
+            //    {
+            //        Console.WriteLine(path);
+            //    }
             }
         }
 
