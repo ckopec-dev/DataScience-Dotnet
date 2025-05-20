@@ -3332,6 +3332,59 @@ namespace Euler
             Console.WriteLine("Count: {0}", count);
         }
 
+        static void Misc17()
+        {
+            // From Recreations in the Theory of Numbers.
+            // Page 1, problem 4.
+
+            bool found = false;
+
+            ulong n = 32;
+            while(!found)
+            {
+                n++;
+
+                if (n % 1000000 == 0)
+                    Console.WriteLine("Checking n = {0}.", n);
+
+                List<int> list = n.ToListOfDigits();
+
+                // Make sure n has at least one 3 and one 7.
+                if (!(list.Contains(3) && list.Contains(7)))
+                {
+                    continue;
+                }
+
+                // Make sure n only consists of 3s and 7s.
+                if (
+                    list.Contains(0) ||
+                    list.Contains(1) ||
+                    list.Contains(2) ||
+                    list.Contains(4) ||
+                    list.Contains(5) ||
+                    list.Contains(6) ||
+                    list.Contains(8) ||
+                    list.Contains(9)
+                    )
+                {
+                    continue;
+                }
+
+                // Is this number divisible by 3 and also 7?
+                if (!(n % 3 == 0 && n % 7 == 0))
+                    continue;
+
+                // Is the sum of the digits divisible by 3 and also 7?
+                int sum = list.Sum();
+                if (sum % 3 == 0 && sum % 7 == 0)
+                {
+                    found = true;
+                }
+            }
+
+            Console.WriteLine("Found solution: n = {0}.", n);
+        }
+
         #endregion
 
 #pragma warning restore IDE0051 // Remove unused private members

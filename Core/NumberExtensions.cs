@@ -1182,17 +1182,19 @@ namespace Core
             return vals;
         }
 
-        public static List<int> ToListOfDigits(this int val)
+        public static List<int> ToListOfDigits(this int n)
+        {
+            return ToListOfDigits((ulong)n);   
+        }
+
+        public static List<int> ToListOfDigits(this ulong n)
         {
             // Given a number such as 147, return a list of all the digits. E.g. 1, 4, 7.
             // For positive numbers only.
 
-            if (val < 0)
-                throw new Exception("Negative values are not supported.");
-
             List<int> vals = [];
 
-            string v = val.ToString();
+            string v = n.ToString();
 
             for (int i = 0; i < v.Length; i++)
             {
