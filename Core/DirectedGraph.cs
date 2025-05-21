@@ -30,6 +30,13 @@ namespace Core
             }
         }
 
+        public void Paths(int origin, int destination)
+        {
+            // A path is the vertices from the origin to the destination.
+            // Returns all possible paths.
+
+            throw new NotImplementedException();
+        }
 
 
         //public List<int> PathsFrom(int destinationVertexNumber, int originVertexNumber)
