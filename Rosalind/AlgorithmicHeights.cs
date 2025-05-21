@@ -1,4 +1,5 @@
 ﻿using Core;
+using QuikGraph;
 using System.Reflection;
 using System.Text;
 
@@ -289,24 +290,42 @@ namespace Rosalind
 
         public static void ProblemBFS()
         {
+            // As part of this problem, clean up the various graph 
+            // classes...
+
+
             Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.bfs.txt") ?? throw new ResourceNotFoundException();
             using StreamReader sr = new(mrs);
 
-            DirectedGraph dg = new(sr);
+            #pragma warning disable IDE0305 // Simplify collection initialization
+            List<string> lst = sr.ReadToEnd().ToList();
+            #pragma warning restore IDE0305 // Simplify collection initialization
 
-            for(int i = 1; i <= dg.VertexCount; i++)
+            EdgeList e = new(lst);
+            
+            for (int i = 1; i <= e.Vertices.Count; ++i)
             {
-            //    if (i != 5)
-            //        continue;
+                Console.WriteLine("Vertex {0}", i);
 
-            //    dg.Paths.Clear();
-            //    List<int> paths = dg.PathsFrom(i, 1);
+                
 
-            //    foreach(DirectedGraphPath path in dg.Paths)
-            //    {
-            //        Console.WriteLine(path);
-            //    }
             }
+
+            //DirectedGraph dg = new(sr);
+
+            //for(int i = 1; i <= dg.VertexCount; i++)
+            //{
+            ////    if (i != 5)
+            ////        continue;
+
+            ////    dg.Paths.Clear();
+            ////    List<int> paths = dg.PathsFrom(i, 1);
+
+            ////    foreach(DirectedGraphPath path in dg.Paths)
+            ////    {
+            ////        Console.WriteLine(path);
+            ////    }
+            //}
         }
 
         #endregion
