@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Core.Graphs
 {
-    internal class UndirectedGraph
+    public class UndirectedGraph : Graph
     {
     }
 }

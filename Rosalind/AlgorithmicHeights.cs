@@ -293,6 +293,7 @@ namespace Rosalind
             // As part of this problem, clean up the various graph 
             // classes...
 
+            // See https://rosalind.info/problems/deg/
 
             Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.bfs.txt") ?? throw new ResourceNotFoundException();
             using StreamReader sr = new(mrs);

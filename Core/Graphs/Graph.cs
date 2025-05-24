@@ -1,7 +1,7 @@
 ﻿
 namespace Core.Graphs
 {
-    internal abstract class Graph
+    public abstract class Graph
     {
     }
 }
