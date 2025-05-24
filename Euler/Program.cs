@@ -3462,6 +3462,39 @@ namespace Euler
             }
         }
 
+        static void Misc20()
+        {
+            // Same as Misc19, but count solutions.
+
+            const long LIMIT = 1000;
+
+            Console.WriteLine("cfactor,solutions");
+            for (long c_factor = 2; c_factor <= LIMIT; c_factor++)
+            {
+                long count = 0;
+
+                for (long a = 1; a <= LIMIT; a++)
+                {
+                    for (long b = 1; b <= LIMIT; b++)
+                    {
+                        long ab = (a * a * a) + (b * b * b);
+
+                        for (long c = 1; c <= LIMIT; c++)
+                        {
+                            long cf = (c_factor * c * c * c);
+
+                            if (ab == cf)
+                            {
+                                count++;
+                            }
+                        }
+                    }
+                }
+
+                Console.WriteLine("{0}, {1}", c_factor, count);
+            }
+        }
+
         #endregion
 
 #pragma warning restore IDE0051 // Remove unused private members
