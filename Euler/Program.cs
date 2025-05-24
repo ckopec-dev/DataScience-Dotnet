@@ -3385,6 +3385,45 @@ namespace Euler
             Console.WriteLine("Found solution: n = {0}.", n);
         }
 
+        static void Misc18()
+        {
+            // Explore solutions to the form of problem:
+            // a^3 + b^3 = 22c^3
+
+            // Solutions are extremely difficult to brute force.
+            
+            const long C_FACTOR = 22;
+            const long LIMIT = 26000;
+
+            bool solution_found = false;
+
+            for(long a = 1; a <= LIMIT; a++)
+            {
+                Console.WriteLine("Searching space a = {0}.", a);
+                for(long b = 1; b <= LIMIT; b++)
+                {
+                    long ab = (a * a * a) + (b * b * b);
+                    
+                    for (long c = 1; c <= LIMIT; c++)
+                    {
+                        long cf = (C_FACTOR * c * c * c);
+
+                        if (ab == cf)
+                        {
+                            Console.WriteLine("Solution found: {0}, {1}, {2}.",
+                                a, b, c);
+                            solution_found = true;
+                        }
+                    }
+                }
+            }
+
+            if (!solution_found)
+            {
+                Console.WriteLine("No solution found.");
+            }
+        }
+
         #endregion
 
 #pragma warning restore IDE0051 // Remove unused private members
