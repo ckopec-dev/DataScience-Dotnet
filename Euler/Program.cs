@@ -3424,6 +3424,44 @@ namespace Euler
             }
         }
 
+        static void Misc19()
+        {
+            // Same as Misc18 except with variable C_FACTOR.
+
+            const long LIMIT = 1000;
+
+            for(long c_factor = 2; c_factor <= LIMIT; c_factor++)
+            {
+                bool solution_found = false;
+
+                Console.WriteLine("Search c_factor space {0}.", c_factor);
+                for (long a = 1; a <= LIMIT; a++)
+                {
+                    for (long b = 1; b <= LIMIT; b++)
+                    {
+                        long ab = (a * a * a) + (b * b * b);
+
+                        for (long c = 1; c <= LIMIT; c++)
+                        {
+                            long cf = (c_factor * c * c * c);
+
+                            if (ab == cf)
+                            {
+                                Console.WriteLine("Solution found for c_factor {0}: {1}, {2}, {3}.",
+                                    c_factor, a, b, c);
+                                solution_found = true;
+                            }
+                        }
+                    }
+                }
+
+                if (!solution_found)
+                {
+                    Console.WriteLine("No solution found.");
+                }
+            }
+        }
+
         #endregion
 
 #pragma warning restore IDE0051 // Remove unused private members
