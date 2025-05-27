@@ -3,6 +3,7 @@ using Core;
 using Core.GameTheory;
 using Core.ScottPlotCustom;
 using ScottPlot;
+using ScottPlot.Plottables;
 using System.Diagnostics;
 using System.Numerics;
 using System.Reflection;
