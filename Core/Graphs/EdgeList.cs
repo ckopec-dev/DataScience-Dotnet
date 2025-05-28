@@ -35,5 +35,14 @@ namespace Core.Graphs
     /// </remarks>
     public class EdgeList
     {
+        public static DirectedGraph GetDirectedGraph(string edgeList)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static UndirectedGraph GetUndirectedGraph(string edgeList)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
