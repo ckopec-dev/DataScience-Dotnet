@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.Graphs
 {
-    internal class Vertex
+    public class Vertex
     {
     }
 }
