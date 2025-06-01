@@ -1,6 +1,9 @@
 ﻿
 namespace Core.Graphs
 {
+    /// <summary>
+    /// See https://rosalind.info/problems/deg/
+    /// </summary>
     public abstract class Graph
     {
         public int VertexCount { get; set; }
