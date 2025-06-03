@@ -32,5 +32,12 @@ namespace UnitTests
             decimal m = ConvertUnits.ToMillimeters(1m);
             Assert.AreEqual(25.4m, m);
         }
+
+        //[TestMethod]
+        //public void ToFeetTest()
+        //{
+        //    decimal f = ConvertUnits.ToFeet(304.8m);
+        //    Assert.AreEqual(1m, f);
+        //}
     }
 }
