@@ -25,5 +25,12 @@ namespace UnitTests
             decimal i = ConvertUnits.ToInches(25.4m);
             Assert.AreEqual(1m, i);
         }
+
+        [TestMethod]
+        public void ToMillimetersTest()
+        {
+            decimal m = ConvertUnits.ToMillimeters(1m);
+            Assert.AreEqual(25.4m, m);
+        }
     }
 }
