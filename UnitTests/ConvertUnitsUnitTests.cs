@@ -18,5 +18,12 @@ namespace UnitTests
             decimal c = ConvertUnits.ToCelsius(32m);
             Assert.AreEqual(0, c);
         }
+
+        [TestMethod]
+        public void ToInchesTest()
+        {
+            decimal i = ConvertUnits.ToInches(25.4m);
+            Assert.AreEqual(1m, i);
+        }
     }
 }
