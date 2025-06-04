@@ -1,6 +1,12 @@
 ﻿
 namespace Core
 {
+    /// <summary>
+    /// 
+    /// WIP: convert to... 
+    /// 
+    /// https://en.wikipedia.org/wiki/International_System_of_Units
+    /// </summary>
     public class ConvertUnits
     {
         #region Public methods
