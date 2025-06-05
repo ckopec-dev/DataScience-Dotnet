@@ -3496,6 +3496,16 @@ namespace Euler
             }
         }
 
+        static void Misc21()
+        {
+            // 5^x * 5^x = 50, solve for x.
+
+            for(double x = 1.21; x <= 1.22; x += 0.001d)
+            {
+                Console.WriteLine("x = {0}: {1}", x, Math.Pow(5, x) * Math.Pow(5, x));
+            }
+        }
+
         #endregion
 
 #pragma warning restore IDE0051 // Remove unused private members
