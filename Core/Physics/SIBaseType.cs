@@ -1,6 +1,6 @@
 ﻿namespace Core.Physics
 {
-    public enum BaseSIType
+    public enum SIBaseType
     {
         Second,     // time 
         Metre,      // length
