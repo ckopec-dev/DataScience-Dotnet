@@ -3,7 +3,6 @@ using Core;
 using Core.GameTheory;
 using Core.ScottPlotCustom;
 using ScottPlot;
-using ScottPlot.Plottables;
 using System.Diagnostics;
 using System.Numerics;
 using System.Reflection;
@@ -2739,23 +2738,6 @@ namespace Euler
 
         static void Problem74()
         {
-            // preliminary experiments...
-
-            // 145 = the sum of the factorial of its digits
-            // 1! + 4! + 5! = 1 + 24 + 120 = 145
-            //Console.WriteLine(145.SumOfFactorialDigits());
-
-            //BigInteger bi = 169.SumOfFactorialDigits();
-            //Console.WriteLine(bi);
-            //Console.WriteLine(bi.SumFactorialDigits());
-
-            //BigInteger bi = 69;
-            //List<BigInteger> cycle = bi.FactorialDigitCycle();
-            //foreach (BigInteger n in cycle)
-            //{
-            //    Console.WriteLine(n);
-            //}
-
             // How many chains, with a starting number below one million,
             // contain exactly sixty non-repeating terms?
 
