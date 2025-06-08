@@ -2780,13 +2780,16 @@ namespace Euler
             // largest possible value of a is 10,
             // since minimum values of b and c are 1.
 
-            int lCount = 0;
+            /* this takes far too long...
 
-            for (long L = 3; L <= 1500000; L++)
+            long LIMIT = 1000;
+            long lCount = 0;
+
+            for (long L = 3; L <= LIMIT; L++)
             {
-                int matchCount = 0;
-                if (L % 1000 == 0)
-                    Console.WriteLine("L = {0}", L);
+                long matchCount = 0;
+                //if (L % 1000 == 0)
+                //    Console.WriteLine("L = {0}", L);
 
                 for (long a = L - 2; a > 0; a--)
                 {
@@ -2805,8 +2808,8 @@ namespace Euler
 
                         if (match)
                         {
-                            //Console.WriteLine("a = {0}, b = {1}, c = {2}, match: {3}",
-                            //    a, b, c, match);
+                            Console.WriteLine("a = {0}, b = {1}, c = {2}, match: {3}",
+                                a, b, c, match);
                             matchCount++;
                         }
                     }
@@ -2817,6 +2820,8 @@ namespace Euler
             }
 
             Console.WriteLine("lCount: {0}", lCount);
+
+            */
         }
 
         static void Problem79()
@@ -3533,6 +3538,11 @@ namespace Euler
             {
                 Console.WriteLine("x = {0}: {1}", x, Math.Pow(5, x) * Math.Pow(5, x));
             }
+        }
+
+        static void Misc22()
+        {
+            Console.WriteLine("Li(5) = {0}", MathHelper.Li(5));
         }
 
         #endregion

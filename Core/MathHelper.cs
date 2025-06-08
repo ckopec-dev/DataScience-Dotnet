@@ -1,9 +1,12 @@
 ﻿using System.Numerics;
+using System.Xml.XPath;
 
 namespace Core
 {
     public static class MathHelper
     {
+        public const double GAMMA = 0.57721566490153286060651209008240243;
+
         public static bool IsConcatSquare(ulong a, ulong b)
         {
             // Given positive integers a and b, the concatenation ab we call
@@ -196,6 +199,41 @@ namespace Core
             if (a == 0)
                 return b;
             return GCD(b % a, a);
+        }
+
+        public static double Li(double x)
+        {
+            return Li(x, 10);
+        }
+
+        public static double Li(double x, int terms)
+        {
+            // https://en.wikipedia.org/wiki/Logarithmic_integral_function
+            // https://math.stackexchange.com/questions/700391/integration-by-parts-of-the-logarithmic-integral
+
+            double result = GAMMA;
+            double logX = Math.Log(x);
+            Console.WriteLine("logX: {0}", logX);
+            result += Math.Log(logX);
+            Console.WriteLine("result: {0}", result);
+
+            for (int n = 1; n <= terms; n++)
+            {
+                double nFactorial = Convert.ToDouble(n.Factorial().ToString());
+                Console.WriteLine("nFactorial({0}): {1}", n, nFactorial);
+
+                double pow = Math.Pow(logX, n);
+                Console.WriteLine("pow({0}): {1}", n, pow);
+
+                double nn = n * nFactorial;
+                Console.WriteLine("nn({0}): {1}", n, nn);
+
+                result += pow / nn;
+
+                Console.WriteLine("result({0}): {1}", n, result);
+            }
+
+            return result;
         }
     }
 }
