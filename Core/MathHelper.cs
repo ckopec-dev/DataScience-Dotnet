@@ -213,27 +213,57 @@ namespace Core
 
             double result = GAMMA;
             double logX = Math.Log(x);
-            Console.WriteLine("logX: {0}", logX);
+            //Console.WriteLine("logX: {0}", logX);
             result += Math.Log(logX);
-            Console.WriteLine("result: {0}", result);
+            //Console.WriteLine("result: {0}", result);
 
             for (int n = 1; n <= terms; n++)
             {
                 double nFactorial = Convert.ToDouble(n.Factorial().ToString());
-                Console.WriteLine("nFactorial({0}): {1}", n, nFactorial);
+                //Console.WriteLine("nFactorial({0}): {1}", n, nFactorial);
 
                 double pow = Math.Pow(logX, n);
-                Console.WriteLine("pow({0}): {1}", n, pow);
+                //Console.WriteLine("pow({0}): {1}", n, pow);
 
                 double nn = n * nFactorial;
-                Console.WriteLine("nn({0}): {1}", n, nn);
+                //Console.WriteLine("nn({0}): {1}", n, nn);
 
                 result += pow / nn;
 
-                Console.WriteLine("result({0}): {1}", n, result);
+                //Console.WriteLine("result({0}): {1}", n, result);
             }
 
             return result;
+        }
+
+        public static long Pi(long x)
+        {
+            // The Prime Counting Function
+            // The count of all primes up to (and including) x.
+            // E.g. Pi(1000) returns 168.
+
+            long count = 0;
+
+            for(long i = 0; i <= x; i++)
+            {
+                if (i.IsPrime())
+                    count++;
+            }
+
+            return count;
+        }
+
+        public static int PiProbably(int x)
+        {
+            int count = 0;
+
+            for (int i = 0; i <= x; i++)
+            {
+                if (i.IsProbablyPrime())
+                    count++;
+            }
+
+            return count;
         }
     }
 }

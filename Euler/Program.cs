@@ -3542,7 +3542,15 @@ namespace Euler
 
         static void Misc22()
         {
-            Console.WriteLine("Li(5) = {0}", MathHelper.Li(5));
+            // https://www.had2know.org/academics/logarithmic-integral-calculator.html
+
+            int x = 10000;
+
+            // Li(x) ~ Pi(x)
+
+            Console.WriteLine("Li({0}) = {1}", x, MathHelper.Li(x, 100));
+            Console.WriteLine("Pi({0}) = {1}", x, MathHelper.Pi(x));
+            Console.WriteLine("PiProbably({0}) = {1}", x, MathHelper.PiProbably(x));
         }
 
         #endregion
