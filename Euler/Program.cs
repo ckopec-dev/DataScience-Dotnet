@@ -2769,59 +2769,27 @@ namespace Euler
 
         static void Problem75()
         {
-            // preliminary experiments
+            int limit = 40;//  1500000;
 
-            // for length 12...
-            // 3 + 4 + 5 = 12
-            // a^2 + b^2 = c^2
-            // 3^2 + 4^2 = 5^2
-            // 9 + 16 = 25
+            int a, b, c = 0;
+            int m = 2;
 
-            // largest possible value of a is 10,
-            // since minimum values of b and c are 1.
-
-            /* this takes far too long...
-
-            long LIMIT = 1000;
-            long lCount = 0;
-
-            for (long L = 3; L <= LIMIT; L++)
+            // this generates all the primitives.
+            while (c < limit)
             {
-                long matchCount = 0;
-                //if (L % 1000 == 0)
-                //    Console.WriteLine("L = {0}", L);
-
-                for (long a = L - 2; a > 0; a--)
+                for (int n = 1; n < m; ++n)
                 {
-                    // largest possible value of b is L - a - 1
-                    // minimum value is a
-                    for (long b = L - a - 1; b > 0; b--)
-                    {
-                        if (b > a)
-                            continue;
+                    a = m * m - n * n;
+                    b = 2 * m * n;
+                    c = m * m + n * n;
 
-                        // c is A - a - b
-                        long c = L - a - b;
+                    if (c > limit)
+                        break;
 
-                        // does a^2 + b^2 = c^2?
-                        bool match = (a * a + b * b == c * c);
-
-                        if (match)
-                        {
-                            Console.WriteLine("a = {0}, b = {1}, c = {2}, match: {3}",
-                                a, b, c, match);
-                            matchCount++;
-                        }
-                    }
+                    Console.WriteLine("{0} {1} {2}", a, b, c);
                 }
-
-                if (matchCount == 1)
-                    lCount++;
+                m++;
             }
-
-            Console.WriteLine("lCount: {0}", lCount);
-
-            */
         }
 
         static void Problem79()
