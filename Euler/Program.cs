@@ -2774,6 +2774,8 @@ namespace Euler
             int a, b, c = 0;
             int m = 2;
 
+            List<List<int>> list_of_triplets = [];
+
             // this generates all the primitives.
             while (c < limit)
             {
@@ -2786,9 +2788,30 @@ namespace Euler
                     if (c > limit)
                         break;
 
-                    Console.WriteLine("{0} {1} {2}", a, b, c);
+                    List<int> triplets = [a, b, c];
+
+                    // sort them in order, so a <= b <= c
+                    triplets.Sort();
+
+                    list_of_triplets.Add(triplets);
                 }
                 m++;
+            }
+
+            // sort the entire list 
+            list_of_triplets = [.. list_of_triplets.OrderBy(i => i[0])];
+
+            // todo: add multiples to account for the non-primitives.
+            //
+
+
+            foreach (List<int> triplet in list_of_triplets)
+            {
+                foreach (int num in triplet)
+                {
+                    Console.Write(num + " ");
+                }
+                Console.WriteLine();
             }
         }
 
