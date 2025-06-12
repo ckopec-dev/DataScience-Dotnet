@@ -2769,31 +2769,41 @@ namespace Euler
 
         static void Problem75()
         {
-            int limit = 40;//  1500000;
+            const long LIMIT = 1500000;
 
-            int a, b, c = 0;
-            int m = 2;
+            long a, b, c = 0;
+            long m = 2;
+            long sum = 0;
 
-            List<List<int>> list_of_triplets = [];
+            List<List<long>> list_of_triplets = [];
 
-            // this generates all the primitives.
-            while (c < limit)
+            // this generates all the primitives and some non-primitives.
+            while (c < LIMIT)
             {
-                for (int n = 1; n < m; ++n)
+                for (long n = 1; n < m; ++n)
                 {
                     a = m * m - n * n;
                     b = 2 * m * n;
                     c = m * m + n * n;
+                    sum = a + b + c;
 
-                    if (c > limit)
+                    if (c > LIMIT)
                         break;
 
-                    List<int> triplets = [a, b, c];
+                    List<long> triplets = [a, b, c];
 
                     // sort them in order, so a <= b <= c
                     triplets.Sort();
 
                     list_of_triplets.Add(triplets);
+
+                    long k = 1;
+                    while (k * sum <= LIMIT)
+                    {
+                        List<long> derived_triplet = [a * k, b * k, c * k];
+                        list_of_triplets.Add(derived_triplet);
+                        k++;
+                    }
                 }
                 m++;
             }
@@ -2801,18 +2811,20 @@ namespace Euler
             // sort the entire list 
             list_of_triplets = [.. list_of_triplets.OrderBy(i => i[0])];
 
-            // todo: add multiples to account for the non-primitives.
-            //
+            // todo: dedupe the list
 
-
-            foreach (List<int> triplet in list_of_triplets)
+            /*
+            foreach (List<long> triplet in list_of_triplets)
             {
-                foreach (int num in triplet)
+                foreach (long num in triplet)
                 {
                     Console.Write(num + " ");
                 }
                 Console.WriteLine();
             }
+            */
+
+            Console.WriteLine("count: {0}", list_of_triplets.Count);
         }
 
         static void Problem79()
