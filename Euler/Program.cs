@@ -3,7 +3,9 @@ using Core;
 using Core.GameTheory;
 using Core.ScottPlotCustom;
 using ScottPlot;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Numerics;
 using System.Reflection;
 using System.Text;
@@ -2775,10 +2777,9 @@ namespace Euler
             long m = 2;
             long sum = 0;
 
-            List<List<long>> list_of_triplets = [];
+            List<Tuple<long, long, long>> list_of_triplets = [];
 
-            // this generates all the primitives and some non-primitives.
-            while (c < LIMIT)
+            while (sum <= LIMIT)
             {
                 for (long n = 1; n < m; ++n)
                 {
@@ -2790,18 +2791,21 @@ namespace Euler
                     if (c > LIMIT)
                         break;
 
-                    List<long> triplets = [a, b, c];
+                    List<long> sorted = [a, b, c];
+                    sorted.Sort();
 
-                    // sort them in order, so a <= b <= c
-                    triplets.Sort();
-
-                    list_of_triplets.Add(triplets);
-
+                    var t1 = new Tuple<long, long, long>(sorted[0], sorted[1], sorted[2]);
+                    
+                    list_of_triplets.Add(t1);
+                    
                     long k = 1;
                     while (k * sum <= LIMIT)
                     {
-                        List<long> derived_triplet = [a * k, b * k, c * k];
-                        list_of_triplets.Add(derived_triplet);
+                        sorted = [a * k, b * k, c *k];
+                        sorted.Sort();
+
+                        t1 = new Tuple<long, long, long>(sorted[0], sorted[1], sorted[2]);
+                        list_of_triplets.Add(t1);
                         k++;
                     }
                 }
@@ -2809,22 +2813,40 @@ namespace Euler
             }
 
             // sort the entire list 
-            list_of_triplets = [.. list_of_triplets.OrderBy(i => i[0])];
+            list_of_triplets = [.. list_of_triplets.OrderBy(i => i.Item1)];
 
-            // todo: dedupe the list
+            var deduped = list_of_triplets.DistinctBy(i => new { i.Item1, i.Item2, i.Item3 });
 
-            /*
-            foreach (List<long> triplet in list_of_triplets)
+            // show the list, pre-deduping
+            //foreach (var t in list_of_triplets)
+            //{
+            //    Console.WriteLine(t);
+            //}
+            Console.WriteLine("count pre-deduping: {0}", list_of_triplets.Count);
+
+            // show the list, post-deduping
+            //foreach (var t in deduped)
+            //{
+            //    Console.WriteLine("{0}, sum: {1}", t, t.Item1 + t.Item2 + t.Item3); ;
+            //}
+            Console.WriteLine("deduped: {0}", deduped.Count());
+
+            List<long> sums = [];
+            foreach (var t in deduped)
             {
-                foreach (long num in triplet)
-                {
-                    Console.Write(num + " ");
-                }
-                Console.WriteLine();
+                sums.Add(t.Item1 + t.Item2 + t.Item3);
             }
-            */
 
-            Console.WriteLine("count: {0}", list_of_triplets.Count);
+            var q = sums.GroupBy(i => i).Select(i => new { key = i.Key, cnt = i.Count() });
+            int total = 0;
+
+            foreach (var qi in q)
+            {
+                if (qi.cnt == 1)
+                    total++;
+            }
+
+            Console.WriteLine("total: {0}", total);
         }
 
         static void Problem79()
