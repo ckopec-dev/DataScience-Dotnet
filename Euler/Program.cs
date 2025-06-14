@@ -2779,7 +2779,7 @@ namespace Euler
 
             List<Tuple<long, long, long>> list_of_triplets = [];
 
-            while (sum <= LIMIT)
+            while (sum <= LIMIT * 3)
             {
                 for (long n = 1; n < m; ++n)
                 {
@@ -2788,7 +2788,7 @@ namespace Euler
                     c = m * m + n * n;
                     sum = a + b + c;
 
-                    if (c > LIMIT)
+                    if (sum > LIMIT)
                         break;
 
                     List<long> sorted = [a, b, c];
@@ -2842,6 +2842,7 @@ namespace Euler
 
             foreach (var qi in q)
             {
+                //Console.WriteLine(qi);
                 if (qi.cnt == 1)
                     total++;
             }
