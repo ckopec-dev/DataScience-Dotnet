@@ -40,7 +40,12 @@ namespace Core.Graphs
             int[] header = lines[0].ToIntArray(' ');
 
             UndirectedGraph graph = new(header[0], header[1]);
-            
+
+            for(int i = 1; i < lines.Count; i++)
+            {
+                int[] edge = lines[i].ToIntArray(' ');
+                //graph.Edges[i].
+            }
 
             throw new NotImplementedException();
         }

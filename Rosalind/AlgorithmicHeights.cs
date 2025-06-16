@@ -141,7 +141,7 @@ namespace Rosalind
             
             EdgeList e = new(lst);
             var graph = e.ToAdjacencyGraph();
-
+            
             StringBuilder sb = new();
             
             // For each vertex, count the number of edges of each connected vertex and print out the results.
