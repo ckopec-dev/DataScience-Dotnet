@@ -35,13 +35,23 @@ namespace Core.Graphs
     /// </remarks>
     public class EdgeList
     {
-        public static DirectedGraph GetDirectedGraph(string edgeList)
+        public static UndirectedGraph GetUndirectedGraph(List<string> lines)
         {
+            int[] header = lines[0].ToIntArray(' ');
+
+            UndirectedGraph graph = new(header[0], header[1]);
+            
+
             throw new NotImplementedException();
         }
 
-        public static UndirectedGraph GetUndirectedGraph(string edgeList)
+        public static DirectedGraph GetDirectedGraph(List<string> lines)
         {
+            int[] header = lines[0].ToIntArray(' ');
+
+            DirectedGraph graph = new(header[0], header[1]);
+
+
             throw new NotImplementedException();
         }
     }

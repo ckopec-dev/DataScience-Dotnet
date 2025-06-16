@@ -6,16 +6,22 @@ namespace Core.Graphs
     /// </summary>
     public abstract class Graph
     {
-        public int VertexCount { get; set; }
-        public int EdgeCount { get; set; }
-
         public List<Vertex> Vertices { get; set; }
         public List<Edge> Edges { get; set; }
 
-        public Graph()
+        public Graph(int vertexCount, int edgeCount)
         {
             Vertices = [];
+            for (int i = 0; i < vertexCount; i++)
+            {
+                Vertices.Add(new());
+            }
+
             Edges = [];
+            for(int i = 0; i < edgeCount; i++)
+            {
+                Edges.Add(new());
+            }
         }
     }
 }

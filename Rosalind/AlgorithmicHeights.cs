@@ -302,15 +302,15 @@ namespace Rosalind
             List<string> lst = sr.ReadToEnd().ToList();
             #pragma warning restore IDE0305 // Simplify collection initialization
 
-            EdgeList e = new(lst);
+            //EdgeList e = new(lst);
             
-            for (int i = 1; i <= e.Vertices.Count; ++i)
-            {
-                Console.WriteLine("Vertex {0}", i);
+            //for (int i = 1; i <= e.Vertices.Count; ++i)
+            //{
+            //    Console.WriteLine("Vertex {0}", i);
 
                 
 
-            }
+            //}
 
             //DirectedGraph dg = new(sr);
 
