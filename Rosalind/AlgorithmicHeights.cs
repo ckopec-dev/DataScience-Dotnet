@@ -290,9 +290,6 @@ namespace Rosalind
 
         public static void ProblemBFS()
         {
-            // As part of this problem, clean up the various graph 
-            // classes...
-
             // See https://rosalind.info/problems/deg/
 
             Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.bfs.txt") ?? throw new ResourceNotFoundException();
@@ -302,31 +299,22 @@ namespace Rosalind
             List<string> lst = sr.ReadToEnd().ToList();
             #pragma warning restore IDE0305 // Simplify collection initialization
 
-            //EdgeList e = new(lst);
-            
-            //for (int i = 1; i <= e.Vertices.Count; ++i)
-            //{
-            //    Console.WriteLine("Vertex {0}", i);
+            EdgeList e = new(lst);
+            var graph = e.ToAdjacencyGraph();
 
-                
+            StringBuilder sb = new();
 
-            //}
+            // Vertex 1 always has a distance of 0 to itself.
+            sb.Append("0 ");
 
-            //DirectedGraph dg = new(sr);
-
-            //for(int i = 1; i <= dg.VertexCount; i++)
-            //{
-            ////    if (i != 5)
-            ////        continue;
-
-            ////    dg.Paths.Clear();
-            ////    List<int> paths = dg.PathsFrom(i, 1);
-
-            ////    foreach(DirectedGraphPath path in dg.Paths)
-            ////    {
-            ////        Console.WriteLine(path);
-            ////    }
-            //}
+            for (int i = 2; i <= graph.Vertices.Count(); ++i)
+            {
+                Console.WriteLine("i = {0}", i);
+                foreach (var ed in graph.Edges.Where(j => j.Source == i || j.Target == i))
+                {
+                    Console.WriteLine("\t" + ed);
+                }
+            }
         }
 
         #endregion
