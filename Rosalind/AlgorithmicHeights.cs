@@ -1,5 +1,7 @@
 ﻿using Core;
 using QuikGraph;
+using QuikGraph.Algorithms;
+using SkiaSharp;
 using System.Reflection;
 using System.Text;
 
@@ -307,14 +309,46 @@ namespace Rosalind
             // Vertex 1 always has a distance of 0 to itself.
             sb.Append("0 ");
 
+            // Each vertex is a destination node.
             for (int i = 2; i <= graph.Vertices.Count(); ++i)
             {
                 Console.WriteLine("i = {0}", i);
-                foreach (var ed in graph.Edges.Where(j => j.Source == i || j.Target == i))
+
+                // Look at all edges that have this vertex as the destination node.
+                Queue<string> targets = new();
+                targets.Enqueue(i.ToString());
+                
+                while(targets.Count > 0)
                 {
-                    Console.WriteLine("\t" + ed);
+                    string target_raw = targets.Dequeue();
+                    string[] target_pieces = target_raw.Split(" ");
+
+                    int target = Convert.ToInt32(target_pieces[^1]);
+
+                    var edges = graph.Edges.Where(j => j.Target == target);
+
+                    if (!edges.Any())
+                    {
+                        sb.Append("-1 ");
+                        break;
+                    }
+
+                    foreach(var edge in edges)
+                    {
+                        if (edge.Target == 1)
+                            continue;
+
+                        string new_target = target_raw + " -> " + edge.Source;
+                        targets.Enqueue(new_target);
+
+                        Console.WriteLine("\t{0}", new_target);
+                    }
                 }
+
+                // TODO: every solution that ends in a 1 is a solution (full path from origin to destination)
             }
+
+            Console.WriteLine(sb);
         }
 
         #endregion
