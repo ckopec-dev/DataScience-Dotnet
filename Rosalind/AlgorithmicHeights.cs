@@ -317,6 +317,9 @@ namespace Rosalind
                 // Look at all edges that have this vertex as the destination node.
                 Queue<string> targets = new();
                 targets.Enqueue(i.ToString());
+
+                // The maximum possible hops is the number of vertices in the graph.
+                int minimum_hops = graph.Vertices.Count();
                 
                 while(targets.Count > 0)
                 {
@@ -324,31 +327,41 @@ namespace Rosalind
                     string[] target_pieces = target_raw.Split(" ");
 
                     int target = Convert.ToInt32(target_pieces[^1]);
-
                     var edges = graph.Edges.Where(j => j.Target == target);
 
                     if (!edges.Any())
                     {
-                        sb.Append("-1 ");
+                        minimum_hops = -1;
                         break;
                     }
 
                     foreach(var edge in edges)
                     {
                         if (edge.Target == 1)
+                        {
+                            // Count the number of times "->" appears. Each arrow is a hop.
+                            int hops = target_raw.AsSpan().Count("->");
+                            Console.WriteLine("\tFinal node found. target_raw = {0}, hops = {1}", target_raw, hops);
+
+                            if (hops < minimum_hops)
+                                minimum_hops = hops;
+
                             continue;
+                        }
+                        else
+                        {
+                            string new_target = target_raw + " -> " + edge.Source;
+                            targets.Enqueue(new_target);
 
-                        string new_target = target_raw + " -> " + edge.Source;
-                        targets.Enqueue(new_target);
-
-                        Console.WriteLine("\t{0}", new_target);
+                            Console.WriteLine("\t{0}", new_target);
+                        }
                     }
                 }
 
-                // TODO: every solution that ends in a 1 is a solution (full path from origin to destination)
+                sb.Append(minimum_hops + " ");
             }
 
-            Console.WriteLine(sb);
+            Console.WriteLine(sb.ToString().Trim());
         }
 
         #endregion
