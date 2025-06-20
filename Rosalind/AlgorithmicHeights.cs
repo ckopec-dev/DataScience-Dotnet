@@ -1,6 +1,8 @@
 ﻿using Core;
 using QuikGraph;
 using QuikGraph.Algorithms;
+using QuikGraph.Graphviz;
+using ScottPlot.Triangulation;
 using SkiaSharp;
 using System.Reflection;
 using System.Text;
@@ -304,10 +306,18 @@ namespace Rosalind
             EdgeList e = new(lst);
             var graph = e.ToAdjacencyGraph();
 
+            var graphviz = graph.ToGraphviz();
+
+            Console.WriteLine(graphviz);
+
+
+            return;
+
             StringBuilder sb = new();
 
             // Vertex 1 always has a distance of 0 to itself.
             sb.Append("0 ");
+            Console.WriteLine("Vertex count: {0}", graph.VertexCount);
 
             // Each vertex is a destination node.
             for (int i = 2; i <= graph.Vertices.Count(); ++i)
@@ -327,22 +337,24 @@ namespace Rosalind
                     string[] target_pieces = target_raw.Split(" ");
 
                     int target = Convert.ToInt32(target_pieces[^1]);
+                    Console.WriteLine("target: {0}", target);
                     var edges = graph.Edges.Where(j => j.Target == target);
-
+                    Console.WriteLine("edge count: {0}", edges.Count());
+                    
                     if (!edges.Any())
                     {
                         minimum_hops = -1;
                         break;
                     }
 
-                    foreach(var edge in edges)
+                    foreach (var edge in edges)
                     {
                         if (edge.Target == 1)
                         {
                             // Count the number of times "->" appears. Each arrow is a hop.
                             int hops = target_raw.AsSpan().Count("->");
                             Console.WriteLine("\tFinal node found. target_raw = {0}, hops = {1}", target_raw, hops);
-
+                            
                             if (hops < minimum_hops)
                                 minimum_hops = hops;
 
@@ -357,8 +369,10 @@ namespace Rosalind
                         }
                     }
                 }
-
+                
                 sb.Append(minimum_hops + " ");
+
+                break; //debugging
             }
 
             Console.WriteLine(sb.ToString().Trim());
