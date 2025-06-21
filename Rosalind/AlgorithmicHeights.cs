@@ -306,13 +306,6 @@ namespace Rosalind
             EdgeList e = new(lst);
             var graph = e.ToAdjacencyGraph();
 
-            var graphviz = graph.ToGraphviz();
-
-            Console.WriteLine(graphviz);
-
-
-            return;
-
             StringBuilder sb = new();
 
             // Vertex 1 always has a distance of 0 to itself.
@@ -329,7 +322,7 @@ namespace Rosalind
                 targets.Enqueue(i.ToString());
 
                 // The maximum possible hops is the number of vertices in the graph.
-                int minimum_hops = graph.Vertices.Count();
+                int minimum_hops = int.MaxValue;// graph.Vertices.Count();
                 
                 while(targets.Count > 0)
                 {
@@ -337,15 +330,15 @@ namespace Rosalind
                     string[] target_pieces = target_raw.Split(" ");
 
                     int target = Convert.ToInt32(target_pieces[^1]);
-                    Console.WriteLine("target: {0}", target);
+                    //Console.WriteLine("target: {0}", target);
                     var edges = graph.Edges.Where(j => j.Target == target);
-                    Console.WriteLine("edge count: {0}", edges.Count());
+                    //Console.WriteLine("edge count: {0}", edges.Count());
                     
-                    if (!edges.Any())
-                    {
-                        minimum_hops = -1;
-                        break;
-                    }
+                    //if (!edges.Any())
+                    //{
+                    //    minimum_hops = -1;
+                    //    break;
+                    //}
 
                     foreach (var edge in edges)
                     {
@@ -358,21 +351,25 @@ namespace Rosalind
                             if (hops < minimum_hops)
                                 minimum_hops = hops;
 
-                            continue;
+                            break;
+                            //continue;
                         }
                         else
                         {
                             string new_target = target_raw + " -> " + edge.Source;
                             targets.Enqueue(new_target);
 
-                            Console.WriteLine("\t{0}", new_target);
+                            //Console.WriteLine("\t{0}", new_target);
                         }
                     }
                 }
-                
+
+                if (minimum_hops == int.MaxValue)
+                    minimum_hops = -1;
+
                 sb.Append(minimum_hops + " ");
 
-                break; //debugging
+                break;//debug
             }
 
             Console.WriteLine(sb.ToString().Trim());
