@@ -307,16 +307,30 @@ namespace Rosalind
             EdgeList e = new(lst);
             var graph = e.ToAdjacencyGraph();
 
-            //AdjacencyList adj = new(true, 3);
+            /* Directed graph example
+            AdjacencyList adj = new(true, 3);
 
-            //adj.AddEdge(1, 0);
-            //adj.AddEdge(1, 2);
-            //adj.AddEdge(2, 0);
+            adj.AddEdge(1, 0);
+            adj.AddEdge(1, 2);
+            adj.AddEdge(2, 0);
 
-            //Console.WriteLine(adj);
+            Console.WriteLine(adj);
+            */
 
-            AdjacencyList adj = AdjacencyList.FromEdgeList(true, false, lst);
-            Console.WriteLine(adj.ToString(false));
+            /* Undirected graph example
+            AdjacencyList adj = new(false, 3);
+
+            adj.AddEdge(1, 0);
+            adj.AddEdge(1, 2);
+            adj.AddEdge(2, 0);
+
+            Console.WriteLine(adj);
+            */
+
+
+
+            //AdjacencyList adj = AdjacencyList.FromEdgeList(true, false, lst);
+            //Console.WriteLine(adj.ToString(false));
 
             //StringBuilder sb = new();
 
@@ -335,7 +349,7 @@ namespace Rosalind
 
             //    // The maximum possible hops is the number of vertices in the graph.
             //    int minimum_hops = int.MaxValue;// graph.Vertices.Count();
-                
+
             //    while(targets.Count > 0)
             //    {
             //        string target_raw = targets.Dequeue();
@@ -345,7 +359,7 @@ namespace Rosalind
             //        //Console.WriteLine("target: {0}", target);
             //        var edges = graph.Edges.Where(j => j.Target == target);
             //        //Console.WriteLine("edge count: {0}", edges.Count());
-                    
+
             //        foreach (var edge in edges)
             //        {
             //            if (edge.Target == 1)
@@ -353,7 +367,7 @@ namespace Rosalind
             //                // Count the number of times "->" appears. Each arrow is a hop.
             //                int hops = target_raw.AsSpan().Count("->");
             //                Console.WriteLine("\tFinal node found. target_raw = {0}, hops = {1}", target_raw, hops);
-                            
+
             //                if (hops < minimum_hops)
             //                    minimum_hops = hops;
 

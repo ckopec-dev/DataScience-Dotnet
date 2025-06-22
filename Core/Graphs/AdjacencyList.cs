@@ -92,6 +92,11 @@ namespace Core.Graphs
         public void AddEdge(int VertexA, int VertexB)
         {
             graph[VertexA].Add(VertexB);
+
+            if (!isDirected)
+            {
+                graph[VertexB].Add(VertexA);
+            }
         }
 
         public static AdjacencyList FromEdgeList(bool IsDirected, bool zeroBased, List<string> Lines)
