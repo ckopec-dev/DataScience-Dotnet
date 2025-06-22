@@ -1,7 +1,7 @@
 ﻿using QuikGraph;
 using System.Text;
 
-namespace Core
+namespace Core.Graphs
 {
     /// <summary>
     /// https://rosalind.info/glossary/algo-edge-list-format/
@@ -107,11 +107,11 @@ namespace Core
         {
             StringBuilder sb = new();
 
-            sb.AppendLine(String.Format("{0} {1}", VertexCount, EdgeCount));
+            sb.AppendLine(string.Format("{0} {1}", VertexCount, EdgeCount));
 
             foreach(Edge e in Edges)
             {
-                sb.AppendLine(String.Format("{0} {1} {2}", e.VertexA, e.VertexB, e.Weight).Trim());
+                sb.AppendLine(string.Format("{0} {1} {2}", e.VertexA, e.VertexB, e.Weight).Trim());
             }
 
             return sb.ToString();

@@ -1,5 +1,4 @@
-﻿
-namespace Core
+﻿namespace Core.Graphs
 {
     public class Edge(int vertexA, int vertexB, int? weight = null)
     {
@@ -9,7 +8,7 @@ namespace Core
 
         public override string ToString()
         {
-            return String.Format("{0} {1} {2}", VertexA, VertexB, Weight).Trim();
+            return string.Format("{0} {1} {2}", VertexA, VertexB, Weight).Trim();
         }
     }
 }

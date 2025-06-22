@@ -1,4 +1,5 @@
 ﻿using Core;
+using Core.Graphs;
 using QuikGraph;
 using QuikGraph.Algorithms;
 using QuikGraph.Graphviz;
@@ -306,73 +307,76 @@ namespace Rosalind
             EdgeList e = new(lst);
             var graph = e.ToAdjacencyGraph();
 
-            StringBuilder sb = new();
+            AdjacencyList adj = new(true, 3);
 
-            // Vertex 1 always has a distance of 0 to itself.
-            sb.Append("0 ");
-            Console.WriteLine("Vertex count: {0}", graph.VertexCount);
+            adj.AddEdge(1, 0);
+            adj.AddEdge(1, 2);
+            adj.AddEdge(2, 0);
 
-            // Each vertex is a destination node.
-            for (int i = 2; i <= graph.Vertices.Count(); ++i)
-            {
-                Console.WriteLine("i = {0}", i);
+            Console.WriteLine(adj);
 
-                // Look at all edges that have this vertex as the destination node.
-                Queue<string> targets = new();
-                targets.Enqueue(i.ToString());
 
-                // The maximum possible hops is the number of vertices in the graph.
-                int minimum_hops = int.MaxValue;// graph.Vertices.Count();
+
+            //StringBuilder sb = new();
+
+            //// Vertex 1 always has a distance of 0 to itself.
+            //sb.Append("0 ");
+            //Console.WriteLine("Vertex count: {0}", graph.VertexCount);
+
+            //// Each vertex is a destination node.
+            //for (int i = 2; i <= graph.Vertices.Count(); ++i)
+            //{
+            //    Console.WriteLine("i = {0}", i);
+
+            //    // Look at all edges that have this vertex as the destination node.
+            //    Queue<string> targets = new();
+            //    targets.Enqueue(i.ToString());
+
+            //    // The maximum possible hops is the number of vertices in the graph.
+            //    int minimum_hops = int.MaxValue;// graph.Vertices.Count();
                 
-                while(targets.Count > 0)
-                {
-                    string target_raw = targets.Dequeue();
-                    string[] target_pieces = target_raw.Split(" ");
+            //    while(targets.Count > 0)
+            //    {
+            //        string target_raw = targets.Dequeue();
+            //        string[] target_pieces = target_raw.Split(" ");
 
-                    int target = Convert.ToInt32(target_pieces[^1]);
-                    //Console.WriteLine("target: {0}", target);
-                    var edges = graph.Edges.Where(j => j.Target == target);
-                    //Console.WriteLine("edge count: {0}", edges.Count());
+            //        int target = Convert.ToInt32(target_pieces[^1]);
+            //        //Console.WriteLine("target: {0}", target);
+            //        var edges = graph.Edges.Where(j => j.Target == target);
+            //        //Console.WriteLine("edge count: {0}", edges.Count());
                     
-                    //if (!edges.Any())
-                    //{
-                    //    minimum_hops = -1;
-                    //    break;
-                    //}
-
-                    foreach (var edge in edges)
-                    {
-                        if (edge.Target == 1)
-                        {
-                            // Count the number of times "->" appears. Each arrow is a hop.
-                            int hops = target_raw.AsSpan().Count("->");
-                            Console.WriteLine("\tFinal node found. target_raw = {0}, hops = {1}", target_raw, hops);
+            //        foreach (var edge in edges)
+            //        {
+            //            if (edge.Target == 1)
+            //            {
+            //                // Count the number of times "->" appears. Each arrow is a hop.
+            //                int hops = target_raw.AsSpan().Count("->");
+            //                Console.WriteLine("\tFinal node found. target_raw = {0}, hops = {1}", target_raw, hops);
                             
-                            if (hops < minimum_hops)
-                                minimum_hops = hops;
+            //                if (hops < minimum_hops)
+            //                    minimum_hops = hops;
 
-                            break;
-                            //continue;
-                        }
-                        else
-                        {
-                            string new_target = target_raw + " -> " + edge.Source;
-                            targets.Enqueue(new_target);
+            //                break;
+            //            }
+            //            else
+            //            {
+            //                string new_target = target_raw + " -> " + edge.Source;
+            //                targets.Enqueue(new_target);
 
-                            //Console.WriteLine("\t{0}", new_target);
-                        }
-                    }
-                }
+            //                //Console.WriteLine("\t{0}", new_target);
+            //            }
+            //        }
+            //    }
 
-                if (minimum_hops == int.MaxValue)
-                    minimum_hops = -1;
+            //    if (minimum_hops == int.MaxValue)
+            //        minimum_hops = -1;
 
-                sb.Append(minimum_hops + " ");
+            //    sb.Append(minimum_hops + " ");
 
-                break;//debug
-            }
+            //    break;//debug
+            //}
 
-            Console.WriteLine(sb.ToString().Trim());
+            //Console.WriteLine(sb.ToString().Trim());
         }
 
         #endregion
