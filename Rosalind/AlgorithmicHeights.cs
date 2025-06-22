@@ -307,15 +307,16 @@ namespace Rosalind
             EdgeList e = new(lst);
             var graph = e.ToAdjacencyGraph();
 
-            AdjacencyList adj = new(true, 3);
+            //AdjacencyList adj = new(true, 3);
 
-            adj.AddEdge(1, 0);
-            adj.AddEdge(1, 2);
-            adj.AddEdge(2, 0);
+            //adj.AddEdge(1, 0);
+            //adj.AddEdge(1, 2);
+            //adj.AddEdge(2, 0);
 
-            Console.WriteLine(adj);
+            //Console.WriteLine(adj);
 
-
+            AdjacencyList adj = AdjacencyList.FromEdgeList(true, false, lst);
+            Console.WriteLine(adj.ToString(false));
 
             //StringBuilder sb = new();
 

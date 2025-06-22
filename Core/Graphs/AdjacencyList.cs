@@ -49,26 +49,86 @@ namespace Core.Graphs
 
         public override string ToString()
         {
+            return this.ToString(true);
+        }
+
+        public string ToString(bool zeroBased)
+        {
+            // A 0-based representation is the default, and corresponds to
+            // the internal representation of the data.
+
+            // If 1-based is preferred, the vertices and edges are 
+            // incremented by 1.
+
             StringBuilder sb = new();
 
             for (int i = 0; i < graph.Count; i++)
             {
-                sb.Append(i + ": ");
+                int i_base = i;
+                if (!zeroBased)
+                {
+                    i_base++;
+                }
+
+                sb.Append(i_base + ": ");
 
                 foreach (int j in graph[i])
                 {
-                    sb.Append(j + " ");
+                    int j_base = j;
+                    if (!zeroBased)
+                    {
+                        j_base++;
+                    }
+
+                    sb.Append(j_base + " ");
                 }
 
-                sb.AppendLine();
+                sb.Append('\n');
             }
-            
-            return sb.ToString();
+
+            return sb.ToString().Trim();
         }
 
-        public void AddEdge(int vertexA, int vertexB)
+        public void AddEdge(int VertexA, int VertexB)
         {
-            graph[vertexA].Add(vertexB);
+            graph[VertexA].Add(VertexB);
+        }
+
+        public static AdjacencyList FromEdgeList(bool IsDirected, bool zeroBased, List<string> Lines)
+        {
+            string[] header = Lines[0].Split(' ');
+            int vertexCount = Convert.ToInt32(header[0]);
+            int edgeCount = Convert.ToInt32(header[1]); 
+
+            AdjacencyList adj = new(IsDirected, vertexCount);
+
+            for(int i = 1; i <= edgeCount; i++)
+            {
+                string[] line = Lines[i].Split(' ');
+                int vertexA = Convert.ToInt32(line[0]);
+                int vertexB = Convert.ToInt32(line[1]);
+
+                if (!zeroBased)
+                {
+                    // Input is 1-based, so subtract 1 from each vertex
+                    // since AdjacencyList is 0-based.
+
+                    vertexA--;
+                    vertexB--;
+                }
+                
+                //Console.WriteLine("i: {0}, a: {1}, b: {2}", i, vertexA, vertexB);
+                
+                adj.AddEdge(vertexA, vertexB);
+
+                if (line.Length > 2)
+                {
+                    // Todo: add support for weighted graphs.
+                    throw new NotImplementedException();
+                }
+            }
+
+            return adj;
         }
 
         #endregion
