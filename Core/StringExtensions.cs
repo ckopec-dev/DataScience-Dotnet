@@ -8,7 +8,25 @@ namespace Core
 {
     public static class StringExtensions
     {
-        public static bool IsPangram(string s)
+        public static bool IsSubsequence(this string s, string strToFind)
+        {
+            // Is strToFind a subsequence of s?
+            // Given: "AXY", s = "ADXCPY", strToFind = "AXY"
+            // Returns: true
+
+            int n = strToFind.Length, m = s.Length;
+            int i = 0, j = 0;
+            while (i < n && j < m)
+            {
+                if (strToFind[i] == s[j])
+                    i++;
+                j++;
+            }
+            
+            return i == n;
+        }
+
+        public static bool IsPangram(this string s)
         {
             // A pangram contains every letter from the English alphabet.
 
