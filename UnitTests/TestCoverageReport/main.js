@@ -224,13 +224,13 @@ var assemblies = [
       { "name": "Core.Bioinformatics.Dna", "rp": "Core_Dna.html", "cl": 57, "ucl": 0, "cal": 57, "tl": 105, "cb": 20, "tb": 20, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Bioinformatics.Rna", "rp": "Core_Rna.html", "cl": 47, "ucl": 0, "cal": 47, "tl": 89, "cb": 8, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.CompressionHelper", "rp": "Core_CompressionHelper.html", "cl": 11, "ucl": 0, "cal": 11, "tl": 29, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.ConvertUnits", "rp": "Core_ConvertUnits.html", "cl": 15, "ucl": 79, "cal": 94, "tl": 157, "cb": 0, "tb": 10, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.ConvertUnits", "rp": "Core_ConvertUnits.html", "cl": 19, "ucl": 107, "cal": 126, "tl": 163, "cb": 0, "tb": 20, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.DataHelper", "rp": "Core_DataHelper.html", "cl": 15, "ucl": 10, "cal": 25, "tl": 51, "cb": 5, "tb": 10, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.DateTimeExtensions", "rp": "Core_DateTimeExtensions.html", "cl": 0, "ucl": 72, "cal": 72, "tl": 130, "cb": 0, "tb": 26, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.DirectedGraph", "rp": "Core_DirectedGraph.html", "cl": 0, "ucl": 54, "cal": 54, "tl": 84, "cb": 0, "tb": 16, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.DirectedGraphPath", "rp": "Core_DirectedGraphPath.html", "cl": 0, "ucl": 7, "cal": 7, "tl": 15, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Edge", "rp": "Core_Edge.html", "cl": 0, "ucl": 7, "cal": 7, "tl": 15, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.EdgeList", "rp": "Core_EdgeList.html", "cl": 0, "ucl": 59, "cal": 59, "tl": 143, "cb": 0, "tb": 14, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Edge", "rp": "Core_Edge.html", "cl": 0, "ucl": 7, "cal": 7, "tl": 14, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.EdgeList", "rp": "Core_EdgeList.html", "cl": 0, "ucl": 59, "cal": 59, "tl": 140, "cb": 0, "tb": 14, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.FigurateCalculator", "rp": "Core_FigurateCalculator.html", "cl": 0, "ucl": 18, "cal": 18, "tl": 36, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.FigurateNumber", "rp": "Core_FigurateNumber.html", "cl": 0, "ucl": 19, "cal": 19, "tl": 36, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.FileHelper", "rp": "Core_FileHelper.html", "cl": 0, "ucl": 27, "cal": 27, "tl": 45, "cb": 0, "tb": 12, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -240,16 +240,21 @@ var assemblies = [
       { "name": "Core.GameTheory.Deck", "rp": "Core_Deck.html", "cl": 0, "ucl": 29, "cal": 29, "tl": 48, "cb": 0, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.GameTheory.PokerHand", "rp": "Core_PokerHand.html", "cl": 0, "ucl": 278, "cal": 278, "tl": 465, "cb": 0, "tb": 156, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.GenericExtensions", "rp": "Core_GenericExtensions.html", "cl": 0, "ucl": 10, "cal": 10, "tl": 22, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Graphs.EdgeList", "rp": "Core_EdgeList.2.html", "cl": 0, "ucl": 4, "cal": 4, "tl": 48, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Graphs.Graph", "rp": "Core_Graph.html", "cl": 0, "ucl": 9, "cal": 9, "tl": 21, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Graphs.EdgeList", "rp": "Core_EdgeList.2.html", "cl": 0, "ucl": 4, "cal": 4, "tl": 46, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Graphs.Graph", "rp": "Core_Graph.html", "cl": 0, "ucl": 9, "cal": 9, "tl": 20, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.GraphTheory.AdjacencyList", "rp": "Core_AdjacencyList.html", "cl": 0, "ucl": 93, "cal": 93, "tl": 181, "cb": 0, "tb": 26, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.GraphTheory.Edge", "rp": "Core_Edge.2.html", "cl": 0, "ucl": 7, "cal": 7, "tl": 14, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.GraphTheory.EdgeList", "rp": "Core_EdgeList.3.html", "cl": 0, "ucl": 59, "cal": 59, "tl": 143, "cb": 0, "tb": 14, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.GraphTheory.Graph", "rp": "Core_Graph.2.html", "cl": 0, "ucl": 55, "cal": 55, "tl": 90, "cb": 0, "tb": 16, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Histogram<T>", "rp": "Core_Histogram_1.html", "cl": 0, "ucl": 9, "cal": 9, "tl": 18, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.LinearRegression", "rp": "Core_LinearRegression.html", "cl": 15, "ucl": 7, "cal": 22, "tl": 40, "cb": 3, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.MathHelper", "rp": "Core_MathHelper.html", "cl": 0, "ucl": 160, "cal": 160, "tl": 201, "cb": 0, "tb": 152, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.MathHelper", "rp": "Core_MathHelper.html", "cl": 0, "ucl": 218, "cal": 218, "tl": 269, "cb": 0, "tb": 220, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Motion", "rp": "Core_Motion.html", "cl": 0, "ucl": 18, "cal": 18, "tl": 52, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.NetworkHelper", "rp": "Core_NetworkHelper.html", "cl": 0, "ucl": 19, "cal": 19, "tl": 34, "cb": 0, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.NumberExtensions", "rp": "Core_NumberExtensions.html", "cl": 30, "ucl": 1278, "cal": 1308, "tl": 1595, "cb": 12, "tb": 690, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.ObjectParameter", "rp": "Core_ObjectParameter.html", "cl": 0, "ucl": 5, "cal": 5, "tl": 15, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Optics", "rp": "Core_Optics.html", "cl": 0, "ucl": 28, "cal": 28, "tl": 78, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Physics.SIQuantity", "rp": "Core_SIQuantity.html", "cl": 0, "ucl": 3, "cal": 3, "tl": 8, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.PhysicsHelper", "rp": "Core_PhysicsHelper.html", "cl": 0, "ucl": 49, "cal": 49, "tl": 127, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Salesforce.AuthToken", "rp": "Core_AuthToken.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 9, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Salesforce.RestClient", "rp": "Core_RestClient.html", "cl": 69, "ucl": 7, "cal": 76, "tl": 131, "cb": 10, "tb": 14, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -312,6 +317,12 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "Is3x3MagicSquare(System.Int64[0...,0...])", "methodShortName": "Is3x3MagicSquare(...)", "fileIndex": 0, "line": 103,
+    "metrics": [
+      { "value": 1332, "exceeded": true },
+      { "value": 36, "exceeded": true },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "Is3x3MagicSquare(System.Int64[0...,0...])", "methodShortName": "Is3x3MagicSquare(...)", "fileIndex": 0, "line": 122,
     "metrics": [
       { "value": 1332, "exceeded": true },
       { "value": 36, "exceeded": true },
@@ -413,6 +424,12 @@ var riskHotspots = [
       { "value": 10, "exceeded": false },
     ]},
   {
+    "assembly": "Core", "class": "Core.GraphTheory.Graph", "reportPath": "Core_Graph.2.html", "methodName": "BreadthFirstSearch(System.Int32)", "methodShortName": "BreadthFirstSearch(...)", "fileIndex": 0, "line": 52,
+    "metrics": [
+      { "value": 110, "exceeded": true },
+      { "value": 10, "exceeded": false },
+    ]},
+  {
     "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "IsPrime(System.Int64)", "methodShortName": "IsPrime(...)", "fileIndex": 0, "line": 29,
     "metrics": [
       { "value": 110, "exceeded": true },
@@ -420,6 +437,12 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "IsPrime(System.Int64)", "methodShortName": "IsPrime(...)", "fileIndex": 0, "line": 13,
+    "metrics": [
+      { "value": 110, "exceeded": true },
+      { "value": 10, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "IsPrime(System.Int64)", "methodShortName": "IsPrime(...)", "fileIndex": 0, "line": 32,
     "metrics": [
       { "value": 110, "exceeded": true },
       { "value": 10, "exceeded": false },
@@ -479,6 +502,18 @@ var riskHotspots = [
       { "value": 8, "exceeded": false },
     ]},
   {
+    "assembly": "Core", "class": "Core.GraphTheory.AdjacencyList", "reportPath": "Core_AdjacencyList.html", "methodName": "ToString(System.Boolean)", "methodShortName": "ToString(...)", "fileIndex": 0, "line": 56,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.GraphTheory.AdjacencyList", "reportPath": "Core_AdjacencyList.html", "methodName": "BreadthFirstSearch(System.Int32)", "methodShortName": "BreadthFirstSearch(...)", "fileIndex": 0, "line": 143,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
     "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "ProperDivisors(System.Int64)", "methodShortName": "ProperDivisors(...)", "fileIndex": 0, "line": 44,
     "metrics": [
       { "value": 72, "exceeded": true },
@@ -498,6 +533,18 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "Fibonacci(System.Int32)", "methodShortName": "Fibonacci(...)", "fileIndex": 0, "line": 53,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "ProperDivisors(System.Int64)", "methodShortName": "ProperDivisors(...)", "fileIndex": 0, "line": 47,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "Fibonacci(System.Int32)", "methodShortName": "Fibonacci(...)", "fileIndex": 0, "line": 72,
     "metrics": [
       { "value": 72, "exceeded": true },
       { "value": 8, "exceeded": false },
@@ -557,6 +604,12 @@ var riskHotspots = [
       { "value": 6, "exceeded": false },
     ]},
   {
+    "assembly": "Core", "class": "Core.ConvertUnits", "reportPath": "Core_ConvertUnits.html", "methodName": "ToMetricFactor(Core.MetricPrefix,System.Decimal)", "methodShortName": "ToMetricFactor(...)", "fileIndex": 0, "line": 90,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
     "assembly": "Core", "class": "Core.DateTimeExtensions", "reportPath": "Core_DateTimeExtensions.html", "methodName": "IsLeapYear(System.DateTime)", "methodShortName": "IsLeapYear(...)", "fileIndex": 0, "line": 38,
     "metrics": [
       { "value": 42, "exceeded": true },
@@ -605,6 +658,18 @@ var riskHotspots = [
       { "value": 6, "exceeded": false },
     ]},
   {
+    "assembly": "Core", "class": "Core.GraphTheory.AdjacencyList", "reportPath": "Core_AdjacencyList.html", "methodName": "FromEdgeList(System.Boolean,System.Boolean,System.Collections.Generic.List`1<System.String>)", "methodShortName": "FromEdgeList(...)", "fileIndex": 0, "line": 106,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.GraphTheory.EdgeList", "reportPath": "Core_EdgeList.3.html", "methodName": ".ctor(System.Collections.Generic.List`1<System.String>)", "methodShortName": ".ctor(...)", "fileIndex": 0, "line": 85,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
     "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "IsConcatSquare(System.UInt64,System.UInt64)", "methodShortName": "IsConcatSquare(...)", "fileIndex": 0, "line": 8,
     "metrics": [
       { "value": 42, "exceeded": true },
@@ -618,6 +683,18 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "FibonacciRecursive(System.Int32)", "methodShortName": "FibonacciRecursive(...)", "fileIndex": 0, "line": 77,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "IsConcatSquare(System.UInt64,System.UInt64)", "methodShortName": "IsConcatSquare(...)", "fileIndex": 0, "line": 11,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "FibonacciRecursive(System.Int32)", "methodShortName": "FibonacciRecursive(...)", "fileIndex": 0, "line": 96,
     "metrics": [
       { "value": 42, "exceeded": true },
       { "value": 6, "exceeded": false },

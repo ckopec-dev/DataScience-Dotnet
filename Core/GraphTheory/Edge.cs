@@ -1,4 +1,4 @@
-﻿namespace Core.Graphs
+﻿namespace Core.GraphTheory
 {
     public class Edge(int vertexA, int vertexB, int? weight = null)
     {

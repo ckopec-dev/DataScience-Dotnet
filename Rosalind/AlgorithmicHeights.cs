@@ -1,5 +1,5 @@
 ﻿using Core;
-using Core.Graphs;
+using Core.GraphTheory;
 using QuikGraph;
 using QuikGraph.Algorithms;
 using QuikGraph.Graphviz;
@@ -305,113 +305,15 @@ namespace Rosalind
             List<string> lst = sr.ReadToEnd().ToList();
             #pragma warning restore IDE0305 // Simplify collection initialization
 
-            /* Directed graph example
-            AdjacencyList adj = new(true, 3);
+            Graph graph = Graph.FromEdgeList(lst);
 
-            adj.AddEdge(1, 0);
-            adj.AddEdge(1, 2);
-            adj.AddEdge(2, 0);
+            int[] shortestDistances = graph.BreadthFirstSearch(1);
 
-            Console.WriteLine(adj);
-            */
-
-            /* Undirected graph example
-            AdjacencyList adj = new(false, 3);
-
-            adj.AddEdge(1, 0);
-            adj.AddEdge(1, 2);
-            adj.AddEdge(2, 0);
-
-            Console.WriteLine(adj);
-            */
-
-            /* Breadth first search example
-             */
-
-            AdjacencyList adj = new(false, 5);
-
-            adj.AddEdge(0, 1);
-            adj.AddEdge(0, 2);
-            adj.AddEdge(1, 2);
-            adj.AddEdge(1, 3);
-            adj.AddEdge(2, 4);
-            adj.AddEdge(3, 4);
-
-            Console.WriteLine(adj);
-
-            List<int> searchResults = adj.BreadthFirstSearch(0);
-            foreach(int i in searchResults)
+            // Print the shortest distances
+            for (int i = 1; i <= graph.VertexCount; i++)
             {
-                Console.Write(i + " ");
+                Console.Write(shortestDistances[i] + " ");
             }
-
-            //AdjacencyList adj = AdjacencyList.FromEdgeList(true, false, lst);
-            //Console.WriteLine(adj.ToString(false));
-
-
-            //EdgeList e = new(lst);
-            //var graph = e.ToAdjacencyGraph();
-
-            //StringBuilder sb = new();
-
-            //// Vertex 1 always has a distance of 0 to itself.
-            //sb.Append("0 ");
-            //Console.WriteLine("Vertex count: {0}", graph.VertexCount);
-
-            //// Each vertex is a destination node.
-            //for (int i = 2; i <= graph.Vertices.Count(); ++i)
-            //{
-            //    Console.WriteLine("i = {0}", i);
-
-            //    // Look at all edges that have this vertex as the destination node.
-            //    Queue<string> targets = new();
-            //    targets.Enqueue(i.ToString());
-
-            //    // The maximum possible hops is the number of vertices in the graph.
-            //    int minimum_hops = int.MaxValue;// graph.Vertices.Count();
-
-            //    while(targets.Count > 0)
-            //    {
-            //        string target_raw = targets.Dequeue();
-            //        string[] target_pieces = target_raw.Split(" ");
-
-            //        int target = Convert.ToInt32(target_pieces[^1]);
-            //        //Console.WriteLine("target: {0}", target);
-            //        var edges = graph.Edges.Where(j => j.Target == target);
-            //        //Console.WriteLine("edge count: {0}", edges.Count());
-
-            //        foreach (var edge in edges)
-            //        {
-            //            if (edge.Target == 1)
-            //            {
-            //                // Count the number of times "->" appears. Each arrow is a hop.
-            //                int hops = target_raw.AsSpan().Count("->");
-            //                Console.WriteLine("\tFinal node found. target_raw = {0}, hops = {1}", target_raw, hops);
-
-            //                if (hops < minimum_hops)
-            //                    minimum_hops = hops;
-
-            //                break;
-            //            }
-            //            else
-            //            {
-            //                string new_target = target_raw + " -> " + edge.Source;
-            //                targets.Enqueue(new_target);
-
-            //                //Console.WriteLine("\t{0}", new_target);
-            //            }
-            //        }
-            //    }
-
-            //    if (minimum_hops == int.MaxValue)
-            //        minimum_hops = -1;
-
-            //    sb.Append(minimum_hops + " ");
-
-            //    break;//debug
-            //}
-
-            //Console.WriteLine(sb.ToString().Trim());
         }
 
         #endregion

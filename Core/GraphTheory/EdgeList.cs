@@ -1,7 +1,7 @@
 ﻿using QuikGraph;
 using System.Text;
 
-namespace Core.Graphs
+namespace Core.GraphTheory
 {
     /// <summary>
     /// https://rosalind.info/glossary/algo-edge-list-format/

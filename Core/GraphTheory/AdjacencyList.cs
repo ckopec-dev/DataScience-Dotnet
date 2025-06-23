@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Core.Graphs
+namespace Core.GraphTheory
 {
     public class AdjacencyList
     {
@@ -99,7 +99,10 @@ namespace Core.Graphs
             }
         }
 
-        public static AdjacencyList FromEdgeList(bool IsDirected, bool zeroBased, List<string> Lines)
+        public static AdjacencyList FromEdgeList(
+            bool IsDirected, 
+            bool ZeroBased,
+            List<string> Lines)
         {
             string[] header = Lines[0].Split(' ');
             int vertexCount = Convert.ToInt32(header[0]);
@@ -113,7 +116,7 @@ namespace Core.Graphs
                 int vertexA = Convert.ToInt32(line[0]);
                 int vertexB = Convert.ToInt32(line[1]);
 
-                if (!zeroBased)
+                if (!ZeroBased)
                 {
                     // Input is 1-based, so subtract 1 from each vertex
                     // since AdjacencyList is 0-based.
@@ -140,6 +143,11 @@ namespace Core.Graphs
         {
             // Returns list of vertices reachable from the origin.
 
+            if (IsDirected)
+            {
+                throw new NotImplementedException("BFS does not support directed graphs.");
+            }
+
             List<int> destinations = [];
             Queue<int> q = new();
 
@@ -165,6 +173,8 @@ namespace Core.Graphs
 
             return destinations;
         }
+
+
 
         #endregion
     }
