@@ -1,4 +1,5 @@
-﻿using QuikGraph.Algorithms.Search;
+﻿using Core;
+using QuikGraph.Algorithms.Search;
 
 namespace Rosalind
 {

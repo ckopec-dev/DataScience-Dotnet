@@ -8,6 +8,23 @@ namespace Core
 {
     public static class StringExtensions
     {
+        public static string Shift(this string s, int count)
+        {
+            if (count == 0) return s;
+            else if (count < 0)
+            {
+                // Shift left
+                // Hello World! -> lo World!Hel
+                return s.Remove(0, count * -1) + s.Substring(0, count * -1);
+            }
+            else
+            {
+                // Shift right
+                // Hello World! -> ld!Hello Wor
+                return s.Right(count) + s.Left(s.Length - 3);
+            }
+        }
+
         public static IEnumerable<string> Permute(this string s)
         {
             if (s.Length <= 1)
