@@ -5,6 +5,7 @@ using QuikGraph.Algorithms;
 using QuikGraph.Graphviz;
 using ScottPlot.Triangulation;
 using SkiaSharp;
+using System.Diagnostics.SymbolStore;
 using System.Reflection;
 using System.Text;
 
@@ -304,9 +305,6 @@ namespace Rosalind
             List<string> lst = sr.ReadToEnd().ToList();
             #pragma warning restore IDE0305 // Simplify collection initialization
 
-            EdgeList e = new(lst);
-            var graph = e.ToAdjacencyGraph();
-
             /* Directed graph example
             AdjacencyList adj = new(true, 3);
 
@@ -327,10 +325,32 @@ namespace Rosalind
             Console.WriteLine(adj);
             */
 
+            /* Breadth first search example
+             */
 
+            AdjacencyList adj = new(false, 5);
+
+            adj.AddEdge(0, 1);
+            adj.AddEdge(0, 2);
+            adj.AddEdge(1, 2);
+            adj.AddEdge(1, 3);
+            adj.AddEdge(2, 4);
+            adj.AddEdge(3, 4);
+
+            Console.WriteLine(adj);
+
+            List<int> searchResults = adj.BreadthFirstSearch(0);
+            foreach(int i in searchResults)
+            {
+                Console.Write(i + " ");
+            }
 
             //AdjacencyList adj = AdjacencyList.FromEdgeList(true, false, lst);
             //Console.WriteLine(adj.ToString(false));
+
+
+            //EdgeList e = new(lst);
+            //var graph = e.ToAdjacencyGraph();
 
             //StringBuilder sb = new();
 

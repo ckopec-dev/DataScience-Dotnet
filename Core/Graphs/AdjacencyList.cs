@@ -136,6 +136,36 @@ namespace Core.Graphs
             return adj;
         }
 
+        public List<int> BreadthFirstSearch(int originVertex)
+        {
+            // Returns list of vertices reachable from the origin.
+
+            List<int> destinations = [];
+            Queue<int> q = new();
+
+            bool[] visited = new bool[vertexCount];
+
+            visited[originVertex] = true;
+            q.Enqueue(originVertex);
+
+            while(q.Count > 0)
+            {
+                int currentVertex = q.Dequeue();
+                destinations.Add(currentVertex);
+
+                foreach (int x in graph[currentVertex])
+                {
+                    if (!visited[x])
+                    {
+                        visited[x] = true;
+                        q.Enqueue(x);
+                    }
+                }
+            }
+
+            return destinations;
+        }
+
         #endregion
     }
 }
