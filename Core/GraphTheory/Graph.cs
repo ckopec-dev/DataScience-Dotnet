@@ -4,7 +4,7 @@ namespace Core.GraphTheory
     public class Graph(int VertexCount)
     {
         private readonly int vertexCount = VertexCount;
-        private readonly Dictionary<int, List<int>> adjacencyList = [];
+        public readonly Dictionary<int, List<int>> AdjacencyList = [];
 
         public int VertexCount
         {
@@ -13,10 +13,10 @@ namespace Core.GraphTheory
 
         public void AddEdge(int u, int v)
         {
-            if (!adjacencyList.TryGetValue(u, out List<int>? value))
+            if (!AdjacencyList.TryGetValue(u, out List<int>? value))
             {
                 value = [];
-                adjacencyList[u] = value;
+                AdjacencyList[u] = value;
             }
 
             value.Add(v);
@@ -48,9 +48,10 @@ namespace Core.GraphTheory
             return graph;
         }
 
-        public int[] BreadthFirstSearch(int startNode)
+        public int[] ShortestDestinations(int startNode)
         {
-            // Returns shortest distances from start node to
+            // Using a Breadth First Search, returns the
+            // shortest distances from start node to
             // every destination node.
 
             // Initialize distances with -1
@@ -70,7 +71,7 @@ namespace Core.GraphTheory
             {
                 int currentNode = queue.Dequeue();
 
-                if (adjacencyList.TryGetValue(currentNode, out List<int>? value))
+                if (AdjacencyList.TryGetValue(currentNode, out List<int>? value))
                 {
                     foreach (int neighbor in value)
                     {

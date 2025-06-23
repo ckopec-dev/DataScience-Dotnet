@@ -144,12 +144,12 @@ namespace Rosalind
             #pragma warning disable IDE0305 // Simplify collection initialization
             List<string> lst = sr.ReadToEnd().ToList();
             #pragma warning restore IDE0305 // Simplify collection initialization
-            
+
             EdgeList e = new(lst);
             var graph = e.ToAdjacencyGraph();
-            
+
             StringBuilder sb = new();
-            
+
             // For each vertex, count the number of edges of each connected vertex and print out the results.
             for (int i = 1; i <= graph.Vertices.Count(); ++i)
             {
@@ -178,7 +178,7 @@ namespace Rosalind
                 }
 
                 sb.Append(sum + " ");
-                
+
             }
 
             Console.WriteLine(sb.ToString().Trim());
@@ -307,7 +307,7 @@ namespace Rosalind
 
             Graph graph = Graph.FromEdgeList(lst);
 
-            int[] shortestDistances = graph.BreadthFirstSearch(1);
+            int[] shortestDistances = graph.ShortestDestinations(1);
 
             // Print the shortest distances
             for (int i = 1; i <= graph.VertexCount; i++)

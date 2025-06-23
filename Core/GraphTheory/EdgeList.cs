@@ -49,7 +49,7 @@ namespace Core.GraphTheory
 
         #region Properties
 
-        public List<Vertex> Vertices 
+        public List<Vertex> Vertices
         {
             get
             {
@@ -57,7 +57,7 @@ namespace Core.GraphTheory
 
                 for (int i = 0; i < VertexCount; i++)
                 {
-                    list.Add(new Vertex()); 
+                    list.Add(new Vertex());
                 }
 
                 return list;
@@ -109,7 +109,7 @@ namespace Core.GraphTheory
 
             sb.AppendLine(string.Format("{0} {1}", VertexCount, EdgeCount));
 
-            foreach(Edge e in Edges)
+            foreach (Edge e in Edges)
             {
                 sb.AppendLine(string.Format("{0} {1} {2}", e.VertexA, e.VertexB, e.Weight).Trim());
             }
@@ -130,7 +130,7 @@ namespace Core.GraphTheory
                 graph.AddVertex(i);
             }
 
-            foreach(Edge e in Edges)
+            foreach (Edge e in Edges)
             {
                 graph.AddEdge(new Edge<int>(e.VertexA, e.VertexB));
             }
