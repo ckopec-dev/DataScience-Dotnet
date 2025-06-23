@@ -8,6 +8,30 @@ namespace Core
 {
     public static class StringExtensions
     {
+        public static bool IsPangram(string s)
+        {
+            // A pangram contains every letter from the English alphabet.
+
+            bool[] v = new bool[26];
+            
+            for (int i = 0; i < s.Length; i++)
+            {
+                char c = s[i];
+                if (c >= 'A' && c <= 'Z')
+                    v[c - 'A'] = true;
+                else if (c >= 'a' && c <= 'z')
+                    v[c - 'a'] = true;
+            }
+            
+            for (int i = 0; i < 26; i++)
+            {
+                if (!v[i])
+                    return false;
+            }
+
+            return true;
+        }
+
         public static string Shift(this string s, int count)
         {
             if (count == 0) return s;
@@ -15,7 +39,7 @@ namespace Core
             {
                 // Shift left
                 // Hello World! -> lo World!Hel
-                return s.Remove(0, count * -1) + s.Substring(0, count * -1);
+                return s[(count * -1)..] + s[..(count * -1)];
             }
             else
             {
