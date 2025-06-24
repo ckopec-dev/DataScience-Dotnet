@@ -2850,6 +2850,14 @@ namespace Euler
             Console.WriteLine("total: {0}", total);
         }
 
+        static void Problem76()
+        {
+            // See partitions
+            // https://www.youtube.com/watch?v=iJ8pnCO0nTY
+
+            throw new NotImplementedException();
+        }
+
         static void Problem79()
         {
             Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem79.txt") ?? throw new ResourceNotFoundException();
