@@ -228,6 +228,13 @@ namespace Rosalind
             Console.WriteLine(indexes.PrettyPrint().Replace(",", ""));
         }
 
+        public static void ProblemCONS()
+        {
+            // see ProblemGC, which was accidentally skipped
+
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }
