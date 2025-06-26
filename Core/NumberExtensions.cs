@@ -7,6 +7,34 @@ namespace Core
 {
     public static class NumberExtensions
     {
+        public static BigInteger Partitions(this int n)
+        {
+            if (n < 0) return 0;
+            if (n == 0) return 1;
+
+            BigInteger[] p = new BigInteger[n + 1];
+            p[0] = 1;
+
+            for (int i = 1; i <= n; i++)
+            {
+                int k = 1;
+                while (true)
+                {
+                    int j1 = k * (3 * k - 1) / 2;
+                    if (j1 > i) break;
+                    p[i] += (k % 2 == 1 ? 1 : -1) * p[i - j1];
+
+                    int j2 = k * (3 * k + 1) / 2;
+                    if (j2 > i) break;
+                    p[i] += (k % 2 == 1 ? 1 : -1) * p[i - j2];
+
+                    k++;
+                }
+            }
+
+            return p[n];
+        }
+
         public static bool ReversiblePrimeSquare(this int n)
         {
             // We call a number a reversible prime square if:
