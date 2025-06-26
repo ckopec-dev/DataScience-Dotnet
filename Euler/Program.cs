@@ -2857,7 +2857,6 @@ namespace Euler
 
             int n = 100;
             Console.WriteLine("p({0}): {1}", n, n.Partitions() -1);
-            //throw new NotImplementedException();
         }
 
         static void Problem79()

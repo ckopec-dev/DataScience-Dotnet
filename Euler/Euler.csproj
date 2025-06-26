@@ -20,7 +20,6 @@
   <ItemGroup>
     <PackageReference Include="BigRational" Version="1.0.0.7" />
     <PackageReference Include="Combinatorics" Version="2.0.0" />
-    <PackageReference Include="ConsoleTables" Version="2.6.2" />
     <PackageReference Include="ScottPlot" Version="5.0.55" />
   </ItemGroup>
 
