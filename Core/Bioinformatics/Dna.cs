@@ -77,7 +77,7 @@ namespace Core.Bioinformatics
 
                 int gc = NucleotideCounts['G'] + NucleotideCounts['C'];
 
-                return (decimal)gc / Nucleotides.Length * 100m;
+                return (decimal)gc / (decimal)Nucleotides.Length * 100m;
             }
         }
 

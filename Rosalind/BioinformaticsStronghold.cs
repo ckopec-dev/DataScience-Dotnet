@@ -113,19 +113,28 @@ namespace Rosalind
             
             Fasta f = new(input);
 
+            decimal highest = 0;
+            string? highest_label = null;
+
             foreach (FastaEntry fe in f.Entries)
             {
-                //Console.WriteLine("label: {0}", fe.Label);
-                //Console.WriteLine("data: {0}", fe.Data);
-
                 Dna dna = new(fe.Data);
-                Console.WriteLine(dna.Code);
+
+                Console.WriteLine("label: {0}", fe.Label);
+                Console.WriteLine("data: {0}", fe.Data);
+                Console.WriteLine("gc content: {0:0.0000}", dna.GcContent);
+
+                
+
+                decimal gc = dna.GcContent;
+                if (gc > highest)
+                {
+                    highest = gc;
+                    highest_label = fe.Label;
+                }
             }
 
-            Dna d = new Dna("AGCTATAG");
-            Console.WriteLine(d.GcContent);
-            
-            //throw new NotImplementedException();
+            Console.WriteLine("{0}\n\r{1}", highest_label, highest);
         }
 
         public static void ProblemHAMM()
