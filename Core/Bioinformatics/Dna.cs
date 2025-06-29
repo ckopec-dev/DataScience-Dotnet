@@ -5,7 +5,13 @@ namespace Core.Bioinformatics
 {
     public class Dna
     {
+        #region Fields
+
         protected string _Code = String.Empty;
+
+        #endregion
+
+        #region Properties
 
         public string Code 
         { 
@@ -59,6 +65,26 @@ namespace Core.Bioinformatics
             }
         }
 
+        public decimal GcContent
+        {
+            get
+            {
+                // The GC-content of a DNA string is given by
+                // the percentage of symbols in the string that are 'C' or 'G'.
+                // For example, the GC-content of "AGCTATAG" is 37.5%.
+                // Note that the reverse complement of any DNA string
+                // has the same GC-content.
+
+                int gc = NucleotideCounts['G'] + NucleotideCounts['C'];
+
+                return (decimal)gc / Nucleotides.Length * 100m;
+            }
+        }
+
+        #endregion
+
+        #region Ctors/Dtors
+
         public Dna()
         {
         }
@@ -67,6 +93,10 @@ namespace Core.Bioinformatics
         {
             Code = code;        
         }
+
+        #endregion
+
+        #region Methods
 
         public override string ToString()
         {
@@ -101,5 +131,7 @@ namespace Core.Bioinformatics
 
             return d;
         }
+
+        #endregion
     }
 }

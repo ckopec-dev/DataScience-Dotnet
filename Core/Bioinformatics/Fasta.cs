@@ -59,7 +59,7 @@ namespace Core.Bioinformatics
             // If it doesn't exist, everything remaining is the data.
             // If it does exist, everything up to that line is the data. Everything after (and including) that line is a new entry to process.
 
-            Console.WriteLine("Processing entry: \n{0}", input);
+            //Console.WriteLine("Processing entry: \n{0}", input); // for debugging
 
             StringBuilder data = new();
             bool firstTokenFound = false;

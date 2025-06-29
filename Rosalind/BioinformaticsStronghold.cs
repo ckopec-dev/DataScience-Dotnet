@@ -115,12 +115,16 @@ namespace Rosalind
 
             foreach (FastaEntry fe in f.Entries)
             {
-                Console.WriteLine("label: {0}", fe.Label);
-                Console.WriteLine("data: {0}", fe.Data);
+                //Console.WriteLine("label: {0}", fe.Label);
+                //Console.WriteLine("data: {0}", fe.Data);
+
+                Dna dna = new(fe.Data);
+                Console.WriteLine(dna.Code);
             }
 
-            //f.
-
+            Dna d = new Dna("AGCTATAG");
+            Console.WriteLine(d.GcContent);
+            
             //throw new NotImplementedException();
         }
 
