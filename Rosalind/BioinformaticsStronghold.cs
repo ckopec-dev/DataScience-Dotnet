@@ -106,7 +106,7 @@ namespace Rosalind
 
         public static void ProblemGC()
         {
-            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.gc.txt") ?? throw new Exception("Resource not found: gc.txt");
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.gc.txt") ?? throw new ResourceNotFoundException();
             using StreamReader sr = new(mrs);
 
             string input = sr.ReadToEnd().Trim();
@@ -123,8 +123,6 @@ namespace Rosalind
                 Console.WriteLine("label: {0}", fe.Label);
                 Console.WriteLine("data: {0}", fe.Data);
                 Console.WriteLine("gc content: {0:0.0000}", dna.GcContent);
-
-                
 
                 decimal gc = dna.GcContent;
                 if (gc > highest)
@@ -253,9 +251,22 @@ namespace Rosalind
 
         public static void ProblemCONS()
         {
-            // see ProblemGC, which was accidentally skipped
+            // see ProblemGC
 
-            throw new NotImplementedException();
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.cons.txt") ?? throw new ResourceNotFoundException();
+            using StreamReader sr = new(mrs);
+
+            string input = sr.ReadToEnd().Trim();
+
+            Fasta f = new(input);
+
+            List<Dna> dnaStrings = [];
+            foreach (FastaEntry fe in f.Entries)
+                dnaStrings.Add(new Dna(fe.Data));
+
+            ProfileMatrix pm = new(dnaStrings);
+            Console.WriteLine(pm.Consensus);
+            Console.WriteLine(pm);
         }
 
         #endregion
