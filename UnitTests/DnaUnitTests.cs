@@ -73,5 +73,13 @@ namespace UnitTests
 
             Assert.AreEqual(1, dna.NucleotideCounts['A']);
         }
+
+        [TestMethod]
+        public void TestGcContent()
+        {
+            Dna dna = new("AGCTATAG");
+
+            Assert.AreEqual(37.5m, dna.GcContent, 0.1m);
+        }
     }
 }
