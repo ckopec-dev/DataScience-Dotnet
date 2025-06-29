@@ -14,13 +14,13 @@ namespace Core.Bioinformatics
         #region Fields
 
         private readonly string _RawInput = rawInput;
-        private List<FastaEntry> _Entries = [];
+        private readonly List<FastaEntry> _Entries = [];
 
         #endregion
 
         #region Properties
 
-        public string RawInput
+        public string? RawInput
         {
             get { return _RawInput; }
         }
@@ -29,13 +29,13 @@ namespace Core.Bioinformatics
         {
             get
             {
-                if (_Entries == null)
+                if (_Entries.Count == 0)
                 {
-                    _Entries = [];
-
                     if (!_RawInput.Contains('>'))
+                    {
                         return _Entries;
-
+                    }
+                        
                     ProcessEntry(_RawInput);
                 }
 
@@ -43,24 +43,11 @@ namespace Core.Bioinformatics
             }
         }
 
-        public List<Dna> DNAList
-        {
-            get
-            {
-                List<Dna> lst = [];
-
-                foreach (FastaEntry e in Entries)
-                    lst.Add(new(e.Data));
-
-                return lst;
-            }
-        }
-
         #endregion
 
         #region Methods
 
-        public override string ToString()
+        public override string? ToString()
         {
             return _RawInput;
         }
@@ -72,7 +59,7 @@ namespace Core.Bioinformatics
             // If it doesn't exist, everything remaining is the data.
             // If it does exist, everything up to that line is the data. Everything after (and including) that line is a new entry to process.
 
-            //Console.WriteLine("Processing entry: \n{0}", input);
+            Console.WriteLine("Processing entry: \n{0}", input);
 
             StringBuilder data = new();
             bool firstTokenFound = false;

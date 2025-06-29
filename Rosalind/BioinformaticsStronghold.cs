@@ -110,8 +110,18 @@ namespace Rosalind
             using StreamReader sr = new(mrs);
 
             string input = sr.ReadToEnd().Trim();
+            
+            Fasta f = new(input);
 
-            throw new NotImplementedException();
+            foreach (FastaEntry fe in f.Entries)
+            {
+                Console.WriteLine("label: {0}", fe.Label);
+                Console.WriteLine("data: {0}", fe.Data);
+            }
+
+            //f.
+
+            //throw new NotImplementedException();
         }
 
         public static void ProblemHAMM()
