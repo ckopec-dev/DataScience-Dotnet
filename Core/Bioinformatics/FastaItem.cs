@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Core.Bioinformatics
 {
-    internal class FastaItem
+    public class FastaItem(string label, string data)
     {
+        public string Label { get; set; } = label;
+        public string Data { get; set; } = data;
+
+        public override string ToString()
+        {
+            return Label + Environment.NewLine + Data;
+        }
     }
 }
