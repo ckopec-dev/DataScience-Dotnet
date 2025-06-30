@@ -699,7 +699,15 @@ namespace Core
 
         public static bool IsEven(this int number)
         {
-            if (number % 2 == 0)
+            if ((number & 1) == 0)
+                return true;
+            else
+                return false;
+        }
+
+        public static bool IsEven(this BigInteger number)
+        {
+            if ((number & 1) == 0)
                 return true;
             else
                 return false;
@@ -707,15 +715,7 @@ namespace Core
 
         public static bool IsOdd(this int number)
         {
-            if (number % 2 == 0)
-                return false;
-            else
-                return true;
-        }
-
-        public static bool IsEven(this BigInteger number)
-        {
-            if (number % 2 == 0)
+            if ((number & 1) == 1)
                 return true;
             else
                 return false;
@@ -723,10 +723,10 @@ namespace Core
 
         public static bool IsOdd(this BigInteger number)
         {
-            if (number % 2 == 0)
-                return false;
-            else
+            if ((number & 1) == 1)
                 return true;
+            else
+                return false;
         }
 
         public static bool ArePrime(this List<int> numbers)
