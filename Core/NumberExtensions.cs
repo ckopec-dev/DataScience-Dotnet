@@ -7,6 +7,14 @@ namespace Core
 {
     public static class NumberExtensions
     {
+        public static long SumOfSquares(this int n)
+        {
+            // Returns the sum of squares of 1 to n (inclusive).
+            // E.g. 2 -> 5
+            // 1^2 + 2^2 = 5
+            return (n * (n + 1) / 2) * (2 * n + 1) / 3;
+        }
+
         public static BigInteger Partitions(this int n)
         {
             if (n < 0) return 0;
