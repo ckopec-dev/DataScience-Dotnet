@@ -967,6 +967,13 @@ namespace Core
                 return false;
         }
 
+        public static int Sum(this int n)
+        {
+            // Sums all numbers from 1 to n.
+
+            return n * (n + 1) / 2;
+        }
+
         public static int Sum(this List<int> numbers)
         {
             int sum = 0;
