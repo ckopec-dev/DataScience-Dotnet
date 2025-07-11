@@ -2859,6 +2859,11 @@ namespace Euler
             Console.WriteLine("p({0}): {1}", n, n.Partitions() -1);
         }
 
+        static void Problem77()
+        {
+            throw new NotImplementedException();
+        }
+
         static void Problem79()
         {
             Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem79.txt") ?? throw new ResourceNotFoundException();
