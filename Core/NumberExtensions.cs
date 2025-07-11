@@ -15,8 +15,38 @@ namespace Core
             return (n * (n + 1) / 2) * (2 * n + 1) / 3;
         }
 
-        public static BigInteger Partitions(this int n)
+        public static List<int> GeneratePrimes(this int n)
         {
+            List<int> primes = new List<int>();
+            for (int i = 2; i <= n; i++)
+            {
+                if (IsPrime(i))
+                    primes.Add(i);
+            }
+            return primes;
+        }
+
+        public static int PrimePartitionCount(this int n)
+        {
+            var primes = GeneratePrimes(n);
+            int[] dp = new int[n + 1];
+            dp[0] = 1;
+
+            foreach (int prime in primes)
+            {
+                for (int i = prime; i <= n; i++)
+                {
+                    dp[i] += dp[i - prime];
+                }
+            }
+
+            return dp[n];
+        }
+
+        public static BigInteger PartitionCount(this int n)
+        {
+            // Returns the number of ways n can be partitioned with integers.
+
             if (n < 0) return 0;
             if (n == 0) return 1;
 

@@ -2856,12 +2856,26 @@ namespace Euler
             // https://www.youtube.com/watch?v=iJ8pnCO0nTY
 
             int n = 100;
-            Console.WriteLine("p({0}): {1}", n, n.Partitions() -1);
+            Console.WriteLine("p({0}): {1}", n, n.PartitionCount() -1);
         }
 
         static void Problem77()
         {
-            throw new NotImplementedException();
+            // Similar to problem 76.
+            // What is the first value which can be written as
+            // the sum of primes in over five thousand different ways?
+
+            int sum = 0;
+            int n = 10;
+
+            while (sum <=5000)
+            {
+                n++;
+
+                sum = n.PrimePartitionCount();
+
+                Console.WriteLine("n = {0}: {1}", n, sum);
+            }
         }
 
         static void Problem79()
