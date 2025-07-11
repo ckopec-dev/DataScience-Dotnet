@@ -316,6 +316,11 @@ namespace Rosalind
             }
         }
 
+        public static void ProblemCC()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         #region Helpers
