@@ -1,5 +1,4 @@
-﻿
-namespace Core
+﻿namespace Core.GraphTheory
 {
     public class Vertex
     {

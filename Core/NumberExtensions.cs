@@ -17,7 +17,7 @@ namespace Core
 
         public static List<int> GeneratePrimes(this int n)
         {
-            List<int> primes = new List<int>();
+            List<int> primes = [];
             for (int i = 2; i <= n; i++)
             {
                 if (IsPrime(i))
