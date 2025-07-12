@@ -7,6 +7,55 @@ namespace Core
 {
     public static class NumberExtensions
     {
+        #region SumOfDigits
+
+        /* Intentionally not covered are non-integer types and signed types. */
+
+        public static long SumOfDigits(this byte n)
+        {
+            return ((long)n).SumOfDigits();
+        }
+
+        public static long SumOfDigits(this short n)
+        {
+            return ((long)n).SumOfDigits();
+        }
+
+        public static long SumOfDigits(this int n)
+        {
+            return ((long)n).SumOfDigits();
+        }
+
+        public static long SumOfDigits(this long n)
+        {
+            long sum = 0;
+
+            while (n != 0)
+            {
+                long last = n % 10;
+                sum += last;
+                n /= 10;
+            }
+
+            return sum;
+        }
+
+        public static BigInteger SumOfDigits(this BigInteger n)
+        {
+            BigInteger sum = 0;
+
+            while (n != 0)
+            {
+                BigInteger last = n % 10;
+                sum += last;
+                n /= 10;
+            }
+
+            return sum;
+        }
+
+        #endregion
+
         public static long SumOfSquares(this int n)
         {
             // Returns the sum of squares of 1 to n (inclusive).
@@ -1035,33 +1084,6 @@ namespace Core
         public static int NumberOfDigits(this BigInteger number)
         {
             return number.ToString().Length;
-        }
-
-        public static int SumOfDigits(this int number)
-        {
-            List<int> digits = number.ToListOfDigits();
-
-            int sum = 0;
-
-            foreach (int digit in digits)
-            {
-                sum += digit;
-            }
-
-            return sum;
-        }
-
-        public static int SumOfDigits(this BigInteger number)
-        {
-            string digits = number.ToString();
-            int sum = 0;
-
-            for (int i = 0; i < digits.Length; i++)
-            {
-                sum += Convert.ToInt32(digits.Substring(i, 1));
-            }
-
-            return sum;
         }
 
         public static bool SameDigits(this int number, List<int> numbersToCompare)
