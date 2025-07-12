@@ -1,12 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Core.GraphTheory
 {
-    internal class GraphType
+    public enum GraphType
     {
+        // Reference: https://www.geeksforgeeks.org/dsa/introduction-to-graphs-data-structure-and-algorithm-tutorials/
+        Null, 
+        Trivial,
+        Undirected,
+        Directed,
+        Connected,
+        Disconnected,
+        Regular,
+        Complete,
+        Cycle,
+        Cyclic,
+        DirectedAcyclic,
+        Bipartite,
+        Weighted
     }
 }

@@ -318,7 +318,16 @@ namespace Rosalind
 
         public static void ProblemCC()
         {
-            throw new NotImplementedException();
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.cc.txt") ?? throw new ResourceNotFoundException();
+            using StreamReader sr = new(mrs);
+
+            #pragma warning disable IDE0305 // Simplify collection initialization
+            List<string> lst = sr.ReadToEnd().ToList();
+            #pragma warning restore IDE0305 // Simplify collection initialization
+
+            Graph graph = Graph.FromEdgeList(lst);
+            
+
         }
 
         #endregion

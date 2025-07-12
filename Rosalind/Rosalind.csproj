@@ -11,6 +11,7 @@
     <None Remove="Inputs\2sum.txt" />
     <None Remove="Inputs\bfs.txt" />
     <None Remove="Inputs\bins.txt" />
+    <None Remove="Inputs\cc.txt" />
     <None Remove="Inputs\cons.txt" />
     <None Remove="Inputs\ddeg.txt" />
     <None Remove="Inputs\deg.txt" />
@@ -32,6 +33,7 @@
     <EmbeddedResource Include="Inputs\2sum.txt" />
     <EmbeddedResource Include="Inputs\bfs.txt" />
     <EmbeddedResource Include="Inputs\bins.txt" />
+    <EmbeddedResource Include="Inputs\cc.txt" />
     <EmbeddedResource Include="Inputs\cons.txt" />
     <EmbeddedResource Include="Inputs\ddeg.txt" />
     <EmbeddedResource Include="Inputs\deg.txt" />
