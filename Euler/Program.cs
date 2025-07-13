@@ -1884,7 +1884,7 @@ namespace Euler
 
         static void Problem56()
         {
-            int maxDigits = 1;
+            BigInteger maxDigits = new(1);
 
             for(BigInteger a = 2; a < 100; a++)
             {
@@ -1892,7 +1892,7 @@ namespace Euler
                 {
                     BigInteger c = BigInteger.Pow(a, b);
 
-                    int digits = c.SumOfDigits();
+                    BigInteger digits = c.SumOfDigits();
 
                     Console.WriteLine("{0}^{1}={2}, sum of digits: {3}", a, b, c, digits);
 
@@ -2370,7 +2370,7 @@ namespace Euler
                 else
                     n[2] = n[0] + n[1] * cf;
 
-                int sum = n[2].SumOfDigits();
+                BigInteger sum = n[2].SumOfDigits();
 
                 Console.WriteLine("i: {0}, n: {1}, cf: {2}, sum: {3}", i, n[2], cf, sum);
             }
@@ -2876,6 +2876,11 @@ namespace Euler
 
                 Console.WriteLine("n = {0}: {1}", n, sum);
             }
+        }
+
+        static void Problem78()
+        {
+            throw new NotImplementedException();
         }
 
         static void Problem79()

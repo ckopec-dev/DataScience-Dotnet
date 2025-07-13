@@ -9,7 +9,11 @@ namespace Core
     {
         #region SumOfDigits
 
-        /* Intentionally not covered are non-integer types and signed types. */
+        /***
+         * Sums the digits of n.
+         * Intentionally not covered are non-integer types and signed types.
+        ***/ 
+        
 
         public static long SumOfDigits(this byte n)
         {
@@ -52,6 +56,63 @@ namespace Core
             }
 
             return sum;
+        }
+
+        #endregion
+
+        #region Reverse
+
+        /***
+         * Reverse the digits of n.
+         * Intentionally not covered are non-integer types and signed types.
+        ***/
+
+        public static byte Reverse(this byte n)
+        {
+            char[] charArray = n.ToString().ToCharArray();
+            Array.Reverse(charArray);
+            string numberReversed = new(charArray);
+
+            return Convert.ToByte(numberReversed);
+        }
+        
+        public static short Reverse(this short n)
+        {
+            char[] charArray = n.ToString().ToCharArray();
+            Array.Reverse(charArray);
+            string numberReversed = new(charArray);
+
+            return Convert.ToInt16(numberReversed);
+        }
+
+        public static int Reverse(this int n)
+        {
+            char[] charArray = n.ToString().ToCharArray();
+            Array.Reverse(charArray);
+            string numberReversed = new(charArray);
+
+            return Convert.ToInt32(numberReversed);
+        }
+
+        public static long Reverse(this long n)
+        {
+            char[] charArray = n.ToString().ToCharArray();
+            Array.Reverse(charArray);
+            string numberReversed = new(charArray);
+
+            return Convert.ToInt64(numberReversed);
+        }
+
+        public static BigInteger Reverse(this BigInteger n)
+        {
+            char[] charArray = n.ToString().ToCharArray();
+            Array.Reverse(charArray);
+            string numberReversed = new(charArray);
+
+            if (numberReversed == null)
+                return BigInteger.Zero;
+
+            return BigInteger.Parse(numberReversed);
         }
 
         #endregion
@@ -825,36 +886,6 @@ namespace Core
                     return false;
 
             return true;
-        }
-
-        public static int Reverse(this int number)
-        {
-            char[] charArray = number.ToString().ToCharArray();
-            Array.Reverse(charArray);
-            string numberReversed = new(charArray);
-
-            return Convert.ToInt32(numberReversed);
-        }
-
-        public static long Reverse(this long number)
-        {
-            char[] charArray = number.ToString().ToCharArray();
-            Array.Reverse(charArray);
-            string numberReversed = new(charArray);
-
-            return Convert.ToInt64(numberReversed);
-        }
-
-        public static BigInteger Reverse(this BigInteger number)
-        {
-            char[] charArray = number.ToString().ToCharArray();
-            Array.Reverse(charArray);
-            string numberReversed = new(charArray);
-
-            if (numberReversed == null)
-                return BigInteger.Zero;
-
-            return BigInteger.Parse(numberReversed);
         }
 
         public static bool IsPalindrome(this int number)
