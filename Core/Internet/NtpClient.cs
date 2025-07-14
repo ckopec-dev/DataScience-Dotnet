@@ -13,8 +13,8 @@ namespace Core.Internet
 
             IPAddress[] addresses = Dns.GetHostAddresses(ntpServer);
             if (addresses.Length == 0)
-                throw new Exception("Could not resolve NTP server address.");
-
+                throw new AddressResolutionException();
+                
             IPEndPoint ipEndPoint = new(addresses[0], 123);
 
             using UdpClient udpClient = new();
@@ -25,13 +25,13 @@ namespace Core.Internet
             asyncResult.AsyncWaitHandle.WaitOne(3000); // Wait max 3 sec
 
             if (!asyncResult.IsCompleted)
-                throw new Exception("NTP request timed out.");
+                throw new RequestTimeoutException();
 
             IPEndPoint? remoteEndPoint = null;
             byte[] receivedData = udpClient.EndReceive(asyncResult, ref remoteEndPoint);
 
             if (receivedData.Length < 48)
-                throw new Exception("Incomplete NTP response received.");
+                throw new IncompleteResponseException();
 
             ulong intPart = BitConverter.ToUInt32(receivedData, 40);
             ulong fractPart = BitConverter.ToUInt32(receivedData, 44);

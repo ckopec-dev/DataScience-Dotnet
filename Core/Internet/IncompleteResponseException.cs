@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Core.Internet
 {
-    internal class IncompleteResponseException
+    public class IncompleteResponseException : Exception
     {
     }
 }
