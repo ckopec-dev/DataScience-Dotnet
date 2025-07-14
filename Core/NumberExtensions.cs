@@ -7,13 +7,100 @@ namespace Core
 {
     public static class NumberExtensions
     {
+
+        #region Reverse
+
+        /***
+         * Reverse the digits of n.
+         * E.g. 123 -> 321.
+        ***/
+
+        public static byte Reverse(this byte n)
+        {
+            char[] charArray = n.ToString().ToCharArray();
+            Array.Reverse(charArray);
+            string numberReversed = new(charArray);
+
+            return Convert.ToByte(numberReversed);
+        }
+
+        public static short Reverse(this short n)
+        {
+            char[] charArray = n.ToString().ToCharArray();
+            Array.Reverse(charArray);
+            string numberReversed = new(charArray);
+
+            return Convert.ToInt16(numberReversed);
+        }
+
+        public static ushort Reverse(this ushort n)
+        {
+            char[] charArray = n.ToString().ToCharArray();
+            Array.Reverse(charArray);
+            string numberReversed = new(charArray);
+
+            return Convert.ToUInt16(numberReversed);
+        }
+
+        public static int Reverse(this int n)
+        {
+            char[] charArray = n.ToString().ToCharArray();
+            Array.Reverse(charArray);
+            string numberReversed = new(charArray);
+
+            return Convert.ToInt32(numberReversed);
+
+        }
+        public static uint Reverse(this uint n)
+        {
+            char[] charArray = n.ToString().ToCharArray();
+            Array.Reverse(charArray);
+            string numberReversed = new(charArray);
+
+            return Convert.ToUInt32(numberReversed);
+        }
+
+        public static long Reverse(this long n)
+        {
+            char[] charArray = n.ToString().ToCharArray();
+            Array.Reverse(charArray);
+            string numberReversed = new(charArray);
+
+            return Convert.ToInt64(numberReversed);
+        }
+
+        public static ulong Reverse(this ulong n)
+        {
+            char[] charArray = n.ToString().ToCharArray();
+            Array.Reverse(charArray);
+            string numberReversed = new(charArray);
+
+            return Convert.ToUInt64(numberReversed);
+        }
+
+        public static BigInteger Reverse(this BigInteger n)
+        {
+            ArgumentOutOfRangeException.ThrowIfNegative(n);
+            
+            char[] charArray = n.ToString().ToCharArray();
+            Array.Reverse(charArray);
+            string numberReversed = new(charArray);
+
+            if (numberReversed == null)
+                return BigInteger.Zero;
+
+            return BigInteger.Parse(numberReversed);
+        }
+
+        #endregion
+
         #region SumOfDigits
 
         /***
          * Sums the digits of n.
          * Intentionally not covered are non-integer types and signed types.
-        ***/ 
-        
+        ***/
+
 
         public static long SumOfDigits(this byte n)
         {
@@ -60,70 +147,35 @@ namespace Core
 
         #endregion
 
-        #region Reverse
+        #region SumOfSquares
 
         /***
-         * Reverse the digits of n.
+         * Returns the sum of squares of 1 to n (inclusive).
          * Intentionally not covered are non-integer types and signed types.
+         * E.g. 2 -> 5 because 1^2 + 2^2 = 5.
         ***/
 
-        public static byte Reverse(this byte n)
+        public static long SumOfSquares(this byte n)
         {
-            char[] charArray = n.ToString().ToCharArray();
-            Array.Reverse(charArray);
-            string numberReversed = new(charArray);
-
-            return Convert.ToByte(numberReversed);
-        }
-        
-        public static short Reverse(this short n)
-        {
-            char[] charArray = n.ToString().ToCharArray();
-            Array.Reverse(charArray);
-            string numberReversed = new(charArray);
-
-            return Convert.ToInt16(numberReversed);
+            throw new NotImplementedException();
         }
 
-        public static int Reverse(this int n)
+        public static long SumOfSquares(this short n)
         {
-            char[] charArray = n.ToString().ToCharArray();
-            Array.Reverse(charArray);
-            string numberReversed = new(charArray);
-
-            return Convert.ToInt32(numberReversed);
+            throw new NotImplementedException();
         }
-
-        public static long Reverse(this long n)
-        {
-            char[] charArray = n.ToString().ToCharArray();
-            Array.Reverse(charArray);
-            string numberReversed = new(charArray);
-
-            return Convert.ToInt64(numberReversed);
-        }
-
-        public static BigInteger Reverse(this BigInteger n)
-        {
-            char[] charArray = n.ToString().ToCharArray();
-            Array.Reverse(charArray);
-            string numberReversed = new(charArray);
-
-            if (numberReversed == null)
-                return BigInteger.Zero;
-
-            return BigInteger.Parse(numberReversed);
-        }
-
-        #endregion
 
         public static long SumOfSquares(this int n)
         {
-            // Returns the sum of squares of 1 to n (inclusive).
-            // E.g. 2 -> 5
-            // 1^2 + 2^2 = 5
             return (n * (n + 1) / 2) * (2 * n + 1) / 3;
         }
+
+        public static long SumOfSquares(this BigInteger n)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
 
         public static List<int> GeneratePrimes(this int n)
         {
