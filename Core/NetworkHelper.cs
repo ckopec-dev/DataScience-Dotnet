@@ -1,4 +1,7 @@
 ﻿
+using System.Net;
+using System.Net.Sockets;
+
 namespace Core
 {
     public static class NetworkHelper
@@ -30,5 +33,15 @@ namespace Core
             int r = _Random.Next(minMilliseconds, maxMilliseconds);
             Thread.Sleep(r);
         }
+
+        public static uint SwapEndianness(ulong x)
+        {
+            return (uint)(((x & 0x000000ff) << 24) +
+                          ((x & 0x0000ff00) << 8) +
+                          ((x & 0x00ff0000) >> 8) +
+                          ((x & 0xff000000) >> 24));
+        }
+
+
     }
 }

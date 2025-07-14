@@ -1,6 +1,8 @@
 ﻿using Combinatorics.Collections;
 using Core;
+using Core.Bioinformatics;
 using Core.GameTheory;
+using Core.Internet;
 using Core.ScottPlotCustom;
 using ScottPlot;
 using System.Collections.Generic;
@@ -2880,7 +2882,9 @@ namespace Euler
 
         static void Problem78()
         {
-            throw new NotImplementedException();
+            DateTime dt = NtpClient.Query("pool.ntp.org");
+            Console.WriteLine(dt);
+            //throw new NotImplementedException();
         }
 
         static void Problem79()
