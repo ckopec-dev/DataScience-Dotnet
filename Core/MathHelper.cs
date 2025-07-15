@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System.Drawing;
+using System.Numerics;
 using System.Xml.XPath;
 
 namespace Core
@@ -6,6 +7,18 @@ namespace Core
     public static class MathHelper
     {
         public const double GAMMA = 0.57721566490153286060651209008240243;
+
+        public static ulong  CoinPartitions(int[] coinValues, int sum)
+        {
+            long n = coinValues.Length;
+            ulong[] m = new ulong[sum + 1];
+            m[0] = 1;
+            for (int i = 0; i < n; i++)
+                for (int j = coinValues[i]; j <= sum; j++)
+                    m[j] += m[j - coinValues[i]];
+
+            return m[sum];
+        }
 
         public static bool IsConcatSquare(ulong a, ulong b)
         {

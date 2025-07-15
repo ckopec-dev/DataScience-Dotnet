@@ -5,6 +5,7 @@ using Core.GameTheory;
 using Core.Internet;
 using Core.ScottPlotCustom;
 using ScottPlot;
+using ScottPlot.TickGenerators.Financial;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -2882,8 +2883,40 @@ namespace Euler
 
         static void Problem78()
         {
-            DateTime dt = NtpClient.Query("pool.ntp.org");
-            Console.WriteLine(dt);
+            // experiments
+            //int[] coins = [1, 2, 3, 4, 5, 6, 7];
+            //int sum = 7;
+
+            //Console.WriteLine(MathHelper.CoinPartitions(coins, sum));
+
+            // Find the least value of n for which p(n) 
+            // is divisible by one million.
+
+            int n = 0;
+
+            while (true)
+            {
+                n++;
+                int[] coins = new int[n];
+
+                for(int i = 1; i <= n; i++)
+                {
+                    coins[i - 1] = i;
+                }
+
+                ulong sum = MathHelper.CoinPartitions(coins, n);
+
+                if (n % 1000 == 0)
+                    Console.WriteLine("{0}: {1}", n, sum);
+
+                // bail
+                if (n % 1000000 == 0)
+                {
+                    Console.WriteLine("Solution found for {0}: {1}", n, sum);
+                    break;
+                }
+            }
+
             //throw new NotImplementedException();
         }
 
