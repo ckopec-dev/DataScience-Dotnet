@@ -2883,44 +2883,39 @@ namespace Euler
 
         static void Problem78()
         {
-            // experiments
-            //int[] coins = [1, 2, 3, 4, 5, 6, 7];
-            //int sum = 7;
+            const int mod = 1000000;
+            List<int> partitions = [1]; // p(0) = 1
 
-            //Console.WriteLine(MathHelper.CoinPartitions(coins, sum));
-
-            // Find the least value of n for which p(n) 
-            // is divisible by one million.
-
-
-            // this should work, but takes too long to execute...
-            
-            int n = 0;
-
-            while (true)
+            for (int n = 1; ; n++)
             {
-                n++;
-                int[] coins = new int[n];
-
-                for(int i = 1; i <= n; i++)
+                int total = 0;
+                for (int k = 1; ; k++)
                 {
-                    coins[i - 1] = i;
+                    int pent1 = k * (3 * k - 1) / 2;
+                    int pent2 = k * (3 * k + 1) / 2;
+
+                    if (pent1 > n) break;
+
+                    int sign = (k % 2 == 0) ? -1 : 1;
+
+                    total = (total + sign * partitions[n - pent1]) % mod;
+
+                    if (pent2 <= n)
+                        total = (total + sign * partitions[n - pent2]) % mod;
+                    else
+                        break;
                 }
 
-                ulong sum = MathHelper.CoinPartitions(coins, n);
+                if (total < 0) total += mod;
 
-                if (n % 1000 == 0)
-                    Console.WriteLine("{0}: {1}", n, sum);
+                partitions.Add(total);
 
-                // bail
-                if (n % 1000000 == 0)
+                if (total == 0)
                 {
-                    Console.WriteLine("Solution found for {0}: {1}", n, sum);
+                    Console.WriteLine($"Least value of n: {n}");
                     break;
                 }
             }
-
-            //throw new NotImplementedException();
         }
 
         static void Problem79()
