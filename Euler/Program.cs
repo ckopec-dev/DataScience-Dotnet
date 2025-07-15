@@ -2892,6 +2892,9 @@ namespace Euler
             // Find the least value of n for which p(n) 
             // is divisible by one million.
 
+
+            // this should work, but takes too long to execute...
+            
             int n = 0;
 
             while (true)
