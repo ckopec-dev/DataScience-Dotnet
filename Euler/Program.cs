@@ -3361,10 +3361,6 @@ namespace Euler
         static void Misc13()
         {
             // https://bbchallenge.org/story#goal
-
-            TuringMachine tm = new();
-
-            Console.WriteLine(tm);
         }
 
         static void Misc14()
