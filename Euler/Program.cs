@@ -1,6 +1,7 @@
 ﻿using Combinatorics.Collections;
 using Core;
 using Core.GameTheory;
+using Core.Internet;
 using Core.ScottPlotCustom;
 using ScottPlot;
 using System.Diagnostics;
@@ -3636,6 +3637,12 @@ namespace Euler
             Console.WriteLine("Li({0}) = {1}", x, MathHelper.Li(x, 100));
             Console.WriteLine("Pi({0}) = {1}", x, MathHelper.Pi(x));
             Console.WriteLine("PiProbably({0}) = {1}", x, MathHelper.PiProbably(x));
+        }
+
+        static void Misc23()
+        {
+            string w = WhoIsClient.Query("yahoo.com");
+            Console.WriteLine(w);
         }
 
         #endregion

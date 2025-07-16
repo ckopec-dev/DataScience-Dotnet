@@ -1,40 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net.Sockets;
 
 namespace Core.Internet
 {
     public class WhoIsClient
     {
-        public static void Query()
+        public static string Query(
+            string domain, 
+            string server = "whois.verisign-grs.com",
+            int port = 43)
         {
-            string domain = "yahoo.com";
+            using TcpClient client = new(server, port);
+            using NetworkStream stream = client.GetStream();
+            using StreamWriter writer = new(stream);
+            using StreamReader reader = new(stream);
+            writer.WriteLine(domain);
+            writer.Flush();
 
-            try
-            {
-                string whoisServer = "whois.verisign-grs.com"; // For .com/.net domains
-                int port = 43;
-
-                using (TcpClient client = new TcpClient(whoisServer, port))
-                using (NetworkStream stream = client.GetStream())
-                using (StreamWriter writer = new StreamWriter(stream))
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    writer.WriteLine(domain);
-                    writer.Flush();
-
-                    string response = reader.ReadToEnd();
-                    Console.WriteLine("WHOIS Response:\n");
-                    Console.WriteLine(response);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-            }
+            string response = reader.ReadToEnd();
+            return response;
         }
     }
 }
