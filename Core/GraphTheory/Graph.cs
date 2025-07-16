@@ -3,13 +3,28 @@ namespace Core.GraphTheory
 {
     public class Graph(int VertexCount)
     {
-        private readonly int vertexCount = VertexCount;
-        public readonly Dictionary<int, List<int>> AdjacencyList = [];
+        #region Fields
 
+        private readonly int vertexCount = VertexCount;
+
+        #endregion
+    
+        #region Properties
+
+        public readonly Dictionary<int, List<int>> AdjacencyList = [];
+        
         public int VertexCount
         {
             get { return vertexCount; }
         }
+
+        #endregion
+
+        #region Ctors/Dtors 
+
+        #endregion
+
+        #region Methods
 
         public void AddEdge(int u, int v)
         {
@@ -87,5 +102,7 @@ namespace Core.GraphTheory
 
             return distances;
         }
+
+        #endregion
     }
 }

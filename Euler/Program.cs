@@ -1,14 +1,9 @@
 ﻿using Combinatorics.Collections;
 using Core;
-using Core.Bioinformatics;
 using Core.GameTheory;
-using Core.Internet;
 using Core.ScottPlotCustom;
 using ScottPlot;
-using ScottPlot.TickGenerators.Financial;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Numerics;
 using System.Reflection;
 using System.Text;
