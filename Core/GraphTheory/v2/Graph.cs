@@ -11,7 +11,7 @@ namespace Core.GraphTheory.v2
     /// An edge connects two vertices.
     /// </summary>
     /// <param name="VertexCount">The number of vertices in the graph.</param>
-    public class Graph
+    public abstract class Graph
     {
         #region Fields
 
