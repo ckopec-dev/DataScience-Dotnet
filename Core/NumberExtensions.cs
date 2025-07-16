@@ -7,6 +7,77 @@ namespace Core
 {
     public static class NumberExtensions
     {
+        /***
+         * Is n prime?
+         * E.g. 5 -> true.
+        ***/
+
+        public static bool IsPrime(this byte n)
+        {
+            return IsPrime((ulong)n);
+        }
+
+        public static bool IsPrime(this short n)
+        {
+            if (n < 2) return false;
+            return IsPrime((ulong)n);
+        }
+
+        public static bool IsPrime(this ushort n)
+        {
+            return IsPrime((ulong)n);
+        }
+
+        public static bool IsPrime(this int n)
+        {
+            if (n < 2) return false;
+            return IsPrime((ulong)n);
+        }
+
+        public static bool IsPrime(this uint n)
+        {
+            return IsPrime((ulong)n);
+        }
+
+        public static bool IsPrime(this long n)
+        {
+            if (n < 2) return false;
+            return IsPrime((ulong)n);
+        }
+
+        public static bool IsPrime(this ulong n)
+        {
+            if (n == 2 || n == 3)
+                return true;
+
+            if (n <= 1 || n % 2 == 0 || n % 3 == 0)
+                return false;
+
+            for (ulong i = 5; i * i <= n; i += 6)
+            {
+                if (n % i == 0 || n % (i + 2) == 0)
+                    return false;
+            }
+
+            return true;
+        }
+
+        public static bool IsPrime(this BigInteger n)
+        {
+            if (n == 2 || n == 3)
+                return true;
+
+            if (n <= 1 || n % 2 == 0 || n % 3 == 0)
+                return false;
+
+            for (BigInteger i = 5; i * i <= n; i += 6)
+            {
+                if (n % i == 0 || n % (i + 2) == 0)
+                    return false;
+            }
+
+            return true;
+        }
 
         #region Reverse
 
@@ -825,44 +896,7 @@ namespace Core
             return t;
         }
 
-        public static bool IsPrime(this int number)
-        {
-            //Console.WriteLine("entering IsPrime(int)");
 
-            return ((long)number).IsPrime();
-        }
-
-        public static bool IsPrime(this ulong number)
-        {
-            if (number < 2)
-                return false;
-
-            if (number == 2 || number == 3 || number == 5 || number == 7)
-                return true;
-
-            if (number % 2 == 0)
-            {
-                return false;
-            }
-
-            ulong sqrt = Convert.ToUInt64(Math.Sqrt(number));
-            for (ulong t = 3; t <= sqrt; t += 2)
-            {
-                if (number % t == 0)
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        public static bool IsPrime(this long number)
-        {
-            //Console.WriteLine("entering IsPrime(long)");
-
-            return ((ulong)number).IsPrime();
-        }
 
         public static bool IsProbablyPrime(this int number)
         {
