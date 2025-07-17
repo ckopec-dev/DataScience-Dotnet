@@ -7,6 +7,8 @@ namespace Core
 {
     public static class NumberExtensions
     {
+        #region IsPrime
+
         /***
          * Is n prime?
          * E.g. 5 -> true.
@@ -79,6 +81,8 @@ namespace Core
             return true;
         }
 
+        #endregion
+
         #region Reverse
 
         /***
@@ -97,6 +101,8 @@ namespace Core
 
         public static short Reverse(this short n)
         {
+            ArgumentOutOfRangeException.ThrowIfNegative(n);
+
             char[] charArray = n.ToString().ToCharArray();
             Array.Reverse(charArray);
             string numberReversed = new(charArray);
@@ -115,6 +121,8 @@ namespace Core
 
         public static int Reverse(this int n)
         {
+            ArgumentOutOfRangeException.ThrowIfNegative(n);
+
             char[] charArray = n.ToString().ToCharArray();
             Array.Reverse(charArray);
             string numberReversed = new(charArray);
@@ -133,6 +141,8 @@ namespace Core
 
         public static long Reverse(this long n)
         {
+            ArgumentOutOfRangeException.ThrowIfNegative(n);
+
             char[] charArray = n.ToString().ToCharArray();
             Array.Reverse(charArray);
             string numberReversed = new(charArray);
@@ -171,7 +181,6 @@ namespace Core
          * Sums the digits of n.
          * Intentionally not covered are non-integer types and signed types.
         ***/
-
 
         public static long SumOfDigits(this byte n)
         {
