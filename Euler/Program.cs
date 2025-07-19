@@ -2920,15 +2920,60 @@ namespace Euler
             using StreamReader sr = new(mrs);
 
             //BigInteger sum = BigInteger.Zero;
+            List<string> attempts = [];
+
             while (!sr.EndOfStream)
             {
                 string? line = sr.ReadLine();
                 if (line == null) break;
-                //BigInteger bi = BigInteger.Parse(line);
-                //sum += bi;
+                attempts.Add(line);
             }
 
-            throw new NotImplementedException();
+            // Create a set of unique digits and graph
+            HashSet<char> digits = [];
+            Dictionary<char, HashSet<char>> graph = [];
+            Dictionary<char, int> inDegree = [];
+
+            foreach (string attempt in attempts)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    digits.Add(attempt[i]);
+                    if (!graph.ContainsKey(attempt[i]))
+                        graph[attempt[i]] = [];
+                    if (!inDegree.ContainsKey(attempt[i]))
+                        inDegree[attempt[i]] = 0;
+                }
+
+                // Enforce ordering: first < second < third
+                if (graph[attempt[0]].Add(attempt[1]))
+                    inDegree[attempt[1]]++;
+                if (graph[attempt[1]].Add(attempt[2]))
+                    inDegree[attempt[2]]++;
+            }
+
+            // Topological sort using Kahn's algorithm
+            Queue<char> queue = new();
+            foreach (char digit in digits)
+            {
+                if (inDegree[digit] == 0)
+                    queue.Enqueue(digit);
+            }
+
+            List<char> result = [];
+            while (queue.Count > 0)
+            {
+                char current = queue.Dequeue();
+                result.Add(current);
+                foreach (char neighbor in graph[current])
+                {
+                    inDegree[neighbor]--;
+                    if (inDegree[neighbor] == 0)
+                        queue.Enqueue(neighbor);
+                }
+            }
+
+            Console.WriteLine("Passcode: " + new string([.. result]));
         }
 
         static void Problem92()
