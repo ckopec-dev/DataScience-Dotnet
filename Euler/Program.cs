@@ -1,6 +1,7 @@
 ﻿using Combinatorics.Collections;
 using Core;
 using Core.GameTheory;
+using Core.GraphTheory.v2;
 using Core.Internet;
 using Core.ScottPlotCustom;
 using ScottPlot;
@@ -3688,6 +3689,20 @@ namespace Euler
         {
             string w = WhoIsClient.Query("yahoo.com");
             Console.WriteLine(w);
+        }
+
+        static void Misc24()
+        {
+            // Graph testing...
+
+            UndirectedGraph ug = new(4);
+
+            ug.AddEdge(0, 1);
+            ug.AddEdge(0, 2);
+            ug.AddEdge(1, 2);
+            ug.AddEdge(2, 3);
+
+            ug.DisplayMatrix();
         }
 
         #endregion
