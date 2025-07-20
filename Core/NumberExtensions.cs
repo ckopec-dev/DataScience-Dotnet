@@ -1,12 +1,33 @@
 ﻿using ExtendedNumerics;
 using System.Globalization;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Core
 {
     public static class NumberExtensions
     {
+        #region IsPower
+
+        /***
+         * Is n a power of m.
+         * E.g. 1000.IsPower(10) -> true
+        ***/
+
+        public static bool IsPower(this byte n, byte p)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool IsPower(this int x, byte y)
+        {
+            double d = Math.Log(x) / Math.Log(y);
+            return d == Math.Floor(d);
+        }
+
+        #endregion
+
         #region IsPrime
 
         /***
@@ -226,6 +247,8 @@ namespace Core
         }
 
         #endregion
+
+
 
         #region SumOfSquares
 

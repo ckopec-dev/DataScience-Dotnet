@@ -3705,6 +3705,37 @@ namespace Euler
             ug.DisplayMatrix();
         }
 
+        static void Misc25()
+        {
+            // NntpClient testing...
+
+            var client = new NntpClient();
+
+            try
+            {
+                client.Connect("news.mixmin.net");
+
+                // Optional authentication
+                //SendCommand("AUTHINFO USER your_username");
+                //ReadResponse();
+
+                //SendCommand("AUTHINFO PASS your_password");
+                //ReadResponse();
+
+                client.ListNewsgroups(); // You can comment this to reduce output
+
+                client.SelectNewsgroup("alt.test"); // Change to a valid newsgroup
+                client.GetArticle(1);               // Fetch article number 1
+
+                client.Quit();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+
+        }
+
         #endregion
 
 #pragma warning restore IDE0051 // Remove unused private members
