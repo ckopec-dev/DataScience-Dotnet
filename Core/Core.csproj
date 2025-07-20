@@ -27,7 +27,7 @@
 
   <ItemGroup>
     <PackageReference Include="Combinatorics" Version="2.0.0" />
-    <PackageReference Include="ExtendedNumerics.BigDecimal" Version="3000.0.4.132" />
+    <PackageReference Include="ExtendedNumerics.BigDecimal" Version="3001.0.0.199" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.2" />
     <PackageReference Include="QuikGraph" Version="2.5.0" />
     <PackageReference Include="ScottPlot" Version="5.0.55" />
