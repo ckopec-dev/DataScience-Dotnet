@@ -7,44 +7,118 @@ namespace Core.Internet
 {
     public class NntpClient
     {
+        #region Fields 
+
         private TcpClient? tcpClient;
         private StreamReader? reader;
         private StreamWriter? writer;
 
-        public void Connect(string server, int port = 119)
+        #endregion
+
+        #region Methods
+
+        public string Connect(string server, int port = 119)
         {
+            // Returns server response message.
+
             tcpClient = new TcpClient(server, port);
             var stream = tcpClient.GetStream();
             reader = new StreamReader(stream, Encoding.ASCII);
             writer = new StreamWriter(stream, Encoding.ASCII) { AutoFlush = true };
 
-            Console.WriteLine("Server: " + reader.ReadLine());
+            string? response = reader.ReadLine() ?? throw new DisconnectedException();
+            Console.WriteLine("SERVER: {0}", response);
+
+            return response;
         }
 
-        public void SendCommand(string command)
+        public void Authenticate(string username, string password)
+        {
+            SendCommand("AUTHINFO USER " + username);
+            ReadResponse();
+
+            SendCommand("AUTHINFO PASS " + password);
+            ReadResponse();
+        }
+
+        private void SendCommand(string command)
         {
             if (writer == null) throw new DisconnectedException();
             
-            Console.WriteLine("Client: " + command);
+            Console.WriteLine("CLIENT: " + command);
             writer.WriteLine(command);
         }
 
-        public void ReadResponse(bool multiline = false)
+        public List<string> ReadResponse(bool multiline = false)
         {
             if (reader == null) throw new DisconnectedException();
-            
+            List<string> response = [];
+
             string? line;
             do
             {
                 line = reader.ReadLine();
-                Console.WriteLine("Server: " + line);
+                if (line != null)
+                {
+                    response.Add(line);
+                    Console.WriteLine("SERVER: " + line);
+                }
+
             } while (multiline && line != "." && line != null);
+
+            return response;
         }
 
-        public void ListNewsgroups()
+        private static List<string> Filter(List<string> response, List<string> excludes)
+        {
+            List<string> retval = [];
+
+            foreach (var item in response)
+            {
+                bool add = true;
+
+                foreach (var ex in excludes)
+                {
+                    bool match = item.StartsWith(ex);
+                    Console.WriteLine("{0} starts with {1}? {2}", item, ex, match);
+                    if (match)
+                    {
+                        add = false;
+                        break;
+                    }
+                }
+
+                if (add)
+                    retval.Add(item);
+            }
+
+            return retval;
+        }
+
+        public void Quit()
+        {
+            if (tcpClient == null) throw new DisconnectedException();
+
+            SendCommand("QUIT");
+            ReadResponse();
+            tcpClient.Close();
+        }
+
+        public List<string> ListNewsgroups()
         {
             SendCommand("LIST");
-            ReadResponse(multiline: true);
+            List<string> response = ReadResponse(multiline: true);
+            response = Filter(response, ["215", "."]);
+
+            return response;
+        }
+
+        public List<string> GetArticles(string group)
+        {
+            SendCommand($"LISTGROUP {group}");
+            List<string> response = ReadResponse(multiline: true);
+
+            return response;
         }
 
         public void SelectNewsgroup(string group)
@@ -59,13 +133,6 @@ namespace Core.Internet
             ReadResponse(multiline: true);
         }
 
-        public void Quit()
-        {
-            if (tcpClient == null) throw new DisconnectedException();
-            
-            SendCommand("QUIT");
-            ReadResponse();
-            tcpClient.Close();
-        }
+        #endregion
     }
 }

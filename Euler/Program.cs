@@ -6,6 +6,7 @@ using Core.Internet;
 using Core.ScottPlotCustom;
 using ScottPlot;
 using System.Diagnostics;
+using System.Linq.Expressions;
 using System.Numerics;
 using System.Reflection;
 using System.Text;
@@ -3714,18 +3715,13 @@ namespace Euler
             try
             {
                 client.Connect("news.mixmin.net");
+                //client.ListNewsgroups();
 
-                // Optional authentication
-                //SendCommand("AUTHINFO USER your_username");
-                //ReadResponse();
-
-                //SendCommand("AUTHINFO PASS your_password");
-                //ReadResponse();
-
-                client.ListNewsgroups(); // You can comment this to reduce output
-
-                client.SelectNewsgroup("alt.test"); // Change to a valid newsgroup
-                client.GetArticle(1);               // Fetch article number 1
+                //client.GetArticles("aioe.test");
+                client.SelectNewsgroup("aioe.test");
+                client.GetArticle(5080);
+                //client.SelectNewsgroup("alt.test"); // Change to a valid newsgroup
+                //client.GetArticle(1);               // Fetch article number 1
 
                 client.Quit();
             }
@@ -3733,7 +3729,6 @@ namespace Euler
             {
                 Console.WriteLine("Error: " + ex.Message);
             }
-
         }
 
         #endregion
