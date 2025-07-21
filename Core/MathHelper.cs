@@ -200,6 +200,18 @@ namespace Core
             return n == ProperDivisors(n).Sum();
         }
 
+        public static uint HighestCommonFactor(uint a, uint b)
+        {
+            return GCD(a, b);
+        }
+
+        public static uint GreatestCommonDivisor(uint a, uint b)
+        {
+            // Returns the largest number that divides both a and b.
+
+            return GCD(a, b);
+        }
+
         public static uint GCD(uint a, uint b)
         {
             if (a == 0)
@@ -212,6 +224,12 @@ namespace Core
             if (a == 0)
                 return b;
             return GCD(b % a, a);
+        }
+
+        public static uint LeastCommonMultiple(uint a, uint b)
+        {
+            // Returns the smallest number that can be divided by both a and b.
+            return (a / GCD(a, b)) * b;
         }
 
         public static double Li(double x)

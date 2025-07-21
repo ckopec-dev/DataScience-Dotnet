@@ -2,7 +2,7 @@
 
 namespace UnitTests
 {
-    [TestClass]
+    //[TestClass]
     public class FastaUnitTests
     {
     }
