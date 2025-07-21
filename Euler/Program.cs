@@ -2978,6 +2978,11 @@ namespace Euler
             Console.WriteLine("Passcode: " + new string([.. result]));
         }
 
+        static void Problem80()
+        {
+            throw new NotImplementedException();
+        }
+
         static void Problem92()
         {
             // This is vaguely similar to the hailstone conjecture.
