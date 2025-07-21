@@ -1,4 +1,5 @@
 ﻿using ExtendedNumerics;
+using SkiaSharp;
 using System.Globalization;
 using System.Numerics;
 using System.Runtime.CompilerServices;
@@ -246,6 +247,20 @@ namespace Core
             return sum;
         }
 
+        public static BigInteger SumOfDecimalDigits(this BigDecimal n)
+        {
+            string s = n.ToString();
+            int idx = n.GetDecimalIndex() + 1;
+            s = s[idx..];
+
+            BigInteger sum = BigInteger.Parse(s);
+            sum = sum.SumOfDigits();
+
+            sum += n.WholeValue.SumOfDigits();
+
+            return sum;
+        }
+
         #endregion
 
         #region SumOfSquares
@@ -278,59 +293,47 @@ namespace Core
 
         #endregion
 
-        public static float SquareRoot(this int n, byte precision)
+        public static List<int> GetSquareRootDigits(this int n, int digitCount)
         {
-            // Get the square root of n.
-            // Precision is the number of digits to the right of the decimal point
-            // that are accurate.
-            // E.g. 2.SquareRoot(3) = 1.414
+            // Use the long division method
+            List<int> digits = [];
 
-            // This is a custom method, probably similar or identical to
-            // a pre-existing method.
+            // Add initial integer part
+            int intPart = (int)Math.Sqrt(n);
+            BigInteger intPartSquared = intPart * intPart;
 
-            if (n < 0)
-                throw new ArgumentOutOfRangeException("n");
-            else if (n == 0)
-                return 0;
-            else if (n == 1)
-                return 1;
-            else
+            // Subtract integer part squared from n to get initial remainder
+            BigInteger remainder = n - intPartSquared;
+            digits.Add(intPart);
+
+            // Multiply remainder by 100 to simulate decimal expansion
+            remainder *= 100;
+
+            BigInteger result = intPart;
+
+            for (int i = 0; i < digitCount - 1; i++) // already got 1 digit
             {
-                int iteration = 0;
-                byte p = 0;
-                long guess = 1;
-
-                //while (p < precision)
-                while(true)
+                // Multiply result by 20 and find next digit
+                BigInteger candidateBase = result * 20;
+                int digit = 0;
+                while (true)
                 {
-                    iteration++;
-
-                    Console.WriteLine("{0}: {1}", iteration, guess);
-
-                    // Is the guess correct?
-                    long guess_squared = guess * guess;
-
-                    // Unless the guess is correct, the next guess is 
-                    // halfway between guess and n.
-                    if (guess_squared < n)
-                    {
-                        guess = guess + ((n - guess) / 2);
-                    }
-                    else if (guess_squared > n)
-                    {
-                        guess = guess - ((guess - n) / 2);
-                    }                    
-                    else
-                    {
-                        // guess_squared == n
-                        return guess;
-                    }
-
-                    // Halt after 5 iterations.
-                    if (iteration == 5)
-                        return guess;
+                    BigInteger test = (candidateBase + digit + 1) * (digit + 1);
+                    if (test > remainder)
+                        break;
+                    digit++;
                 }
+
+                // Subtract and update remainder
+                BigInteger subtrahend = (candidateBase + digit) * digit;
+                remainder -= subtrahend;
+                remainder *= 100;
+
+                result = result * 10 + digit;
+                digits.Add(digit);
             }
+
+            return digits;
         }
 
         public static List<int> GeneratePrimes(this int n)

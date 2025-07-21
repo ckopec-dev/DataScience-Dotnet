@@ -4,6 +4,7 @@ using Core.GameTheory;
 using Core.GraphTheory.v2;
 using Core.Internet;
 using Core.ScottPlotCustom;
+using ExtendedNumerics;
 using ScottPlot;
 using System.Diagnostics;
 using System.Linq.Expressions;
@@ -2980,14 +2981,18 @@ namespace Euler
 
         static void Problem80()
         {
-            //BigRational n = BigRational.Sqrt(2);
+            int total = 0;
 
-            //Console.WriteLine(n.ToString("F100"));
+            for (int n = 1; n <= 100; n++)
+            {
+                int sqrt = (int)Math.Sqrt(n);
+                if (sqrt * sqrt == n) continue; // Skip perfect squares
 
-            int n = 2;
-            Console.WriteLine(n.SquareRoot(10));
+                List<int> digits = n.GetSquareRootDigits(100);
+                total += digits.Sum();
+            }
 
-            //throw new NotImplementedException();
+            Console.WriteLine("Total sum: " + total);
         }
 
         static void Problem92()
