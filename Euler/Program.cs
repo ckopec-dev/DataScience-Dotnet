@@ -2980,7 +2980,14 @@ namespace Euler
 
         static void Problem80()
         {
-            throw new NotImplementedException();
+            //BigRational n = BigRational.Sqrt(2);
+
+            //Console.WriteLine(n.ToString("F100"));
+
+            int n = 2;
+            Console.WriteLine(n.SquareRoot(10));
+
+            //throw new NotImplementedException();
         }
 
         static void Problem92()
