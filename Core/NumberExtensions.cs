@@ -248,8 +248,6 @@ namespace Core
 
         #endregion
 
-
-
         #region SumOfSquares
 
         /***
@@ -280,58 +278,59 @@ namespace Core
 
         #endregion
 
-
-        public static float SquareRoot(this int number, int precision)
+        public static float SquareRoot(this int n, byte precision)
         {
-            int start = 0, end = number;
-            int mid;
+            // Get the square root of n.
+            // Precision is the number of digits to the right of the decimal point
+            // that are accurate.
+            // E.g. 2.SquareRoot(3) = 1.414
 
-            // variable to store the answer
-            double ans = 0.0;
+            // This is a custom method, probably similar or identical to
+            // a pre-existing method.
 
-            // for computing integral part
-            // of square root of number
-            while (start <= end)
+            if (n < 0)
+                throw new ArgumentOutOfRangeException("n");
+            else if (n == 0)
+                return 0;
+            else if (n == 1)
+                return 1;
+            else
             {
-                mid = (start + end) / 2;
+                int iteration = 0;
+                byte p = 0;
+                long guess = 1;
 
-                if (mid * mid == number)
+                //while (p < precision)
+                while(true)
                 {
-                    ans = mid;
-                    break;
-                }
+                    iteration++;
 
-                // incrementing start if integral
-                // part lies on right side of the mid
-                if (mid * mid < number)
-                {
-                    start = mid + 1;
-                    ans = mid;
-                }
+                    Console.WriteLine("{0}: {1}", iteration, guess);
 
-                // decrementing end if integral part
-                // lies on the left side of the mid
-                else
-                {
-                    end = mid - 1;
+                    // Is the guess correct?
+                    long guess_squared = guess * guess;
+
+                    // Unless the guess is correct, the next guess is 
+                    // halfway between guess and n.
+                    if (guess_squared < n)
+                    {
+                        guess = guess + ((n - guess) / 2);
+                    }
+                    else if (guess_squared > n)
+                    {
+                        guess = guess - ((guess - n) / 2);
+                    }                    
+                    else
+                    {
+                        // guess_squared == n
+                        return guess;
+                    }
+
+                    // Halt after 5 iterations.
+                    if (iteration == 5)
+                        return guess;
                 }
             }
-
-            // For computing the fractional part
-            // of square root upto given precision
-            double increment = 0.1;
-            for (int i = 0; i < precision; i++)
-            {
-                while (ans * ans <= number)
-                {
-                    ans += increment;
-                }
-
-                // loop terminates when ans * ans > number
-                ans -= increment;
-                increment /= 10;
-            }
-            return (float)ans;
         }
 
         public static List<int> GeneratePrimes(this int n)
