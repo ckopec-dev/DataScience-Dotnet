@@ -1,5 +1,4 @@
-﻿
-using Core.Bioinformatics;
+﻿using Core.Bioinformatics;
 
 namespace UnitTests
 {
