@@ -3727,7 +3727,7 @@ namespace Euler
         {
             // NntpClient testing...
 
-            var client = new NntpClient();
+            var client = new NntpClient(true);
 
             try
             {

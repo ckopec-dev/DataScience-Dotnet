@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Net.Sockets;
+﻿using System.Net.Sockets;
 using System.Text;
 
 namespace Core.Internet
@@ -9,15 +7,29 @@ namespace Core.Internet
     {
         #region Fields 
 
+        private readonly bool _verbose = false;
         private TcpClient? tcpClient;
         private StreamReader? reader;
         private StreamWriter? writer;
 
         #endregion
 
+        #region Ctors/Dtors 
+
+        public NntpClient()
+        {
+        }
+
+        public NntpClient(bool verbose)
+        {
+            _verbose = verbose;
+        }
+
+        #endregion
+
         #region Methods
 
-        public string Connect(string server, int port = 119)
+        public ConnectionResult Connect(string server, int port = 119)
         {
             // Returns server response message.
 
@@ -27,9 +39,11 @@ namespace Core.Internet
             writer = new StreamWriter(stream, Encoding.ASCII) { AutoFlush = true };
 
             string? response = reader.ReadLine() ?? throw new DisconnectedException();
-            Console.WriteLine("SERVER: {0}", response);
 
-            return response;
+            if (_verbose)
+                Console.WriteLine("SERVER: {0}", response);
+
+            return new ConnectionResult(true, response);
         }
 
         public void Authenticate(string username, string password)
@@ -44,8 +58,10 @@ namespace Core.Internet
         private void SendCommand(string command)
         {
             if (writer == null) throw new DisconnectedException();
-            
-            Console.WriteLine("CLIENT: " + command);
+
+            if (_verbose)
+                Console.WriteLine("CLIENT: " + command);
+
             writer.WriteLine(command);
         }
 
@@ -61,7 +77,9 @@ namespace Core.Internet
                 if (line != null)
                 {
                     response.Add(line);
-                    Console.WriteLine("SERVER: " + line);
+
+                    if (_verbose)
+                        Console.WriteLine("SERVER: " + line);
                 }
 
             } while (multiline && line != "." && line != null);
@@ -80,7 +98,7 @@ namespace Core.Internet
                 foreach (var ex in excludes)
                 {
                     bool match = item.StartsWith(ex);
-                    Console.WriteLine("{0} starts with {1}? {2}", item, ex, match);
+
                     if (match)
                     {
                         add = false;
