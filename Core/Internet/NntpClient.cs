@@ -41,7 +41,7 @@ namespace Core.Internet
                 reader = new StreamReader(stream, Encoding.ASCII);
                 writer = new StreamWriter(stream, Encoding.ASCII) { AutoFlush = true };
 
-                string? response = reader.ReadLine() ?? throw new DisconnectedException();
+                string? response = reader.ReadLine();
 
                 if (_verbose)
                     Console.WriteLine("SERVER: {0}", response);
