@@ -36,8 +36,17 @@ namespace Core.Internet
 
             try
             {
-                tcpClient = new TcpClient(server, port);
+                tcpClient = new TcpClient();
+                
+                if (!tcpClient.ConnectAsync(server, port).Wait(3000))
+                {
+                    r.Success = false;
+                    r.Response = "Connection timeout.";
+                    return r;
+                }
+                
                 var stream = tcpClient.GetStream();
+                
                 reader = new StreamReader(stream, Encoding.ASCII);
                 writer = new StreamWriter(stream, Encoding.ASCII) { AutoFlush = true };
 
@@ -49,7 +58,7 @@ namespace Core.Internet
             catch(Exception ex)
             {
                 r.Success = false;
-                r.Response = ex.ToString();
+                r.Response = "EXCEPTION CAUGHT: " + ex.ToString();
             }
 
             return r;
@@ -122,13 +131,22 @@ namespace Core.Internet
             return retval;
         }
 
-        public void Quit()
+        public bool Quit()
         {
-            if (tcpClient == null) throw new DisconnectedException();
+            try
+            {
+                if (tcpClient == null)
+                    return false;
 
-            SendCommand("QUIT");
-            ReadResponse();
-            tcpClient.Close();
+                SendCommand("QUIT");
+                ReadResponse();
+                tcpClient.Close();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public List<string> ListNewsgroups()
