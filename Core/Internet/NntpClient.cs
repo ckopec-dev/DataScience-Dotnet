@@ -32,18 +32,27 @@ namespace Core.Internet
         public ConnectionResult Connect(string server, int port = 119)
         {
             // Returns server response message.
+            ConnectionResult r = new();
 
-            tcpClient = new TcpClient(server, port);
-            var stream = tcpClient.GetStream();
-            reader = new StreamReader(stream, Encoding.ASCII);
-            writer = new StreamWriter(stream, Encoding.ASCII) { AutoFlush = true };
+            try
+            {
+                tcpClient = new TcpClient(server, port);
+                var stream = tcpClient.GetStream();
+                reader = new StreamReader(stream, Encoding.ASCII);
+                writer = new StreamWriter(stream, Encoding.ASCII) { AutoFlush = true };
 
-            string? response = reader.ReadLine() ?? throw new DisconnectedException();
+                string? response = reader.ReadLine() ?? throw new DisconnectedException();
 
-            if (_verbose)
-                Console.WriteLine("SERVER: {0}", response);
+                if (_verbose)
+                    Console.WriteLine("SERVER: {0}", response);
+            }
+            catch(Exception ex)
+            {
+                r.Success = false;
+                r.Response = ex.ToString();
+            }
 
-            return new ConnectionResult(true, response);
+            return r;
         }
 
         public void Authenticate(string username, string password)
