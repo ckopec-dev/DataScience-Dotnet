@@ -3731,7 +3731,8 @@ namespace Euler
 
             try
             {
-                client.Connect("news.mixmin.net");
+                //client.Connect("news.mixmin.net");
+                client.Connect("news.avicenna.com");
                 //client.ListNewsgroups();
 
                 //client.GetArticles("aioe.test");

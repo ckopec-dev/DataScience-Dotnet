@@ -7,6 +7,7 @@ namespace Core.Internet
     {
         #region Fields 
 
+        private const int TIMEOUT = 3000;       // In milliseconds
         private readonly bool _verbose = false;
         private TcpClient? tcpClient;
         private StreamReader? reader;
@@ -31,26 +32,29 @@ namespace Core.Internet
 
         public ConnectionResult Connect(string server, int port = 119)
         {
-            // Returns server response message.
             ConnectionResult r = new();
 
             try
             {
                 tcpClient = new TcpClient();
                 
-                if (!tcpClient.ConnectAsync(server, port).Wait(3000))
+                if (!tcpClient.ConnectAsync(server, port).Wait(TIMEOUT))
                 {
                     r.Success = false;
                     r.Response = "Connection timeout.";
                     return r;
                 }
                 
-                var stream = tcpClient.GetStream();
-                
+                NetworkStream stream = tcpClient.GetStream();
+                stream.ReadTimeout = TIMEOUT;
+
                 reader = new StreamReader(stream, Encoding.ASCII);
                 writer = new StreamWriter(stream, Encoding.ASCII) { AutoFlush = true };
 
                 string? response = reader.ReadLine();
+
+                r.Success = true;
+                r.Response = response;
 
                 if (_verbose)
                     Console.WriteLine("SERVER: {0}", response);
