@@ -219,6 +219,13 @@ namespace Core
             return GCD(b % a, a);
         }
 
+        public static long GCD(long a, long b)
+        {
+            if (a == 0)
+                return b;
+            return GCD(b % a, a);
+        }
+
         public static ulong GCD(ulong a, ulong b)
         {
             if (a == 0)

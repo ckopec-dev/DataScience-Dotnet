@@ -3779,6 +3779,16 @@ namespace Euler
             }
         }
 
+        static void Misc26()
+        {
+            // For testing Fraction method...
+
+            Fraction a = new(1, 2);
+            Fraction b = new(3, 2);
+
+            Console.WriteLine(Fraction.Add(a, b));
+        }
+
         #endregion
 
 #pragma warning restore IDE0051 // Remove unused private members

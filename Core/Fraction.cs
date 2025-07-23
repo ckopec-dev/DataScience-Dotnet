@@ -1,4 +1,5 @@
 ﻿
+using System.ComponentModel;
 using System.Runtime.InteropServices.Marshalling;
 
 namespace Core
@@ -38,6 +39,27 @@ namespace Core
         {
             Numerator = (long)n;
             Denominator = (long)d;
+        }
+
+        public static Fraction Add(Fraction a, Fraction b)
+        {
+            long denominator = MathHelper.GCD(a.Denominator, b.Denominator);
+
+            denominator = a.Denominator * b.Denominator / denominator;
+            long numerator = a.Numerator * (denominator / a.Denominator) +
+                b.Numerator * (denominator / b.Denominator);
+
+            long common_factor = MathHelper.GCD(numerator, denominator);
+
+            denominator /= common_factor;
+            numerator /= common_factor;
+
+            return new Fraction(numerator, denominator);
+        }
+
+        public override string ToString()
+        {
+            return String.Format("{0} / {1}", Numerator, Denominator);
         }
     }
 }
