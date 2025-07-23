@@ -2995,6 +2995,36 @@ namespace Euler
             Console.WriteLine("Total sum: " + total);
         }
 
+        static void Problem81()
+        {
+            // Sample input, in case it's gets overwritten (had to be manually typed in)
+            //131,673,234,103,18
+            //201,96,342,965,150
+            //630,803,746,422,111
+            //537,699,497,121,956
+            //805,732,524,37,331
+
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem81.txt") ?? throw new ResourceNotFoundException();
+            using StreamReader sr = new(mrs);
+
+            List<string> rows = [];
+
+            while (!sr.EndOfStream)
+            {
+                string? row = sr.ReadLine();
+                if (row == null) break;
+                rows.Add(row);
+            }
+
+            // The problem matrix is not very big.
+            // Should be easiest to brute force??
+
+
+
+
+            throw new NotImplementedException();
+        }
+
         static void Problem92()
         {
             // This is vaguely similar to the hailstone conjecture.
