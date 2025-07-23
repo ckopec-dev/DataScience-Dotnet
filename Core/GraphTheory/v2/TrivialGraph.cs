@@ -2,9 +2,9 @@
 namespace Core.GraphTheory.v2
 {
     /// <summary>
-    /// No edges.
+    /// Only has a single vertex.
     /// </summary>
-    public class NullGraph : IGraph
+    public class TrivialGraph : IGraph
     {
     }
 }

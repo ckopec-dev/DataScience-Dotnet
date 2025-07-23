@@ -1,6 +1,10 @@
 ﻿
 namespace Core.GraphTheory.v2
 {
+    /// <summary>
+    /// Edges have no direction.
+    /// </summary>
+    /// <param name="vertexCount">The number of vertices.</param>
     public class UndirectedGraph(int vertexCount) : IGraph
     {
         #region Fields
