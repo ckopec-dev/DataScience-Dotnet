@@ -30,9 +30,9 @@ namespace Core.Internet
 
         #region Methods
 
-        public ConnectionResult Connect(string server, int port = 119)
+        public NntpResponse Connect(string server, int port = 119)
         {
-            ConnectionResult r = new();
+            NntpResponse r = new();
 
             try
             {
@@ -153,13 +153,24 @@ namespace Core.Internet
             }
         }
 
-        public List<string> ListNewsgroups()
+        public NntpResponse ListNewsgroups()
         {
-            SendCommand("LIST");
-            List<string> response = ReadResponse(multiline: true);
-            response = Filter(response, ["215", "."]);
+            NntpResponse r = new();
 
-            return response;
+            try
+            {
+                SendCommand("LIST");
+                List<string> response = ReadResponse(multiline: true);
+                r.Success = true;
+                r.MultilineResponse = Filter(response, ["215", "."]);
+            }
+            catch(Exception ex)
+            {
+                r.Success = false;
+                r.Response = "EXCEPTION CAUGHT: " + ex.ToString();
+            }
+
+            return r;
         }
 
         public List<string> GetArticles(string group)
