@@ -3761,20 +3761,14 @@ namespace Euler
 
             try
             {
-                //client.Connect("news.mixmin.net");
-                client.Connect("news1.carnet.hr");
+                client.Connect("news.mixmin.net");
                 //client.ListNewsgroups();
-
-                NntpResponse articlesResponse = client.GetArticles("hr.alt.astrologija");
-                foreach(string s in articlesResponse.MultilineResponse)
-                {
-                    Console.WriteLine(s);
-                }
+                //NntpResponse articlesResponse = client.GetArticles("hr.alt.astrologija");
                 
                 //client.SelectNewsgroup("aioe.test");
                 //client.GetArticle(5080);
-                //client.SelectNewsgroup("alt.test"); // Change to a valid newsgroup
-                //client.GetArticle(1);               // Fetch article number 1
+                client.SelectNewsgroup("alt.test"); // Change to a valid newsgroup
+                client.GetArticle(716662);               // Fetch article number 1
 
                 client.Quit();
             }

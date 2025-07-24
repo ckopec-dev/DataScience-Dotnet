@@ -193,16 +193,52 @@ namespace Core.Internet
             return r;
         }
 
-        public void SelectNewsgroup(string group)
+        public NntpResponse SelectNewsgroup(string group)
         {
-            SendCommand($"GROUP {group}");
-            ReadResponse();
+            NntpResponse r = new();
+
+            try
+            {
+                SendCommand($"GROUP {group}");
+                List<string> response = ReadResponse();
+                r.Success = true;
+
+                if (response.Count == 1)
+                {
+                    r.Response = response[0];
+                }
+                else
+                {
+                    r.Success = false;
+                }
+            }
+            catch(Exception ex)
+            {
+                r.Success = false;
+                r.Response = "EXCEPTION CAUGHT: " + ex.ToString();
+            }
+            
+            return r;
         }
 
-        public void GetArticle(int articleNumber)
+        public NntpResponse GetArticle(int articleNumber)
         {
-            SendCommand($"ARTICLE {articleNumber}");
-            ReadResponse(multiline: true);
+            NntpResponse r = new();
+
+            try
+            {
+                SendCommand($"ARTICLE {articleNumber}");
+                ReadResponse(multiline: true);
+                r.Success = true;
+                r.MultilineResponse = ReadResponse(multiline: true);
+            }
+            catch (Exception ex)
+            {
+                r.Success = false;
+                r.Response = "EXCEPTION CAUGHT: " + ex.ToString();
+            }
+
+            return r;
         }
 
         #endregion
