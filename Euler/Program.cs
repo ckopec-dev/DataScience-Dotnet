@@ -3762,11 +3762,14 @@ namespace Euler
             try
             {
                 //client.Connect("news.mixmin.net");
-                client.Connect("news.avicenna.com");
+                client.Connect("news1.carnet.hr");
                 //client.ListNewsgroups();
 
-                client.GetArticles("aioe.test");
-
+                NntpResponse articlesResponse = client.GetArticles("hr.alt.astrologija");
+                foreach(string s in articlesResponse.MultilineResponse)
+                {
+                    Console.WriteLine(s);
+                }
                 
                 //client.SelectNewsgroup("aioe.test");
                 //client.GetArticle(5080);

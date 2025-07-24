@@ -182,7 +182,7 @@ namespace Core.Internet
                 SendCommand($"LISTGROUP {group}");
                 List<string> response = ReadResponse(multiline: true);
                 r.Success = true;
-                r.MultilineResponse = response;
+                r.MultilineResponse = Filter(response, ["."]);
             }
             catch(Exception ex)
             {
