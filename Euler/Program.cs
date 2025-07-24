@@ -3765,9 +3765,11 @@ namespace Euler
                 client.Connect("news.avicenna.com");
                 //client.ListNewsgroups();
 
-                //client.GetArticles("aioe.test");
-                client.SelectNewsgroup("aioe.test");
-                client.GetArticle(5080);
+                client.GetArticles("aioe.test");
+
+                
+                //client.SelectNewsgroup("aioe.test");
+                //client.GetArticle(5080);
                 //client.SelectNewsgroup("alt.test"); // Change to a valid newsgroup
                 //client.GetArticle(1);               // Fetch article number 1
 

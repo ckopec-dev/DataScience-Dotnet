@@ -153,7 +153,7 @@ namespace Core.Internet
             }
         }
 
-        public NntpResponse ListNewsgroups()
+        public NntpResponse GetNewsgroups()
         {
             NntpResponse r = new();
 
@@ -173,12 +173,24 @@ namespace Core.Internet
             return r;
         }
 
-        public List<string> GetArticles(string group)
+        public NntpResponse GetArticles(string group)
         {
-            SendCommand($"LISTGROUP {group}");
-            List<string> response = ReadResponse(multiline: true);
+            NntpResponse r = new();
 
-            return response;
+            try
+            {
+                SendCommand($"LISTGROUP {group}");
+                List<string> response = ReadResponse(multiline: true);
+                r.Success = true;
+                r.MultilineResponse = response;
+            }
+            catch(Exception ex)
+            {
+                r.Success = false;
+                r.Response = "EXCEPTION CAUGHT: " + ex.ToString();
+            }
+
+            return r;
         }
 
         public void SelectNewsgroup(string group)
