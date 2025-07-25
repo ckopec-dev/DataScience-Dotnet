@@ -3007,22 +3007,47 @@ namespace Euler
             Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem81.txt") ?? throw new ResourceNotFoundException();
             using StreamReader sr = new(mrs);
 
-            List<string> rows = [];
+            List<string> lines = [];
 
             while (!sr.EndOfStream)
             {
                 string? row = sr.ReadLine();
                 if (row == null) break;
-                rows.Add(row);
+                lines.Add(row);
             }
 
-            // The problem matrix is not very big.
-            // Should be easiest to brute force??
+            int size = lines.Count;
+            int[,] matrix = new int[size, size];
 
+            for (int i = 0; i < size; i++)
+            {
+                var numbers = lines[i].Split(',').Select(int.Parse).ToArray();
+                for (int j = 0; j < size; j++)
+                {
+                    matrix[i, j] = numbers[j];
+                }
+            }
 
+            int[,] cost = new int[size, size];
+            cost[0, 0] = matrix[0, 0];
 
+            // Fill the first row and column
+            for (int i = 1; i < size; i++)
+            {
+                cost[i, 0] = cost[i - 1, 0] + matrix[i, 0];
+                cost[0, i] = cost[0, i - 1] + matrix[0, i];
+            }
 
-            throw new NotImplementedException();
+            // Fill in the rest of the cost matrix
+            for (int i = 1; i < size; i++)
+            {
+                for (int j = 1; j < size; j++)
+                {
+                    cost[i, j] = matrix[i, j] + Math.Min(cost[i - 1, j], cost[i, j - 1]);
+                }
+            }
+
+            Console.WriteLine("Minimum path sum: " + cost[size - 1, size - 1]);
         }
 
         static void Problem92()
@@ -3761,11 +3786,10 @@ namespace Euler
 
             try
             {
-                //client.Connect("news.mixmin.net");
-                client.Connect("news1.carnet.hr");
+                client.Connect("news.mixmin.net");
 
-                //client.ListNewsgroups();
-                client.SelectNewsgroup("hr.alt.astrologija");
+                client.GetNewsgroups();
+                //client.SelectNewsgroup("hr.alt.astrologija");
                 //NntpResponse articlesResponse = client.GetArticles("hr.alt.astrologija");
                 
                 //client.SelectNewsgroup("aioe.test");
