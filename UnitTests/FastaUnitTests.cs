@@ -6,7 +6,7 @@ namespace UnitTests
     public class FastaUnitTests
     {
         [TestMethod]
-        public void TestA()
+        public void TestCreate()
         {
             string input = ">Rosalind_6404\r\nCCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCC\r\nTCCCACTAATAATTCTGAGG";
 
@@ -16,6 +16,11 @@ namespace UnitTests
             {
                 Assert.AreEqual(input, f.RawInput);
             }
+
+            Assert.IsNotNull(f.Entries);
+
+            f = new("");
+            Assert.AreEqual(0, f.Entries.Count);
         }
     }
 }

@@ -3768,14 +3768,14 @@ namespace Euler
         {
             // Graph testing...
 
-            UndirectedGraph ug = new(4);
+            //UndirectedGraph ug = new(4);
 
-            ug.AddEdge(0, 1);
-            ug.AddEdge(0, 2);
-            ug.AddEdge(1, 2);
-            ug.AddEdge(2, 3);
+            //ug.AddEdge(0, 1);
+            //ug.AddEdge(0, 2);
+            //ug.AddEdge(1, 2);
+            //ug.AddEdge(2, 3);
 
-            ug.DisplayMatrix();
+            //ug.DisplayMatrix();
         }
 
         static void Misc25()
