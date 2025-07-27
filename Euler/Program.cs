@@ -3049,6 +3049,11 @@ namespace Euler
 
             Console.WriteLine("Minimum path sum: " + cost[size - 1, size - 1]);
         }
+        
+        static void Problem82()
+        {
+
+        }
 
         static void Problem92()
         {
