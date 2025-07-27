@@ -3815,6 +3815,13 @@ namespace Euler
             Console.WriteLine(Fraction.Add(a, b));
         }
 
+        static void Misc27()
+        {
+            int n = 9474;
+
+            Console.WriteLine("{0} IsArmstrong: {1}", n, n.IsArmstrong());
+        }
+
         #endregion
 
 #pragma warning restore IDE0051 // Remove unused private members

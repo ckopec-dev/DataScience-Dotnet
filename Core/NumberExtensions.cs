@@ -293,6 +293,29 @@ namespace Core
 
         #endregion
 
+        public static bool IsArmstrong(this int n)
+        {
+            // Returns true if the sum of the digits of n raised to a power are 
+            // equal to n.
+            // Example:
+            // 9474 = 9^4 + 4^4 + 7^4 + 4^4
+
+            string number = n.ToString();
+
+            int length = number.Length;
+            int output = 0;
+
+            foreach (char c in number)
+            {
+                output += (int)Math.Pow(c - '0', length);
+            }
+
+            if (output == int.Parse(number))
+                return true;
+            else
+                return false;
+        }
+
         public static List<int> GetSquareRootDigits(this int n, int digitCount)
         {
             // Use the long division method
