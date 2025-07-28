@@ -8,7 +8,8 @@ namespace UnitTests
         [TestMethod]
         public void TestCreate()
         {
-            string input = ">Rosalind_6404\r\nCCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCC\r\nTCCCACTAATAATTCTGAGG";
+            string input = ">Rosalind_6404\r\nCCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCC\r\nTCCCACTAATAATTCTGAGG\r\n";
+            input += ">Rosalind_6405\r\nTCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCC\r\nTCCCACTAATAATTCTGAGG\r\n";
 
             Fasta f = new(input);
 

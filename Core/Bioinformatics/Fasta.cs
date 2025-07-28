@@ -64,8 +64,8 @@ namespace Core.Bioinformatics
             StringBuilder data = new();
             bool firstTokenFound = false;
             StringBuilder nextBuffer = new();
+            string label = "INVALID";
 
-            string? label = null;
             using (StringReader sr = new(input))
             {
                 string? buffer;
@@ -93,9 +93,6 @@ namespace Core.Bioinformatics
 
                 sr.Close();
             }
-
-            if (label == null)
-                return;
 
             _Entries.Add(new(label, data.ToString()));
 
