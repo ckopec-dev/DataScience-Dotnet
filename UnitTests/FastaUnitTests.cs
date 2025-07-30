@@ -20,6 +20,9 @@ namespace UnitTests
 
             Assert.IsNotNull(f.Entries);
 
+            string output = f.Entries[0].ToString();
+            Assert.AreEqual("Rosalind_6404" + Environment.NewLine + "CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG", output);
+
             f = new("");
             Assert.AreEqual(0, f.Entries.Count);
         }

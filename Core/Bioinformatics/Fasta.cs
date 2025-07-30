@@ -95,7 +95,6 @@ namespace Core.Bioinformatics
             }
 
             _Entries.Add(new(label, data.ToString()));
-
             if (!String.IsNullOrWhiteSpace(nextBuffer.ToString()))
             {
                 ProcessEntry(nextBuffer.ToString());
