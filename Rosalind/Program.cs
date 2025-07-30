@@ -23,6 +23,7 @@ namespace Rosalind
                     case "/mer": AlgorithmicHeights.ProblemMER(); break;
                     case "/2sum": AlgorithmicHeights.Problem2SUM(); break;
                     case "/bfs": AlgorithmicHeights.ProblemBFS(); break;
+                    case "/cc": AlgorithmicHeights.ProblemCC(); break;
 
                     // Bioinformatics Stronghold
                     case "/dna": BioinformaticsStronghold.ProblemDNA(); break;

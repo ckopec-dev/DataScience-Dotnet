@@ -321,18 +321,68 @@ namespace Rosalind
             Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.cc.txt") ?? throw new ResourceNotFoundException();
             using StreamReader sr = new(mrs);
 
-            #pragma warning disable IDE0305 // Simplify collection initialization
-            List<string> lst = sr.ReadToEnd().ToList();
-            #pragma warning restore IDE0305 // Simplify collection initialization
+            string? line = sr.ReadLine() ?? throw new InvalidInputException();
+            var nm = line.Split();
+            int n = int.Parse(nm[0]);
+            int m = int.Parse(nm[1]);
 
-            Graph graph = Graph.FromEdgeList(lst);
-            
+            // Create adjacency list
+            var adjList = new Dictionary<int, List<int>>();
+            for (int i = 1; i <= n; i++)
+            {
+                adjList[i] = [];
+            }
 
+            // Read edges
+            for (int i = 0; i < m; i++)
+            {
+                line = sr.ReadLine();
+                if (line == null) throw new InvalidInputException();
+                var edge = line.Split();
+                int u = int.Parse(edge[0]);
+                int v = int.Parse(edge[1]);
+                adjList[u].Add(v);
+                adjList[v].Add(u);
+            }
+
+            var visited = new bool[n + 1]; // index 0 unused
+            int components = 0;
+
+            for (int i = 1; i <= n; i++)
+            {
+                if (!visited[i])
+                {
+                    DFS_CC(i, adjList, visited);
+                    components++;
+                }
+            }
+
+            Console.WriteLine(components);
         }
 
         #endregion
 
         #region Helpers
+
+        static void DFS_CC(int node, Dictionary<int, List<int>> adjList, bool[] visited)
+        {
+            var stack = new Stack<int>();
+            stack.Push(node);
+
+            while (stack.Count > 0)
+            {
+                int current = stack.Pop();
+                if (!visited[current])
+                {
+                    visited[current] = true;
+                    foreach (int neighbor in adjList[current])
+                    {
+                        if (!visited[neighbor])
+                            stack.Push(neighbor);
+                    }
+                }
+            }
+        }
 
         #endregion
     }
