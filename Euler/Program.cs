@@ -3052,7 +3052,31 @@ namespace Euler
         
         static void Problem82()
         {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem82.txt") ?? throw new ResourceNotFoundException();
+            using StreamReader sr = new(mrs);
 
+            List<string> lines = [];
+
+            while (!sr.EndOfStream)
+            {
+                string? row = sr.ReadLine();
+                if (row == null) break;
+                lines.Add(row);
+            }
+
+            int rows = lines.Count;
+            int cols = lines[0].Split(',').Length;
+
+            int[,] grid = new int[rows, cols];
+            for (int i = 0; i < rows; i++)
+            {
+                var nums = lines[i].Split(',').Select(int.Parse).ToArray();
+                for (int j = 0; j < cols; j++)
+                    grid[i, j] = nums[j];
+            }
+
+            int result = Solve82(grid, rows, cols);
+            Console.WriteLine("Solution: " + result);
         }
 
         static void Problem92()
@@ -3825,6 +3849,61 @@ namespace Euler
             int n = 9474;
 
             Console.WriteLine("{0} IsArmstrong: {1}", n, n.IsArmstrong());
+        }
+
+        #endregion
+
+        #region Helper functions
+
+        static readonly (int dx, int dy)[] Directions82 =
+        [
+            (-1, 0), // up
+            (1, 0),  // down
+            (0, 1),  // right
+        ];
+
+        static int Solve82(int[,] grid, int rows, int cols)
+        {
+            int[,] dist = new int[rows, cols];
+            for (int i = 0; i < rows; i++)
+                for (int j = 0; j < cols; j++)
+                    dist[i, j] = int.MaxValue;
+
+            var pq = new PriorityQueue<(int x, int y), int>();
+
+            // Initialize distances for leftmost column
+            for (int i = 0; i < rows; i++)
+            {
+                dist[i, 0] = grid[i, 0];
+                pq.Enqueue((i, 0), dist[i, 0]);
+            }
+
+            while (pq.Count > 0)
+            {
+                var (x, y) = pq.Dequeue();
+                int currentCost = dist[x, y];
+
+                foreach (var (dx, dy) in Directions82)
+                {
+                    int nx = x + dx, ny = y + dy;
+                    if (nx >= 0 && nx < rows && ny >= 0 && ny < cols)
+                    {
+                        int newCost = currentCost + grid[nx, ny];
+                        if (newCost < dist[nx, ny])
+                        {
+                            dist[nx, ny] = newCost;
+                            pq.Enqueue((nx, ny), newCost);
+                        }
+                    }
+                }
+            }
+
+            // Find minimum distance in the rightmost column
+            int minPathSum = int.MaxValue;
+            for (int i = 0; i < rows; i++)
+                minPathSum = Math.Min(minPathSum, dist[i, cols - 1]);
+
+            return minPathSum;
         }
 
         #endregion
