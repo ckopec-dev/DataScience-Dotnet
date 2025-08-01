@@ -5,6 +5,7 @@ using Core.GraphTheory.v2;
 using Core.Internet;
 using Core.ScottPlotCustom;
 using ExtendedNumerics;
+using HarfBuzzSharp;
 using ScottPlot;
 using System.Diagnostics;
 using System.Linq.Expressions;
@@ -3079,6 +3080,35 @@ namespace Euler
             Console.WriteLine("Solution: " + result);
         }
 
+        static void Problem83()
+        {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem83.txt") ?? throw new ResourceNotFoundException();
+            using StreamReader sr = new(mrs);
+
+            List<string> lines = [];
+
+            while (!sr.EndOfStream)
+            {
+                string? row = sr.ReadLine();
+                if (row == null) break;
+                lines.Add(row);
+            }
+
+            int rows = lines.Count;
+            int cols = lines[0].Split(',').Length;
+
+            int[,] grid = new int[rows, cols];
+            for (int i = 0; i < rows; i++)
+            {
+                var nums = lines[i].Split(',').Select(int.Parse).ToArray();
+                for (int j = 0; j < cols; j++)
+                    grid[i, j] = nums[j];
+            }
+
+            int result = Solve83(grid, rows, cols);
+            Console.WriteLine("Solution: " + result);
+        }
+
         static void Problem92()
         {
             // This is vaguely similar to the hailstone conjecture.
@@ -3853,12 +3883,20 @@ namespace Euler
 
         #endregion
 
-        #region Helper functions
+        #region Helpers
 
         static readonly (int dx, int dy)[] Directions82 =
         [
             (-1, 0), // up
             (1, 0),  // down
+            (0, 1),  // right
+        ];
+
+        static readonly (int dx, int dy)[] Directions83 =
+        [
+            (-1, 0), // up
+            (1, 0),  // down
+            (0, -1), // left
             (0, 1),  // right
         ];
 
@@ -3904,6 +3942,41 @@ namespace Euler
                 minPathSum = Math.Min(minPathSum, dist[i, cols - 1]);
 
             return minPathSum;
+        }
+
+        static int Solve83(int[,] grid, int rows, int cols)
+        {
+            int[,] dist = new int[rows, cols];
+            for (int i = 0; i < rows; i++)
+                for (int j = 0; j < cols; j++)
+                    dist[i, j] = int.MaxValue;
+
+            var pq = new PriorityQueue<(int x, int y), int>();
+
+            dist[0, 0] = grid[0, 0];
+            pq.Enqueue((0, 0), dist[0, 0]);
+
+            while (pq.Count > 0)
+            {
+                var (x, y) = pq.Dequeue();
+                int currentCost = dist[x, y];
+
+                foreach (var (dx, dy) in Directions83)
+                {
+                    int nx = x + dx, ny = y + dy;
+                    if (nx >= 0 && nx < rows && ny >= 0 && ny < cols)
+                    {
+                        int newCost = currentCost + grid[nx, ny];
+                        if (newCost < dist[nx, ny])
+                        {
+                            dist[nx, ny] = newCost;
+                            pq.Enqueue((nx, ny), newCost);
+                        }
+                    }
+                }
+            }
+
+            return dist[rows - 1, cols - 1];
         }
 
         #endregion
