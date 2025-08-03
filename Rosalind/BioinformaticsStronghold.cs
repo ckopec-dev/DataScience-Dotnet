@@ -1,5 +1,6 @@
 ﻿using Core;
 using Core.Bioinformatics;
+using System.Numerics;
 using System.Reflection;
 
 namespace Rosalind
@@ -84,7 +85,7 @@ namespace Rosalind
 
             for (long month = 1; month <= TOTAL_MONTHS; month++)
             {
-                Console.WriteLine("Month {0}: {1} adult pair(s), {2} pregnant pairs, {3} newborn pair(s), ({4} total pair(s)",
+                Console.WriteLine("Month {0}: {1} adult pair(s), {2} pregnant pairs, {3} newborn pair(s), {4} total pair(s)",
                     month, adult_pairs, pregnant_pairs, newborn_pairs, adult_pairs + newborn_pairs);
 
                 #pragma warning disable IDE0059 // Unnecessary assignment of a value
@@ -267,6 +268,39 @@ namespace Rosalind
             ProfileMatrix pm = new(dnaStrings);
             Console.WriteLine(pm.Consensus);
             Console.WriteLine(pm);
+        }
+
+        public static void ProblemFIBD()
+        {
+            // Given: Positive integers n ≤ 100 and m ≤ 20.
+            // Return: The total number of pairs of rabbits that will remain after the n-th month if all rabbits live for m months. 1 pair per litter.
+
+            int totalMonths = 6;
+            int lifespan = 3;
+
+            BigInteger[] newRabbits = new BigInteger[totalMonths];
+            BigInteger[] matureRabbits = new BigInteger[totalMonths];
+
+            newRabbits[0] = 1;
+            newRabbits[1] = 0;
+            matureRabbits[0] = 0;
+            matureRabbits[1] = 1;
+
+            for (int i = 2; i < totalMonths; i++)
+            {
+                matureRabbits[i] = matureRabbits[i - 1] + newRabbits[i - 1];
+                newRabbits[i] = matureRabbits[i - 1];
+
+                // Subtract the number that died
+                if (i >= lifespan)
+                {
+                    matureRabbits[i] = matureRabbits[i] - newRabbits[i - lifespan];
+                }
+            }
+
+            BigInteger totalRabbits = matureRabbits[totalMonths - 1] + newRabbits[totalMonths - 1];
+
+            Console.WriteLine(totalRabbits);
         }
 
         #endregion
