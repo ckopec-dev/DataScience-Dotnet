@@ -1,4 +1,5 @@
 ﻿using System.Net.Sockets;
+using System.Reflection.PortableExecutable;
 using System.Text;
 
 namespace Core.Internet
@@ -7,7 +8,7 @@ namespace Core.Internet
     {
         #region Fields 
 
-        private const int TIMEOUT = 3000;       // In milliseconds
+        private const int TIMEOUT = 5000;       // In milliseconds
         private readonly bool _verbose = false;
         private TcpClient? tcpClient;
         private StreamReader? reader;
@@ -193,9 +194,9 @@ namespace Core.Internet
             return r;
         }
 
-        public NntpResponse SelectNewsgroup(string group)
+        public NntpGroupResponse SelectNewsgroup(string group)
         {
-            NntpResponse r = new();
+            NntpGroupResponse r = new();
 
             try
             {
@@ -206,6 +207,19 @@ namespace Core.Internet
                 if (response.Count == 1)
                 {
                     r.Response = response[0];
+
+                    string[] parts = r.Response.Split(" ");
+
+                    if (parts.Length != 5 || r.Response.StartsWith("411"))
+                    {
+                        r.Success = false;
+                    }
+                    else
+                    {
+                        r.ArticleCount = Convert.ToInt32(parts[1]);
+                        r.FirstArticle = Convert.ToInt32(parts[2]);
+                        r.LastArticle = Convert.ToInt32(parts[3]);
+                    }
                 }
                 else
                 {
@@ -221,16 +235,28 @@ namespace Core.Internet
             return r;
         }
 
-        public NntpResponse GetArticle(int articleNumber)
+        public NntpArticleResponse GetArticle()
         {
-            NntpResponse r = new();
+            NntpArticleResponse r = new();
 
             try
             {
-                SendCommand($"ARTICLE {articleNumber}");
+                SendCommand("ARTICLE");
                 ReadResponse(multiline: true);
                 r.Success = true;
                 r.MultilineResponse = ReadResponse(multiline: true);
+
+                foreach (string line in r.MultilineResponse)
+                {
+                    if (line.StartsWith("Subject: "))
+                    {
+                        r.Header = line[9..];
+                    }
+                    else
+                    {
+                        r.Body += line + Environment.NewLine;
+                    }
+                }
             }
             catch (Exception ex)
             {
