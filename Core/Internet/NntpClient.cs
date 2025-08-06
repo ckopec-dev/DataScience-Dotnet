@@ -132,17 +132,6 @@ namespace Core.Internet
             return r;
         }
 
-        public NntpAuthResponse Authenticate(string username, string password)
-        {
-            throw new NotImplementedException();
-
-            //SendCommand("AUTHINFO USER " + username);
-            //ReadResponse();
-
-            //SendCommand("AUTHINFO PASS " + password);
-            //ReadResponse();
-        }
-
         public bool Quit()
         {
             try
