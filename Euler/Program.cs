@@ -3847,7 +3847,10 @@ namespace Euler
             {
                 client.Connect("news.mixmin.net");
 
-                client.GetNewsgroups();
+                client.Authenticate("anon@anon.anon", "anon@anon.anon");
+
+                //client.GetNewsgroups();
+
                 //client.SelectNewsgroup("hr.alt.astrologija");
                 //NntpResponse articlesResponse = client.GetArticles("hr.alt.astrologija");
                 

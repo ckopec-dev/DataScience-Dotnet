@@ -1,4 +1,5 @@
-﻿using System.Net.Sockets;
+﻿using Microsoft.IdentityModel.Logging;
+using System.Net.Sockets;
 using System.Reflection.PortableExecutable;
 using System.Text;
 
@@ -29,54 +30,7 @@ namespace Core.Internet
 
         #endregion
 
-        #region Methods
-
-        public NntpResponse Connect(string server, int port = 119)
-        {
-            NntpResponse r = new();
-
-            try
-            {
-                tcpClient = new TcpClient();
-                
-                if (!tcpClient.ConnectAsync(server, port).Wait(TIMEOUT))
-                {
-                    r.Success = false;
-                    r.Response = "Connection timeout.";
-                    return r;
-                }
-                
-                NetworkStream stream = tcpClient.GetStream();
-                stream.ReadTimeout = TIMEOUT;
-
-                reader = new StreamReader(stream, Encoding.ASCII);
-                writer = new StreamWriter(stream, Encoding.ASCII) { AutoFlush = true };
-
-                string? response = reader.ReadLine();
-
-                r.Success = true;
-                r.Response = response;
-
-                if (_verbose)
-                    Console.WriteLine("SERVER: {0}", response);
-            }
-            catch(Exception ex)
-            {
-                r.Success = false;
-                r.Response = "EXCEPTION CAUGHT: " + ex.ToString();
-            }
-
-            return r;
-        }
-
-        public void Authenticate(string username, string password)
-        {
-            SendCommand("AUTHINFO USER " + username);
-            ReadResponse();
-
-            SendCommand("AUTHINFO PASS " + password);
-            ReadResponse();
-        }
+        #region Generic methods
 
         private void SendCommand(string command)
         {
@@ -88,7 +42,7 @@ namespace Core.Internet
             writer.WriteLine(command);
         }
 
-        public List<string> ReadResponse(bool multiline = false)
+        private List<string> ReadResponse(bool multiline = false)
         {
             if (reader == null) throw new DisconnectedException();
             List<string> response = [];
@@ -134,6 +88,59 @@ namespace Core.Internet
             }
 
             return retval;
+        }
+
+        #endregion
+
+        #region Commands
+
+        public NntpConnectResponse Connect(string server, int port = 119)
+        {
+            NntpConnectResponse r = new();
+
+            try
+            {
+                tcpClient = new TcpClient();
+                
+                if (!tcpClient.ConnectAsync(server, port).Wait(TIMEOUT))
+                {
+                    r.Success = false;
+                    r.Response = "Connection timeout.";
+                    return r;
+                }
+                
+                NetworkStream stream = tcpClient.GetStream();
+                stream.ReadTimeout = TIMEOUT;
+
+                reader = new StreamReader(stream, Encoding.ASCII);
+                writer = new StreamWriter(stream, Encoding.ASCII) { AutoFlush = true };
+
+                string? response = reader.ReadLine();
+
+                r.Success = true;
+                r.Response = response;
+
+                if (_verbose)
+                    Console.WriteLine("SERVER: {0}", response);
+            }
+            catch(Exception ex)
+            {
+                r.Success = false;
+                r.Response = "EXCEPTION CAUGHT: " + ex.ToString();
+            }
+
+            return r;
+        }
+
+        public NntpAuthResponse Authenticate(string username, string password)
+        {
+            throw new NotImplementedException();
+
+            //SendCommand("AUTHINFO USER " + username);
+            //ReadResponse();
+
+            //SendCommand("AUTHINFO PASS " + password);
+            //ReadResponse();
         }
 
         public bool Quit()
