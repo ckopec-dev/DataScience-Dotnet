@@ -161,9 +161,9 @@ namespace Core.Internet
             }
         }
 
-        public NntpResponse GetNewsgroups()
+        public NntpListResponse GetNewsgroups()
         {
-            NntpResponse r = new();
+            NntpListResponse r = new();
 
             try
             {
@@ -171,6 +171,20 @@ namespace Core.Internet
                 List<string> response = ReadResponse(multiline: true);
                 r.Success = true;
                 r.MultilineResponse = Filter(response, ["215", "."]);
+
+                foreach(string item in r.MultilineResponse)
+                {
+                    string[] parts = item.Split(' ');
+                    string name = parts[0];
+                    int high = Convert.ToInt32(parts[1]);
+                    int low = Convert.ToInt32(parts[2]);
+                    bool ok = false;
+                    if (parts[3].Equals("y", 
+                        StringComparison.CurrentCultureIgnoreCase))
+                        ok = true;
+
+                    r.Items.Add(new NntpListResponseItem(name, low, high, ok));
+                }
             }
             catch(Exception ex)
             {
@@ -180,6 +194,8 @@ namespace Core.Internet
 
             return r;
         }
+
+
 
         public NntpResponse GetArticles(string group)
         {

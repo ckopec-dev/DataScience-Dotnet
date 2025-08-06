@@ -3845,9 +3845,21 @@ namespace Euler
 
             try
             {
-                client.Connect("news.mixmin.net");
+                client.Connect("news.man.lodz.pl");
 
-                client.Authenticate("anon@anon.anon", "anon@anon.anon");
+                //client.Authenticate("anon@anon.anon", "anon@anon.anon");
+
+                NntpListResponse lr = client.GetNewsgroups();
+
+                foreach(var r in lr.MultilineResponse)
+                {
+                    Console.WriteLine(r);
+                }
+
+                foreach(var i in lr.Items)
+                {
+                    Console.WriteLine(i);
+                }
 
                 //client.GetNewsgroups();
 
