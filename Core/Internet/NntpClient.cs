@@ -178,7 +178,7 @@ namespace Core.Internet
             catch(Exception ex)
             {
                 r.Success = false;
-                r.Response = "EXCEPTION CAUGHT: " + ex.ToString();
+                r.Response += "EXCEPTION CAUGHT: " + ex.ToString();
             }
 
             return r;
