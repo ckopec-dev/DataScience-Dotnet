@@ -1,4 +1,5 @@
 ﻿using Microsoft.IdentityModel.Logging;
+using ScottPlot.Interactivity.UserActions;
 using System.Net.Sockets;
 using System.Reflection.PortableExecutable;
 using System.Text;
@@ -153,7 +154,7 @@ namespace Core.Internet
             }
         }
 
-        public NntpListResponse GetNewsgroups()
+        public NntpListResponse List()
         {
             NntpListResponse r = new();
 
@@ -192,9 +193,9 @@ namespace Core.Internet
             return r;
         }
 
-        public NntpSelectResponse SelectNewsgroup(string group)
+        public NntpGroupResponse Group(string group)
         {
-            NntpSelectResponse r = new();
+            NntpGroupResponse r = new();
 
             try
             {
@@ -233,7 +234,7 @@ namespace Core.Internet
             return r;
         }
 
-        public NntpArticleResponse GetArticle()
+        public NntpArticleResponse Article()
         {
             NntpArticleResponse r = new();
 
@@ -244,16 +245,49 @@ namespace Core.Internet
                 r.Success = true;
                 r.MultilineResponse = Filter(response, ["."]);
 
-                foreach (string line in r.MultilineResponse)
+                string[] parts = r.MultilineResponse[0].Split(" ");
+                r.ResponseCode = Convert.ToInt32(parts[0]);
+                if (parts.Length > 1)
                 {
+                    r.ArticleNumber = Convert.ToInt32(parts[1]);
+                    r.MessageId = parts[2];
+                }
+
+                for(int i = 1; i < r.MultilineResponse.Count; i++)
+                {
+                    string line = r.MultilineResponse[i];
                     if (line.StartsWith("Subject: "))
-                    {
                         r.Header = line[9..];
-                    }
                     else
-                    {
                         r.Body += line + Environment.NewLine;
-                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                r.Success = false;
+                r.Response = "EXCEPTION CAUGHT: " + ex.ToString();
+            }
+
+            return r;
+        }
+
+        public NntpNextResponse Next()
+        {
+            NntpNextResponse r = new();
+
+            try
+            {
+                SendCommand($"NEXT");
+                List<string> response = ReadResponse();
+                r.Success = true;
+
+                if (response.Count == 1)
+                {
+                    r.Response = response[0];
+                }
+                else
+                {
+                    r.Success = false;
                 }
             }
             catch (Exception ex)

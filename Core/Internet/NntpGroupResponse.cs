@@ -6,18 +6,18 @@
     /// Format example:
     /// 211 6 5376 5381 hr.org.carnet
     /// </summary>
-    public class NntpSelectResponse : NntpResponse
+    public class NntpGroupResponse : NntpResponse
     {
         public int? ResponseCode { get; set; }
         public int? ArticleCount { get; set; }
         public int? FirstArticle { get; set; }
         public int? LastArticle { get; set; }
 
-        public NntpSelectResponse()
+        public NntpGroupResponse()
         {
         }
 
-        public NntpSelectResponse(int responseCode, int articleCount, int firstArticle, int lastArticle)
+        public NntpGroupResponse(int responseCode, int articleCount, int firstArticle, int lastArticle)
         {
             ResponseCode = responseCode;
             ArticleCount = articleCount;

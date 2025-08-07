@@ -3848,21 +3848,30 @@ namespace Euler
             {
                 NntpConnectResponse cr = client.Connect("news.man.lodz.pl");
 
-                NntpListResponse lr = client.GetNewsgroups();
+                NntpListResponse lr = client.List();
                 Console.WriteLine("list success: {0}", lr.Success);
                 Console.WriteLine("list result: {0}", lr);
                 Console.WriteLine("raw response: {0}", lr.RawResponse);
 
 
-                NntpSelectResponse gr = client.SelectNewsgroup("lodman.info");
+                NntpGroupResponse gr = client.Group("lodz.ogolne");
                 Console.WriteLine("select success: {0}", gr.Success);
                 Console.WriteLine("select result: {0}", gr);
                 Console.WriteLine("raw response: {0}", gr.RawResponse);
 
-                NntpArticleResponse ar = client.GetArticle();
+                NntpArticleResponse ar = client.Article();
                 Console.WriteLine("article success: {0}", ar.Success);
                 Console.WriteLine("article result: {0}", ar);
-                Console.WriteLine("raw response: {0}", ar.RawResponse);
+                //Console.WriteLine("raw response: {0}", ar.RawResponse);
+
+                NntpNextResponse nr = client.Next();
+                Console.WriteLine("next success: {0}", nr.Success);
+                Console.WriteLine("raw response: {0}", nr.RawResponse);
+
+                ar = client.Article();
+                Console.WriteLine("article success: {0}", ar.Success);
+                Console.WriteLine("article result: {0}", ar);
+                //Console.WriteLine("raw response: {0}", ar.RawResponse);
 
                 client.Quit();
             }
