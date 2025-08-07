@@ -7,6 +7,21 @@ namespace Core.Internet
         public string? Response { get; set; }
         public List<string> MultilineResponse { get; set; } = [];
 
+        public string? RawResponse
+        {
+            get
+            {
+                string? s = Response + Environment.NewLine;
+
+                foreach(string line in MultilineResponse)
+                {
+                    s += line + Environment.NewLine;
+                }
+
+                return s;
+            }
+        }
+
         public NntpResponse()
         {
         }
