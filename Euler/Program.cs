@@ -3862,17 +3862,17 @@ namespace Euler
                 NntpArticleResponse ar = client.Article();
                 Console.WriteLine("article success: {0}", ar.Success);
                 Console.WriteLine("article result: {0}", ar);
-                //Console.WriteLine("raw response: {0}", ar.RawResponse);
+                Console.WriteLine("article exception: {0}", ar.Exception);
                 Console.WriteLine();
 
                 NntpNextResponse nr = client.Next();
                 Console.WriteLine("next success: {0}", nr.Success);
                 Console.WriteLine("raw response: {0}", nr.RawResponse);
 
-                ar = client.Article();
-                Console.WriteLine("article success: {0}", ar.Success);
-                Console.WriteLine("article result: {0}", ar);
-                Console.WriteLine();
+                //ar = client.Article();
+                //Console.WriteLine("article success: {0}", ar.Success);
+                //Console.WriteLine("article result: {0}", ar);
+                //Console.WriteLine();
                 //Console.WriteLine("raw response: {0}", ar.RawResponse);
 
                 client.Quit();

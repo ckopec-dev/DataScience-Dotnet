@@ -47,17 +47,36 @@ namespace Core.Internet
         {
             if (reader == null) throw new DisconnectedException();
             List<string> response = [];
-
+            bool first = true;
             string? line;
+            
             do
             {
                 if (_verbose)
                     Console.WriteLine("CLIENT *WAITING FOR RESPONSE*");
 
                 line = reader.ReadLine();
+
                 if (line != null)
                 {
                     response.Add(line);
+
+                    if (first)
+                    {
+                        // First line may have a response code. 
+                        // Depending on the response code, this may be the only line.
+
+                        string[] parts = line.Split(" ");
+                        if (parts.Length > 0)
+                        {
+                            int code = int.Parse(parts[0]);
+
+                            if (code == 420)
+                                return response;
+                        }
+
+                        first = false;
+                    }
 
                     if (_verbose)
                         Console.WriteLine("SERVER: " + line);
@@ -131,6 +150,7 @@ namespace Core.Internet
             {
                 r.Success = false;
                 r.Response = "EXCEPTION CAUGHT: " + ex.ToString();
+                r.Exception = ex.ToString();
             }
 
             return r;
@@ -188,6 +208,7 @@ namespace Core.Internet
             {
                 r.Success = false;
                 r.Response += "EXCEPTION CAUGHT: " + ex.ToString();
+                r.Exception = ex.ToString();
             }
 
             return r;
@@ -229,6 +250,7 @@ namespace Core.Internet
             {
                 r.Success = false;
                 r.Response = "EXCEPTION CAUGHT: " + ex.ToString();
+                r.Exception = ex.ToString();
             }
             
             return r;
@@ -273,6 +295,7 @@ namespace Core.Internet
             {
                 r.Success = false;
                 r.Response = "EXCEPTION CAUGHT: " + ex.ToString();
+                r.Exception = ex.ToString();
             }
 
             return r;
@@ -301,6 +324,7 @@ namespace Core.Internet
             {
                 r.Success = false;
                 r.Response = "EXCEPTION CAUGHT: " + ex.ToString();
+                r.Exception = ex.ToString();
             }
 
             return r;

@@ -5,6 +5,7 @@ namespace Core.Internet
     {
         public bool Success { get; set; }
         public string? Response { get; set; }
+        public string? Exception { get; set; }
         public List<string> MultilineResponse { get; set; } = [];
 
         public string? RawResponse
