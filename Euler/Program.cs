@@ -3863,6 +3863,7 @@ namespace Euler
                 Console.WriteLine("article success: {0}", ar.Success);
                 Console.WriteLine("article result: {0}", ar);
                 //Console.WriteLine("raw response: {0}", ar.RawResponse);
+                Console.WriteLine();
 
                 NntpNextResponse nr = client.Next();
                 Console.WriteLine("next success: {0}", nr.Success);
@@ -3871,6 +3872,7 @@ namespace Euler
                 ar = client.Article();
                 Console.WriteLine("article success: {0}", ar.Success);
                 Console.WriteLine("article result: {0}", ar);
+                Console.WriteLine();
                 //Console.WriteLine("raw response: {0}", ar.RawResponse);
 
                 client.Quit();

@@ -247,6 +247,13 @@ namespace Core.Internet
 
                 string[] parts = r.MultilineResponse[0].Split(" ");
                 r.ResponseCode = Convert.ToInt32(parts[0]);
+
+                if (r.ResponseCode == 420)
+                {
+                    r.Success = false;
+                    return r;
+                }
+
                 if (parts.Length > 1)
                 {
                     r.ArticleNumber = Convert.ToInt32(parts[1]);
