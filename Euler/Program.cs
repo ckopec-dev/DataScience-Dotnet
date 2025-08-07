@@ -6,6 +6,7 @@ using Core.Internet;
 using Core.ScottPlotCustom;
 using ExtendedNumerics;
 using HarfBuzzSharp;
+using Microsoft.IdentityModel.Logging;
 using ScottPlot;
 using System.Diagnostics;
 using System.Linq.Expressions;
@@ -3845,31 +3846,23 @@ namespace Euler
 
             try
             {
-                client.Connect("news.man.lodz.pl");
-
-                //client.Authenticate("anon@anon.anon", "anon@anon.anon");
+                NntpConnectResponse cr = client.Connect("news.man.lodz.pl");
 
                 NntpListResponse lr = client.GetNewsgroups();
+                Console.WriteLine("list success: {0}", lr.Success);
+                Console.WriteLine("list result: {0}", lr);
+                Console.WriteLine("raw response: {0}", lr.RawResponse);
 
-                foreach(var r in lr.MultilineResponse)
-                {
-                    Console.WriteLine(r);
-                }
 
-                foreach(var i in lr.Items)
-                {
-                    Console.WriteLine(i);
-                }
+                NntpSelectResponse gr = client.SelectNewsgroup("lodman.info");
+                Console.WriteLine("select success: {0}", gr.Success);
+                Console.WriteLine("select result: {0}", gr);
+                Console.WriteLine("raw response: {0}", gr.RawResponse);
 
-                //client.GetNewsgroups();
-
-                //client.SelectNewsgroup("hr.alt.astrologija");
-                //NntpResponse articlesResponse = client.GetArticles("hr.alt.astrologija");
-                
-                //client.SelectNewsgroup("aioe.test");
-                //client.GetArticle(5080);
-                //client.SelectNewsgroup("alt.test"); // Change to a valid newsgroup
-                //client.GetArticle(716662);               // Fetch article number 1
+                NntpArticleResponse ar = client.GetArticle();
+                Console.WriteLine("article success: {0}", ar.Success);
+                Console.WriteLine("article result: {0}", ar);
+                Console.WriteLine("raw response: {0}", ar.RawResponse);
 
                 client.Quit();
             }

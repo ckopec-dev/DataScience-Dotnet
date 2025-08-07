@@ -50,6 +50,9 @@ namespace Core.Internet
             string? line;
             do
             {
+                if (_verbose)
+                    Console.WriteLine("CLIENT *WAITING FOR RESPONSE*");
+
                 line = reader.ReadLine();
                 if (line != null)
                 {
@@ -59,7 +62,7 @@ namespace Core.Internet
                         Console.WriteLine("SERVER: " + line);
                 }
 
-            } while (multiline && line != "." && line != null);
+            } while (line != null && multiline && line.Trim() != ".");
 
             return response;
         }
@@ -189,31 +192,9 @@ namespace Core.Internet
             return r;
         }
 
-
-
-        public NntpResponse GetArticles(string group)
+        public NntpSelectResponse SelectNewsgroup(string group)
         {
-            NntpResponse r = new();
-
-            try
-            {
-                SendCommand($"LISTGROUP {group}");
-                List<string> response = ReadResponse(multiline: true);
-                r.Success = true;
-                r.MultilineResponse = Filter(response, ["."]);
-            }
-            catch(Exception ex)
-            {
-                r.Success = false;
-                r.Response = "EXCEPTION CAUGHT: " + ex.ToString();
-            }
-
-            return r;
-        }
-
-        public NntpGroupResponse SelectNewsgroup(string group)
-        {
-            NntpGroupResponse r = new();
+            NntpSelectResponse r = new();
 
             try
             {
@@ -259,9 +240,9 @@ namespace Core.Internet
             try
             {
                 SendCommand("ARTICLE");
-                ReadResponse(multiline: true);
+                List<string> response = ReadResponse(multiline: true);
                 r.Success = true;
-                r.MultilineResponse = ReadResponse(multiline: true);
+                r.MultilineResponse = Filter(response, ["."]);
 
                 foreach (string line in r.MultilineResponse)
                 {
