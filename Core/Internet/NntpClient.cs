@@ -167,10 +167,15 @@ namespace Core.Internet
                     string name = parts[0];
                     int high = Convert.ToInt32(parts[1]);
                     int low = Convert.ToInt32(parts[2]);
-                    bool ok = false;
-                    if (parts[3].Equals("y", 
-                        StringComparison.CurrentCultureIgnoreCase))
-                        ok = true;
+                    bool? ok = null;
+                    if (parts.Length > 3)
+                    {
+                        if (parts[3].Equals("y",
+                            StringComparison.CurrentCultureIgnoreCase))
+                            ok = true;
+                        else
+                            ok = false;
+                    }
 
                     r.Items.Add(new NntpListResponseItem(name, low, high, ok));
                 }

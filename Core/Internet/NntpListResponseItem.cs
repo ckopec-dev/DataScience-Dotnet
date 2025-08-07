@@ -2,12 +2,12 @@
 namespace Core.Internet
 {
     public class NntpListResponseItem(string name, int low, int high, 
-        bool postingAllowed)
+        bool? postingAllowed)
     {
         public string Name { get; set; } = name;
         public int Low { get; set; } = low;
         public int High { get; set; } = high;
-        public bool PostingAllowed { get; set; } = postingAllowed;
+        public bool? PostingAllowed { get; set; } = postingAllowed;
 
         public override string ToString()
         {
