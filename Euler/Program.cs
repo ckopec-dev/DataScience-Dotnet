@@ -3854,7 +3854,7 @@ namespace Euler
                 Console.WriteLine("raw response: {0}", lr.RawResponse);
 
 
-                NntpGroupResponse gr = client.Group("lodz.ogolne");
+                NntpGroupResponse gr = client.Group("lodman.test");
                 Console.WriteLine("select success: {0}", gr.Success);
                 Console.WriteLine("select result: {0}", gr);
                 Console.WriteLine("raw response: {0}", gr.RawResponse);
@@ -3868,6 +3868,7 @@ namespace Euler
                 NntpNextResponse nr = client.Next();
                 Console.WriteLine("next success: {0}", nr.Success);
                 Console.WriteLine("raw response: {0}", nr.RawResponse);
+                Console.WriteLine("article exception: {0}", nr.Exception);
 
                 //ar = client.Article();
                 //Console.WriteLine("article success: {0}", ar.Success);

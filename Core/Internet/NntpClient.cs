@@ -67,6 +67,7 @@ namespace Core.Internet
                         // Depending on the response code, this may be the only line.
 
                         string[] parts = line.Split(" ");
+
                         if (parts.Length > 0)
                         {
                             int code = int.Parse(parts[0]);
@@ -308,7 +309,7 @@ namespace Core.Internet
             try
             {
                 SendCommand($"NEXT");
-                List<string> response = ReadResponse();
+                List<string> response = ReadResponse(false);
                 r.Success = true;
 
                 if (response.Count == 1)
