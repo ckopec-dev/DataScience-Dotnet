@@ -8,6 +8,7 @@ using ExtendedNumerics;
 using HarfBuzzSharp;
 using Microsoft.IdentityModel.Logging;
 using ScottPlot;
+using ScottPlot.Colormaps;
 using System.Diagnostics;
 using System.Linq.Expressions;
 using System.Numerics;
@@ -3110,6 +3111,11 @@ namespace Euler
             Console.WriteLine("Solution: " + result);
         }
 
+        static void Problem84()
+        {
+            Euler84.Solve();
+        }
+
         static void Problem92()
         {
             // This is vaguely similar to the hailstone conjecture.
@@ -3997,6 +4003,271 @@ namespace Euler
             }
 
             return dist[rows - 1, cols - 1];
+        }
+
+        class Euler84
+        {
+            const int BOARDSIZE = 40;
+            const int DICE_SIDES = 4;
+            const int DOUBLE_STATES = 3; // 0,1,2 consecutive doubles
+            static readonly int N = BOARDSIZE * DOUBLE_STATES;
+
+            static readonly int JAIL = 10;
+            static readonly int G2J = 30;
+            static readonly int[] CC_SQUARES = [2, 17, 33];
+            static readonly int[] CH_SQUARES = [ 7, 22, 36 ];
+            static readonly int[] RAILS = [ 5, 15, 25, 35 ];
+            static readonly int[] UTILS = [ 12, 28 ];
+
+            internal static void Solve()
+            {
+                // Build transition matrix: row from-state, column to-state (we will use column-stochastic vectors so we multiply v = v * P)
+                var P = new double[N, N];
+                BuildTransitionMatrix(P);
+
+                // Compute stationary distribution via power iteration
+                var pi = StationaryDistribution(P, 1e-12, 20000);
+
+                // Collapse double-state dimension to get probabilities per square
+                var squareProb = new double[BOARDSIZE];
+                for (int pos = 0; pos < BOARDSIZE; pos++)
+                {
+                    for (int d = 0; d < DOUBLE_STATES; d++)
+                    {
+                        squareProb[pos] += pi[StateIndex(pos, d)];
+                    }
+                }
+
+                // Get top 3 squares
+                var top3 = Enumerable.Range(0, BOARDSIZE)
+                                     .Select(i => (pos: i, prob: squareProb[i]))
+                                     .OrderByDescending(x => x.prob)
+                                     .Take(3)
+                                     .ToArray();
+
+                Console.WriteLine("Top 3 squares:");
+                foreach (var (pos, prob) in top3) Console.WriteLine($"{pos:00} -> {prob:P6}");
+
+                // Format answer as six-digit string (each square as two digits)
+                string answer = string.Concat(top3.Select(t => t.pos.ToString("00")));
+                Console.WriteLine($"\nAnswer (6-digit): {answer}");
+            }
+
+            static void BuildTransitionMatrix(double[,] P)
+            {
+                // dice outcome probabilities for two DICE_SIDES-sided dice
+                var diceProb = new Dictionary<(int a, int b), double>();
+                for (int a = 1; a <= DICE_SIDES; a++)
+                    for (int b = 1; b <= DICE_SIDES; b++)
+                        diceProb[(a, b)] = 1.0 / (DICE_SIDES * DICE_SIDES);
+
+                for (int pos = 0; pos < BOARDSIZE; pos++)
+                {
+                    for (int doubles = 0; doubles < DOUBLE_STATES; doubles++)
+                    {
+                        int s = StateIndex(pos, doubles);
+                        // Start with all zero outgoing; accumulate into P[s, t]
+                        foreach (var kv in diceProb)
+                        {
+                            int a = kv.Key.a;
+                            int b = kv.Key.b;
+                            double pRoll = kv.Value;
+
+                            bool rolledDouble = (a == b);
+                            int newDoubles = rolledDouble ? doubles + 1 : 0;
+
+                            // If this roll makes three consecutive doubles -> go to jail immediately
+                            if (newDoubles == 3)
+                            {
+                                int t = StateIndex(JAIL, 0); // sent to jail, doubles reset
+                                P[s, t] += pRoll;
+                                continue;
+                            }
+
+                            int rawPos = (pos + a + b) % BOARDSIZE;
+
+                            // After moving by dice, apply square effects (G2J, CC, CH) which can produce distributions
+                            var finals = ResolveAfterLanding(rawPos);
+
+                            // For each final landing square, the next state's doubles count is newDoubles (unless we were sent to jail in which case doubles reset to 0)
+                            foreach (var kv2 in finals)
+                            {
+                                int finalPos = kv2.Key;
+                                double probAfterCards = kv2.Value;
+
+                                int finalDoubles = finalPos == JAIL ? 0 : newDoubles;
+                                int t = StateIndex(finalPos, finalDoubles);
+                                P[s, t] += pRoll * probAfterCards;
+                            }
+                        } // end dice combos
+                    }
+                }
+            }
+
+            // returns a distribution (position -> probability) after resolving CC/CH/G2J and chained effects (like CH back 3 landing on CC)
+            static Dictionary<int, double> ResolveAfterLanding(int pos)
+            {
+                // If landing on G2J
+                if (pos == G2J) return Single(pos: JAIL, prob: 1.0);
+
+                // If landing on Community Chest
+                if (Array.IndexOf(CC_SQUARES, pos) >= 0)
+                {
+                    return ResolveCommunityChest(pos);
+                }
+
+                // If landing on Chance
+                if (Array.IndexOf(CH_SQUARES, pos) >= 0)
+                {
+                    return ResolveChance(pos);
+                }
+
+                // otherwise no card effect
+                return Single(pos, 1.0);
+            }
+
+            static Dictionary<int, double> ResolveCommunityChest(int pos)
+            {
+                // 16 cards:
+                // - 1 card: Advance to GO (0)
+                // - 1 card: Go to JAIL (10)
+                // - 14 cards: nothing (stay)
+                var d = new Dictionary<int, double>
+                {
+                    [0] = 1.0 / 16.0,   // GO
+                    [JAIL] = 1.0 / 16.0, // JAIL
+                    [pos] = 14.0 / 16.0 // stay
+                };
+                return d;
+            }
+
+            static Dictionary<int, double> ResolveChance(int pos)
+            {
+                // 16 chance cards. Movement cards (10 total) and 6 no-ops.
+                // Movement cards:
+                // GO (0)
+                // JAIL (10)
+                // C1 (11)
+                // E3 (24)
+                // H2 (39)
+                // R1 (5)
+                // next R (2 cards)
+                // next U (1 card)
+                // go back 3 squares (1 card)
+                // The rest (6 cards) do nothing.
+                var outcomes = new Dictionary<int, double>();
+
+                void AddOutcome(int dest, double prob)
+                {
+                    if (!outcomes.ContainsKey(dest)) outcomes[dest] = 0;
+                    outcomes[dest] += prob;
+                }
+
+                double cardProb = 1.0 / 16.0;
+
+                // explicit moves:
+                AddOutcome(0, cardProb);    // GO
+                AddOutcome(JAIL, cardProb); // JAIL
+                AddOutcome(11, cardProb);   // C1
+                AddOutcome(24, cardProb);   // E3
+                AddOutcome(39, cardProb);   // H2
+                AddOutcome(5, cardProb);    // R1
+
+                // next R twice -> two separate cards but both same effect (so prob 2/16)
+                int nextR = NextRail(pos);
+                AddOutcome(nextR, cardProb);
+                nextR = NextRail(pos);
+                AddOutcome(nextR, cardProb);
+
+                // next U
+                AddOutcome(NextUtility(pos), cardProb);
+
+                // go back 3 squares
+                int back3 = (pos - 3 + BOARDSIZE) % BOARDSIZE;
+                // If back3 lands on CC, we must apply CC resolution -> that produces distribution
+                if (Array.IndexOf(CC_SQUARES, back3) >= 0)
+                {
+                    var ccDist = ResolveCommunityChest(back3);
+                    foreach (var kv in ccDist) AddOutcome(kv.Key, kv.Value * cardProb);
+                }
+                else if (back3 == G2J)
+                {
+                    AddOutcome(JAIL, cardProb);
+                }
+                else
+                {
+                    AddOutcome(back3, cardProb);
+                }
+
+                // The remaining 6 cards do nothing -> stay on pos
+                AddOutcome(pos, 6.0 * cardProb);
+
+                // Consolidate (some positions may have been added multiple times)
+                return outcomes;
+            }
+
+            static int NextRail(int pos)
+            {
+                // return smallest rail >= pos+1 mod 40
+                for (int i = 1; i <= BOARDSIZE; i++)
+                {
+                    int p = (pos + i) % BOARDSIZE;
+                    if (RAILS.Contains(p)) return p;
+                }
+                return RAILS[0];
+            }
+
+            static int NextUtility(int pos)
+            {
+                for (int i = 1; i <= BOARDSIZE; i++)
+                {
+                    int p = (pos + i) % BOARDSIZE;
+                    if (UTILS.Contains(p)) return p;
+                }
+                return UTILS[0];
+            }
+
+            static Dictionary<int, double> Single(int pos, double prob)
+            {
+                return new Dictionary<int, double> { { pos, prob } };
+            }
+
+            static int StateIndex(int pos, int doubles) => pos + BOARDSIZE * doubles;
+
+            static double[] StationaryDistribution(double[,] P, double tol, int maxIter)
+            {
+                var v = new double[N];
+                // start with uniform
+                for (int i = 0; i < N; i++) v[i] = 1.0 / N;
+
+                var tmp = new double[N];
+                for (int iter = 0; iter < maxIter; iter++)
+                {
+                    // tmp = v * P
+                    for (int j = 0; j < N; j++) tmp[j] = 0.0;
+                    for (int i = 0; i < N; i++)
+                    {
+                        double vi = v[i];
+                        if (vi == 0.0) continue;
+                        for (int j = 0; j < N; j++)
+                        {
+                            double pij = P[i, j];
+                            if (pij != 0.0) tmp[j] += vi * pij;
+                        }
+                    }
+
+                    // normalize (should remain normalized but numeric drift possible)
+                    double sum = tmp.Sum();
+                    for (int j = 0; j < N; j++) tmp[j] /= sum;
+
+                    // check convergence (L1)
+                    double diff = 0.0;
+                    for (int j = 0; j < N; j++) diff += Math.Abs(tmp[j] - v[j]);
+                    Array.Copy(tmp, v, N);
+                    if (diff < tol) break;
+                }
+                return v;
+            }
         }
 
         #endregion
