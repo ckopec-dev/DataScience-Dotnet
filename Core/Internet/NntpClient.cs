@@ -311,7 +311,7 @@ namespace Core.Internet
                 SendCommand($"NEXT");
                 List<string> response = ReadResponse(false);
                 r.Success = true;
-
+                
                 if (response.Count == 1)
                 {
                     r.Response = response[0];
