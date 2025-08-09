@@ -1,5 +1,6 @@
 ﻿using Microsoft.IdentityModel.Logging;
 using NLog;
+using System.Net.Quic;
 using System.Net.Sockets;
 using System.Text;
 
@@ -38,77 +39,6 @@ namespace Core.Internet
             writer.WriteLine(command);
         }
 
-        //private List<string> ReadResponse(bool multiline = false)
-        //{
-        //    if (reader == null) throw new DisconnectedException();
-        //    List<string> response = [];
-        //    bool first = true;
-        //    string? line;
-            
-        //    do
-        //    {
-        //        if (_verbose)
-        //            Console.WriteLine("CLIENT *WAITING FOR RESPONSE*");
-
-        //        line = reader.ReadLine();
-
-        //        if (line != null)
-        //        {
-        //            response.Add(line);
-
-        //            if (first)
-        //            {
-        //                // First line may have a response code. 
-        //                // Depending on the response code, this may be the only line.
-
-        //                string[] parts = line.Split(" ");
-
-        //                if (parts.Length > 0)
-        //                {
-        //                    int code = int.Parse(parts[0]);
-
-        //                    if (code == 420)
-        //                        return response;
-        //                }
-
-        //                first = false;
-        //            }
-
-        //            if (_verbose)
-        //                Console.WriteLine("SERVER: " + line);
-        //        }
-
-        //    } while (line != null && multiline && line.Trim() != ".");
-
-        //    return response;
-        //}
-
-        //private static List<string> Filter(List<string> response, List<string> excludes)
-        //{
-        //    List<string> retval = [];
-
-        //    foreach (var item in response)
-        //    {
-        //        bool add = true;
-
-        //        foreach (var ex in excludes)
-        //        {
-        //            bool match = item.StartsWith(ex);
-
-        //            if (match)
-        //            {
-        //                add = false;
-        //                break;
-        //            }
-        //        }
-
-        //        if (add)
-        //            retval.Add(item);
-        //    }
-
-        //    return retval;
-        //}
-
         #endregion
 
         #region Commands
@@ -120,28 +50,26 @@ namespace Core.Internet
             try
             {
                 tcpClient = new TcpClient();
-                
+
                 if (!tcpClient.ConnectAsync(server, port).Wait(TIMEOUT))
                 {
                     r.Success = false;
-                    //r.Response = "Connection timeout.";
+                    r.Exception = "Connection timeout";
                     return r;
                 }
-                
+
                 NetworkStream stream = tcpClient.GetStream();
                 stream.ReadTimeout = TIMEOUT;
 
                 reader = new StreamReader(stream, Encoding.ASCII);
                 writer = new StreamWriter(stream, Encoding.ASCII) { AutoFlush = true };
 
-                string? response = reader.ReadLine();
-
+                r.RawResponse = reader.ReadLine();
                 r.Success = true;
-                //r.Response = response;
 
-                Logger.Debug("SERVER: {0}", response);
+                Logger.Debug("SERVER: {0}", r.RawResponse);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 r.Success = false;
                 r.Exception = ex.ToString();
@@ -150,62 +78,39 @@ namespace Core.Internet
             return r;
         }
 
-        //public bool Quit()
-        //{
-        //    try
-        //    {
-        //        if (tcpClient == null)
-        //            return false;
+        public NntpQuitResponse Quit()
+        {
+            var qr = new NntpQuitResponse();
 
-        //        SendCommand("QUIT");
+            try
+            {
+                SendCommand("QUIT");
+                Logger.Debug("CLIENT *WAITING FOR RESPONSE*");
 
-        //        if (reader == null) throw new DisconnectedException();
-        //        string response;
-        //        string? line;
+                if (reader == null)
+                {
+                    qr.Success = false;
+                    qr.Exception = "Null reader.";
+                }
+                else
+                {
+                    qr.RawResponse = reader.ReadLine();
+                    Logger.Debug("SERVER: {0}", qr.RawResponse);
+                }
+                
+                tcpClient?.Close();
+                
+                qr.Success = true;
+            }
+            catch(Exception ex)
+            {
+                qr.Success = false;
+                qr.Exception = ex.ToString();
+            }
+            
+            return qr;
+        }
 
-        //        do
-        //        {
-        //            Logger.Debug("CLIENT *WAITING FOR RESPONSE*");
-
-        //            line = reader.ReadLine();
-
-        //            if (line != null)
-        //            {
-        //                response.Add(line);
-
-        //                if (first)
-        //                {
-        //                    // First line may have a response code. 
-        //                    // Depending on the response code, this may be the only line.
-
-        //                    string[] parts = line.Split(" ");
-
-        //                    if (parts.Length > 0)
-        //                    {
-        //                        int code = int.Parse(parts[0]);
-
-        //                        if (code == 420)
-        //                            return response;
-        //                    }
-
-        //                    first = false;
-        //                }
-
-        //                if (_verbose)
-        //                    Console.WriteLine("SERVER: " + line);
-        //            }
-
-        //        } while (line != null && multiline && line.Trim() != ".");
-
-
-        //        tcpClient.Close();
-        //        return true;
-        //    }
-        //    catch
-        //    {
-        //        return false;
-        //    }
-        //}
 
         //public NntpListResponse List()
         //{
@@ -285,7 +190,7 @@ namespace Core.Internet
         //        r.Response = "EXCEPTION CAUGHT: " + ex.ToString();
         //        r.Exception = ex.ToString();
         //    }
-            
+
         //    return r;
         //}
 
@@ -343,7 +248,7 @@ namespace Core.Internet
         //        SendCommand($"NEXT");
         //        List<string> response = ReadResponse(false);
         //        r.Success = true;
-                
+
         //        if (response.Count == 1)
         //        {
         //            r.Response = response[0];
@@ -366,3 +271,49 @@ namespace Core.Internet
         #endregion
     }
 }
+
+
+//private List<string> ReadResponse(bool multiline = false)
+//{
+//    if (reader == null) throw new DisconnectedException();
+//    List<string> response = [];
+//    bool first = true;
+//    string? line;
+
+//    do
+//    {
+//        if (_verbose)
+//            Console.WriteLine("CLIENT *WAITING FOR RESPONSE*");
+
+//        line = reader.ReadLine();
+
+//        if (line != null)
+//        {
+//            response.Add(line);
+
+//            if (first)
+//            {
+//                // First line may have a response code. 
+//                // Depending on the response code, this may be the only line.
+
+//                string[] parts = line.Split(" ");
+
+//                if (parts.Length > 0)
+//                {
+//                    int code = int.Parse(parts[0]);
+
+//                    if (code == 420)
+//                        return response;
+//                }
+
+//                first = false;
+//            }
+
+//            if (_verbose)
+//                Console.WriteLine("SERVER: " + line);
+//        }
+
+//    } while (line != null && multiline && line.Trim() != ".");
+
+//    return response;
+//}

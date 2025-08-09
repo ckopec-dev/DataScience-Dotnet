@@ -1,7 +1,7 @@
 ﻿
 namespace Core.Internet
 {
-    public class NntpQuitResponse
+    public class NntpQuitResponse : NntpResponse
     {
     }
 }

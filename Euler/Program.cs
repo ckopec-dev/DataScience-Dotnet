@@ -1,16 +1,11 @@
 ﻿using Combinatorics.Collections;
 using Core;
 using Core.GameTheory;
-using Core.GraphTheory.v2;
 using Core.Internet;
 using Core.ScottPlotCustom;
-using ExtendedNumerics;
-using HarfBuzzSharp;
-using Microsoft.IdentityModel.Logging;
+using NLog;
 using ScottPlot;
-using ScottPlot.Colormaps;
 using System.Diagnostics;
-using System.Linq.Expressions;
 using System.Numerics;
 using System.Reflection;
 using System.Text;
@@ -23,17 +18,33 @@ namespace Euler
     /// </summary>
     internal class Program
     {
+        static Logger logger = NLog.LogManager.Setup().LoadConfigurationFromFile("nlog.config").GetCurrentClassLogger();
+
         static void Main(string[] args)
         {
-            string switchErr = "Switch missing or invalid.";
+            const string switchErr = "Switch missing or invalid.";
 
-            if (args != null && args.Length == 1)
+            logger.Info("Application started.");
+
+            try
             {
-                CallMethod(args[0]);
+                if (args != null && args.Length == 1)
+                {
+                    CallMethod(args[0]);
+                }
+                else
+                {
+                    logger.Fatal(switchErr);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine(switchErr);
+                logger.Fatal(ex, "An unhandled exception occurred and the application is terminating: " + ex.ToString());
+            }
+            finally
+            {
+                logger.Info("Application finished.");
+                LogManager.Shutdown();
             }
         }
 
@@ -61,12 +72,12 @@ namespace Euler
             Stopwatch watch = Stopwatch.StartNew();
 
             string methodName = prefix + suffix;
-            Console.WriteLine("Invoking {0}.", methodName);
+            logger.Info("Invoking {0}.", methodName);
             MethodInfo? method = typeof(Program).GetMethod(methodName, BindingFlags.Static | BindingFlags.NonPublic) ?? throw new Exception("Method not found: " + methodName);
             method?.Invoke(null, null);
             
             watch.Stop();
-            Console.WriteLine("Invocation completed in {0}.", watch.Elapsed.ToFriendlyDuration(2));
+            logger.Info("Invocation completed in {0}.", watch.Elapsed.ToFriendlyDuration(2));
         }
 
         #pragma warning disable IDE0051 // Remove unused private members
@@ -3848,11 +3859,12 @@ namespace Euler
         {
             // NntpClient testing...
 
-            //var client = new NntpClient();
+            var client = new NntpClient();
 
             try
             {
-                //NntpConnectResponse cr = client.Connect("news.man.lodz.pl");
+                NntpConnectResponse cr = client.Connect("news.man.lodz.pl");
+                
 
                 //NntpListResponse lr = client.List();
                 //Console.WriteLine("list success: {0}", lr.Success);
@@ -3882,7 +3894,7 @@ namespace Euler
                 ////Console.WriteLine();
                 ////Console.WriteLine("raw response: {0}", ar.RawResponse);
 
-                //client.Quit();
+                client.Quit();
             }
             catch (Exception ex)
             {
