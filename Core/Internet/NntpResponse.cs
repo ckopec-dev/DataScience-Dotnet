@@ -4,39 +4,40 @@ namespace Core.Internet
     public class NntpResponse
     {
         public bool Success { get; set; }
-        public string? Response { get; set; }
         public string? Exception { get; set; }
-        public List<string> MultilineResponse { get; set; } = [];
 
-        public string? RawResponse
-        {
-            get
-            {
-                string? s = Response + Environment.NewLine;
+        //public string? Response { get; set; }
+        //public List<string> MultilineResponse { get; set; } = [];
 
-                foreach(string line in MultilineResponse)
-                {
-                    s += line + Environment.NewLine;
-                }
+        //public string? RawResponse
+        //{
+        //    get
+        //    {
+        //        string? s = Response + Environment.NewLine;
 
-                return s;
-            }
-        }
+        //        foreach(string line in MultilineResponse)
+        //        {
+        //            s += line + Environment.NewLine;
+        //        }
 
-        public NntpResponse()
-        {
-        }
+        //        return s;
+        //    }
+        //}
 
-        public NntpResponse(bool success, string? response)
-        {
-            Success = success;
-            Response = response;
-        }
+        //public NntpResponse()
+        //{
+        //}
 
-        public NntpResponse(bool success, List<string> multilineResponse)
-        {
-            Success = success;
-            MultilineResponse = multilineResponse;
-        }
+        //public NntpResponse(bool success, string? response)
+        //{
+        //    Success = success;
+        //    Response = response;
+        //}
+
+        //public NntpResponse(bool success, List<string> multilineResponse)
+        //{
+        //    Success = success;
+        //    MultilineResponse = multilineResponse;
+        //}
     }
 }

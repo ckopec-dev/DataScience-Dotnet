@@ -24,7 +24,7 @@ namespace UnitTests
             Assert.AreEqual("Rosalind_6404" + Environment.NewLine + "CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG", output);
 
             f = new("");
-            Assert.AreEqual(0, f.Entries.Count);
+            Assert.IsEmpty(f.Entries);
         }
     }
 }

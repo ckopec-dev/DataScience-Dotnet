@@ -3848,41 +3848,41 @@ namespace Euler
         {
             // NntpClient testing...
 
-            var client = new NntpClient(true);
+            //var client = new NntpClient();
 
             try
             {
-                NntpConnectResponse cr = client.Connect("news.man.lodz.pl");
+                //NntpConnectResponse cr = client.Connect("news.man.lodz.pl");
 
-                NntpListResponse lr = client.List();
-                Console.WriteLine("list success: {0}", lr.Success);
-                Console.WriteLine("list result: {0}", lr);
-                Console.WriteLine("raw response: {0}", lr.RawResponse);
+                //NntpListResponse lr = client.List();
+                //Console.WriteLine("list success: {0}", lr.Success);
+                //Console.WriteLine("list result: {0}", lr);
+                //Console.WriteLine("raw response: {0}", lr.RawResponse);
 
 
-                NntpGroupResponse gr = client.Group("lodman.test");
-                Console.WriteLine("select success: {0}", gr.Success);
-                Console.WriteLine("select result: {0}", gr);
-                Console.WriteLine("raw response: {0}", gr.RawResponse);
+                //NntpGroupResponse gr = client.Group("lodman.test");
+                //Console.WriteLine("select success: {0}", gr.Success);
+                //Console.WriteLine("select result: {0}", gr);
+                //Console.WriteLine("raw response: {0}", gr.RawResponse);
 
-                NntpArticleResponse ar = client.Article();
-                Console.WriteLine("article success: {0}", ar.Success);
-                Console.WriteLine("article result: {0}", ar);
-                Console.WriteLine("article exception: {0}", ar.Exception);
-                Console.WriteLine();
-
-                NntpNextResponse nr = client.Next();
-                Console.WriteLine("next success: {0}", nr.Success);
-                Console.WriteLine("raw response: {0}", nr.RawResponse);
-                Console.WriteLine("article exception: {0}", nr.Exception);
-
-                //ar = client.Article();
+                //NntpArticleResponse ar = client.Article();
                 //Console.WriteLine("article success: {0}", ar.Success);
                 //Console.WriteLine("article result: {0}", ar);
+                //Console.WriteLine("article exception: {0}", ar.Exception);
                 //Console.WriteLine();
-                //Console.WriteLine("raw response: {0}", ar.RawResponse);
 
-                client.Quit();
+                //NntpNextResponse nr = client.Next();
+                //Console.WriteLine("next success: {0}", nr.Success);
+                //Console.WriteLine("raw response: {0}", nr.RawResponse);
+                //Console.WriteLine("article exception: {0}", nr.Exception);
+
+                ////ar = client.Article();
+                ////Console.WriteLine("article success: {0}", ar.Success);
+                ////Console.WriteLine("article result: {0}", ar);
+                ////Console.WriteLine();
+                ////Console.WriteLine("raw response: {0}", ar.RawResponse);
+
+                //client.Quit();
             }
             catch (Exception ex)
             {
