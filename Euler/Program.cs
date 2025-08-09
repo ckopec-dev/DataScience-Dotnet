@@ -3127,6 +3127,50 @@ namespace Euler
             Euler84.Solve();
         }
 
+        static void Problem85()
+        {
+            // Consider m x n grid.
+            // For simplest case of 1x1 rectangle, solution is m x n.
+            
+            const long target = 2000000L;
+            long bestDiff = long.MaxValue;
+            int bestM = 0, bestN = 0;
+            long bestRectCount = 0;
+
+            // We don't need enormous bounds. Practical upper bound for m is where m*(m+1)/2 > target -> m ~ sqrt(2*target)
+            // But we'll safely iterate m up to 2000 which is more than enough.
+            for (int m = 1; m <= 2000; m++)
+            {
+                for (int n = m; n <= 2000; n++) // n starts at m to avoid repeating symmetric pairs (optionally)
+                {
+                    // number of rectangles in m x n grid
+                    // Use long to avoid overflow
+                    long rects = (long)m * (m + 1) * (long)n * (n + 1) / 4L;
+
+                    long diff = Math.Abs(rects - target);
+                    if (diff < bestDiff)
+                    {
+                        bestDiff = diff;
+                        bestM = m;
+                        bestN = n;
+                        bestRectCount = rects;
+                    }
+
+                    // Since rects increases monotonically with n for fixed m,
+                    // once rects > target we can break (further n only increases rects).
+                    if (rects > target)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            Console.WriteLine($"Best grid: {bestM} x {bestN}");
+            Console.WriteLine($"Rectangles: {bestRectCount}");
+            Console.WriteLine($"Area (m*n): {bestM * bestN}");
+            Console.WriteLine($"Difference from target: {bestDiff}");
+        }
+
         static void Problem92()
         {
             // This is vaguely similar to the hailstone conjecture.
