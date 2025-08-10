@@ -8,7 +8,6 @@
     /// </summary>
     public class NntpGroupResponse : NntpResponse
     {
-        public int? ResponseCode { get; set; }
         public int? ArticleCount { get; set; }
         public int? FirstArticle { get; set; }
         public int? LastArticle { get; set; }
@@ -17,9 +16,8 @@
         {
         }
 
-        public NntpGroupResponse(int responseCode, int articleCount, int firstArticle, int lastArticle)
+        public NntpGroupResponse(int articleCount, int firstArticle, int lastArticle)
         {
-            ResponseCode = responseCode;
             ArticleCount = articleCount;
             FirstArticle = firstArticle;
             LastArticle = lastArticle;
@@ -27,7 +25,7 @@
 
         public override string ToString()
         {
-            return String.Format($"{ResponseCode} {ArticleCount} {FirstArticle} {LastArticle}");
+            return String.Format($"{ArticleCount} {FirstArticle} {LastArticle}");
         }
     }
 }

@@ -66,7 +66,7 @@ namespace Core.Internet
 
                 r.RawResponse = reader.ReadLine();
                 r.Success = true;
-
+                
                 Logger.Debug("SERVER: {0}", r.RawResponse);
             }
             catch (Exception ex)

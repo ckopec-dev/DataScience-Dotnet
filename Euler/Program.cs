@@ -18,7 +18,7 @@ namespace Euler
     /// </summary>
     internal class Program
     {
-        static Logger logger = NLog.LogManager.Setup().LoadConfigurationFromFile("nlog.config").GetCurrentClassLogger();
+        static readonly Logger logger = NLog.LogManager.Setup().LoadConfigurationFromFile("nlog.config").GetCurrentClassLogger();
 
         static void Main(string[] args)
         {
@@ -3905,45 +3905,39 @@ namespace Euler
 
             var client = new NntpClient();
 
-            try
-            {
-                NntpConnectResponse cr = client.Connect("news.man.lodz.pl");
-                
-
-                //NntpListResponse lr = client.List();
-                //Console.WriteLine("list success: {0}", lr.Success);
-                //Console.WriteLine("list result: {0}", lr);
-                //Console.WriteLine("raw response: {0}", lr.RawResponse);
+            NntpConnectResponse cr = client.Connect("news.man.lodz.pl");
+            logger.Info(cr);
+            
+            //NntpListResponse lr = client.List();
+            //Console.WriteLine("list success: {0}", lr.Success);
+            //Console.WriteLine("list result: {0}", lr);
+            //Console.WriteLine("raw response: {0}", lr.RawResponse);
 
 
-                //NntpGroupResponse gr = client.Group("lodman.test");
-                //Console.WriteLine("select success: {0}", gr.Success);
-                //Console.WriteLine("select result: {0}", gr);
-                //Console.WriteLine("raw response: {0}", gr.RawResponse);
+            //NntpGroupResponse gr = client.Group("lodman.test");
+            //Console.WriteLine("select success: {0}", gr.Success);
+            //Console.WriteLine("select result: {0}", gr);
+            //Console.WriteLine("raw response: {0}", gr.RawResponse);
 
-                //NntpArticleResponse ar = client.Article();
-                //Console.WriteLine("article success: {0}", ar.Success);
-                //Console.WriteLine("article result: {0}", ar);
-                //Console.WriteLine("article exception: {0}", ar.Exception);
-                //Console.WriteLine();
+            //NntpArticleResponse ar = client.Article();
+            //Console.WriteLine("article success: {0}", ar.Success);
+            //Console.WriteLine("article result: {0}", ar);
+            //Console.WriteLine("article exception: {0}", ar.Exception);
+            //Console.WriteLine();
 
-                //NntpNextResponse nr = client.Next();
-                //Console.WriteLine("next success: {0}", nr.Success);
-                //Console.WriteLine("raw response: {0}", nr.RawResponse);
-                //Console.WriteLine("article exception: {0}", nr.Exception);
+            //NntpNextResponse nr = client.Next();
+            //Console.WriteLine("next success: {0}", nr.Success);
+            //Console.WriteLine("raw response: {0}", nr.RawResponse);
+            //Console.WriteLine("article exception: {0}", nr.Exception);
 
-                ////ar = client.Article();
-                ////Console.WriteLine("article success: {0}", ar.Success);
-                ////Console.WriteLine("article result: {0}", ar);
-                ////Console.WriteLine();
-                ////Console.WriteLine("raw response: {0}", ar.RawResponse);
+            ////ar = client.Article();
+            ////Console.WriteLine("article success: {0}", ar.Success);
+            ////Console.WriteLine("article result: {0}", ar);
+            ////Console.WriteLine();
+            ////Console.WriteLine("raw response: {0}", ar.RawResponse);
 
-                client.Quit();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-            }
+            NntpQuitResponse qr = client.Quit();
+            logger.Info(qr.ToString());
         }
 
         static void Misc26()

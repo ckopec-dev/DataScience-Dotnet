@@ -6,7 +6,6 @@ namespace Core.Internet
 {
     public class NntpNextResponse : NntpResponse
     {
-        public int? ResponseCode { get; set; }
         public int? ArticleNumber { get; set; }
         public string? MessageId { get; set; }
 
@@ -14,9 +13,8 @@ namespace Core.Internet
         { 
         }
 
-        public NntpNextResponse(int? responseCode, int? articleNumber, string? messageId)
+        public NntpNextResponse(int? articleNumber, string? messageId)
         {
-            ResponseCode = responseCode;
             ArticleNumber = articleNumber;
             MessageId = messageId;
         }
