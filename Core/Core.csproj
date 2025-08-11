@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Configurations>Debug;Release;Miner1;Miner2;rm001-1;rm001-2</Configurations>
+    <Configurations>Debug;Release;rm001-2;Youtube-UI-Release</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
