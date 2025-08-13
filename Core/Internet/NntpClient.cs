@@ -1,6 +1,4 @@
-﻿using Microsoft.IdentityModel.Logging;
-using NLog;
-using System.Net.Quic;
+﻿using NLog;
 using System.Net.Sockets;
 using System.Text;
 
@@ -111,46 +109,108 @@ namespace Core.Internet
             return qr;
         }
 
+        public NntpListResponse List()
+        {
+            var lr = new NntpListResponse();
 
-        //public NntpListResponse List()
-        //{
-        //    NntpListResponse r = new();
+            try
+            {
+                SendCommand("LIST");
+                Logger.Debug("CLIENT *WAITING FOR RESPONSE*");
+                ReadResponse(true);
+                //if (reader == null)
+                //{
+                //    lr.Success = false;
+                //    lr.Exception = "Null reader.";
+                //}
+                //else
+                //{
+                //    string? line;
 
-        //    try
-        //    {
-        //        SendCommand("LIST");
-        //        List<string> response = ReadResponse(multiline: true);
-        //        r.Success = true;
-        //        r.MultilineResponse = Filter(response, ["215", "."]);
+                //    do
+                //    {
+                //        Logger.Debug("CLIENT *WAITING FOR RESPONSE*");
+                //        line = reader.ReadLine();
+                //        bool first = true;
 
-        //        foreach(string item in r.MultilineResponse)
-        //        {
-        //            string[] parts = item.Split(' ');
-        //            string name = parts[0];
-        //            int high = Convert.ToInt32(parts[1]);
-        //            int low = Convert.ToInt32(parts[2]);
-        //            bool? ok = null;
-        //            if (parts.Length > 3)
-        //            {
-        //                if (parts[3].Equals("y",
-        //                    StringComparison.CurrentCultureIgnoreCase))
-        //                    ok = true;
-        //                else
-        //                    ok = false;
-        //            }
+                //        if (line != null)
+                //        {
+                //            Logger.Debug("SERVER: " + line);
+                //            lr.RawResponse += line + Environment.NewLine;
 
-        //            r.Items.Add(new NntpListResponseItem(name, low, high, ok));
-        //        }
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        r.Success = false;
-        //        r.Response += "EXCEPTION CAUGHT: " + ex.ToString();
-        //        r.Exception = ex.ToString();
-        //    }
+                //            if (first)
+                //            {
+                //                // First line may have a response code. 
+                //                // Depending on the response code, this may be the only line.
+                //                Logger.Debug("CLIENT *FIRST RESPONSE LINE*");
 
-        //    return r;
-        //}
+                //                int numeric_code = Convert.ToInt32(line[..3]);
+                //                NntpResponseCode response_code = (NntpResponseCode)numeric_code;
+                //                if (response_code != NntpResponseCode.ListFollows)
+                //                {
+                //                    lr.Success = false;
+                //                    lr.Exception = "Invalid list response code: " + numeric_code;
+                //                    break;
+                //                }
+                                
+                //                first = false;
+                //            }
+                //            else
+                //            {
+
+                //                string[] parts = line.Split(' ');
+                //                string name = parts[0];
+                //                int high = Convert.ToInt32(parts[1]);
+                //                int low = Convert.ToInt32(parts[2]);
+                //                bool? ok = null;
+                //                if (parts.Length > 3)
+                //                {
+                //                    if (parts[3].Equals("y",
+                //                        StringComparison.CurrentCultureIgnoreCase))
+                //                        ok = true;
+                //                    else
+                //                        ok = false;
+                //                }
+
+                //                Logger.Debug("CLIENT *ADDING ITEM*");
+                //                lr.Items.Add(new NntpListResponseItem(name, low, high, ok));
+                //            }
+                //        }
+                //    } while (line != null && line.Trim() != ".");
+                //}
+            }
+            catch (Exception ex)
+            {
+                lr.Success = false;
+                lr.Exception = ex.ToString();
+            }
+
+            return lr;
+        }
+
+        private List<string> ReadResponse(bool multiline = false)
+        {
+            if (reader == null) throw new DisconnectedException();
+            List<string> response = [];
+            string? line;
+
+            do
+            {
+                Logger.Debug("CLIENT *WAITING FOR RESPONSE*");
+
+                line = reader.ReadLine();
+
+                if (line != null)
+                {
+                    response.Add(line);
+
+                    Logger.Debug("SERVER: " + line);
+                }
+
+            } while (line != null && multiline && line.Trim() != ".");
+
+            return response;
+        }
 
         //public NntpGroupResponse Group(string group)
         //{
@@ -273,47 +333,3 @@ namespace Core.Internet
 }
 
 
-//private List<string> ReadResponse(bool multiline = false)
-//{
-//    if (reader == null) throw new DisconnectedException();
-//    List<string> response = [];
-//    bool first = true;
-//    string? line;
-
-//    do
-//    {
-//        if (_verbose)
-//            Console.WriteLine("CLIENT *WAITING FOR RESPONSE*");
-
-//        line = reader.ReadLine();
-
-//        if (line != null)
-//        {
-//            response.Add(line);
-
-//            if (first)
-//            {
-//                // First line may have a response code. 
-//                // Depending on the response code, this may be the only line.
-
-//                string[] parts = line.Split(" ");
-
-//                if (parts.Length > 0)
-//                {
-//                    int code = int.Parse(parts[0]);
-
-//                    if (code == 420)
-//                        return response;
-//                }
-
-//                first = false;
-//            }
-
-//            if (_verbose)
-//                Console.WriteLine("SERVER: " + line);
-//        }
-
-//    } while (line != null && multiline && line.Trim() != ".");
-
-//    return response;
-//}

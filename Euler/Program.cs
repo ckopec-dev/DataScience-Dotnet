@@ -3906,13 +3906,11 @@ namespace Euler
             var client = new NntpClient();
 
             NntpConnectResponse cr = client.Connect("news.man.lodz.pl");
-            logger.Info(cr);
+            //logger.Info(cr);
             
-            //NntpListResponse lr = client.List();
-            //Console.WriteLine("list success: {0}", lr.Success);
-            //Console.WriteLine("list result: {0}", lr);
-            //Console.WriteLine("raw response: {0}", lr.RawResponse);
-
+            NntpListResponse lr = client.List();
+            logger.Info(lr);
+            
 
             //NntpGroupResponse gr = client.Group("lodman.test");
             //Console.WriteLine("select success: {0}", gr.Success);
@@ -3936,8 +3934,8 @@ namespace Euler
             ////Console.WriteLine();
             ////Console.WriteLine("raw response: {0}", ar.RawResponse);
 
-            NntpQuitResponse qr = client.Quit();
-            logger.Info(qr.ToString());
+            //NntpQuitResponse qr = client.Quit();
+            //logger.Info(qr.ToString());
         }
 
         static void Misc26()

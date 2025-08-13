@@ -5,6 +5,7 @@ namespace Core.Internet
     {
         ServerReadyPostingAllowed = 200,
         ServerReadyNoPostingAllowed = 201,
-        ClosingConnection = 205
+        ClosingConnection = 205,
+        ListFollows = 215
     }
 }

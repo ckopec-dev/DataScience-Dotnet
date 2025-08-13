@@ -10,8 +10,7 @@ namespace Core.Internet
         public override string ToString()
         {
             StringBuilder sb = new();
-            sb.Append("\n\r");
-
+            
             foreach (NntpListResponseItem item in Items)
             {
                 sb.AppendLine(item.ToString());
