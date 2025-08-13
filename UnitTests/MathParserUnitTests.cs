@@ -12,26 +12,26 @@ namespace UnitTests
             var t = new Tokenizer(new StringReader(testString));
 
             // "10"
-            Assert.AreEqual(t.Token, Token.Number);
-            Assert.AreEqual(t.Number, 10);
+            Assert.AreEqual(Token.Number, t.Token);
+            Assert.AreEqual(10, t.Number);
             t.NextToken();
 
             // "+"
-            Assert.AreEqual(t.Token, Token.Add);
+            Assert.AreEqual(Token.Add, t.Token);
             t.NextToken();
 
             // "20"
-            Assert.AreEqual(t.Token, Token.Number);
-            Assert.AreEqual(t.Number, 20);
+            Assert.AreEqual(Token.Number, t.Token);
+            Assert.AreEqual(20, t.Number);
             t.NextToken();
 
             // "-"
-            Assert.AreEqual(t.Token, Token.Subtract);
+            Assert.AreEqual(Token.Subtract, t.Token);
             t.NextToken();
 
             // "30.123"
-            Assert.AreEqual(t.Token, Token.Number);
-            Assert.AreEqual(t.Number, 30.123);
+            Assert.AreEqual(Token.Number, t.Token);
+            Assert.AreEqual(30.123, t.Number);
             t.NextToken();
         }
     }

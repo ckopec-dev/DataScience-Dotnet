@@ -45,7 +45,7 @@ namespace Core.Internet
                 sb.AppendLine("RawResponse: " + RawResponse);
             if (Exception != null)
                 sb.AppendLine("Exception: " + Exception);
-            
+
             return sb.ToString().Trim();
         }
     }

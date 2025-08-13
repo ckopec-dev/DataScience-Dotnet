@@ -9,8 +9,10 @@ namespace Core.Internet
 
         public override string ToString()
         {
-            StringBuilder sb = new();
-            
+            var sb = new StringBuilder();
+
+            sb.AppendLine(base.ToString());
+
             foreach (NntpListResponseItem item in Items)
             {
                 sb.AppendLine(item.ToString());

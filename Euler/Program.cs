@@ -3906,7 +3906,7 @@ namespace Euler
             var client = new NntpClient();
 
             NntpConnectResponse cr = client.Connect("news.man.lodz.pl");
-            //logger.Info(cr);
+            logger.Info(cr);
             
             NntpListResponse lr = client.List();
             logger.Info(lr);

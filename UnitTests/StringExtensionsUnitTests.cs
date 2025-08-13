@@ -10,14 +10,14 @@ namespace UnitTests
         public void TestLeft()
         {
             string s = "HelloWorld";
-            Assert.AreEqual(s.Left(2), "He");
+            Assert.AreEqual("He", s.Left(2));
         }
 
         [TestMethod]
         public void TestRight()
         {
             string s = "HelloWorld";
-            Assert.AreEqual(s.Right(2), "ld");
+            Assert.AreEqual("ld", s.Right(2));
         }
     }
 }

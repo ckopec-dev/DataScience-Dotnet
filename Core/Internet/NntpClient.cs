@@ -1,4 +1,5 @@
-﻿using NLog;
+﻿using Microsoft.IdentityModel.Tokens;
+using NLog;
 using System.Net.Sockets;
 using System.Text;
 
@@ -35,6 +36,30 @@ namespace Core.Internet
 
             Logger.Debug($"CLIENT: {command}");
             writer.WriteLine(command);
+        }
+
+        private List<string> ReadResponse(bool multiline = false)
+        {
+            if (reader == null) throw new DisconnectedException();
+            List<string> response = [];
+            string? line;
+
+            do
+            {
+                Logger.Debug("CLIENT *WAITING FOR RESPONSE*");
+
+                line = reader.ReadLine();
+
+                if (line != null)
+                {
+                    response.Add(line);
+
+                    Logger.Debug("SERVER: " + line);
+                }
+
+            } while (line != null && multiline && line.Trim() != ".");
+
+            return response;
         }
 
         #endregion
@@ -117,12 +142,60 @@ namespace Core.Internet
             {
                 SendCommand("LIST");
                 Logger.Debug("CLIENT *WAITING FOR RESPONSE*");
-                ReadResponse(true);
-                //if (reader == null)
-                //{
-                //    lr.Success = false;
-                //    lr.Exception = "Null reader.";
-                //}
+                //ReadResponse(true);
+                
+                if (reader == null) throw new DisconnectedException();
+                string? line;
+                int line_num = 0;
+
+                do
+                {
+                    Logger.Debug("CLIENT *WAITING FOR RESPONSE*");
+
+                    line = reader.ReadLine();
+                    line_num++;
+
+                    if (line != null) 
+                    {
+                        Logger.Debug("SERVER: " + line);
+                        lr.RawResponse += line + Environment.NewLine;
+                        
+                        if (line == ".")
+                        {
+                            break;
+                        }
+
+                        if (line_num == 1)
+                        {
+                            if (lr.ResponseCode != NntpResponseCode.ListFollows)
+                            {
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            string[] parts = line.Split(' ');
+                            string name = parts[0];
+                            int high = Convert.ToInt32(parts[1]);
+                            int low = Convert.ToInt32(parts[2]);
+                            bool? ok = null;
+                            if (parts.Length > 3)
+                            {
+                                if (parts[3].Equals("y",
+                                    StringComparison.CurrentCultureIgnoreCase))
+                                    ok = true;
+                                else
+                                    ok = false;
+                            }
+
+                            Logger.Debug("CLIENT *ADDING ITEM*");
+                            lr.Items.Add(new NntpListResponseItem(name, low, high, ok));
+                        }
+                    }
+
+                } while (line != null && line.Trim() != ".");
+
+                lr.Success = true;
                 //else
                 //{
                 //    string? line;
@@ -152,7 +225,7 @@ namespace Core.Internet
                 //                    lr.Exception = "Invalid list response code: " + numeric_code;
                 //                    break;
                 //                }
-                                
+
                 //                first = false;
                 //            }
                 //            else
@@ -188,29 +261,7 @@ namespace Core.Internet
             return lr;
         }
 
-        private List<string> ReadResponse(bool multiline = false)
-        {
-            if (reader == null) throw new DisconnectedException();
-            List<string> response = [];
-            string? line;
 
-            do
-            {
-                Logger.Debug("CLIENT *WAITING FOR RESPONSE*");
-
-                line = reader.ReadLine();
-
-                if (line != null)
-                {
-                    response.Add(line);
-
-                    Logger.Debug("SERVER: " + line);
-                }
-
-            } while (line != null && multiline && line.Trim() != ".");
-
-            return response;
-        }
 
         //public NntpGroupResponse Group(string group)
         //{
