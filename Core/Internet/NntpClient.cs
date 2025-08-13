@@ -142,7 +142,6 @@ namespace Core.Internet
             {
                 SendCommand("LIST");
                 Logger.Debug("CLIENT *WAITING FOR RESPONSE*");
-                //ReadResponse(true);
                 
                 if (reader == null) throw new DisconnectedException();
                 string? line;
@@ -196,61 +195,6 @@ namespace Core.Internet
                 } while (line != null && line.Trim() != ".");
 
                 lr.Success = true;
-                //else
-                //{
-                //    string? line;
-
-                //    do
-                //    {
-                //        Logger.Debug("CLIENT *WAITING FOR RESPONSE*");
-                //        line = reader.ReadLine();
-                //        bool first = true;
-
-                //        if (line != null)
-                //        {
-                //            Logger.Debug("SERVER: " + line);
-                //            lr.RawResponse += line + Environment.NewLine;
-
-                //            if (first)
-                //            {
-                //                // First line may have a response code. 
-                //                // Depending on the response code, this may be the only line.
-                //                Logger.Debug("CLIENT *FIRST RESPONSE LINE*");
-
-                //                int numeric_code = Convert.ToInt32(line[..3]);
-                //                NntpResponseCode response_code = (NntpResponseCode)numeric_code;
-                //                if (response_code != NntpResponseCode.ListFollows)
-                //                {
-                //                    lr.Success = false;
-                //                    lr.Exception = "Invalid list response code: " + numeric_code;
-                //                    break;
-                //                }
-
-                //                first = false;
-                //            }
-                //            else
-                //            {
-
-                //                string[] parts = line.Split(' ');
-                //                string name = parts[0];
-                //                int high = Convert.ToInt32(parts[1]);
-                //                int low = Convert.ToInt32(parts[2]);
-                //                bool? ok = null;
-                //                if (parts.Length > 3)
-                //                {
-                //                    if (parts[3].Equals("y",
-                //                        StringComparison.CurrentCultureIgnoreCase))
-                //                        ok = true;
-                //                    else
-                //                        ok = false;
-                //                }
-
-                //                Logger.Debug("CLIENT *ADDING ITEM*");
-                //                lr.Items.Add(new NntpListResponseItem(name, low, high, ok));
-                //            }
-                //        }
-                //    } while (line != null && line.Trim() != ".");
-                //}
             }
             catch (Exception ex)
             {
