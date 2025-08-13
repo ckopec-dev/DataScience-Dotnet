@@ -205,49 +205,50 @@ namespace Core.Internet
             return lr;
         }
 
+        public NntpGroupResponse Group(string group)
+        {
+            var gr = new NntpGroupResponse();
 
+            try
+            {
+                SendCommand($"GROUP {group}");
+                Logger.Debug("CLIENT *WAITING FOR RESPONSE*");
 
-        //public NntpGroupResponse Group(string group)
-        //{
-        //    NntpGroupResponse r = new();
+                if (reader == null) throw new DisconnectedException();
+                string? line = reader.ReadLine();
+                gr.RawResponse = line;
+                Logger.Debug("SERVER: {0}", gr.RawResponse);
 
-        //    try
-        //    {
-        //        SendCommand($"GROUP {group}");
-        //        List<string> response = ReadResponse();
-        //        r.Success = true;
+                if (line == null)
+                {
+                    gr.Success = false;
+                    gr.Exception = "Null line";
+                }
+                else
+                {
+                    string[] parts = line.Split(" ");
 
-        //        if (response.Count == 1)
-        //        {
-        //            r.Response = response[0];
+                    if (parts.Length != 5 || gr.ResponseCode != NntpResponseCode.GroupSelected)
+                    {
+                        gr.Success = false;
+                    }
+                    else
+                    {
+                        gr.ArticleCount = Convert.ToInt32(parts[1]);
+                        gr.FirstArticle = Convert.ToInt32(parts[2]);
+                        gr.LastArticle = Convert.ToInt32(parts[3]);
+                        gr.Success = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                gr.Success = false;
+                gr.Exception = ex.ToString();
+            }
 
-        //            string[] parts = r.Response.Split(" ");
-
-        //            if (parts.Length != 5 || r.Response.StartsWith("411"))
-        //            {
-        //                r.Success = false;
-        //            }
-        //            else
-        //            {
-        //                r.ArticleCount = Convert.ToInt32(parts[1]);
-        //                r.FirstArticle = Convert.ToInt32(parts[2]);
-        //                r.LastArticle = Convert.ToInt32(parts[3]);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            r.Success = false;
-        //        }
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        r.Success = false;
-        //        r.Response = "EXCEPTION CAUGHT: " + ex.ToString();
-        //        r.Exception = ex.ToString();
-        //    }
-
-        //    return r;
-        //}
+            return gr;
+        }
 
         //public NntpArticleResponse Article()
         //{

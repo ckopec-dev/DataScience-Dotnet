@@ -1,4 +1,6 @@
-﻿namespace Core.Internet
+﻿using System.Text;
+
+namespace Core.Internet
 {
     /// <summary>
     /// Format:
@@ -25,7 +27,7 @@
 
         public override string ToString()
         {
-            return String.Format($"{ArticleCount} {FirstArticle} {LastArticle}");
+            return base.ToString();
         }
     }
 }

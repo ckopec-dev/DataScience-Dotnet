@@ -3911,11 +3911,8 @@ namespace Euler
             NntpListResponse lr = client.List();
             logger.Info(lr);
             
-
-            //NntpGroupResponse gr = client.Group("lodman.test");
-            //Console.WriteLine("select success: {0}", gr.Success);
-            //Console.WriteLine("select result: {0}", gr);
-            //Console.WriteLine("raw response: {0}", gr.RawResponse);
+            NntpGroupResponse gr = client.Group("lodman.test");
+            logger.Info(gr);
 
             //NntpArticleResponse ar = client.Article();
             //Console.WriteLine("article success: {0}", ar.Success);
