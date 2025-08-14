@@ -231,6 +231,7 @@ namespace Core.Internet
                     if (parts.Length != 5 || gr.ResponseCode != NntpResponseCode.GroupSelected)
                     {
                         gr.Success = false;
+                        gr.Exception = "Invalid response";
                     }
                     else
                     {
