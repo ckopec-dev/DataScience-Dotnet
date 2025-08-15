@@ -6,40 +6,32 @@ namespace Core.Internet
     {
         public int? ArticleNumber { get; set; }
         public string? MessageId { get; set; }
-        public string? Header { get; set; }
+        public string? Subject { get; set; }
         public string? Body { get; set; }
 
-        public NntpArticleResponse() 
-        { 
+        public NntpArticleResponse()
+        {
         }
 
-        public NntpArticleResponse(int? articleNumber, 
-            string? messageId, string? header, string? body)
+        public NntpArticleResponse(int articleNumber, 
+            string messageId, string? subject, string? body)
         {
             ArticleNumber = articleNumber;  
             MessageId = messageId;
-            Header = header;
+            Subject = subject;
             Body = body;
         }
 
         public override string ToString()
         {
-            return ToString(false);
-        }
-
-        public string ToString(bool verbose)
-        {
             var sb = new StringBuilder();
 
             sb.AppendLine($"{ResponseCode} {ArticleNumber} {MessageId}");
 
-            if (verbose)
-            {
-                sb.AppendLine($"Header: {Header}");
-                sb.AppendLine($"Body: {Body}");
-            }
-
+            sb.AppendLine($"Subject: {Subject}");
+            sb.AppendLine($"Body: {Body}");
+        
             return sb.ToString().Trim();
-        }  
+        }
     }
 }

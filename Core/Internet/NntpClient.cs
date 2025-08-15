@@ -251,79 +251,120 @@ namespace Core.Internet
             return gr;
         }
 
-        //public NntpArticleResponse Article()
-        //{
-        //    NntpArticleResponse r = new();
+        public NntpArticleResponse Article()
+        {
+            var ar = new NntpArticleResponse();
 
-        //    try
-        //    {
-        //        SendCommand("ARTICLE");
-        //        List<string> response = ReadResponse(multiline: true);
-        //        r.Success = true;
-        //        r.MultilineResponse = Filter(response, ["."]);
+            try
+            {
+                SendCommand("ARTICLE");
+                Logger.Debug("CLIENT *WAITING FOR RESPONSE*");
 
-        //        string[] parts = r.MultilineResponse[0].Split(" ");
-        //        r.ResponseCode = Convert.ToInt32(parts[0]);
+                if (reader == null) throw new DisconnectedException();
+                string? line;
+                int line_num = 0;
 
-        //        if (r.ResponseCode == 420)
-        //        {
-        //            r.Success = false;
-        //            return r;
-        //        }
+                do
+                {
+                    Logger.Debug("CLIENT *WAITING FOR RESPONSE*");
 
-        //        if (parts.Length > 1)
-        //        {
-        //            r.ArticleNumber = Convert.ToInt32(parts[1]);
-        //            r.MessageId = parts[2];
-        //        }
+                    line = reader.ReadLine();
+                    line_num++;
 
-        //        for(int i = 1; i < r.MultilineResponse.Count; i++)
-        //        {
-        //            string line = r.MultilineResponse[i];
-        //            if (line.StartsWith("Subject: "))
-        //                r.Header = line[9..];
-        //            else
-        //                r.Body += line + Environment.NewLine;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        r.Success = false;
-        //        r.Response = "EXCEPTION CAUGHT: " + ex.ToString();
-        //        r.Exception = ex.ToString();
-        //    }
+                    if (line != null)
+                    {
+                        Logger.Debug("SERVER: " + line);
+                        ar.RawResponse += line + Environment.NewLine;
 
-        //    return r;
-        //}
+                        if (line == ".")
+                        {
+                            break;
+                        }
 
-        //public NntpNextResponse Next()
-        //{
-        //    NntpNextResponse r = new();
+                        if (line_num == 1)
+                        {
+                            if (ar.ResponseCode != NntpResponseCode.ArticleFound)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                //220 188 <105t835$9cn$1@newsfeed.man.lodz.pl> article
 
-        //    try
-        //    {
-        //        SendCommand($"NEXT");
-        //        List<string> response = ReadResponse(false);
-        //        r.Success = true;
+                                string[] parts = line.Split(' ');
+                                ar.ArticleNumber = Convert.ToInt32(parts[1]);
+                                ar.MessageId = parts[2];
+                            }
+                        }
+                        else
+                        {
+                            if (line.StartsWith("Subject: ") && ar.Subject == null)
+                            {
+                                ar.Subject = line;
+                            }
+                            else
+                            {
+                                ar.Body += line + Environment.NewLine;
+                            }
+                        }
+                    }
 
-        //        if (response.Count == 1)
-        //        {
-        //            r.Response = response[0];
-        //        }
-        //        else
-        //        {
-        //            r.Success = false;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        r.Success = false;
-        //        r.Response = "EXCEPTION CAUGHT: " + ex.ToString();
-        //        r.Exception = ex.ToString();
-        //    }
+                } while (line != null && line.Trim() != ".");
 
-        //    return r;
-        //}
+                ar.Success = true;
+            }
+            catch (Exception ex)
+            {
+                ar.Success = false;
+                ar.Exception = ex.ToString();
+            }
+
+            return ar;
+        }
+
+        public NntpNextResponse Next()
+        {
+            var nr = new NntpNextResponse();
+
+            try
+            {
+                SendCommand($"NEXT");
+                Logger.Debug("CLIENT *WAITING FOR RESPONSE*");
+
+                if (reader == null) throw new DisconnectedException();
+                string? line = reader.ReadLine();
+                nr.RawResponse = line;
+                Logger.Debug("SERVER: {0}", nr.RawResponse);
+
+                if (line == null)
+                {
+                    nr.Success = false;
+                    nr.Exception = "Null line";
+                }
+                else
+                {
+                    if (nr.ResponseCode != NntpResponseCode.ArticleFound)
+                    {
+                        nr.Success = false;
+                        nr.Exception = "Invalid response";
+                    }
+                    else
+                    {
+                        string[] parts = line.Split(' ');
+                        nr.ArticleNumber = Convert.ToInt32(parts[1]);
+                        nr.MessageId = parts[2];
+                        nr.Success = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                nr.Success = false;
+                nr.Exception = ex.ToString();
+            }
+
+            return nr;
+        }
 
         #endregion
     }

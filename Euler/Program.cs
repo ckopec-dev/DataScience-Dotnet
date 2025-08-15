@@ -3914,25 +3914,22 @@ namespace Euler
             NntpGroupResponse gr = client.Group("lodman.test");
             logger.Info(gr);
 
-            //NntpArticleResponse ar = client.Article();
-            //Console.WriteLine("article success: {0}", ar.Success);
-            //Console.WriteLine("article result: {0}", ar);
-            //Console.WriteLine("article exception: {0}", ar.Exception);
-            //Console.WriteLine();
+            NntpArticleResponse ar1 = client.Article();
+            logger.Info(ar1);
 
-            //NntpNextResponse nr = client.Next();
-            //Console.WriteLine("next success: {0}", nr.Success);
-            //Console.WriteLine("raw response: {0}", nr.RawResponse);
-            //Console.WriteLine("article exception: {0}", nr.Exception);
+            NntpNextResponse nr = client.Next();
+            logger.Info(nr);
 
-            ////ar = client.Article();
-            ////Console.WriteLine("article success: {0}", ar.Success);
-            ////Console.WriteLine("article result: {0}", ar);
-            ////Console.WriteLine();
-            ////Console.WriteLine("raw response: {0}", ar.RawResponse);
+            while (nr.ResponseCode == NntpResponseCode.NextArticleSelected)
+            {
+                NntpArticleResponse ar2 = client.Article();
+                logger.Info(ar2);
 
-            //NntpQuitResponse qr = client.Quit();
-            //logger.Info(qr.ToString());
+                nr = client.Next();
+            }
+
+            NntpQuitResponse qr = client.Quit();
+            logger.Info(qr);
         }
 
         static void Misc26()
