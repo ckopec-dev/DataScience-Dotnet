@@ -157,7 +157,7 @@ namespace Core.Internet
                     if (line != null) 
                     {
                         Logger.Debug("SERVER: " + line);
-                        lr.RawResponse += line + Environment.NewLine;
+                        lr.RawResponse += line;
                         
                         if (line == ".")
                         {
@@ -274,7 +274,7 @@ namespace Core.Internet
                     if (line != null)
                     {
                         Logger.Debug("SERVER: " + line);
-                        ar.RawResponse += line + Environment.NewLine;
+                        ar.RawResponse += line;
 
                         if (line == ".")
                         {
