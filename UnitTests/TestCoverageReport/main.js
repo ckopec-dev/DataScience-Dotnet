@@ -224,7 +224,7 @@ var assemblies = [
       { "name": "Core.Bioinformatics.Dna", "rp": "Core_Dna.html", "cl": 61, "ucl": 0, "cal": 61, "tl": 137, "cb": 20, "tb": 20, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Bioinformatics.Fasta", "rp": "Core_Fasta.html", "cl": 55, "ucl": 0, "cal": 55, "tl": 106, "cb": 18, "tb": 18, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Bioinformatics.FastaEntry", "rp": "Core_FastaEntry.html", "cl": 6, "ucl": 0, "cal": 6, "tl": 14, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Bioinformatics.ProfileMatrix", "rp": "Core_ProfileMatrix.html", "cl": 35, "ucl": 24, "cal": 59, "tl": 95, "cb": 16, "tb": 24, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Bioinformatics.ProfileMatrix", "rp": "Core_ProfileMatrix.html", "cl": 59, "ucl": 0, "cal": 59, "tl": 95, "cb": 24, "tb": 24, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Bioinformatics.Rna", "rp": "Core_Rna.html", "cl": 47, "ucl": 0, "cal": 47, "tl": 89, "cb": 8, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.CompressionHelper", "rp": "Core_CompressionHelper.html", "cl": 11, "ucl": 0, "cal": 11, "tl": 29, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.ConvertUnits", "rp": "Core_ConvertUnits.html", "cl": 12, "ucl": 82, "cal": 94, "tl": 163, "cb": 0, "tb": 10, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -248,13 +248,14 @@ var assemblies = [
       { "name": "Core.GraphTheory.v2.UndirectedGraph", "rp": "Core_UndirectedGraph.html", "cl": 0, "ucl": 28, "cal": 28, "tl": 49, "cb": 0, "tb": 10, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.GraphTheory.Vertex", "rp": "Core_Vertex.html", "cl": 0, "ucl": 8, "cal": 8, "tl": 16, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Histogram<T>", "rp": "Core_Histogram_1.html", "cl": 0, "ucl": 9, "cal": 9, "tl": 18, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Internet.NntpArticleResponse", "rp": "Core_NntpArticleResponse.html", "cl": 0, "ucl": 28, "cal": 28, "tl": 45, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Internet.NntpClient", "rp": "Core_NntpClient.html", "cl": 0, "ucl": 197, "cal": 197, "tl": 335, "cb": 0, "tb": 74, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Internet.NntpArticleResponse", "rp": "Core_NntpArticleResponse.html", "cl": 0, "ucl": 30, "cal": 30, "tl": 37, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Internet.NntpClient", "rp": "Core_NntpClient.html", "cl": 0, "ucl": 308, "cal": 308, "tl": 373, "cb": 0, "tb": 138, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Internet.NntpConnectResponse", "rp": "Core_NntpConnectResponse.html", "cl": 0, "ucl": 3, "cal": 3, "tl": 11, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Internet.NntpGroupResponse", "rp": "Core_NntpGroupResponse.html", "cl": 0, "ucl": 15, "cal": 15, "tl": 31, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Internet.NntpListResponse", "rp": "Core_NntpListResponse.html", "cl": 0, "ucl": 12, "cal": 12, "tl": 22, "cb": 0, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Internet.NntpGroupResponse", "rp": "Core_NntpGroupResponse.html", "cl": 0, "ucl": 21, "cal": 21, "tl": 33, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Internet.NntpListResponse", "rp": "Core_NntpListResponse.html", "cl": 0, "ucl": 13, "cal": 13, "tl": 24, "cb": 0, "tb": 6, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Internet.NntpListResponseItem", "rp": "Core_NntpListResponseItem.html", "cl": 0, "ucl": 10, "cal": 10, "tl": 18, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Internet.NntpNextResponse", "rp": "Core_NntpNextResponse.html", "cl": 0, "ucl": 15, "cal": 15, "tl": 31, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Internet.NntpQuitResponse", "rp": "Core_NntpQuitResponse.html", "cl": 0, "ucl": 3, "cal": 3, "tl": 11, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Internet.NntpResponse", "rp": "Core_NntpResponse.html", "cl": 0, "ucl": 36, "cal": 36, "tl": 52, "cb": 0, "tb": 6, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Internet.NntpUnknownResponseCodeException", "rp": "Core_NntpUnknownResponseCodeException.html", "cl": 0, "ucl": 8, "cal": 8, "tl": 16, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Internet.NtpClient", "rp": "Core_NtpClient.html", "cl": 0, "ucl": 38, "cal": 38, "tl": 47, "cb": 0, "tb": 12, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -454,6 +455,18 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.GameTheory.PokerHand", "reportPath": "Core_PokerHand.html", "methodName": "GetRank()", "methodShortName": "GetRank()", "fileIndex": 0, "line": 296,
+    "metrics": [
+      { "value": 342, "exceeded": true },
+      { "value": 18, "exceeded": true },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Internet.NntpClient", "reportPath": "Core_NntpClient.html", "methodName": "List()", "methodShortName": "List()", "fileIndex": 0, "line": 138,
+    "metrics": [
+      { "value": 342, "exceeded": true },
+      { "value": 18, "exceeded": true },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Internet.NntpClient", "reportPath": "Core_NntpClient.html", "methodName": "Article()", "methodShortName": "Article()", "fileIndex": 0, "line": 255,
     "metrics": [
       { "value": 342, "exceeded": true },
       { "value": 18, "exceeded": true },
@@ -933,12 +946,6 @@ var riskHotspots = [
       { "value": 10, "exceeded": false },
     ]},
   {
-    "assembly": "Core", "class": "Core.Bioinformatics.ProfileMatrix", "reportPath": "Core_ProfileMatrix.html", "methodName": "get_Consensus()", "methodShortName": "get_Consensus()", "fileIndex": 0, "line": 16,
-    "metrics": [
-      { "value": 72, "exceeded": true },
-      { "value": 8, "exceeded": false },
-    ]},
-  {
     "assembly": "Core", "class": "Core.GameTheory.PokerHand", "reportPath": "Core_PokerHand.html", "methodName": "TwoPair()", "methodShortName": "TwoPair()", "fileIndex": 0, "line": 326,
     "metrics": [
       { "value": 72, "exceeded": true },
@@ -952,6 +959,18 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.Internet.NntpClient", "reportPath": "Core_NntpClient.html", "methodName": "Filter(System.Collections.Generic.List`1<System.String>,System.Collections.Generic.List`1<System.String>)", "methodShortName": "Filter(...)", "fileIndex": 0, "line": 113,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Internet.NntpClient", "reportPath": "Core_NntpClient.html", "methodName": "ReadResponse(System.Boolean)", "methodShortName": "ReadResponse(...)", "fileIndex": 0, "line": 42,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Internet.NntpClient", "reportPath": "Core_NntpClient.html", "methodName": "Group(System.String)", "methodShortName": "Group(...)", "fileIndex": 0, "line": 209,
     "metrics": [
       { "value": 72, "exceeded": true },
       { "value": 8, "exceeded": false },
@@ -1192,6 +1211,12 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.GraphTheory.v2.UndirectedGraph", "reportPath": "Core_UndirectedGraph.html", "methodName": "DisplayMatrix()", "methodShortName": "DisplayMatrix()", "fileIndex": 0, "line": 35,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Internet.NntpClient", "reportPath": "Core_NntpClient.html", "methodName": "Next()", "methodShortName": "Next()", "fileIndex": 0, "line": 326,
     "metrics": [
       { "value": 42, "exceeded": true },
       { "value": 6, "exceeded": false },
