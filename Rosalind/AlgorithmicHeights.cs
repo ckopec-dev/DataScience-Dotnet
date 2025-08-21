@@ -360,6 +360,19 @@ namespace Rosalind
             Console.WriteLine(components);
         }
 
+        public static void ProblemHEA()
+        {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.hea.txt") ?? throw new ResourceNotFoundException();
+            using StreamReader sr = new(mrs);
+
+            int n = int.Parse(sr.ReadLine()!);
+            int[] arr = Array.ConvertAll(sr.ReadLine()!.Split(), int.Parse);
+
+            List<(int, int)> swaps = BuildMaxHeap_HEA(arr);
+
+            Console.WriteLine(string.Join(" ", arr));
+        }
+
         #endregion
 
         #region Helpers
@@ -381,6 +394,49 @@ namespace Rosalind
                             stack.Push(neighbor);
                     }
                 }
+            }
+        }
+
+        static List<(int, int)> BuildMaxHeap_HEA(int[] arr)
+        {
+            List<(int, int)> swaps = new List<(int, int)>();
+            int n = arr.Length;
+
+            // Start from last non-leaf node and heapify down
+            for (int i = n / 2 - 1; i >= 0; i--)
+            {
+                MaxHeapify_HEA(arr, n, i, swaps);
+            }
+
+            return swaps;
+        }
+
+        static void MaxHeapify_HEA(int[] arr, int heapSize, int i, List<(int, int)> swaps)
+        {
+            int largest = i;
+            int left = 2 * i + 1;
+            int right = 2 * i + 2;
+
+            // Find largest among root, left child and right child
+            if (left < heapSize && arr[left] > arr[largest])
+                largest = left;
+
+            if (right < heapSize && arr[right] > arr[largest])
+                largest = right;
+
+            // If largest is not root, swap and continue heapifying
+            if (largest != i)
+            {
+                // Record the swap (1-indexed for output)
+                swaps.Add((i + 1, largest + 1));
+
+                // Swap elements
+                int temp = arr[i];
+                arr[i] = arr[largest];
+                arr[largest] = temp;
+
+                // Recursively heapify the affected subtree
+                MaxHeapify_HEA(arr, heapSize, largest, swaps);
             }
         }
 
