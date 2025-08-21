@@ -303,6 +303,83 @@ namespace Rosalind
             Console.WriteLine(totalRabbits);
         }
 
+        public static void ProblemGRPH()
+        {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.grph.txt") ?? throw new ResourceNotFoundException();
+            using StreamReader sr = new(mrs);
+
+            int k = 3; // Rosalind GRPH uses k = 3
+            
+            var records = ReadFastaGRPH(sr);
+
+            // Build a map: prefix(k) -> list of record IDs with that prefix
+            var prefixIndex = new Dictionary<string, List<string>>(StringComparer.Ordinal);
+            foreach (var r in records)
+            {
+                if (r.Seq.Length < k) continue;
+                var pre = r.Seq[..k];
+                if (!prefixIndex.TryGetValue(pre, out var list))
+                    prefixIndex[pre] = list = [];
+                list.Add(r.Id);
+            }
+
+            // For each record, find others whose prefix matches this record's suffix
+            foreach (var r in records)
+            {
+                if (r.Seq.Length < k) continue;
+                var suf = r.Seq.Substring(r.Seq.Length - k, k);
+                if (prefixIndex.TryGetValue(suf, out var candidates))
+                {
+                    foreach (var toId in candidates)
+                    {
+                        if (!ReferenceEquals(r.Id, toId) && r.Id != toId) // avoid self-loops
+                            Console.WriteLine($"{r.Id} {toId}");
+                    }
+                }
+            }
+        }
+
         #endregion
+
+        #region Helpers
+
+        private class FastaRecordGRPH
+        {
+            public string Id { get; set; } = "";
+            public string Seq { get; set; } = "";
+        }
+
+        static List<FastaRecordGRPH> ReadFastaGRPH(TextReader reader)
+        {
+            var result = new List<FastaRecordGRPH>();
+            FastaRecordGRPH? current = null;
+            string? line;
+
+            while ((line = reader.ReadLine()) != null)
+            {
+                if (line.Length == 0) continue;
+
+                if (line[0] == '>')
+                {
+                    // Start a new record. Use the first token after '>' as the ID (handles descriptions).
+                    var header = line[1..].Trim();
+                    #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+                    var id = header.Split((char[])null, StringSplitOptions.RemoveEmptyEntries)[0];
+                    #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+                    current = new FastaRecordGRPH { Id = id, Seq = "" };
+                    result.Add(current);
+                }
+                else
+                {
+                    if (current == null)
+                        throw new InvalidDataException("FASTA format error: sequence data before any header.");
+                    current.Seq += line.Trim();
+                }
+            }
+            return result;
+        }
     }
+
+    #endregion
 }
+

@@ -18,6 +18,7 @@
     <None Remove="Inputs\dna.txt" />
     <None Remove="Inputs\fibo.txt" />
     <None Remove="Inputs\gc.txt" />
+    <None Remove="Inputs\grph.txt" />
     <None Remove="Inputs\hamm.txt" />
     <None Remove="Inputs\ini.txt" />
     <None Remove="Inputs\ins.txt" />
@@ -46,6 +47,7 @@
     <EmbeddedResource Include="Inputs\dna.txt" />
     <EmbeddedResource Include="Inputs\fibo.txt" />
     <EmbeddedResource Include="Inputs\gc.txt" />
+    <EmbeddedResource Include="Inputs\grph.txt" />
     <EmbeddedResource Include="Inputs\hamm.txt" />
     <EmbeddedResource Include="Inputs\ini.txt" />
     <EmbeddedResource Include="Inputs\ins.txt" />
