@@ -241,12 +241,14 @@ var assemblies = [
       { "name": "Core.GameTheory.Deck", "rp": "Core_Deck.html", "cl": 0, "ucl": 29, "cal": 29, "tl": 48, "cb": 0, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.GameTheory.PokerHand", "rp": "Core_PokerHand.html", "cl": 0, "ucl": 278, "cal": 278, "tl": 465, "cb": 0, "tb": 156, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.GenericExtensions", "rp": "Core_GenericExtensions.html", "cl": 0, "ucl": 10, "cal": 10, "tl": 22, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.GraphTheory.Edge", "rp": "Core_Edge.html", "cl": 0, "ucl": 7, "cal": 7, "tl": 14, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.GraphTheory.EdgeList", "rp": "Core_EdgeList.html", "cl": 0, "ucl": 59, "cal": 59, "tl": 143, "cb": 0, "tb": 14, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.GraphTheory.Graph", "rp": "Core_Graph.html", "cl": 0, "ucl": 83, "cal": 83, "tl": 108, "cb": 0, "tb": 30, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.GraphTheory.v2.Graph", "rp": "Core_Graph.2.html", "cl": 0, "ucl": 5, "cal": 5, "tl": 19, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.GraphTheory.Edge", "rp": "Core_Edge.html", "cl": 0, "ucl": 7, "cal": 7, "tl": 36, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.GraphTheory.Edge<T>", "rp": "Core_Edge_1.html", "cl": 0, "ucl": 20, "cal": 20, "tl": 36, "cb": 0, "tb": 10, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.GraphTheory.EdgeList", "rp": "Core_EdgeList.html", "cl": 0, "ucl": 59, "cal": 59, "tl": 140, "cb": 0, "tb": 14, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.GraphTheory.Graph", "rp": "Core_Graph.html", "cl": 0, "ucl": 83, "cal": 83, "tl": 526, "cb": 0, "tb": 30, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.GraphTheory.Graph<T>", "rp": "Core_Graph_1.html", "cl": 0, "ucl": 317, "cal": 317, "tl": 526, "cb": 0, "tb": 146, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.GraphTheory.v2.Graph", "rp": "Core_Graph.2.html", "cl": 0, "ucl": 5, "cal": 5, "tl": 29, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.GraphTheory.v2.UndirectedGraph", "rp": "Core_UndirectedGraph.html", "cl": 0, "ucl": 28, "cal": 28, "tl": 49, "cb": 0, "tb": 10, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.GraphTheory.Vertex", "rp": "Core_Vertex.html", "cl": 0, "ucl": 8, "cal": 8, "tl": 16, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.GraphTheory.Vertex", "rp": "Core_Vertex.html", "cl": 0, "ucl": 8, "cal": 8, "tl": 15, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Histogram<T>", "rp": "Core_Histogram_1.html", "cl": 0, "ucl": 9, "cal": 9, "tl": 18, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Internet.NntpArticleResponse", "rp": "Core_NntpArticleResponse.html", "cl": 0, "ucl": 30, "cal": 30, "tl": 37, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Internet.NntpClient", "rp": "Core_NntpClient.html", "cl": 0, "ucl": 308, "cal": 308, "tl": 373, "cb": 0, "tb": 138, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -260,6 +262,10 @@ var assemblies = [
       { "name": "Core.Internet.NntpUnknownResponseCodeException", "rp": "Core_NntpUnknownResponseCodeException.html", "cl": 0, "ucl": 8, "cal": 8, "tl": 16, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Internet.NtpClient", "rp": "Core_NtpClient.html", "cl": 0, "ucl": 38, "cal": 38, "tl": 47, "cb": 0, "tb": 12, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Internet.WhoIsClient", "rp": "Core_WhoIsClient.html", "cl": 0, "ucl": 10, "cal": 10, "tl": 23, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.LinearAlgebra.LinearAlgebraException", "rp": "Core_LinearAlgebraException.html", "cl": 0, "ucl": 1, "cal": 1, "tl": 7, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.LinearAlgebra.LinearAlgebraUtils", "rp": "Core_LinearAlgebraUtils.html", "cl": 0, "ucl": 93, "cal": 93, "tl": 139, "cb": 0, "tb": 60, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.LinearAlgebra.Matrix", "rp": "Core_Matrix.html", "cl": 0, "ucl": 238, "cal": 238, "tl": 342, "cb": 0, "tb": 130, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.LinearAlgebra.Vector", "rp": "Core_Vector.html", "cl": 0, "ucl": 75, "cal": 75, "tl": 120, "cb": 0, "tb": 22, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.LinearRegression", "rp": "Core_LinearRegression.html", "cl": 15, "ucl": 7, "cal": 22, "tl": 40, "cb": 3, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.MathHelper", "rp": "Core_MathHelper.html", "cl": 0, "ucl": 261, "cal": 261, "tl": 307, "cb": 0, "tb": 192, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Motion", "rp": "Core_Motion.html", "cl": 0, "ucl": 18, "cal": 18, "tl": 52, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -454,6 +460,24 @@ var riskHotspots = [
       { "value": 33, "exceeded": true },
     ]},
   {
+    "assembly": "Core", "class": "Core.LinearAlgebra.LinearAlgebraUtils", "reportPath": "Core_LinearAlgebraUtils.html", "methodName": "SolveLinearSystem(Core.LinearAlgebra.Matrix,Core.LinearAlgebra.Vector)", "methodShortName": "SolveLinearSystem(...)", "fileIndex": 0, "line": 9,
+    "metrics": [
+      { "value": 812, "exceeded": true },
+      { "value": 28, "exceeded": true },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.GraphTheory.Graph<T>", "reportPath": "Core_Graph_1.html", "methodName": "FindShortestPath(T,T)", "methodShortName": "FindShortestPath(...)", "fileIndex": 0, "line": 257,
+    "metrics": [
+      { "value": 702, "exceeded": true },
+      { "value": 26, "exceeded": true },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.LinearAlgebra.LinearAlgebraUtils", "reportPath": "Core_LinearAlgebraUtils.html", "methodName": "ComputeRank(Core.LinearAlgebra.Matrix)", "methodShortName": "ComputeRank(...)", "fileIndex": 0, "line": 95,
+    "metrics": [
+      { "value": 506, "exceeded": true },
+      { "value": 22, "exceeded": true },
+    ]},
+  {
     "assembly": "Core", "class": "Core.GameTheory.PokerHand", "reportPath": "Core_PokerHand.html", "methodName": "GetRank()", "methodShortName": "GetRank()", "fileIndex": 0, "line": 296,
     "metrics": [
       { "value": 342, "exceeded": true },
@@ -640,6 +664,18 @@ var riskHotspots = [
       { "value": 14, "exceeded": false },
     ]},
   {
+    "assembly": "Core", "class": "Core.LinearAlgebra.Matrix", "reportPath": "Core_Matrix.html", "methodName": "LUDecomposition()", "methodShortName": "LUDecomposition()", "fileIndex": 0, "line": 210,
+    "metrics": [
+      { "value": 210, "exceeded": true },
+      { "value": 14, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.LinearAlgebra.Matrix", "reportPath": "Core_Matrix.html", "methodName": "QRDecomposition()", "methodShortName": "QRDecomposition()", "fileIndex": 0, "line": 241,
+    "metrics": [
+      { "value": 210, "exceeded": true },
+      { "value": 14, "exceeded": false },
+    ]},
+  {
     "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "PartitionCount(System.Int32)", "methodShortName": "PartitionCount(...)", "fileIndex": 0, "line": 368,
     "metrics": [
       { "value": 210, "exceeded": true },
@@ -707,6 +743,12 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.DateTimeExtensions", "reportPath": "Core_DateTimeExtensions.html", "methodName": "IsUSStockMarketOpen(System.DateTime)", "methodShortName": "IsUSStockMarketOpen(...)", "fileIndex": 0, "line": 10,
+    "metrics": [
+      { "value": 156, "exceeded": true },
+      { "value": 12, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.GraphTheory.Graph<T>", "reportPath": "Core_Graph_1.html", "methodName": "RemoveEdge(T,T)", "methodShortName": "RemoveEdge(...)", "fileIndex": 0, "line": 88,
     "metrics": [
       { "value": 156, "exceeded": true },
       { "value": 12, "exceeded": false },
@@ -790,7 +832,25 @@ var riskHotspots = [
       { "value": 10, "exceeded": false },
     ]},
   {
+    "assembly": "Core", "class": "Core.GraphTheory.Graph<T>", "reportPath": "Core_Graph_1.html", "methodName": "DepthFirstSearch(T)", "methodShortName": "DepthFirstSearch(...)", "fileIndex": 0, "line": 185,
+    "metrics": [
+      { "value": 110, "exceeded": true },
+      { "value": 10, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.GraphTheory.Graph<T>", "reportPath": "Core_Graph_1.html", "methodName": "TopologicalSort()", "methodShortName": "TopologicalSort()", "fileIndex": 0, "line": 419,
+    "metrics": [
+      { "value": 110, "exceeded": true },
+      { "value": 10, "exceeded": false },
+    ]},
+  {
     "assembly": "Core", "class": "Core.Internet.NntpClient", "reportPath": "Core_NntpClient.html", "methodName": "ReadResponse(System.Boolean)", "methodShortName": "ReadResponse(...)", "fileIndex": 0, "line": 53,
+    "metrics": [
+      { "value": 110, "exceeded": true },
+      { "value": 10, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.LinearAlgebra.LinearAlgebraUtils", "reportPath": "Core_LinearAlgebraUtils.html", "methodName": "ComputeEigenvalues(Core.LinearAlgebra.Matrix,System.Int32)", "methodShortName": "ComputeEigenvalues(...)", "fileIndex": 0, "line": 70,
     "metrics": [
       { "value": 110, "exceeded": true },
       { "value": 10, "exceeded": false },
@@ -958,6 +1018,30 @@ var riskHotspots = [
       { "value": 8, "exceeded": false },
     ]},
   {
+    "assembly": "Core", "class": "Core.GraphTheory.Edge<T>", "reportPath": "Core_Edge_1.html", "methodName": "Equals(System.Object)", "methodShortName": "Equals(...)", "fileIndex": 0, "line": 21,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.GraphTheory.Graph<T>", "reportPath": "Core_Graph_1.html", "methodName": "BreadthFirstSearch(T)", "methodShortName": "BreadthFirstSearch(...)", "fileIndex": 0, "line": 223,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.GraphTheory.Graph<T>", "reportPath": "Core_Graph_1.html", "methodName": "HasCycleHelper(T,System.Collections.Generic.HashSet`1<T>,System.Collections.Generic.HashSet`1<T>)", "methodShortName": "HasCycleHelper(...)", "fileIndex": 0, "line": 394,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.GraphTheory.Graph<T>", "reportPath": "Core_Graph_1.html", "methodName": "ToString()", "methodShortName": "ToString()", "fileIndex": 0, "line": 491,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
     "assembly": "Core", "class": "Core.Internet.NntpClient", "reportPath": "Core_NntpClient.html", "methodName": "Filter(System.Collections.Generic.List`1<System.String>,System.Collections.Generic.List`1<System.String>)", "methodShortName": "Filter(...)", "fileIndex": 0, "line": 113,
     "metrics": [
       { "value": 72, "exceeded": true },
@@ -983,6 +1067,30 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.Internet.NntpClient", "reportPath": "Core_NntpClient.html", "methodName": "ReadResponse(System.Boolean)", "methodShortName": "ReadResponse(...)", "fileIndex": 0, "line": 192,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.LinearAlgebra.Matrix", "reportPath": "Core_Matrix.html", "methodName": "op_Addition(Core.LinearAlgebra.Matrix,Core.LinearAlgebra.Matrix)", "methodShortName": "op_Addition(...)", "fileIndex": 0, "line": 67,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.LinearAlgebra.Matrix", "reportPath": "Core_Matrix.html", "methodName": "op_Subtraction(Core.LinearAlgebra.Matrix,Core.LinearAlgebra.Matrix)", "methodShortName": "op_Subtraction(...)", "fileIndex": 0, "line": 79,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.LinearAlgebra.Matrix", "reportPath": "Core_Matrix.html", "methodName": "op_Multiply(Core.LinearAlgebra.Matrix,Core.LinearAlgebra.Matrix)", "methodShortName": "op_Multiply(...)", "fileIndex": 0, "line": 102,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.LinearAlgebra.Matrix", "reportPath": "Core_Matrix.html", "methodName": "GetMinor(System.Double[0...,0...],System.Int32,System.Int32)", "methodShortName": "GetMinor(...)", "fileIndex": 0, "line": 166,
     "metrics": [
       { "value": 72, "exceeded": true },
       { "value": 8, "exceeded": false },
@@ -1204,6 +1312,36 @@ var riskHotspots = [
       { "value": 6, "exceeded": false },
     ]},
   {
+    "assembly": "Core", "class": "Core.GraphTheory.Graph<T>", "reportPath": "Core_Graph_1.html", "methodName": "RemoveVertex(T)", "methodShortName": "RemoveVertex(...)", "fileIndex": 0, "line": 41,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.GraphTheory.Graph<T>", "reportPath": "Core_Graph_1.html", "methodName": "AddEdge(T,T,System.Double)", "methodShortName": "AddEdge(...)", "fileIndex": 0, "line": 61,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.GraphTheory.Graph<T>", "reportPath": "Core_Graph_1.html", "methodName": "IsConnected()", "methodShortName": "IsConnected()", "fileIndex": 0, "line": 318,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.GraphTheory.Graph<T>", "reportPath": "Core_Graph_1.html", "methodName": "HasCycle()", "methodShortName": "HasCycle()", "fileIndex": 0, "line": 377,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.GraphTheory.Graph<T>", "reportPath": "Core_Graph_1.html", "methodName": "ToDotFormat()", "methodShortName": "ToDotFormat()", "fileIndex": 0, "line": 508,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
     "assembly": "Core", "class": "Core.GraphTheory.v2.UndirectedGraph", "reportPath": "Core_UndirectedGraph.html", "methodName": "DisplayMatrix()", "methodShortName": "DisplayMatrix()", "fileIndex": 0, "line": 31,
     "metrics": [
       { "value": 42, "exceeded": true },
@@ -1229,6 +1367,36 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.Internet.NtpClient", "reportPath": "Core_NtpClient.html", "methodName": "Query(System.String)", "methodShortName": "Query(...)", "fileIndex": 0, "line": 10,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.LinearAlgebra.Matrix", "reportPath": "Core_Matrix.html", "methodName": "Random(System.Int32,System.Int32,System.Random)", "methodShortName": "Random(...)", "fileIndex": 0, "line": 56,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.LinearAlgebra.Matrix", "reportPath": "Core_Matrix.html", "methodName": "op_Multiply(Core.LinearAlgebra.Matrix,Core.LinearAlgebra.Vector)", "methodShortName": "op_Multiply(...)", "fileIndex": 0, "line": 115,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.LinearAlgebra.Matrix", "reportPath": "Core_Matrix.html", "methodName": "ComputeDeterminant(System.Double[0...,0...])", "methodShortName": "ComputeDeterminant(...)", "fileIndex": 0, "line": 152,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.LinearAlgebra.Matrix", "reportPath": "Core_Matrix.html", "methodName": "Adjugate()", "methodShortName": "Adjugate()", "fileIndex": 0, "line": 197,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.LinearAlgebra.Matrix", "reportPath": "Core_Matrix.html", "methodName": "ToString()", "methodShortName": "ToString()", "fileIndex": 0, "line": 327,
     "metrics": [
       { "value": 42, "exceeded": true },
       { "value": 6, "exceeded": false },
