@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Core.DifferentialEquations
 {
-    internal class SolutionMethod
+    /// <summary>
+    /// Numerical methods for solving differential equations
+    /// </summary>
+    public enum SolutionMethod
     {
+        Euler,
+        ImprovedEuler,
+        RungeKutta4,
+        AdaptiveRungeKutta
     }
 }
