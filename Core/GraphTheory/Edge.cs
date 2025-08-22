@@ -1,14 +1,36 @@
-﻿namespace Core.GraphTheory
+﻿
+namespace Core.GraphTheory
 {
-    public class Edge(int vertexA, int vertexB, int? weight = null)
+    /// <summary>
+    /// Represents an edge in the graph with weight support
+    /// </summary>
+    public class Edge<T>(T from, T to, double weight = 1.0, bool isDirected = false) where T : IComparable<T>
     {
-        public int VertexA { get; set; } = vertexA;
-        public int VertexB { get; set; } = vertexB;
-        public int? Weight { get; set; } = weight;
+        public T From { get; set; } = from;
+        public T To { get; set; } = to;
+        public double Weight { get; set; } = weight;
+        public bool IsDirected { get; set; } = isDirected;
 
         public override string ToString()
         {
-            return string.Format("{0} {1} {2}", VertexA, VertexB, Weight).Trim();
+            string arrow = IsDirected ? " -> " : " -- ";
+            return $"{From}{arrow}{To} (Weight: {Weight})";
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is Edge<T> edge)
+            {
+                return From.Equals(edge.From) && To.Equals(edge.To) &&
+                       Math.Abs(Weight - edge.Weight) < 1e-10 &&
+                       IsDirected == edge.IsDirected;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(From, To, Weight, IsDirected);
         }
     }
 }

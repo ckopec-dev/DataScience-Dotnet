@@ -17,9 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="GraphTheory\Edge.cs" />
     <Compile Remove="GraphTheory\EdgeList.cs" />
-    <Compile Remove="GraphTheory\Graph.cs" />
     <Compile Remove="GraphTheory\GraphType.cs" />
     <Compile Remove="GraphTheory\Vertex.cs" />
   </ItemGroup>
@@ -42,10 +40,6 @@
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.1" />
     <PackageReference Include="NLog" Version="6.0.3" />
     <PackageReference Include="ScottPlot" Version="5.0.55" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="GraphTheory\" />
   </ItemGroup>
 
 </Project>
