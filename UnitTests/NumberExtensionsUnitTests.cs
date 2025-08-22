@@ -100,10 +100,6 @@ namespace UnitTests
             Assert.AreEqual(15, bi.SumOfDigits());
         }
 
-
-
-
-
         [TestMethod]
         public void TestIsCyclicSet()
         {

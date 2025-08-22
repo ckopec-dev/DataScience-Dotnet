@@ -399,7 +399,7 @@ namespace Rosalind
 
         static List<(int, int)> BuildMaxHeap_HEA(int[] arr)
         {
-            List<(int, int)> swaps = new List<(int, int)>();
+            List<(int, int)> swaps = [];
             int n = arr.Length;
 
             // Start from last non-leaf node and heapify down
@@ -431,9 +431,7 @@ namespace Rosalind
                 swaps.Add((i + 1, largest + 1));
 
                 // Swap elements
-                int temp = arr[i];
-                arr[i] = arr[largest];
-                arr[largest] = temp;
+                (arr[largest], arr[i]) = (arr[i], arr[largest]);
 
                 // Recursively heapify the affected subtree
                 MaxHeapify_HEA(arr, heapSize, largest, swaps);
