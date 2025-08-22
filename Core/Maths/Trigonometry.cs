@@ -1,11 +1,4 @@
-﻿using ScottPlot;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Core.GeneralAlgebra
+﻿namespace Core.Maths
 {
     // <summary>
     /// Comprehensive trigonometry class providing various trigonometric functions,

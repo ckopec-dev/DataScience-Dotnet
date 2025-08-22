@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Core.GeneralAlgebra
+﻿namespace Core.Maths
 {
     /// <summary>
     /// A comprehensive general algebra class providing various mathematical operations and utilities
