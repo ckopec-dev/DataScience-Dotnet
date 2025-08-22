@@ -42,4 +42,8 @@
     <PackageReference Include="ScottPlot" Version="5.0.55" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="GeneralAlgebra\" />
+  </ItemGroup>
+
 </Project>
