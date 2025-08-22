@@ -1,5 +1,4 @@
 ﻿using Core;
-using Core.GraphTheory;
 using QuikGraph;
 using QuikGraph.Algorithms;
 using QuikGraph.Graphviz;
@@ -141,47 +140,48 @@ namespace Rosalind
             Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.ddeg.txt") ?? throw new ResourceNotFoundException();
             using StreamReader sr = new(mrs);
 
-            #pragma warning disable IDE0305 // Simplify collection initialization
-            List<string> lst = sr.ReadToEnd().ToList();
-            #pragma warning restore IDE0305 // Simplify collection initialization
+            throw new NotImplementedException();
+            //#pragma warning disable IDE0305 // Simplify collection initialization
+            //List<string> lst = sr.ReadToEnd().ToList();
+            //#pragma warning restore IDE0305 // Simplify collection initialization
 
-            EdgeList e = new(lst);
-            var graph = e.ToAdjacencyGraph();
+            //EdgeList e = new(lst);
+            //var graph = e.ToAdjacencyGraph();
 
-            StringBuilder sb = new();
+            //StringBuilder sb = new();
 
-            // For each vertex, count the number of edges of each connected vertex and print out the results.
-            for (int i = 1; i <= graph.Vertices.Count(); ++i)
-            {
-                //Console.WriteLine("Vertex {0}", i);
+            //// For each vertex, count the number of edges of each connected vertex and print out the results.
+            //for (int i = 1; i <= graph.Vertices.Count(); ++i)
+            //{
+            //    //Console.WriteLine("Vertex {0}", i);
 
-                int sum = 0;
+            //    int sum = 0;
 
-                foreach (var ed in graph.Edges.Where(j => j.Source == i || j.Target == i))
-                {
-                    // Each result is a neighbor. 
-                    // Sum the neighbor's edge count.
+            //    foreach (var ed in graph.Edges.Where(j => j.Source == i || j.Target == i))
+            //    {
+            //        // Each result is a neighbor. 
+            //        // Sum the neighbor's edge count.
 
-                    //Console.WriteLine("\t{0}, {1}", ed.Source, ed.Target);
+            //        //Console.WriteLine("\t{0}, {1}", ed.Source, ed.Target);
 
-                    if (ed.Source == i)
-                    {
-                        // The target is the neighbor.
-                        sum += graph.Edges.Where(k => k.Source == ed.Target || k.Target == ed.Target).Count();
-                    }
-                    else
-                    {
-                        // The source is the neighbor.
-                        sum += graph.Edges.Where(k => k.Source == ed.Source || k.Target == ed.Source).Count();
+            //        if (ed.Source == i)
+            //        {
+            //            // The target is the neighbor.
+            //            sum += graph.Edges.Where(k => k.Source == ed.Target || k.Target == ed.Target).Count();
+            //        }
+            //        else
+            //        {
+            //            // The source is the neighbor.
+            //            sum += graph.Edges.Where(k => k.Source == ed.Source || k.Target == ed.Source).Count();
 
-                    }
-                }
+            //        }
+            //    }
 
-                sb.Append(sum + " ");
+            //    sb.Append(sum + " ");
 
-            }
+            //}
 
-            Console.WriteLine(sb.ToString().Trim());
+            //Console.WriteLine(sb.ToString().Trim());
         }
 
         public static void ProblemMAJ()
@@ -301,19 +301,20 @@ namespace Rosalind
             Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.bfs.txt") ?? throw new ResourceNotFoundException();
             using StreamReader sr = new(mrs);
 
-            #pragma warning disable IDE0305 // Simplify collection initialization
-            List<string> lst = sr.ReadToEnd().ToList();
-            #pragma warning restore IDE0305 // Simplify collection initialization
+            throw new NotImplementedException();
+            //#pragma warning disable IDE0305 // Simplify collection initialization
+            //List<string> lst = sr.ReadToEnd().ToList();
+            //#pragma warning restore IDE0305 // Simplify collection initialization
 
-            Graph graph = Graph.FromEdgeList(lst);
+            //Graph graph = Graph.FromEdgeList(lst);
 
-            int[] shortestDistances = graph.ShortestDestinations(1);
+            //int[] shortestDistances = graph.ShortestDestinations(1);
 
-            // Print the shortest distances
-            for (int i = 1; i <= graph.VertexCount; i++)
-            {
-                Console.Write(shortestDistances[i] + " ");
-            }
+            //// Print the shortest distances
+            //for (int i = 1; i <= graph.VertexCount; i++)
+            //{
+            //    Console.Write(shortestDistances[i] + " ");
+            //}
         }
 
         public static void ProblemCC()

@@ -8,9 +8,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="GraphTheory\v2\**" />
     <Compile Remove="Logic\**" />
+    <EmbeddedResource Remove="GraphTheory\v2\**" />
     <EmbeddedResource Remove="Logic\**" />
+    <None Remove="GraphTheory\v2\**" />
     <None Remove="Logic\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="GraphTheory\Edge.cs" />
+    <Compile Remove="GraphTheory\EdgeList.cs" />
+    <Compile Remove="GraphTheory\Graph.cs" />
+    <Compile Remove="GraphTheory\GraphType.cs" />
+    <Compile Remove="GraphTheory\Vertex.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,10 +39,13 @@
   <ItemGroup>
     <PackageReference Include="Combinatorics" Version="2.0.0" />
     <PackageReference Include="ExtendedNumerics.BigDecimal" Version="3001.0.1.201" />
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.0" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.1" />
     <PackageReference Include="NLog" Version="6.0.3" />
-    <PackageReference Include="QuikGraph" Version="2.5.0" />
     <PackageReference Include="ScottPlot" Version="5.0.55" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="GraphTheory\" />
   </ItemGroup>
 
 </Project>
