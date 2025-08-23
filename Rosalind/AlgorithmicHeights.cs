@@ -140,48 +140,38 @@ namespace Rosalind
             Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.ddeg.txt") ?? throw new ResourceNotFoundException();
             using StreamReader sr = new(mrs);
 
-            throw new NotImplementedException();
-            //#pragma warning disable IDE0305 // Simplify collection initialization
-            //List<string> lst = sr.ReadToEnd().ToList();
-            //#pragma warning restore IDE0305 // Simplify collection initialization
+            var first = sr.ReadLine()!.Split([' ', '\t'], StringSplitOptions.RemoveEmptyEntries);
+            int n = int.Parse(first[0]);
+            int m = int.Parse(first[1]);
 
-            //EdgeList e = new(lst);
-            //var graph = e.ToAdjacencyGraph();
+            // store edges and compute degrees
+            var edgesU = new int[m];
+            var edgesV = new int[m];
+            var deg = new int[n + 1];
 
-            //StringBuilder sb = new();
+            for (int i = 0; i < m; i++)
+            {
+                var parts = sr.ReadLine()!.Split([' ', '\t'], StringSplitOptions.RemoveEmptyEntries);
+                int u = int.Parse(parts[0]);
+                int v = int.Parse(parts[1]);
+                edgesU[i] = u;
+                edgesV[i] = v;
+                deg[u]++;
+                deg[v]++;
+            }
 
-            //// For each vertex, count the number of edges of each connected vertex and print out the results.
-            //for (int i = 1; i <= graph.Vertices.Count(); ++i)
-            //{
-            //    //Console.WriteLine("Vertex {0}", i);
+            // compute double-degrees
+            var ans = new long[n + 1]; // long in case degrees sum gets large
+            for (int i = 0; i < m; i++)
+            {
+                int u = edgesU[i];
+                int v = edgesV[i];
+                ans[u] += deg[v];
+                ans[v] += deg[u];
+            }
 
-            //    int sum = 0;
-
-            //    foreach (var ed in graph.Edges.Where(j => j.Source == i || j.Target == i))
-            //    {
-            //        // Each result is a neighbor. 
-            //        // Sum the neighbor's edge count.
-
-            //        //Console.WriteLine("\t{0}, {1}", ed.Source, ed.Target);
-
-            //        if (ed.Source == i)
-            //        {
-            //            // The target is the neighbor.
-            //            sum += graph.Edges.Where(k => k.Source == ed.Target || k.Target == ed.Target).Count();
-            //        }
-            //        else
-            //        {
-            //            // The source is the neighbor.
-            //            sum += graph.Edges.Where(k => k.Source == ed.Source || k.Target == ed.Source).Count();
-
-            //        }
-            //    }
-
-            //    sb.Append(sum + " ");
-
-            //}
-
-            //Console.WriteLine(sb.ToString().Trim());
+            // output D[1..n]
+            Console.WriteLine(string.Join(" ", Enumerable.Range(1, n).Select(i => ans[i].ToString())));
         }
 
         public static void ProblemMAJ()
@@ -301,20 +291,49 @@ namespace Rosalind
             Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.bfs.txt") ?? throw new ResourceNotFoundException();
             using StreamReader sr = new(mrs);
 
-            throw new NotImplementedException();
-            //#pragma warning disable IDE0305 // Simplify collection initialization
-            //List<string> lst = sr.ReadToEnd().ToList();
-            //#pragma warning restore IDE0305 // Simplify collection initialization
+            // Read first line: n = vertices, m = edges
+            var firstLine = sr.ReadLine()!.Split();
+            int n = int.Parse(firstLine[0]);
+            int m = int.Parse(firstLine[1]);
 
-            //Graph graph = Graph.FromEdgeList(lst);
+            // Build adjacency list
+            List<int>[] graph = new List<int>[n + 1];
+            for (int i = 0; i <= n; i++)
+                graph[i] = [];
 
-            //int[] shortestDistances = graph.ShortestDestinations(1);
+            for (int i = 0; i < m; i++)
+            {
+                var parts = sr.ReadLine()!.Split();
+                int u = int.Parse(parts[0]);
+                int v = int.Parse(parts[1]);
+                graph[u].Add(v);
+            }
 
-            //// Print the shortest distances
-            //for (int i = 1; i <= graph.VertexCount; i++)
-            //{
-            //    Console.Write(shortestDistances[i] + " ");
-            //}
+            // Distances initialized to -1
+            int[] dist = new int[n + 1];
+            for (int i = 1; i <= n; i++)
+                dist[i] = -1;
+
+            // BFS from vertex 1
+            Queue<int> queue = [];
+            dist[1] = 0;
+            queue.Enqueue(1);
+
+            while (queue.Count > 0)
+            {
+                int u = queue.Dequeue();
+                foreach (int v in graph[u])
+                {
+                    if (dist[v] == -1)
+                    {
+                        dist[v] = dist[u] + 1;
+                        queue.Enqueue(v);
+                    }
+                }
+            }
+
+            // Print results (skip index 0)
+            Console.WriteLine(string.Join(" ", dist.Skip(1)));
         }
 
         public static void ProblemCC()
