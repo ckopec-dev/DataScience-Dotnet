@@ -3998,7 +3998,6 @@ namespace Euler
                 else if (guess == 1)
                 {
                     error = "exact";
-                    break;
                 }
                 else
                 {
@@ -4007,6 +4006,10 @@ namespace Euler
                 }
                 
                 Console.WriteLine("Current guess: {0}: {1} ({2})", x, guess, error);
+
+                if (guess == 1)
+                    break;
+
                 guess = Math.Pow(Math.E, -x) + x / 5;
             }
         }

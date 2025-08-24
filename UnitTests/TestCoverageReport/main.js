@@ -230,6 +230,10 @@ var assemblies = [
       { "name": "Core.ConvertUnits", "rp": "Core_ConvertUnits.html", "cl": 12, "ucl": 82, "cal": 94, "tl": 163, "cb": 0, "tb": 10, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.DataHelper", "rp": "Core_DataHelper.html", "cl": 15, "ucl": 10, "cal": 25, "tl": 51, "cb": 5, "tb": 10, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.DateTimeExtensions", "rp": "Core_DateTimeExtensions.html", "cl": 0, "ucl": 72, "cal": 72, "tl": 130, "cb": 0, "tb": 26, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.DifferentialEquations.DifferentialEquationSolver", "rp": "Core_DifferentialEquationSolver.html", "cl": 0, "ucl": 121, "cal": 121, "tl": 229, "cb": 0, "tb": 35, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.DifferentialEquations.Examples", "rp": "Core_Examples.html", "cl": 0, "ucl": 61, "cal": 61, "tl": 97, "cb": 0, "tb": 6, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.DifferentialEquations.SolutionPoint", "rp": "Core_SolutionPoint.html", "cl": 0, "ucl": 3, "cal": 3, "tl": 13, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.DifferentialEquations.SolverConfig", "rp": "Core_SolverConfig.html", "cl": 0, "ucl": 8, "cal": 8, "tl": 17, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.DirectedGraph", "rp": "Core_DirectedGraph.html", "cl": 0, "ucl": 23, "cal": 23, "tl": 84, "cb": 0, "tb": 6, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.DirectedGraphPath", "rp": "Core_DirectedGraphPath.html", "cl": 0, "ucl": 7, "cal": 7, "tl": 15, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.FigurateCalculator", "rp": "Core_FigurateCalculator.html", "cl": 0, "ucl": 18, "cal": 18, "tl": 36, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -268,12 +272,26 @@ var assemblies = [
       { "name": "Core.LinearAlgebra.Vector", "rp": "Core_Vector.html", "cl": 0, "ucl": 75, "cal": 75, "tl": 120, "cb": 0, "tb": 22, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.LinearRegression", "rp": "Core_LinearRegression.html", "cl": 15, "ucl": 7, "cal": 22, "tl": 40, "cb": 3, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.MathHelper", "rp": "Core_MathHelper.html", "cl": 0, "ucl": 261, "cal": 261, "tl": 307, "cb": 0, "tb": 192, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Maths.Algebra", "rp": "Core_Algebra.html", "cl": 0, "ucl": 238, "cal": 238, "tl": 474, "cb": 0, "tb": 100, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Maths.Calculus", "rp": "Core_Calculus.html", "cl": 0, "ucl": 201, "cal": 201, "tl": 484, "cb": 0, "tb": 64, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Maths.DescriptiveStatistics", "rp": "Core_DescriptiveStatistics.html", "cl": 0, "ucl": 31, "cal": 31, "tl": 683, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Maths.Statistics", "rp": "Core_Statistics.html", "cl": 0, "ucl": 343, "cal": 343, "tl": 683, "cb": 0, "tb": 118, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Maths.StatisticsExample", "rp": "Core_StatisticsExample.html", "cl": 0, "ucl": 25, "cal": 25, "tl": 683, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Maths.Trigonometry", "rp": "Core_Trigonometry.html", "cl": 0, "ucl": 163, "cal": 163, "tl": 538, "cb": 0, "tb": 16, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Motion", "rp": "Core_Motion.html", "cl": 0, "ucl": 18, "cal": 18, "tl": 52, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.NetworkHelper", "rp": "Core_NetworkHelper.html", "cl": 0, "ucl": 35, "cal": 35, "tl": 44, "cb": 0, "tb": 14, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.NumberExtensions", "rp": "Core_NumberExtensions.html", "cl": 373, "ucl": 1514, "cal": 1887, "tl": 1918, "cb": 177, "tb": 2620, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.ObjectParameter", "rp": "Core_ObjectParameter.html", "cl": 0, "ucl": 5, "cal": 5, "tl": 15, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Optics", "rp": "Core_Optics.html", "cl": 0, "ucl": 28, "cal": 28, "tl": 78, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Physics.OrbitalElements", "rp": "Core_OrbitalElements.html", "cl": 0, "ucl": 8, "cal": 8, "tl": 16, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Physics.OrbitalMechanics", "rp": "Core_OrbitalMechanics.html", "cl": 0, "ucl": 107, "cal": 107, "tl": 259, "cb": 0, "tb": 16, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Physics.QuantumComplex", "rp": "Core_QuantumComplex.html", "cl": 0, "ucl": 13, "cal": 13, "tl": 34, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Physics.QuantumExamples", "rp": "Core_QuantumExamples.html", "cl": 0, "ucl": 42, "cal": 42, "tl": 69, "cb": 0, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Physics.QuantumGates", "rp": "Core_QuantumGates.html", "cl": 0, "ucl": 74, "cal": 74, "tl": 123, "cb": 0, "tb": 12, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Physics.QuantumState", "rp": "Core_QuantumState.html", "cl": 0, "ucl": 63, "cal": 63, "tl": 109, "cb": 0, "tb": 26, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Physics.QuantumSystem", "rp": "Core_QuantumSystem.html", "cl": 0, "ucl": 52, "cal": 52, "tl": 105, "cb": 0, "tb": 12, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Physics.SIQuantity", "rp": "Core_SIQuantity.html", "cl": 0, "ucl": 3, "cal": 3, "tl": 8, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Physics.Vector3D", "rp": "Core_Vector3D.html", "cl": 0, "ucl": 15, "cal": 15, "tl": 29, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.PhysicsHelper", "rp": "Core_PhysicsHelper.html", "cl": 0, "ucl": 49, "cal": 49, "tl": 127, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Salesforce.AuthToken", "rp": "Core_AuthToken.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 9, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Salesforce.RestClient", "rp": "Core_RestClient.html", "cl": 69, "ucl": 7, "cal": 76, "tl": 131, "cb": 10, "tb": 14, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -281,7 +299,7 @@ var assemblies = [
       { "name": "Core.ScottPlotCustom.RainbowPlot", "rp": "Core_RainbowPlot.html", "cl": 0, "ucl": 20, "cal": 20, "tl": 36, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.SortHelper", "rp": "Core_SortHelper.html", "cl": 0, "ucl": 117, "cal": 117, "tl": 176, "cb": 0, "tb": 50, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.SqlHelper", "rp": "Core_SqlHelper.html", "cl": 0, "ucl": 105, "cal": 105, "tl": 169, "cb": 0, "tb": 18, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Statistics", "rp": "Core_Statistics.html", "cl": 0, "ucl": 46, "cal": 46, "tl": 78, "cb": 0, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Statistics", "rp": "Core_Statistics.2.html", "cl": 0, "ucl": 46, "cal": 46, "tl": 78, "cb": 0, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.StringExtensions", "rp": "Core_StringExtensions.html", "cl": 11, "ucl": 341, "cal": 352, "tl": 561, "cb": 0, "tb": 112, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.TimeSpanExtensions", "rp": "Core_TimeSpanExtensions.html", "cl": 0, "ucl": 10, "cal": 10, "tl": 20, "cb": 0, "tb": 6, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.TuringMachine", "rp": "Core_TuringMachine.html", "cl": 0, "ucl": 38, "cal": 38, "tl": 77, "cb": 0, "tb": 6, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -494,6 +512,12 @@ var riskHotspots = [
     "metrics": [
       { "value": 342, "exceeded": true },
       { "value": 18, "exceeded": true },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.Statistics", "reportPath": "Core_Statistics.html", "methodName": "IncompleteGamma(System.Double,System.Double)", "methodShortName": "IncompleteGamma(...)", "fileIndex": 0, "line": 421,
+    "metrics": [
+      { "value": 272, "exceeded": true },
+      { "value": 16, "exceeded": true },
     ]},
   {
     "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "Phi(System.UInt64)", "methodShortName": "Phi(...)", "fileIndex": 0, "line": 592,
@@ -736,6 +760,12 @@ var riskHotspots = [
       { "value": 14, "exceeded": false },
     ]},
   {
+    "assembly": "Core", "class": "Core.Physics.OrbitalMechanics", "reportPath": "Core_OrbitalMechanics.html", "methodName": "StateVectorToElements(Core.Physics.Vector3D,Core.Physics.Vector3D,System.Double)", "methodShortName": "StateVectorToElements(...)", "fileIndex": 0, "line": 141,
+    "metrics": [
+      { "value": 210, "exceeded": true },
+      { "value": 14, "exceeded": false },
+    ]},
+  {
     "assembly": "Core", "class": "Core.StringExtensions", "reportPath": "Core_StringExtensions.html", "methodName": "IsPangram(System.String)", "methodShortName": "IsPangram(...)", "fileIndex": 0, "line": 30,
     "metrics": [
       { "value": 210, "exceeded": true },
@@ -755,6 +785,24 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.Internet.NntpClient", "reportPath": "Core_NntpClient.html", "methodName": "ReadResponse(System.Boolean)", "methodShortName": "ReadResponse(...)", "fileIndex": 0, "line": 91,
+    "metrics": [
+      { "value": 156, "exceeded": true },
+      { "value": 12, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.Algebra", "reportPath": "Core_Algebra.html", "methodName": "BinomialCoefficient(System.Int32,System.Int32)", "methodShortName": "BinomialCoefficient(...)", "fileIndex": 0, "line": 385,
+    "metrics": [
+      { "value": 156, "exceeded": true },
+      { "value": 12, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.Statistics", "reportPath": "Core_Statistics.html", "methodName": "Percentile(System.Collections.Generic.IEnumerable`1<System.Double>,System.Double)", "methodShortName": "Percentile(...)", "fileIndex": 0, "line": 119,
+    "metrics": [
+      { "value": 156, "exceeded": true },
+      { "value": 12, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.Statistics", "reportPath": "Core_Statistics.html", "methodName": "GetDescriptiveStatistics(System.Collections.Generic.IEnumerable`1<System.Double>)", "methodShortName": "GetDescriptiveStatistics(...)", "fileIndex": 0, "line": 573,
     "metrics": [
       { "value": 156, "exceeded": true },
       { "value": 12, "exceeded": false },
@@ -820,6 +868,18 @@ var riskHotspots = [
       { "value": 12, "exceeded": false },
     ]},
   {
+    "assembly": "Core", "class": "Core.DifferentialEquations.DifferentialEquationSolver", "reportPath": "Core_DifferentialEquationSolver.html", "methodName": "SolveAdaptiveRungeKutta()", "methodShortName": "SolveAdaptiveRungeKutta()", "fileIndex": 0, "line": 133,
+    "metrics": [
+      { "value": 110, "exceeded": true },
+      { "value": 10, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.DifferentialEquations.DifferentialEquationSolver", "reportPath": "Core_DifferentialEquationSolver.html", "methodName": "ValidateConfig()", "methodShortName": "ValidateConfig()", "fileIndex": 0, "line": 198,
+    "metrics": [
+      { "value": 110, "exceeded": true },
+      { "value": 10, "exceeded": false },
+    ]},
+  {
     "assembly": "Core", "class": "Core.GraphTheory.Graph", "reportPath": "Core_Graph.html", "methodName": "ShortestDestinations(System.Int32)", "methodShortName": "ShortestDestinations(...)", "fileIndex": 0, "line": 67,
     "metrics": [
       { "value": 110, "exceeded": true },
@@ -863,6 +923,24 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "IsPrime(System.Int64)", "methodShortName": "IsPrime(...)", "fileIndex": 0, "line": 32,
+    "metrics": [
+      { "value": 110, "exceeded": true },
+      { "value": 10, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.Algebra", "reportPath": "Core_Algebra.html", "methodName": "IsPrime(System.Int64)", "methodShortName": "IsPrime(...)", "fileIndex": 0, "line": 367,
+    "metrics": [
+      { "value": 110, "exceeded": true },
+      { "value": 10, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.Algebra", "reportPath": "Core_Algebra.html", "methodName": "ToString()", "methodShortName": "ToString()", "fileIndex": 0, "line": 206,
+    "metrics": [
+      { "value": 110, "exceeded": true },
+      { "value": 10, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.Calculus", "reportPath": "Core_Calculus.html", "methodName": "LimitAtInfinity(System.Func`2<System.Double,System.Double>,System.Boolean,System.Double)", "methodShortName": "LimitAtInfinity(...)", "fileIndex": 0, "line": 232,
     "metrics": [
       { "value": 110, "exceeded": true },
       { "value": 10, "exceeded": false },
@@ -983,6 +1061,12 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "IsTruncatablePrime(System.Int64)", "methodShortName": "IsTruncatablePrime(...)", "fileIndex": 0, "line": 837,
+    "metrics": [
+      { "value": 110, "exceeded": true },
+      { "value": 10, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Physics.QuantumState", "reportPath": "Core_QuantumState.html", "methodName": "Measure(System.Random)", "methodShortName": "Measure(...)", "fileIndex": 0, "line": 64,
     "metrics": [
       { "value": 110, "exceeded": true },
       { "value": 10, "exceeded": false },
@@ -1115,6 +1199,60 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "Fibonacci(System.Int32)", "methodShortName": "Fibonacci(...)", "fileIndex": 0, "line": 72,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.Algebra", "reportPath": "Core_Algebra.html", "methodName": "Factorial(System.Int32)", "methodShortName": "Factorial(...)", "fileIndex": 0, "line": 349,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.Algebra", "reportPath": "Core_Algebra.html", "methodName": "Add(Core.Maths.Algebra/Matrix,Core.Maths.Algebra/Matrix)", "methodShortName": "Add(...)", "fileIndex": 0, "line": 253,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.Algebra", "reportPath": "Core_Algebra.html", "methodName": "Multiply(Core.Maths.Algebra/Matrix,Core.Maths.Algebra/Matrix)", "methodShortName": "Multiply(...)", "fileIndex": 0, "line": 269,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.Calculus", "reportPath": "Core_Calculus.html", "methodName": "Limit(System.Func`2<System.Double,System.Double>,System.Double,System.Double)", "methodShortName": "Limit(...)", "fileIndex": 0, "line": 196,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.Calculus", "reportPath": "Core_Calculus.html", "methodName": "FindCriticalPoint(System.Func`2<System.Double,System.Double>,System.Double,System.Double)", "methodShortName": "FindCriticalPoint(...)", "fileIndex": 0, "line": 331,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.Calculus", "reportPath": "Core_Calculus.html", "methodName": "FindRoot(System.Func`2<System.Double,System.Double>,System.Double,System.Double)", "methodShortName": "FindRoot(...)", "fileIndex": 0, "line": 371,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.Statistics", "reportPath": "Core_Statistics.html", "methodName": "LinearRegression(System.Collections.Generic.IEnumerable`1<System.Double>,System.Collections.Generic.IEnumerable`1<System.Double>)", "methodShortName": "LinearRegression(...)", "fileIndex": 0, "line": 222,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.Statistics", "reportPath": "Core_Statistics.html", "methodName": "GetRanks(System.Collections.Generic.IEnumerable`1<System.Double>)", "methodShortName": "GetRanks(...)", "fileIndex": 0, "line": 253,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.Statistics", "reportPath": "Core_Statistics.html", "methodName": "StandardNormalInverse(System.Double)", "methodShortName": "StandardNormalInverse(...)", "fileIndex": 0, "line": 326,
     "metrics": [
       { "value": 72, "exceeded": true },
       { "value": 8, "exceeded": false },
@@ -1421,6 +1559,42 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "FibonacciRecursive(System.Int32)", "methodShortName": "FibonacciRecursive(...)", "fileIndex": 0, "line": 96,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.Algebra", "reportPath": "Core_Algebra.html", "methodName": "Add(Core.Maths.Algebra/Polynomial,Core.Maths.Algebra/Polynomial)", "methodShortName": "Add(...)", "fileIndex": 0, "line": 191,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.Algebra", "reportPath": "Core_Algebra.html", "methodName": "ToString()", "methodShortName": "ToString()", "fileIndex": 0, "line": 300,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.Calculus", "reportPath": "Core_Calculus.html", "methodName": "SimpsonsRule(System.Func`2<System.Double,System.Double>,System.Double,System.Double,System.Int32)", "methodShortName": "SimpsonsRule(...)", "fileIndex": 0, "line": 107,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.Calculus", "reportPath": "Core_Calculus.html", "methodName": "MonteCarloIntegration(System.Func`2<System.Double[],System.Double>,System.Double[],System.Double[],System.Int32)", "methodShortName": "MonteCarloIntegration(...)", "fileIndex": 0, "line": 161,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.Statistics", "reportPath": "Core_Statistics.html", "methodName": "PearsonCorrelation(System.Collections.Generic.IEnumerable`1<System.Double>,System.Collections.Generic.IEnumerable`1<System.Double>)", "methodShortName": "PearsonCorrelation(...)", "fileIndex": 0, "line": 183,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.Statistics", "reportPath": "Core_Statistics.html", "methodName": "ChiSquaredGoodnessOfFit(System.Collections.Generic.IEnumerable`1<System.Double>,System.Collections.Generic.IEnumerable`1<System.Double>,System.Double)", "methodShortName": "ChiSquaredGoodnessOfFit(...)", "fileIndex": 0, "line": 527,
     "metrics": [
       { "value": 42, "exceeded": true },
       { "value": 6, "exceeded": false },
@@ -1979,6 +2153,18 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "HasSameDigits(System.UInt64,System.UInt64)", "methodShortName": "HasSameDigits(...)", "fileIndex": 0, "line": 429,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Physics.QuantumGates", "reportPath": "Core_QuantumGates.html", "methodName": "CNOT(Core.Physics.QuantumState,System.Int32,System.Int32)", "methodShortName": "CNOT(...)", "fileIndex": 0, "line": 74,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Physics.QuantumGates", "reportPath": "Core_QuantumGates.html", "methodName": "ApplySingleQubitGate(Core.Physics.QuantumState,System.Int32,Core.Physics.QuantumComplex[0...,0...])", "methodShortName": "ApplySingleQubitGate(...)", "fileIndex": 0, "line": 99,
     "metrics": [
       { "value": 42, "exceeded": true },
       { "value": 6, "exceeded": false },
