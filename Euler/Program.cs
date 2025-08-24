@@ -3171,6 +3171,32 @@ namespace Euler
             Console.WriteLine($"Difference from target: {bestDiff}");
         }
 
+        static void Problem86()
+        {
+            long target = 1000000;
+            long count = 0;
+            int M = 0;
+
+            while (count < target)
+            {
+                M++;
+                // For each pair (a, b) with a <= b <= M, check if sqrt(a^2 + b^2) is integer
+                for (int ab = 2; ab <= 2 * M; ab++)
+                {
+                    double d = Math.Sqrt(M * M + ab * ab);
+                    if (d == (int)d) // integer solution
+                    {
+                        // Count how many valid (a, b) pairs exist with a <= b <= M
+                        int minA = Math.Max(1, ab - M);
+                        int maxA = Math.Min(M, ab / 2);
+                        count += (maxA - minA + 1);
+                    }
+                }
+            }
+
+            Console.WriteLine("Least M = " + M);
+        }
+
         static void Problem92()
         {
             // This is vaguely similar to the hailstone conjecture.
