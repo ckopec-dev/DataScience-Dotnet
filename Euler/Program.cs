@@ -3975,6 +3975,42 @@ namespace Euler
             Console.WriteLine("{0} IsArmstrong: {1}", n, n.IsArmstrong());
         }
 
+        static void Misc28()
+        {
+            // Solve iteratively for x:
+            // e^-x + x/5 = 1
+
+            double x = 1.0;
+            const double increment = 0.1;
+            const int iterations = 20;
+
+            double guess = Math.Pow(Math.E, -x) + x / 5;
+
+            for(int i = 1; i <= iterations; i++)
+            {
+                string error;
+                
+                if (guess < 1)
+                {
+                    x -= increment;
+                    error = "too low";
+                }
+                else if (guess == 1)
+                {
+                    error = "exact";
+                    break;
+                }
+                else
+                {
+                    x += increment;
+                    error = "too high";
+                }
+                
+                Console.WriteLine("Current guess: {0}: {1} ({2})", x, guess, error);
+                guess = Math.Pow(Math.E, -x) + x / 5;
+            }
+        }
+
         #endregion
 
         #region Helpers
