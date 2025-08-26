@@ -339,6 +339,17 @@ namespace Rosalind
             }
         }
 
+        public static void ProblemIEV()
+        {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.iev.txt") ?? throw new ResourceNotFoundException();
+            using StreamReader sr = new(mrs);
+
+            string input = sr.ReadToEnd().Trim();
+
+            double result = CalculateExpectedOffspring_IEV(input);
+            Console.WriteLine(result.ToString("F1")); // Format to 1 decimal place
+        }
+
         #endregion
 
         #region Helpers
@@ -377,6 +388,72 @@ namespace Rosalind
                 }
             }
             return result;
+        }
+
+        /// <summary>
+        /// Alternative method with explicit genotype combinations for clarity
+        /// </summary>
+        static double CalculateExpectedOffspringDetailed_IEV(string input)
+        {
+            int[] couples = [.. input.Split(' ').Select(int.Parse)];
+
+            // Genotype combinations and their probabilities of producing dominant offspring
+            var genotypeData = new[]
+            {
+                new { Name = "AA-AA", Couples = couples[0], DominantProb = 1.0 },
+                new { Name = "AA-Aa", Couples = couples[1], DominantProb = 1.0 },
+                new { Name = "AA-aa", Couples = couples[2], DominantProb = 1.0 },
+                new { Name = "Aa-Aa", Couples = couples[3], DominantProb = 0.75 },
+                new { Name = "Aa-aa", Couples = couples[4], DominantProb = 0.5 },
+                new { Name = "aa-aa", Couples = couples[5], DominantProb = 0.0 }
+            };
+
+            double totalExpected = 0;
+
+            foreach (var genotype in genotypeData)
+            {
+                double expectedFromThisGenotype = genotype.Couples * 2 * genotype.DominantProb;
+                totalExpected += expectedFromThisGenotype;
+
+                // Uncomment for debugging:
+                // Console.WriteLine($"{genotype.Name}: {genotype.Couples} couples * 2 offspring * {genotype.DominantProb} prob = {expectedFromThisGenotype}");
+            }
+
+            return totalExpected;
+        }
+
+        /// <summary>
+        /// Calculates the expected number of offspring displaying the dominant phenotype
+        /// </summary>
+        /// <param name="input">String containing 6 integers representing couples of each genotype pair</param>
+        /// <returns>Expected number of dominant offspring</returns>
+        static double CalculateExpectedOffspring_IEV(string input)
+        {
+            // Parse the input to get the number of couples for each genotype combination
+            int[] couples = [.. input.Split(' ').Select(int.Parse)];
+
+            // Expected offspring per couple = 2 (each couple produces 2 offspring on average)
+            int offspringPerCouple = 2;
+
+            // Probability of dominant phenotype for each genotype combination:
+            // AA-AA: 1.0 (all offspring will be AA - dominant)
+            // AA-Aa: 1.0 (all offspring will be either AA or Aa - dominant)
+            // AA-aa: 1.0 (all offspring will be Aa - dominant)
+            // Aa-Aa: 0.75 (AA: 0.25, Aa: 0.5, aa: 0.25 -> 0.75 dominant)
+            // Aa-aa: 0.5 (Aa: 0.5, aa: 0.5 -> 0.5 dominant)
+            // aa-aa: 0.0 (all offspring will be aa - recessive)
+
+            double[] dominantProbabilities = [1.0, 1.0, 1.0, 0.75, 0.5, 0.0];
+
+            double expectedDominantOffspring = 0;
+
+            // Calculate expected dominant offspring for each genotype combination
+            for (int i = 0; i < couples.Length; i++)
+            {
+                expectedDominantOffspring += couples[i] * offspringPerCouple * dominantProbabilities[i];
+            }
+
+            return expectedDominantOffspring;
         }
     }
 

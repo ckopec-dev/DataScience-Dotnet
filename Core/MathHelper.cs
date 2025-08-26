@@ -303,5 +303,15 @@ namespace Core
 
             return count;
         }
+
+        public static bool IsApproximatelyEqualTo(double numerator, double denominator, double value, double epsilon)
+        {
+            double diff = (numerator / denominator) - value;
+
+            if(Math.Abs(diff) < epsilon)
+                return true;
+            else
+                return false;
+        }
     }
 }

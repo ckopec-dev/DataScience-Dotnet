@@ -21,6 +21,7 @@
     <None Remove="Inputs\grph.txt" />
     <None Remove="Inputs\hamm.txt" />
     <None Remove="Inputs\hea.txt" />
+    <None Remove="Inputs\iev.txt" />
     <None Remove="Inputs\ini.txt" />
     <None Remove="Inputs\ins.txt" />
     <None Remove="Inputs\maj.txt" />
@@ -32,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Inputs\iev.txt" />
     <Content Include="nlog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
