@@ -15,7 +15,7 @@ namespace UnitTests
 
             if (f.RawInput != null)
             {
-                Assert.AreEqual(input, f.RawInput);
+                Assert.AreEqual(input, f.ToString());
             }
 
             Assert.IsNotNull(f.Entries);

@@ -3,7 +3,7 @@
 namespace UnitTests
 {
     [TestClass]
-    public class CompressionHelperUnitTests
+    public class CompressionHelperTests
     {
         [TestMethod]
         public void CreateAppendExtractTest()
