@@ -2,9 +2,6 @@
 namespace Core
 {
     /// <summary>
-    /// 
-    /// WIP: convert to... 
-    /// 
     /// https://en.wikipedia.org/wiki/International_System_of_Units
     /// </summary>
     public class ConvertUnits
@@ -135,27 +132,6 @@ namespace Core
             dd *= sign;
 
             return dd;
-        }
-
-        public static void FromDecimalDegrees(decimal degrees, out decimal D, out decimal M, out decimal S)
-        {
-            decimal sign = 1m;
-
-            if (degrees < 0)
-                sign = -1;
-
-            degrees = Math.Abs(degrees);
-            D = degrees.ToFloorInt();
-            M = (60m * degrees.ToIntegerPart()).ToFloorInt();
-            S = 60m * 60m * degrees.ToFractionalPart().ToFractionalPart();
-            D *= sign;
-        }
-
-        public static string FormatToDMS(decimal degrees)
-        {
-            FromDecimalDegrees(degrees, out decimal D, out decimal M, out decimal S);
-
-            return string.Format("{0}d {1}m {2}s", D, M, S);
         }
 
         #endregion
