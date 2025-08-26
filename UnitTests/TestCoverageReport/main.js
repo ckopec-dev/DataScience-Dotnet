@@ -221,6 +221,8 @@ var assemblies = [
   {
     "name": "Core",
     "classes": [
+      { "name": "Core.Automation.DAL.Job", "rp": "Core_Job.html", "cl": 0, "ucl": 4, "cal": 4, "tl": 16, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Automation.DAL.JobHistory", "rp": "Core_JobHistory.html", "cl": 0, "ucl": 7, "cal": 7, "tl": 19, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Bioinformatics.Dna", "rp": "Core_Dna.html", "cl": 61, "ucl": 0, "cal": 61, "tl": 137, "cb": 20, "tb": 20, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Bioinformatics.Fasta", "rp": "Core_Fasta.html", "cl": 50, "ucl": 0, "cal": 50, "tl": 106, "cb": 12, "tb": 12, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Bioinformatics.FastaEntry", "rp": "Core_FastaEntry.html", "cl": 6, "ucl": 0, "cal": 6, "tl": 14, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },

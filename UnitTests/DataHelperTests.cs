@@ -1,10 +1,5 @@
 ﻿using Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UnitTests
 {
@@ -12,7 +7,7 @@ namespace UnitTests
     public class DataHelperTests
     {
         private Assembly? _originalAssembly;
-        private readonly Assembly? _mockAssembly;
+        //private readonly Assembly? _mockAssembly;
 
         [TestInitialize]
         public void Setup()
