@@ -7,8 +7,7 @@ namespace UnitTests
     public class DataHelperTests
     {
         private Assembly? _originalAssembly;
-        //private readonly Assembly? _mockAssembly;
-
+        
         [TestInitialize]
         public void Setup()
         {

@@ -231,7 +231,7 @@ var assemblies = [
       { "name": "Core.CompressionHelper", "rp": "Core_CompressionHelper.html", "cl": 11, "ucl": 0, "cal": 11, "tl": 29, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.ConvertUnits", "rp": "Core_ConvertUnits.html", "cl": 80, "ucl": 0, "cal": 80, "tl": 139, "cb": 8, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.DataHelper", "rp": "Core_DataHelper.html", "cl": 15, "ucl": 10, "cal": 25, "tl": 51, "cb": 5, "tb": 10, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.DateTimeExtensions", "rp": "Core_DateTimeExtensions.html", "cl": 0, "ucl": 72, "cal": 72, "tl": 130, "cb": 0, "tb": 26, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.DateTimeExtensions", "rp": "Core_DateTimeExtensions.html", "cl": 72, "ucl": 0, "cal": 72, "tl": 130, "cb": 25, "tb": 26, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.DifferentialEquations.DifferentialEquationSolver", "rp": "Core_DifferentialEquationSolver.html", "cl": 0, "ucl": 121, "cal": 121, "tl": 229, "cb": 0, "tb": 35, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.DifferentialEquations.Examples", "rp": "Core_Examples.html", "cl": 0, "ucl": 61, "cal": 61, "tl": 97, "cb": 0, "tb": 6, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.DifferentialEquations.SolutionPoint", "rp": "Core_SolutionPoint.html", "cl": 0, "ucl": 3, "cal": 3, "tl": 13, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -267,7 +267,7 @@ var assemblies = [
       { "name": "Core.LinearAlgebra.Matrix", "rp": "Core_Matrix.html", "cl": 0, "ucl": 238, "cal": 238, "tl": 342, "cb": 0, "tb": 130, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.LinearAlgebra.Vector", "rp": "Core_Vector.html", "cl": 0, "ucl": 75, "cal": 75, "tl": 120, "cb": 0, "tb": 22, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.LinearRegression", "rp": "Core_LinearRegression.html", "cl": 15, "ucl": 7, "cal": 22, "tl": 40, "cb": 3, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.MathHelper", "rp": "Core_MathHelper.html", "cl": 0, "ucl": 180, "cal": 180, "tl": 317, "cb": 0, "tb": 106, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.MathHelper", "rp": "Core_MathHelper.html", "cl": 0, "ucl": 202, "cal": 202, "tl": 344, "cb": 0, "tb": 116, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Maths.Algebra", "rp": "Core_Algebra.html", "cl": 0, "ucl": 238, "cal": 238, "tl": 474, "cb": 0, "tb": 100, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Maths.Calculus", "rp": "Core_Calculus.html", "cl": 0, "ucl": 201, "cal": 201, "tl": 484, "cb": 0, "tb": 64, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Maths.DescriptiveStatistics", "rp": "Core_DescriptiveStatistics.html", "cl": 0, "ucl": 31, "cal": 31, "tl": 683, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -456,12 +456,6 @@ var riskHotspots = [
       { "value": 14, "exceeded": false },
     ]},
   {
-    "assembly": "Core", "class": "Core.DateTimeExtensions", "reportPath": "Core_DateTimeExtensions.html", "methodName": "IsUSStockMarketOpen(System.DateTime)", "methodShortName": "IsUSStockMarketOpen(...)", "fileIndex": 0, "line": 10,
-    "metrics": [
-      { "value": 156, "exceeded": true },
-      { "value": 12, "exceeded": false },
-    ]},
-  {
     "assembly": "Core", "class": "Core.GraphTheory.Graph<T>", "reportPath": "Core_Graph_1.html", "methodName": "RemoveEdge(T,T)", "methodShortName": "RemoveEdge(...)", "fileIndex": 0, "line": 88,
     "metrics": [
       { "value": 156, "exceeded": true },
@@ -523,6 +517,12 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "IsPrime(System.Int64)", "methodShortName": "IsPrime(...)", "fileIndex": 0, "line": 45,
+    "metrics": [
+      { "value": 110, "exceeded": true },
+      { "value": 10, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "SieveOfEratosthenes(System.Int32)", "methodShortName": "SieveOfEratosthenes(...)", "fileIndex": 0, "line": 318,
     "metrics": [
       { "value": 110, "exceeded": true },
       { "value": 10, "exceeded": false },
@@ -748,18 +748,6 @@ var riskHotspots = [
     "metrics": [
       { "value": 72, "exceeded": true },
       { "value": 8, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.DateTimeExtensions", "reportPath": "Core_DateTimeExtensions.html", "methodName": "IsLeapYear(System.DateTime)", "methodShortName": "IsLeapYear(...)", "fileIndex": 0, "line": 38,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.DateTimeExtensions", "reportPath": "Core_DateTimeExtensions.html", "methodName": "DayNumber(System.DateTime)", "methodShortName": "DayNumber(...)", "fileIndex": 0, "line": 74,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
     ]},
   {
     "assembly": "Core", "class": "Core.DirectedGraph", "reportPath": "Core_DirectedGraph.html", "methodName": ".ctor(System.IO.StreamReader)", "methodShortName": ".ctor(...)", "fileIndex": 0, "line": 16,
