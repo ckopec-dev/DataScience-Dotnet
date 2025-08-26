@@ -3197,6 +3197,50 @@ namespace Euler
             Console.WriteLine("Least M = " + M);
         }
 
+        static void Problem87()
+        {
+            const int limit = 50_000_000;
+
+            // Generate all primes up to sqrt(limit) since we need p^2, p^3, p^4
+            var primes = MathHelper.SieveOfEratosthenes((int)Math.Sqrt(limit));
+
+            // We need different upper bounds for each power:
+            // For p^4: p <= limit^(1/4)
+            // For p^3: p <= limit^(1/3) 
+            // For p^2: p <= limit^(1/2)
+
+            var primes2 = primes.Where(p => (long)p * p < limit).ToList();
+            var primes3 = primes.Where(p => (long)p * p * p < limit).ToList();
+            var primes4 = primes.Where(p => (long)p * p * p * p < limit).ToList();
+
+            var numbers = new HashSet<int>();
+
+            // For each combination of prime^4, prime^3, and prime^2
+            foreach (var p4 in primes4)
+            {
+                long power4 = (long)p4 * p4 * p4 * p4;
+                if (power4 >= limit) break;
+
+                foreach (var p3 in primes3)
+                {
+                    long power3 = (long)p3 * p3 * p3;
+                    if (power4 + power3 >= limit) break;
+
+                    foreach (var p2 in primes2)
+                    {
+                        long power2 = (long)p2 * p2;
+                        long sum = power4 + power3 + power2;
+
+                        if (sum >= limit) break;
+
+                        numbers.Add((int)sum);
+                    }
+                }
+            }
+
+            Console.WriteLine($"Answer: {numbers.Count}");
+        }
+
         static void Problem92()
         {
             // This is vaguely similar to the hailstone conjecture.

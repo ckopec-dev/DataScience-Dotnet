@@ -313,5 +313,32 @@ namespace Core
             else
                 return false;
         }
+
+        public static List<int> SieveOfEratosthenes(int limit)
+        {
+            var isPrime = new bool[limit + 1];
+            Array.Fill(isPrime, true);
+            isPrime[0] = isPrime[1] = false;
+
+            for (int i = 2; i * i <= limit; i++)
+            {
+                if (isPrime[i])
+                {
+                    for (int j = i * i; j <= limit; j += i)
+                    {
+                        isPrime[j] = false;
+                    }
+                }
+            }
+
+            var primes = new List<int>();
+            for (int i = 2; i <= limit; i++)
+            {
+                if (isPrime[i])
+                    primes.Add(i);
+            }
+
+            return primes;
+        }
     }
 }
