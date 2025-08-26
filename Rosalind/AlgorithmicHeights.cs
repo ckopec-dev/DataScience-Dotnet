@@ -12,6 +12,8 @@ namespace Rosalind
 {
     public class AlgorithmicHeights
     {
+        private static long swapCount_MS = 0;
+
         #region Problems
 
         public static void ProblemFIBO()
@@ -393,6 +395,27 @@ namespace Rosalind
             Console.WriteLine(string.Join(" ", arr));
         }
 
+        public static void ProblemMS()
+        {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.ms.txt") ?? throw new ResourceNotFoundException();
+            using StreamReader sr = new(mrs);
+
+            // Read input
+            //string[] lines = sr.Re File.ReadAllLines("rosalind_ms.txt");
+            int n = int.Parse(sr.ReadLine()!);
+            int[] arr = [.. sr.ReadLine()!.Split().Select(int.Parse)];
+
+            // Reset swap counter
+            swapCount_MS = 0;
+
+            // Perform merge sort
+            int[] sorted = MergeSortArray_MS(arr);
+
+            // Output results
+            Console.WriteLine(swapCount_MS);
+            Console.WriteLine(string.Join(" ", sorted));
+        }
+
         #endregion
 
         #region Helpers
@@ -456,6 +479,69 @@ namespace Rosalind
                 // Recursively heapify the affected subtree
                 MaxHeapify_HEA(arr, heapSize, largest, swaps);
             }
+        }
+
+        static int[] MergeSortArray_MS(int[] arr)
+        {
+            if (arr.Length <= 1)
+                return arr;
+
+            int mid = arr.Length / 2;
+            int[] left = new int[mid];
+            int[] right = new int[arr.Length - mid];
+
+            // Split array into left and right halves
+            Array.Copy(arr, 0, left, 0, mid);
+            Array.Copy(arr, mid, right, 0, arr.Length - mid);
+
+            // Recursively sort both halves
+            left = MergeSortArray_MS(left);
+            right = MergeSortArray_MS(right);
+
+            // Merge the sorted halves
+            return Merge_MS(left, right);
+        }
+
+        static int[] Merge_MS(int[] left, int[] right)
+        {
+            int[] result = new int[left.Length + right.Length];
+            int i = 0, j = 0, k = 0;
+
+            // Merge elements from left and right arrays
+            while (i < left.Length && j < right.Length)
+            {
+                if (left[i] <= right[j])
+                {
+                    result[k] = left[i];
+                    i++;
+                }
+                else
+                {
+                    result[k] = right[j];
+                    j++;
+                    // Count inversions: all remaining elements in left array
+                    // are greater than right[j], so they form inversions
+                    swapCount_MS += left.Length - i;
+                }
+                k++;
+            }
+
+            // Copy remaining elements
+            while (i < left.Length)
+            {
+                result[k] = left[i];
+                i++;
+                k++;
+            }
+
+            while (j < right.Length)
+            {
+                result[k] = right[j];
+                j++;
+                k++;
+            }
+
+            return result;
         }
 
         #endregion
