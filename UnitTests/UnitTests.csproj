@@ -22,7 +22,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
-    <ProjectReference Include="..\Experimental\Experimental.csproj" />
   </ItemGroup>
 
   <ItemGroup>
