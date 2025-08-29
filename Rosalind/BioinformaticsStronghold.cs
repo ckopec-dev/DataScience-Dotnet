@@ -1,5 +1,6 @@
 ﻿using Core;
 using Core.Bioinformatics;
+using SkiaSharp;
 using System.Numerics;
 using System.Reflection;
 
@@ -348,6 +349,26 @@ namespace Rosalind
 
             double result = CalculateExpectedOffspring_IEV(input);
             Console.WriteLine(result.ToString("F1")); // Format to 1 decimal place
+        }
+
+        public static void ProblemLCSM()
+        {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.lcsm.txt") ?? throw new ResourceNotFoundException();
+            using StreamReader sr = new(mrs);
+
+            List<string> lines = [];
+
+            string input = sr.ReadToEnd().Trim();
+
+            Fasta f = new(input);
+
+            foreach(var fe in f.Entries)
+            {
+                lines.Add(fe.Data);
+            }
+            
+            string? result = lines.LargestCommonSubstring();
+            Console.WriteLine(result); 
         }
 
         #endregion

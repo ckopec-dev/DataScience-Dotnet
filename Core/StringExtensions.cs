@@ -8,6 +8,34 @@ namespace Core
 {
     public static class StringExtensions
     {
+        /// <summary>
+        /// Finds the largest common substring among all strings in the collection.
+        /// Returns null if no common substring is found.
+        /// </summary>
+        public static string? LargestCommonSubstring(this IEnumerable<string> strings)
+        {
+            if (strings == null || !strings.Any())
+                return null;
+
+            var list = strings.ToList();
+            string shortest = list.OrderBy(s => s.Length).First();
+
+            for (int length = shortest.Length; length > 0; length--)
+            {
+                for (int start = 0; start <= shortest.Length - length; start++)
+                {
+                    string candidate = shortest.Substring(start, length);
+
+                    if (list.All(s => s.Contains(candidate)))
+                    {
+                        return candidate; // Largest found
+                    }
+                }
+            }
+
+            return null; // No common substring
+        }
+        
         public static bool IsSubsequence(this string s, string strToFind)
         {
             // Is strToFind a subsequence of s?

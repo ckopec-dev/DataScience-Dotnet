@@ -24,6 +24,7 @@
     <None Remove="Inputs\iev.txt" />
     <None Remove="Inputs\ini.txt" />
     <None Remove="Inputs\ins.txt" />
+    <None Remove="Inputs\lcsm.txt" />
     <None Remove="Inputs\maj.txt" />
     <None Remove="Inputs\mer.txt" />
     <None Remove="Inputs\ms.txt" />
@@ -56,6 +57,7 @@
     <EmbeddedResource Include="Inputs\hea.txt" />
     <EmbeddedResource Include="Inputs\ini.txt" />
     <EmbeddedResource Include="Inputs\ins.txt" />
+    <EmbeddedResource Include="Inputs\lcsm.txt" />
     <EmbeddedResource Include="Inputs\maj.txt" />
     <EmbeddedResource Include="Inputs\mer.txt" />
     <EmbeddedResource Include="Inputs\ms.txt" />

@@ -2,7 +2,6 @@
 using Core;
 using Core.GameTheory;
 using Core.Internet;
-using Core.ScottPlotCustom;
 using NLog;
 using ScottPlot;
 using System.Diagnostics;
@@ -3703,18 +3702,6 @@ namespace Euler
                 dataX[t] = x;
                 dataY[t] = y;
             }
-
-            Plot plot = new();
-            plot.DataBackground.Color = Color.FromHtml("#000000");
-
-            RainbowPlot rainbowPlot = new(dataX, dataY)
-            {
-                Radius = .5f,
-                Colormap = new ScottPlot.Colormaps.Deep()
-            };
-            plot.Add.Plottable(rainbowPlot);
-
-            plot.SavePng(Path.Combine(NetworkHelper.ProjectPath(), "Plots", "Lorenz" + rho.ToString() + ".png"), 800, 600);
         }
 
         static void Misc15()
