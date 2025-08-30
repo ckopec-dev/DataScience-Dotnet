@@ -221,8 +221,8 @@ var assemblies = [
   {
     "name": "Core",
     "classes": [
-      { "name": "Core.Automation.DAL.Job", "rp": "Core_Job.html", "cl": 0, "ucl": 4, "cal": 4, "tl": 16, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Automation.DAL.JobHistory", "rp": "Core_JobHistory.html", "cl": 0, "ucl": 7, "cal": 7, "tl": 19, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Automation.DAL.Job", "rp": "Core_Job.html", "cl": 0, "ucl": 4, "cal": 4, "tl": 15, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Automation.DAL.JobHistory", "rp": "Core_JobHistory.html", "cl": 0, "ucl": 7, "cal": 7, "tl": 18, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Bioinformatics.Dna", "rp": "Core_Dna.html", "cl": 61, "ucl": 0, "cal": 61, "tl": 137, "cb": 20, "tb": 20, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Bioinformatics.Fasta", "rp": "Core_Fasta.html", "cl": 50, "ucl": 0, "cal": 50, "tl": 106, "cb": 12, "tb": 12, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Bioinformatics.FastaEntry", "rp": "Core_FastaEntry.html", "cl": 6, "ucl": 0, "cal": 6, "tl": 14, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -289,21 +289,16 @@ var assemblies = [
       { "name": "Core.Physics.SIQuantity", "rp": "Core_SIQuantity.html", "cl": 0, "ucl": 3, "cal": 3, "tl": 8, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Physics.Vector3D", "rp": "Core_Vector3D.html", "cl": 0, "ucl": 15, "cal": 15, "tl": 29, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.PhysicsHelper", "rp": "Core_PhysicsHelper.html", "cl": 0, "ucl": 49, "cal": 49, "tl": 127, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.ResourceNotFoundException", "rp": "Core_ResourceNotFoundException.html", "cl": 1, "ucl": 2, "cal": 3, "tl": 10, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.ResourceNotFoundException", "rp": "Core_ResourceNotFoundException.html", "cl": 0, "ucl": 3, "cal": 3, "tl": 10, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Salesforce.AuthToken", "rp": "Core_AuthToken.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 9, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Salesforce.RestClient", "rp": "Core_RestClient.html", "cl": 69, "ucl": 7, "cal": 76, "tl": 131, "cb": 10, "tb": 14, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Salesforce.Version", "rp": "Core_Version.html", "cl": 4, "ucl": 0, "cal": 4, "tl": 10, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.ScottPlotCustom.RainbowPlot", "rp": "Core_RainbowPlot.html", "cl": 0, "ucl": 20, "cal": 20, "tl": 36, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.ScottPlotCustom.RainbowPlot", "rp": "Core_RainbowPlot.html", "cl": 0, "ucl": 20, "cal": 20, "tl": 35, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.SortHelper", "rp": "Core_SortHelper.html", "cl": 0, "ucl": 117, "cal": 117, "tl": 176, "cb": 0, "tb": 50, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.SqlHelper", "rp": "Core_SqlHelper.html", "cl": 0, "ucl": 105, "cal": 105, "tl": 169, "cb": 0, "tb": 18, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Statistics", "rp": "Core_Statistics.2.html", "cl": 0, "ucl": 46, "cal": 46, "tl": 78, "cb": 0, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.StringExtensions", "rp": "Core_StringExtensions.html", "cl": 11, "ucl": 341, "cal": 352, "tl": 561, "cb": 0, "tb": 112, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.StringExtensions", "rp": "Core_StringExtensions.html", "cl": 11, "ucl": 341, "cal": 352, "tl": 589, "cb": 0, "tb": 112, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.TimeSpanExtensions", "rp": "Core_TimeSpanExtensions.html", "cl": 0, "ucl": 10, "cal": 10, "tl": 20, "cb": 0, "tb": 6, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-    ]},
-  {
-    "name": "Experimental",
-    "classes": [
-      { "name": "Experimental.MathParser.Tokenizer", "rp": "Experimental_Tokenizer.html", "cl": 40, "ucl": 1, "cal": 41, "tl": 87, "cb": 17, "tb": 20, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
     ]},
 ];
 
@@ -1042,12 +1037,6 @@ var riskHotspots = [
     "metrics": [
       { "value": 42, "exceeded": true },
       { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Experimental", "class": "Experimental.MathParser.Tokenizer", "reportPath": "Experimental_Tokenizer.html", "methodName": "NextToken()", "methodShortName": "NextToken()", "fileIndex": 0, "line": 40,
-    "metrics": [
-      { "value": 18, "exceeded": false },
-      { "value": 18, "exceeded": true },
     ]},
   {
     "assembly": "Core", "class": "Core.Bioinformatics.ProfileMatrix", "reportPath": "Core_ProfileMatrix.html", "methodName": ".ctor(System.Collections.Generic.List`1<Core.Bioinformatics.Dna>)", "methodShortName": ".ctor(...)", "fileIndex": 0, "line": 48,

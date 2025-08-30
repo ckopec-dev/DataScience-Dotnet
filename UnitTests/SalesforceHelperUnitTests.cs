@@ -8,14 +8,6 @@ namespace UnitTests
     {
         readonly RestClient client = new();
 
-        //public TestContext? TestContext { get; set; }
-
-        //public TestContext? TestContext
-        //{
-        //    get { return testContextInstance; }
-        //    set { testContextInstance = value; }
-        //}
-
         private void LoginHelper()
         {
             client.Login(
