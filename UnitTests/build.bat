@@ -3,13 +3,19 @@ echo off
 
 :: To install reportgenerator: https://www.nuget.org/packages/dotnet-reportgenerator-globaltool
 
+set "projectname=UnitTests"
+
 echo Clean started.
-dotnet clean d:\code\mine-dotnet\%projectname%
+dotnet clean d:\code\datascience-dotnet\%projectname%
 echo Clean completed.
 
 echo Build started.
-dotnet build d:\code\mine-dotnet\%projectname% --configuration Debug
+dotnet build d:\code\datascience-dotnet\%projectname% --configuration Debug
 echo Build completed.
+
+echo Copying settings. 
+copy d:\code\secrets\%projectname%\appsettings.json d:\code\datascience-dotnet\%projectname%\bin\Debug\net8.0 /y
+echo Copy completed.
 
 echo Deleting old code coverage data.
 rmdir /s /q TestResults
