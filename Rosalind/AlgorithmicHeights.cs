@@ -416,6 +416,26 @@ namespace Rosalind
             Console.WriteLine(string.Join(" ", sorted));
         }
 
+        public static void ProblemPAR()
+        {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.par.txt") ?? throw new ResourceNotFoundException();
+            using StreamReader sr = new(mrs);
+
+            // Read input
+            int n = int.Parse(sr.ReadLine()!);
+            int[] arr = sr.ReadLine()!.Split().Select(int.Parse).ToArray();
+
+            int pivot = arr[0];
+
+            // Partition
+            var left = arr.Where(x => x < pivot).ToList();
+            var equal = arr.Where(x => x == pivot).ToList();
+            var right = arr.Where(x => x > pivot).ToList();
+
+            // Output
+            Console.WriteLine(string.Join(" ", left.Concat(equal).Concat(right)));
+        }
+
         #endregion
 
         #region Helpers
