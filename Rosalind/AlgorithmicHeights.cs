@@ -423,7 +423,7 @@ namespace Rosalind
 
             // Read input
             int n = int.Parse(sr.ReadLine()!);
-            int[] arr = sr.ReadLine()!.Split().Select(int.Parse).ToArray();
+            int[] arr = [.. sr.ReadLine()!.Split().Select(int.Parse)];
 
             int pivot = arr[0];
 
