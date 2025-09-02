@@ -3240,6 +3240,57 @@ namespace Euler
             Console.WriteLine($"Answer: {numbers.Count}");
         }
 
+        static void Problem88()
+        {
+            const int MAX_K = 12000;
+
+            // Upper bound for product search; 2 * MAX_K is sufficient
+            int limit = MAX_K * 2;
+
+            // minProd[k] stores the minimal product-sum number for k
+            int[] minProd = new int[MAX_K + 1];
+            for (int i = 0; i <= MAX_K; i++) minProd[i] = int.MaxValue;
+
+            // DFS over factor combinations (nondecreasing to avoid duplicates)
+            void Search(int startFactor, int depth, int product, int sum)
+            {
+                // Try extending with factors >= startFactor
+                for (int f = startFactor; f <= limit / product; f++)
+                {
+                    int newProduct = product * f;
+                    int newSum = sum + f;
+                    int newDepth = depth + 1;
+
+                    // k = (#factors including 1's) = newDepth + (product - sum)
+                    int k = newDepth + (newProduct - newSum);
+
+                    if (k >= 2 && k <= MAX_K)
+                    {
+                        if (newProduct < minProd[k])
+                            minProd[k] = newProduct;
+                    }
+
+                    // Keep searching deeper while product within limit
+                    if (newProduct <= limit)
+                        Search(f, newDepth, newProduct, newSum);
+                    else
+                        break; // further f only increases product
+                }
+            }
+
+            Search(2, 0, 1, 0);
+
+            // Sum distinct minimal product-sum numbers
+            var unique = new HashSet<int>();
+            for (int k = 2; k <= MAX_K; k++)
+                unique.Add(minProd[k]);
+
+            long answer = 0;
+            foreach (var v in unique) answer += v;
+
+            Console.WriteLine(answer); // Expected: 7587457
+        }
+
         static void Problem92()
         {
             // This is vaguely similar to the hailstone conjecture.
@@ -4410,6 +4461,6 @@ namespace Euler
 
         #endregion
 
-#pragma warning restore IDE0051 // Remove unused private members
+        #pragma warning restore IDE0051 // Remove unused private members
     }
 }
