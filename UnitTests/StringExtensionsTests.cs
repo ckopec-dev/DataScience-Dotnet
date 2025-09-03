@@ -11,6 +11,241 @@ namespace UnitTests
     public class StringExtensionsTests
     {
         [TestMethod]
+        public void BetweenIgnoreCase_DifferentCase_ReturnsCorrectSubstring()
+        {
+            // Arrange
+            string source = "Hello [World] from C#!";
+
+            // Act
+            string result = source.BetweenIgnoreCase("[", "]");
+
+            // Assert
+            Assert.AreEqual("World", result);
+        }
+
+        [TestMethod]
+        public void BetweenIgnoreCase_MixedCase_ReturnsCorrectSubstring()
+        {
+            // Arrange
+            string source = "Start <CONTENT> End";
+
+            // Act
+            string result = source.BetweenIgnoreCase("<content>", " END");
+
+            // Assert
+            Assert.AreEqual("CONTENT", result);
+        }
+
+        [TestMethod]
+        public void BetweenIgnoreCase_WithIncludeDelimiters_ReturnsSubstringWithOriginalCaseDelimiters()
+        {
+            // Arrange
+            string source = "Hello <WORLD> from C#!";
+
+            // Act
+            string result = source.BetweenIgnoreCase("<world>", "</world>", includeDelimiters: true);
+
+            // Assert
+            Assert.AreEqual("<WORLD>", result);
+        }
+
+        [TestMethod]
+        public void BetweenIgnoreCase_CaseSensitiveWouldFail_ReturnsCorrectSubstring()
+        {
+            // Arrange
+            string source = "Hello [World] from C#!";
+
+            // Act
+            string caseSensitive = source.Between("[", "]");
+            string caseInsensitive = source.BetweenIgnoreCase("[", "]");
+
+            // Assert
+            Assert.AreEqual("World", caseSensitive);
+            Assert.AreEqual("World", caseInsensitive);
+        }
+
+        [TestMethod]
+        public void BetweenIgnoreCase_DelimitersNotFoundDueToCasing_ReturnsEmptyString()
+        {
+            // Arrange
+            string source = "Hello [World] from C#!";
+
+            // Act
+            string result = source.Between("<", ">");  // Wrong delimiters
+
+            // Assert
+            Assert.AreEqual("", result);
+        }
+
+        [TestMethod]
+        public void Between_BasicCase_ReturnsCorrectSubstring()
+        {
+            // Arrange
+            string source = "Hello [World] from C#!";
+
+            // Act
+            string result = source.Between("[", "]");
+
+            // Assert
+            Assert.AreEqual("World", result);
+        }
+
+        [TestMethod]
+        public void Between_WithIncludeDelimiters_ReturnsSubstringWithDelimiters()
+        {
+            // Arrange
+            string source = "Hello [World] from C#!";
+
+            // Act
+            string result = source.Between("[", "]", includeDelimiters: true);
+
+            // Assert
+            Assert.AreEqual("[World]", result);
+        }
+
+        [TestMethod]
+        public void Between_MultipleOccurrences_ReturnsFirstOccurrence()
+        {
+            // Arrange
+            string source = "First [ABC] middle [DEF] last";
+
+            // Act
+            string result = source.Between("[", "]");
+
+            // Assert
+            Assert.AreEqual("ABC", result);
+        }
+
+        [TestMethod]
+        public void Between_EmptyBetweenDelimiters_ReturnsEmptyString()
+        {
+            // Arrange
+            string source = "Hello [] World";
+
+            // Act
+            string result = source.Between("[", "]");
+
+            // Assert
+            Assert.AreEqual("", result);
+        }
+
+        [TestMethod]
+        public void Between_StartDelimiterNotFound_ReturnsEmptyString()
+        {
+            // Arrange
+            string source = "Hello World] from C#!";
+
+            // Act
+            string result = source.Between("[", "]");
+
+            // Assert
+            Assert.AreEqual("", result);
+        }
+
+        [TestMethod]
+        public void Between_EndDelimiterNotFound_ReturnsEmptyString()
+        {
+            // Arrange
+            string source = "Hello [World from C#!";
+
+            // Act
+            string result = source.Between("[", "]");
+
+            // Assert
+            Assert.AreEqual("", result);
+        }
+
+        [TestMethod]
+        public void Between_EmptySource_ReturnsEmptyString()
+        {
+            // Arrange
+            string source = "";
+
+            // Act
+            string result = source.Between("[", "]");
+
+            // Assert
+            Assert.AreEqual("", result);
+        }
+
+        [TestMethod]
+        public void Between_EmptyDelimiters_ReturnsEmptyString()
+        {
+            // Arrange
+            string source = "Hello World";
+
+            // Act
+            string result = source.Between("", "");
+
+            // Assert
+            Assert.AreEqual("", result);
+        }
+
+        [TestMethod]
+        public void Between_SameStartAndEndDelimiter_ReturnsCorrectSubstring()
+        {
+            // Arrange
+            string source = "Hello \"World\" from C#!";
+
+            // Act
+            string result = source.Between("\"", "\"");
+
+            // Assert
+            Assert.AreEqual("World", result);
+        }
+
+        [TestMethod]
+        public void Between_MultiCharacterDelimiters_ReturnsCorrectSubstring()
+        {
+            // Arrange
+            string source = "Start<!--Content-->End";
+
+            // Act
+            string result = source.Between("<!--", "-->");
+
+            // Assert
+            Assert.AreEqual("Content", result);
+        }
+
+        [TestMethod]
+        public void Between_NestedDelimiters_ReturnsFirstLevel()
+        {
+            // Arrange
+            string source = "Outer [Inner [Nested] Content] End";
+
+            // Act
+            string result = source.Between("[", "]");
+
+            // Assert
+            Assert.AreEqual("Inner ", result);
+        }
+
+        [TestMethod]
+        public void Between_DelimitersAtStartAndEnd_ReturnsMiddleContent()
+        {
+            // Arrange
+            string source = "[Everything is between]";
+
+            // Act
+            string result = source.Between("[", "]");
+
+            // Assert
+            Assert.AreEqual("Everything is between", result);
+        }
+
+        [TestMethod]
+        public void Between_WhitespaceContent_PreservesWhitespace()
+        {
+            // Arrange
+            string source = "Hello [  spaces  ] World";
+
+            // Act
+            string result = source.Between("[", "]");
+
+            // Assert
+            Assert.AreEqual("  spaces  ", result);
+        }
+        [TestMethod]
         public void ToCsvValue_NullValue_ReturnsEmptyString()
         {
             // Arrange

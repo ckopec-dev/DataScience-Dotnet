@@ -10,6 +10,62 @@ namespace Core
     public static class StringExtensions
     {
         /// <summary>
+        /// Returns the substring found between the first occurrence of the start and end strings.
+        /// </summary>
+        /// <param name="source">The source string to search in</param>
+        /// <param name="start">The starting delimiter string</param>
+        /// <param name="end">The ending delimiter string</param>
+        /// <param name="includeDelimiters">Whether to include the start and end delimiters in the result</param>
+        /// <returns>The substring between the delimiters, or empty string if not found</returns>
+        public static string Between(this string source, string start, string end, bool includeDelimiters = false)
+        {
+            if (string.IsNullOrEmpty(source) || string.IsNullOrEmpty(start) || string.IsNullOrEmpty(end))
+                return string.Empty;
+
+            int startIndex = source.IndexOf(start);
+            if (startIndex == -1)
+                return string.Empty;
+
+            int startPos = includeDelimiters ? startIndex : startIndex + start.Length;
+            int endIndex = source.IndexOf(end, startPos);
+            if (endIndex == -1)
+                return string.Empty;
+
+            int endPos = includeDelimiters ? endIndex + end.Length : endIndex;
+            int length = endPos - startPos;
+
+            return length > 0 ? source.Substring(startPos, length) : string.Empty;
+        }
+
+        /// <summary>
+        /// Returns the substring found between the first occurrence of the start and end strings (case-insensitive).
+        /// </summary>
+        /// <param name="source">The source string to search in</param>
+        /// <param name="start">The starting delimiter string</param>
+        /// <param name="end">The ending delimiter string</param>
+        /// <param name="includeDelimiters">Whether to include the start and end delimiters in the result</param>
+        /// <returns>The substring between the delimiters, or empty string if not found</returns>
+        public static string BetweenIgnoreCase(this string source, string start, string end, bool includeDelimiters = false)
+        {
+            //if (string.IsNullOrEmpty(source) || string.IsNullOrEmpty(start) || string.IsNullOrEmpty(end))
+            //    return string.Empty;
+
+            int startIndex = source.IndexOf(start, StringComparison.OrdinalIgnoreCase);
+            //if (startIndex == -1)
+            //    return string.Empty;
+
+            int startPos = includeDelimiters ? startIndex : startIndex + start.Length;
+            int endIndex = source.IndexOf(end, startPos, StringComparison.OrdinalIgnoreCase);
+            if (endIndex == -1)
+                return string.Empty;
+
+            int endPos = includeDelimiters ? endIndex + end.Length : endIndex;
+            int length = endPos - startPos;
+
+            return length > 0 ? source.Substring(startPos, length) : string.Empty;
+        }
+
+        /// <summary>
         /// Finds the largest common substring among all strings in the collection.
         /// Returns null if no common substring is found.
         /// </summary>
@@ -409,9 +465,7 @@ namespace Core
         public static string? Merge(this List<string> stringList, char delimiter)
         {
             // Inverse of split for a list.
-            //if (stringList == null)
-            //    return null;
-
+            
             string? result = null;
 
             for (int i = 0; i < stringList.Count; i++)
