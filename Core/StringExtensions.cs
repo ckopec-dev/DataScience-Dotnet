@@ -3,6 +3,7 @@ using System.IO.Compression;
 using System.Text.RegularExpressions;
 using System.Text;
 using System.Text.Json;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Core
 {
@@ -14,7 +15,7 @@ namespace Core
         /// </summary>
         public static string? LargestCommonSubstring(this IEnumerable<string> strings)
         {
-            if (strings == null || !strings.Any())
+            if (strings.IsNullOrEmpty() || !strings.Any())
                 return null;
 
             var list = strings.ToList();
@@ -112,13 +113,6 @@ namespace Core
             }
         }
 
-        public static string Between(this string s, string startString, string endString)
-        {
-            int p1 = s.IndexOf(startString) + startString.Length;
-            int p2 = s.IndexOf(endString);
-            return s[p1..p2];
-        }
-
         public static string Left(this string s, int length)
         {
             // E.g. helloworld, 2 returns "he"
@@ -162,18 +156,7 @@ namespace Core
         public static Byte[] ToUTFByteArray(this string s)
         {
             UTF8Encoding encoding = new();
-            Byte[] byteArray = encoding.GetBytes(s);
-
-            return byteArray;
-        }
-
-        public static string ToString(this Byte[] byteArray)
-        {
-            UTF8Encoding uTF8Encoding = new();
-            UTF8Encoding encoding = uTF8Encoding;
-            String constructedString = encoding.GetString(byteArray);
-
-            return (constructedString);
+            return encoding.GetBytes(s);
         }
 
         public static byte[] ToBytes(this string s)
@@ -231,7 +214,7 @@ namespace Core
             {
                 index = str.IndexOf(substring, index);
                 if (index == -1)
-                    return indexes;
+                    break;
                 indexes.Add(index + base_index);
             }
 
@@ -253,27 +236,47 @@ namespace Core
             return csvBuilder.ToString();
         }
 
-        private static string ToCsvValue<T>(this T item)
+        /// <summary>
+        /// Converts any object to a CSV-safe string value.
+        /// Handles null values, escapes quotes, and wraps values containing special characters in quotes.
+        /// </summary>
+        /// <typeparam name="T">The type of the item to convert</typeparam>
+        /// <param name="item">The item to convert to a CSV value</param>
+        /// <returns>A CSV-safe string representation of the item</returns>
+        public static string ToCsvValue<T>(this T item)
         {
-            if (item == null) return "\"\"";
-
-            if (item is string)
+            if (item == null)
             {
-                string? s = item.ToString();
-                if (s != null)
-                    return string.Format("\"{0}\"", s.Replace("\"", "\\\""));
-                else
-                    return "\"\"";
+                return string.Empty;
             }
 
-            if (double.TryParse(item.ToString(), out _))
+            string? value = item.ToString();
+
+            // If the value is empty, return empty string
+            if (string.IsNullOrEmpty(value))
             {
-                return string.Format("{0}", item);
+                return string.Empty;
             }
 
-            return string.Format("\"{0}\"", item);
+            // Check if the value contains special CSV characters that require quoting
+            bool needsQuoting = value.Contains(',') ||
+                               value.Contains('"') ||
+                               value.Contains('\n') ||
+                               value.Contains('\r') ||
+                               value.StartsWith(' ') ||
+                               value.EndsWith(' ');
+
+            if (needsQuoting)
+            {
+                // Escape any existing quotes by doubling them
+                value = value.Replace("\"", "\"\"");
+
+                // Wrap the entire value in quotes
+                return $"\"{value}\"";
+            }
+
+            return value;
         }
-
 
         public static bool ContainsAny(this string sourceString, string searchString)
         {
@@ -344,21 +347,18 @@ namespace Core
             return s;
         }
 
-        public static List<string> ToList(this string data)
+        /// <summary>
+        /// Parses a row-delimited string into a list of strings.
+        /// Supports multiple line ending formats: \n, \r\n, and \r
+        /// </summary>
+        /// <param name="input">The row-delimited string to parse</param>
+        /// <param name="removeEmptyEntries">Whether to remove empty entries from the result</param>
+        /// <returns>A list of strings representing each row</returns>
+        public static List<string> ParseRowDelimitedString(this string input, bool removeEmptyEntries = false)
         {
-            // Converts a string (of multiple rows) to a list. Ignores blank rows.
+            var options = removeEmptyEntries ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None;
 
-            string[] rows = (Regex.Split(data, Environment.NewLine));
-
-            List<string> list = [];
-
-            foreach (string row in rows)
-            {
-                if (!String.IsNullOrWhiteSpace(row))
-                    list.Add(row);
-            }
-
-            return list;
+            return [.. input.Split(["\r\n", "\r", "\n"], options)];
         }
 
         public static List<string> ToList(this string data, char delimiter)
@@ -409,8 +409,8 @@ namespace Core
         public static string? Merge(this List<string> stringList, char delimiter)
         {
             // Inverse of split for a list.
-            if (stringList == null)
-                return null;
+            //if (stringList == null)
+            //    return null;
 
             string? result = null;
 
@@ -439,38 +439,6 @@ namespace Core
             }
 
             return builder.ToString();
-        }
-
-        public static string LargestCommonSubstring(this List<string> strings)
-        {
-            string lcs = "";
-            string baseString = strings[0];
-
-            // Iterate through every possible length of substrings in the base string.
-            for (int i = 1; i <= baseString.Length; i++)
-            {
-                // Iterate through every possible starting position of the substring of given length.
-                for (int j = 0; j < baseString.Length - i; j++)
-                {
-                    string ss = baseString.Substring(j, i);
-
-                    bool existsInAll = true;
-
-                    for (int k = 1; k < strings.Count; k++)
-                    {
-                        if (!strings[k].Contains(ss))
-                        {
-                            existsInAll = false;
-                            break;
-                        }
-                    }
-
-                    if (existsInAll)
-                        lcs = ss;
-                }
-            }
-
-            return lcs;
         }
 
         public static string Compressed(this string text)

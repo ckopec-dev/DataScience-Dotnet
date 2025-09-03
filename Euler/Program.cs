@@ -536,10 +536,8 @@ namespace Euler
             Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem18.txt") ?? throw new Exception("Resource not found: Problem18.txt");
             using StreamReader sr = new(mrs);
 
-            #pragma warning disable IDE0305 // Simplify collection initialization
-            List<string> input = sr.ReadToEnd().ToList();
-            #pragma warning restore IDE0305 // Simplify collection initialization
-
+            List<string> input = sr.ReadToEnd().ParseRowDelimitedString();
+            
             // Convert it to a list of int arrays.
             List<int[]> data = [];
             for (int i = 0; i < input.Count; i++)
@@ -2444,10 +2442,8 @@ namespace Euler
             Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem67.txt") ?? throw new ResourceNotFoundException();
             using StreamReader sr = new(mrs);
 
-#pragma warning disable IDE0305 // Simplify collection initialization
-            List<string> input = sr.ReadToEnd().ToList();
-#pragma warning restore IDE0305 // Simplify collection initialization
-
+            List<string> input = sr.ReadToEnd().ParseRowDelimitedString();
+            
             // Convert it to a list of int arrays.
             List<int[]> data = [];
             for (int i = 0; i < input.Count; i++)
