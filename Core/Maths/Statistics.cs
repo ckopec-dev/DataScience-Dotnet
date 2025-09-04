@@ -620,20 +620,20 @@
         public override string ToString()
         {
             return $@"Descriptive Statistics:
-Count: {Count}
-Mean: {Mean:F4}
-Median: {Median:F4}
-Mode: {string.Join(", ", Mode.Select(m => m.ToString("F4")))}
-Standard Deviation: {StandardDeviation:F4}
-Variance: {Variance:F4}
-Range: {Range:F4}
-Minimum: {Minimum:F4}
-Maximum: {Maximum:F4}
-Q1: {Q1:F4}
-Q3: {Q3:F4}
-IQR: {InterquartileRange:F4}
-Skewness: {Skewness:F4}
-Kurtosis: {Kurtosis:F4}";
+                Count: {Count}
+                Mean: {Mean:F4}
+                Median: {Median:F4}
+                Mode: {string.Join(", ", Mode.Select(m => m.ToString("F4")))}
+                Standard Deviation: {StandardDeviation:F4}
+                Variance: {Variance:F4}
+                Range: {Range:F4}
+                Minimum: {Minimum:F4}
+                Maximum: {Maximum:F4}
+                Q1: {Q1:F4}
+                Q3: {Q3:F4}
+                IQR: {InterquartileRange:F4}
+                Skewness: {Skewness:F4}
+                Kurtosis: {Kurtosis:F4}";
         }
     }
 

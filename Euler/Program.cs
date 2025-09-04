@@ -2,6 +2,7 @@
 using Core;
 using Core.GameTheory;
 using Core.Internet;
+using Core.Maths;
 using NLog;
 using ScottPlot;
 using System.Diagnostics;
@@ -497,7 +498,8 @@ namespace Euler
         static void Problem15()
         {
             const int gridSize = 20;
-            BigInteger r = Statistics.BinomialCoefficient(gridSize + gridSize, gridSize);
+            long r = Algebra.BinomialCoefficient(gridSize + gridSize, gridSize);    
+
             Console.WriteLine(r);
         }
 
