@@ -47,13 +47,8 @@ namespace Core
         /// <returns>The substring between the delimiters, or empty string if not found</returns>
         public static string BetweenIgnoreCase(this string source, string start, string end, bool includeDelimiters = false)
         {
-            //if (string.IsNullOrEmpty(source) || string.IsNullOrEmpty(start) || string.IsNullOrEmpty(end))
-            //    return string.Empty;
-
             int startIndex = source.IndexOf(start, StringComparison.OrdinalIgnoreCase);
-            //if (startIndex == -1)
-            //    return string.Empty;
-
+            
             int startPos = includeDelimiters ? startIndex : startIndex + start.Length;
             int endIndex = source.IndexOf(end, startPos, StringComparison.OrdinalIgnoreCase);
             if (endIndex == -1)
@@ -275,21 +270,6 @@ namespace Core
             }
 
             return indexes;
-        }
-
-        public static string ToCsv<T>(this IEnumerable<T> items)
-            where T : class
-        {
-            var csvBuilder = new StringBuilder();
-            var properties = typeof(T).GetProperties();
-
-            foreach (T item in items)
-            {
-                string line = string.Join(",", [.. properties.Select(p => p.GetValue(item, null).ToCsvValue())]);
-                csvBuilder.AppendLine(line);
-            }
-
-            return csvBuilder.ToString();
         }
 
         /// <summary>

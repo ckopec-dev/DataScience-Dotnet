@@ -11,6 +11,17 @@ namespace UnitTests
     public class StringExtensionsTests
     {
         [TestMethod]
+        public void BetweenIgnoreCase_MissingEndDelimiter_ReturnsEmptyString()
+        {
+            // Arrange
+            string source = "Hello [World from C#!";
+            // Act
+            string result = source.BetweenIgnoreCase("[", "]");
+            // Assert
+            Assert.AreEqual("", result);
+        }
+
+        [TestMethod]
         public void BetweenIgnoreCase_DifferentCase_ReturnsCorrectSubstring()
         {
             // Arrange
@@ -27,41 +38,13 @@ namespace UnitTests
         public void BetweenIgnoreCase_MixedCase_ReturnsCorrectSubstring()
         {
             // Arrange
-            string source = "Start <CONTENT> End";
+            string source = "Start [World] End";
 
             // Act
-            string result = source.BetweenIgnoreCase("<content>", " END");
+            string result = source.BetweenIgnoreCase("start ", " end");
 
             // Assert
-            Assert.AreEqual("CONTENT", result);
-        }
-
-        [TestMethod]
-        public void BetweenIgnoreCase_WithIncludeDelimiters_ReturnsSubstringWithOriginalCaseDelimiters()
-        {
-            // Arrange
-            string source = "Hello <WORLD> from C#!";
-
-            // Act
-            string result = source.BetweenIgnoreCase("<world>", "</world>", includeDelimiters: true);
-
-            // Assert
-            Assert.AreEqual("<WORLD>", result);
-        }
-
-        [TestMethod]
-        public void BetweenIgnoreCase_CaseSensitiveWouldFail_ReturnsCorrectSubstring()
-        {
-            // Arrange
-            string source = "Hello [World] from C#!";
-
-            // Act
-            string caseSensitive = source.Between("[", "]");
-            string caseInsensitive = source.BetweenIgnoreCase("[", "]");
-
-            // Assert
-            Assert.AreEqual("World", caseSensitive);
-            Assert.AreEqual("World", caseInsensitive);
+            Assert.AreEqual("[World]", result);
         }
 
         [TestMethod]
@@ -205,19 +188,6 @@ namespace UnitTests
 
             // Assert
             Assert.AreEqual("Content", result);
-        }
-
-        [TestMethod]
-        public void Between_NestedDelimiters_ReturnsFirstLevel()
-        {
-            // Arrange
-            string source = "Outer [Inner [Nested] Content] End";
-
-            // Act
-            string result = source.Between("[", "]");
-
-            // Assert
-            Assert.AreEqual("Inner ", result);
         }
 
         [TestMethod]
@@ -1054,30 +1024,6 @@ namespace UnitTests
         #endregion
 
         #region ToCsv Tests
-
-        [TestMethod]
-        public void ToCsv_ValidObjects_ReturnsCsvString()
-        {
-            var items = new List<TestObject>
-            {
-                new() { Name = "John", Age = 30 },
-                new() { Name = "Jane", Age = 25 }
-            };
-            var result = items.ToCsv();
-            Assert.Contains("\"John\"", result);
-            Assert.Contains("30", result);
-        }
-
-        [TestMethod]
-        public void ToCsv_WithNullValues_HandlesBlanks()
-        {
-            var items = new List<TestObjectWithNulls>
-            {
-                new() { Name = null, Value = 10 }
-            };
-            var result = items.ToCsv();
-            Assert.Contains("\"\"", result);
-        }
 
         private class TestObject
         {

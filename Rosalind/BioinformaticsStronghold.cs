@@ -371,11 +371,71 @@ namespace Rosalind
             Console.WriteLine(result); 
         }
 
+        public static void ProblemLIA()
+        {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.lia.txt") ?? throw new ResourceNotFoundException();
+            using StreamReader sr = new(mrs);
+
+            // Read input: k (generation) and N (minimum number of AaBb offspring)
+            string[] input = sr!.ReadLine()!.Split();
+            int k = int.Parse(input[0]);
+            int N = int.Parse(input[1]);
+
+            // Calculate total offspring in generation k
+            int totalOffspring = (int)Math.Pow(2, k);
+
+            // Probability that any single offspring is AaBb
+            // When both parents are AaBb, probability of AaBb offspring is 1/4
+            double probAaBb = 0.25;
+
+            // Calculate probability that at least N offspring are AaBb
+            // This is 1 - P(fewer than N are AaBb)
+            double result = 1.0 - CumulativeBinomial_LIA(totalOffspring, probAaBb, N - 1);
+
+            Console.WriteLine($"{result:F3}");
+        }
+
         #endregion
 
         #region Helpers
 
-        private class FastaRecordGRPH
+        // Calculate cumulative binomial probability P(X <= k)
+        static double CumulativeBinomial_LIA(int n, double p, int k)
+        {
+            double sum = 0.0;
+            for (int i = 0; i <= k; i++)
+            {
+                sum += BinomialProbability_LIA(n, p, i);
+            }
+            return sum;
+        }
+
+        // Calculate binomial probability P(X = k) = C(n,k) * p^k * (1-p)^(n-k)
+        static double BinomialProbability_LIA(int n, double p, int k)
+        {
+            if (k > n || k < 0) return 0.0;
+
+            double coefficient = BinomialCoefficient_LIA(n, k);
+            double probability = Math.Pow(p, k) * Math.Pow(1 - p, n - k);
+
+            return coefficient * probability;
+        }
+
+        // Calculate binomial coefficient C(n, k) = n! / (k! * (n-k)!)
+        static double BinomialCoefficient_LIA(int n, int k)
+        {
+            if (k > n - k) k = n - k; // Take advantage of symmetry
+
+            double result = 1.0;
+            for (int i = 0; i < k; i++)
+            {
+                result = result * (n - i) / (i + 1);
+            }
+
+            return result;
+        }
+
+        class FastaRecordGRPH
         {
             public string Id { get; set; } = "";
             public string Seq { get; set; } = "";
