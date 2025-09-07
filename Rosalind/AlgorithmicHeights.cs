@@ -2,6 +2,7 @@
 using QuikGraph;
 using QuikGraph.Algorithms;
 using QuikGraph.Graphviz;
+using ScottPlot;
 using ScottPlot.Triangulation;
 using SkiaSharp;
 using System.Diagnostics.SymbolStore;
@@ -436,6 +437,27 @@ namespace Rosalind
             Console.WriteLine(string.Join(" ", left.Concat(equal).Concat(right)));
         }
 
+        public static void Problem3SUM()
+        {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.3sum.txt") ?? throw new ResourceNotFoundException();
+            using StreamReader sr = new(mrs);
+
+            var firstLine = sr.ReadLine()!.Split().Select(int.Parse).ToArray();
+            int k = firstLine[0];
+            int n = firstLine[1];
+
+            for (int t = 0; t < k; t++)
+            {
+                var arr = sr.ReadLine()!.Split().Select(int.Parse).ToArray();
+                var result = FindThreeSum(arr);
+
+                if (result.Count == 0)
+                    Console.WriteLine("-1");
+                else
+                    Console.WriteLine(string.Join(" ", result));
+            }
+        }
+
         #endregion
 
         #region Helpers
@@ -562,6 +584,41 @@ namespace Rosalind
             }
 
             return result;
+        }
+
+        static List<int> FindThreeSum(int[] arr)
+        {
+            int n = arr.Length;
+            // Store value -> list of indices
+            var valueToIndices = new Dictionary<int, List<int>>();
+            for (int i = 0; i < n; i++)
+            {
+                if (!valueToIndices.ContainsKey(arr[i]))
+                    valueToIndices[arr[i]] = [];
+                valueToIndices[arr[i]].Add(i);
+            }
+
+            // Try pairs (i, j) and look for -(a[i]+a[j])
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = i + 1; j < n; j++)
+                {
+                    int needed = -(arr[i] + arr[j]);
+                    if (valueToIndices.TryGetValue(needed, out List<int>? value))
+                    {
+                        foreach (var k in value)
+                        {
+                            if (k != i && k != j)
+                            {
+                                // Found distinct indices, return (1-based)
+                                return [i + 1, j + 1, k + 1];
+                            }
+                        }
+                    }
+                }
+            }
+
+            return []; // No solution
         }
 
         #endregion
