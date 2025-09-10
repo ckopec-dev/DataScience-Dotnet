@@ -1,11 +1,5 @@
 ﻿using Core;
-using QuikGraph;
-using QuikGraph.Algorithms;
-using QuikGraph.Graphviz;
 using ScottPlot;
-using ScottPlot.Triangulation;
-using SkiaSharp;
-using System.Diagnostics.SymbolStore;
 using System.Reflection;
 using System.Text;
 
