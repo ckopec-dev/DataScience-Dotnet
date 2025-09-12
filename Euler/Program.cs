@@ -3289,6 +3289,28 @@ namespace Euler
             Console.WriteLine(answer); // Expected: 7587457
         }
 
+        static void Problem89()
+        {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem89.txt") ?? throw new ResourceNotFoundException();
+            using StreamReader sr = new(mrs);
+
+            List<string> lines = [];
+
+            while (!sr.EndOfStream)
+            {
+                string? row = sr.ReadLine();
+                if (row == null) break;
+                lines.Add(row);
+            }
+
+            foreach(string roman_number in lines)
+            {
+                long num = MathHelper.RomanToLong(roman_number);
+
+                Console.WriteLine("{0}: {1}", roman_number, num);
+            }
+        }
+
         static void Problem92()
         {
             // This is vaguely similar to the hailstone conjecture.

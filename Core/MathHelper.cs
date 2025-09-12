@@ -8,6 +8,48 @@ namespace Core
     {
         public const double GAMMA = 0.57721566490153286060651209008240243;
 
+        public static long RomanToLong(string roman)
+        {
+            if (string.IsNullOrWhiteSpace(roman))
+                throw new ArgumentException("Roman numeral cannot be null or empty", nameof(roman));
+
+            // Dictionary mapping Roman numerals to their values
+            var romanValues = new Dictionary<char, long>
+            {
+                {'I', 1},
+                {'V', 5},
+                {'X', 10},
+                {'L', 50},
+                {'C', 100},
+                {'D', 500},
+                {'M', 1000}
+            };
+
+            roman = roman.ToUpper().Trim();
+            long result = 0;
+
+            for (int i = 0; i < roman.Length; i++)
+            {
+                char currentChar = roman[i];
+
+                // Validate that the character is a valid Roman numeral
+                if (!romanValues.TryGetValue(currentChar, out long currentValue))
+                    throw new ArgumentException($"Invalid Roman numeral character: {currentChar}", nameof(roman));
+
+                // Check if we need to subtract (subtractive notation like IV, IX, XL, etc.)
+                if (i + 1 < roman.Length && romanValues[roman[i + 1]] > currentValue)
+                {
+                    result -= currentValue;
+                }
+                else
+                {
+                    result += currentValue;
+                }
+            }
+
+            return result;
+        }
+
         public static ulong  CoinPartitions(int[] coinValues, int sum)
         {
             long n = coinValues.Length;

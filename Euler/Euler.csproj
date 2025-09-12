@@ -18,6 +18,7 @@
     <None Remove="Inputs\Problem81.txt" />
     <None Remove="Inputs\Problem82.txt" />
     <None Remove="Inputs\Problem83.txt" />
+    <None Remove="Inputs\Problem89.txt" />
     <None Remove="nlog.config" />
   </ItemGroup>
 
@@ -52,6 +53,7 @@
     <EmbeddedResource Include="Inputs\Problem81.txt" />
     <EmbeddedResource Include="Inputs\Problem82.txt" />
     <EmbeddedResource Include="Inputs\Problem83.txt" />
+    <EmbeddedResource Include="Inputs\Problem89.txt" />
   </ItemGroup>
 
   <ItemGroup>
