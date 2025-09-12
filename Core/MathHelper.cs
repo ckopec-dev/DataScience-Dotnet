@@ -1,6 +1,5 @@
-﻿using System.Drawing;
-using System.Numerics;
-using System.Xml.XPath;
+﻿using System.Numerics;
+using System.Text;
 
 namespace Core
 {
@@ -8,35 +7,23 @@ namespace Core
     {
         public const double GAMMA = 0.57721566490153286060651209008240243;
 
+        // Convert Roman numeral to integer
         public static long RomanToLong(string roman)
         {
-            if (string.IsNullOrWhiteSpace(roman))
-                throw new ArgumentException("Roman numeral cannot be null or empty", nameof(roman));
-
-            // Dictionary mapping Roman numerals to their values
             var romanValues = new Dictionary<char, long>
             {
-                {'I', 1},
-                {'V', 5},
-                {'X', 10},
-                {'L', 50},
-                {'C', 100},
-                {'D', 500},
-                {'M', 1000}
+                {'I', 1}, {'V', 5}, {'X', 10}, {'L', 50},
+                {'C', 100}, {'D', 500}, {'M', 1000}
             };
 
-            roman = roman.ToUpper().Trim();
             long result = 0;
+            roman = roman.ToUpper().Trim();
 
             for (int i = 0; i < roman.Length; i++)
             {
-                char currentChar = roman[i];
+                long currentValue = romanValues[roman[i]];
 
-                // Validate that the character is a valid Roman numeral
-                if (!romanValues.TryGetValue(currentChar, out long currentValue))
-                    throw new ArgumentException($"Invalid Roman numeral character: {currentChar}", nameof(roman));
-
-                // Check if we need to subtract (subtractive notation like IV, IX, XL, etc.)
+                // Check if we need to subtract (subtractive notation)
                 if (i + 1 < roman.Length && romanValues[roman[i + 1]] > currentValue)
                 {
                     result -= currentValue;
@@ -48,6 +35,30 @@ namespace Core
             }
 
             return result;
+        }
+
+        // Convert integer to minimal Roman numeral
+        public static string LongToMinimalRoman(long number)
+        {
+            if (number <= 0) return "";
+
+            // Values and corresponding Roman numerals in descending order
+            // Including all subtractive combinations for minimal representation
+            var values = new long[] { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
+            var numerals = new string[] { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
+
+            var result = new StringBuilder();
+
+            for (int i = 0; i < values.Length; i++)
+            {
+                while (number >= values[i])
+                {
+                    result.Append(numerals[i]);
+                    number -= values[i];
+                }
+            }
+
+            return result.ToString();
         }
 
         public static ulong  CoinPartitions(int[] coinValues, int sum)

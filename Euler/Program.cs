@@ -3303,12 +3303,22 @@ namespace Euler
                 lines.Add(row);
             }
 
-            foreach(string roman_number in lines)
-            {
-                long num = MathHelper.RomanToLong(roman_number);
+            int totalCharactersSaved = 0;
 
-                Console.WriteLine("{0}: {1}", roman_number, num);
+            foreach (string roman in lines)
+            {
+                long number = MathHelper.RomanToLong(roman);
+                string minimal1 = MathHelper.LongToMinimalRoman(number);
+
+                int saved1 = roman.Length - minimal1.Length;
+                
+                Console.WriteLine($"{roman} ({number}) -> {minimal1} (Method 1: saves {saved1})");
+                Console.WriteLine();
+
+                totalCharactersSaved += saved1;
             }
+
+            Console.WriteLine($"Total characters saved: {totalCharactersSaved}");
         }
 
         static void Problem92()
