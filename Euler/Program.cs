@@ -3354,6 +3354,39 @@ namespace Euler
             Console.WriteLine(validArrangements);
         }
 
+        static void Problem91()
+        {
+            int n = 50;
+
+            int count = 0;
+
+            // Iterate through all possible pairs of points P(x1,y1) and Q(x2,y2)
+            for (int x1 = 0; x1 <= n; x1++)
+            {
+                for (int y1 = 0; y1 <= n; y1++)
+                {
+                    for (int x2 = 0; x2 <= n; x2++)
+                    {
+                        for (int y2 = 0; y2 <= n; y2++)
+                        {
+                            // Skip if P or Q is at origin, or if P and Q are the same point
+                            if ((x1 == 0 && y1 == 0) || (x2 == 0 && y2 == 0) || (x1 == x2 && y1 == y2))
+                                continue;
+
+                            // Check if triangle OPQ has a right angle
+                            if (IsRightTriangle91(0, 0, x1, y1, x2, y2))
+                            {
+                                count++;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Since each triangle is counted twice (once as OPQ and once as OQP), divide by 2
+            Console.WriteLine(count / 2);
+        }
+
         static void Problem92()
         {
             // This is vaguely similar to the hailstone conjecture.
@@ -4584,8 +4617,27 @@ namespace Euler
             return true;
         }
 
+        static bool IsRightTriangle91(int x1, int y1, int x2, int y2, int x3, int y3)
+        {
+            // Calculate squared distances between all three points
+            long d1 = SquaredDistance91(x1, y1, x2, y2); // O to P
+            long d2 = SquaredDistance91(x2, y2, x3, y3); // P to Q
+            long d3 = SquaredDistance91(x1, y1, x3, y3); // O to Q
+
+            // Check if any angle is 90 degrees using Pythagorean theorem
+            // For a right triangle, the sum of squares of two shorter sides equals the square of the longest side
+            return (d1 + d2 == d3) || (d1 + d3 == d2) || (d2 + d3 == d1);
+        }
+
+        static long SquaredDistance91(int x1, int y1, int x2, int y2)
+        {
+            long dx = x2 - x1;
+            long dy = y2 - y1;
+            return dx * dx + dy * dy;
+        }
+
         #endregion
 
-        #pragma warning restore IDE0051 // Remove unused private members
+#pragma warning restore IDE0051 // Remove unused private members
     }
 }
