@@ -3414,6 +3414,38 @@ namespace Euler
             Console.WriteLine("count: {0}", count);
         }
 
+        static void Problem93()
+        {
+            int maxConsecutive = 0;
+            string bestSet = "";
+
+            // Try all combinations of 4 digits from 1-9
+            for (int a = 1; a <= 9; a++)
+            {
+                for (int b = a + 1; b <= 9; b++)
+                {
+                    for (int c = b + 1; c <= 9; c++)
+                    {
+                        for (int d = c + 1; d <= 9; d++)
+                        {
+                            var digits = new int[] { a, b, c, d };
+                            var results = GetAllResults93(digits);
+                            int consecutive = CountConsecutive93(results);
+
+                            if (consecutive > maxConsecutive)
+                            {
+                                maxConsecutive = consecutive;
+                                bestSet = $"{a}{b}{c}{d}";
+                            }
+                        }
+                    }
+                }
+            }
+
+            Console.WriteLine($"Best set: {bestSet}");
+            Console.WriteLine($"Consecutive count: {maxConsecutive}");
+        }
+
         static void Problem97()
         {
             BigInteger bi = BigInteger.Pow(2, 7830457);
@@ -4634,6 +4666,161 @@ namespace Euler
             long dx = x2 - x1;
             long dy = y2 - y1;
             return dx * dx + dy * dy;
+        }
+
+        static HashSet<int> GetAllResults93(int[] digits)
+        {
+            var results = new HashSet<int>();
+            var perms = GetPermutations93(digits);
+            var operations = new char[] { '+', '-', '*', '/' };
+
+            foreach (var perm in perms)
+            {
+                // Try all combinations of 3 operations
+                for (int op1 = 0; op1 < 4; op1++)
+                {
+                    for (int op2 = 0; op2 < 4; op2++)
+                    {
+                        for (int op3 = 0; op3 < 4; op3++)
+                        {
+                            var ops = new char[] { operations[op1], operations[op2], operations[op3] };
+
+                            // Try all 5 bracket configurations for 4 numbers and 3 operations:
+                            // 1. ((a op b) op c) op d
+                            // 2. (a op (b op c)) op d  
+                            // 3. (a op b) op (c op d)
+                            // 4. a op ((b op c) op d)
+                            // 5. a op (b op (c op d))
+
+                            AddResult93(results, EvaluateExpression193(perm, ops));
+                            AddResult93(results, EvaluateExpression293(perm, ops));
+                            AddResult93(results, EvaluateExpression393(perm, ops));
+                            AddResult93(results, EvaluateExpression493(perm, ops));
+                            AddResult93(results, EvaluateExpression593(perm, ops));
+                        }
+                    }
+                }
+            }
+
+            return results;
+        }
+
+        static void AddResult93(HashSet<int> results, double value)
+        {
+            if (value > 0 && Math.Abs(value - Math.Round(value)) < 1e-9)
+            {
+                int intValue = (int)Math.Round(value);
+                if (intValue > 0)
+                {
+                    results.Add(intValue);
+                }
+            }
+        }
+
+        static double ApplyOperation93(double a, double b, char op)
+        {
+            return op switch
+            {
+                '+' => a + b,
+                '-' => a - b,
+                '*' => a * b,
+                '/' => Math.Abs(b) < 1e-9 ? double.NaN : a / b,
+                _ => double.NaN,
+            };
+        }
+
+        // ((a op b) op c) op d
+        static double EvaluateExpression193(int[] nums, char[] ops)
+        {
+            double result = ApplyOperation93(nums[0], nums[1], ops[0]);
+            if (double.IsNaN(result)) return double.NaN;
+            result = ApplyOperation93(result, nums[2], ops[1]);
+            if (double.IsNaN(result)) return double.NaN;
+            return ApplyOperation93(result, nums[3], ops[2]);
+        }
+
+        // (a op (b op c)) op d
+        static double EvaluateExpression293(int[] nums, char[] ops)
+        {
+            double temp = ApplyOperation93(nums[1], nums[2], ops[1]);
+            if (double.IsNaN(temp)) return double.NaN;
+            double result = ApplyOperation93(nums[0], temp, ops[0]);
+            if (double.IsNaN(result)) return double.NaN;
+            return ApplyOperation93(result, nums[3], ops[2]);
+        }
+
+        // (a op b) op (c op d)
+        static double EvaluateExpression393(int[] nums, char[] ops)
+        {
+            double left = ApplyOperation93(nums[0], nums[1], ops[0]);
+            double right = ApplyOperation93(nums[2], nums[3], ops[2]);
+            if (double.IsNaN(left) || double.IsNaN(right)) return double.NaN;
+            return ApplyOperation93(left, right, ops[1]);
+        }
+
+        // a op ((b op c) op d)
+        static double EvaluateExpression493(int[] nums, char[] ops)
+        {
+            double temp = ApplyOperation93(nums[1], nums[2], ops[1]);
+            if (double.IsNaN(temp)) return double.NaN;
+            double result = ApplyOperation93(temp, nums[3], ops[2]);
+            if (double.IsNaN(result)) return double.NaN;
+            return ApplyOperation93(nums[0], result, ops[0]);
+        }
+
+        // a op (b op (c op d))
+        static double EvaluateExpression593(int[] nums, char[] ops)
+        {
+            double temp = ApplyOperation93(nums[2], nums[3], ops[2]);
+            if (double.IsNaN(temp)) return double.NaN;
+            double result = ApplyOperation93(nums[1], temp, ops[1]);
+            if (double.IsNaN(result)) return double.NaN;
+            return ApplyOperation93(nums[0], result, ops[0]);
+        }
+
+        static int CountConsecutive93(HashSet<int> results)
+        {
+            int count = 0;
+            for (int i = 1; ; i++)
+            {
+                if (results.Contains(i))
+                {
+                    count++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return count;
+        }
+
+        static List<int[]> GetPermutations93(int[] array)
+        {
+            var result = new List<int[]>();
+            GeneratePermutations93(array, 0, result);
+            return result;
+        }
+
+        static void GeneratePermutations93(int[] array, int startIndex, List<int[]> result)
+        {
+            if (startIndex == array.Length - 1)
+            {
+                result.Add((int[])array.Clone());
+                return;
+            }
+
+            for (int i = startIndex; i < array.Length; i++)
+            {
+                Swap93(array, startIndex, i);
+                GeneratePermutations93(array, startIndex + 1, result);
+                Swap93(array, startIndex, i); // backtrack
+            }
+        }
+
+        static void Swap93(int[] array, int i, int j)
+        {
+            (array[j], array[i]) = (array[i], array[j]);
         }
 
         #endregion
