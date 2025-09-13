@@ -3321,6 +3321,39 @@ namespace Euler
             Console.WriteLine($"Total characters saved: {totalCharactersSaved}");
         }
 
+        static void Problem90()
+        {
+            // The square numbers we need to display: 01, 04, 09, 16, 25, 36, 49, 64, 81
+            var targetSquares = new List<(int, int)>
+            {
+            (0, 1), (0, 4), (0, 9),
+            (1, 6), (2, 5), (3, 6),
+            (4, 9), (6, 4), (8, 1)
+            };
+
+            // Generate all possible combinations of 6 digits from 0-9 for each cube
+            var allCombinations = GetCombinations90(Enumerable.Range(0, 10).ToList(), 6).ToList();
+
+            int validArrangements = 0;
+
+            // Check each pair of cube combinations
+            for (int i = 0; i < allCombinations.Count; i++)
+            {
+                for (int j = i; j < allCombinations.Count; j++) // j starts from i to avoid counting duplicates
+                {
+                    var cube1 = allCombinations[i];
+                    var cube2 = allCombinations[j];
+
+                    if (CanDisplayAllSquares90(cube1, cube2, targetSquares))
+                    {
+                        validArrangements++;
+                    }
+                }
+            }
+
+            Console.WriteLine(validArrangements);
+        }
+
         static void Problem92()
         {
             // This is vaguely similar to the hailstone conjecture.
@@ -4487,6 +4520,68 @@ namespace Euler
                 }
                 return v;
             }
+        }
+
+        static HashSet<int> GetExtendedDigitSet90(List<int> digits)
+        {
+            var extended = new HashSet<int>(digits);
+
+            // If cube contains 6, it can also display 9
+            if (extended.Contains(6) && !extended.Contains(9))
+            {
+                extended.Add(9);
+            }
+
+            // If cube contains 9, it can also display 6
+            if (extended.Contains(9) && !extended.Contains(6))
+            {
+                extended.Add(6);
+            }
+
+            return extended;
+        }
+
+        static IEnumerable<List<T>> GetCombinations90<T>(List<T> items, int count)
+        {
+            if (count == 0)
+            {
+                yield return new List<T>();
+                yield break;
+            }
+
+            if (count > items.Count)
+                yield break;
+
+            for (int i = 0; i <= items.Count - count; i++)
+            {
+                foreach (var combination in GetCombinations90(items.Skip(i + 1).ToList(), count - 1))
+                {
+                    var result = new List<T> { items[i] };
+                    result.AddRange(combination);
+                    yield return result;
+                }
+            }
+        }
+
+        static bool CanDisplayAllSquares90(List<int> cube1, List<int> cube2, List<(int, int)> targetSquares)
+        {
+            // Create extended sets that include both 6 and 9 if either is present
+            var extendedCube1 = GetExtendedDigitSet90(cube1);
+            var extendedCube2 = GetExtendedDigitSet90(cube2);
+
+            foreach (var (first, second) in targetSquares)
+            {
+                // Check if we can form this square number with either cube arrangement
+                bool canForm = (extendedCube1.Contains(first) && extendedCube2.Contains(second)) ||
+                              (extendedCube1.Contains(second) && extendedCube2.Contains(first));
+
+                if (!canForm)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         #endregion
