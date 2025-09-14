@@ -43,8 +43,4 @@
     <PackageReference Include="ScottPlot" Version="5.0.56" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Salesforce\" />
-  </ItemGroup>
-
 </Project>
