@@ -16,7 +16,7 @@ namespace Core.Salesforce
 
         public SalesforceClient(SalesforceConfig config)
         {
-            _config = config ?? throw new ArgumentNullException(nameof(config));
+            _config = config; ;// ?? throw new ArgumentNullException(nameof(config));
             _httpClient = new HttpClient
             {
                 Timeout = TimeSpan.FromSeconds(30)
@@ -113,13 +113,11 @@ namespace Core.Salesforce
 
             if (response.IsSuccessStatusCode)
             {
-                var result = JsonSerializer.Deserialize<CreateResponse>(responseContent, _jsonOptions);
-                return result!.Id;
+                return JsonSerializer.Deserialize<CreateResponse>(responseContent, _jsonOptions)!.Id;// result.Id;
             }
             else
             {
-                HandleErrorResponse(response, responseContent);
-                return null;
+                throw new SalesforceException(GetErrorResponse(response, responseContent));
             }
         }
 
@@ -146,8 +144,7 @@ namespace Core.Salesforce
             }
             else
             {
-                HandleErrorResponse(response, responseContent);
-                return default;
+                throw new SalesforceException(GetErrorResponse(response, responseContent));
             }
         }
 
@@ -173,8 +170,7 @@ namespace Core.Salesforce
             else
             {
                 var responseContent = await response.Content.ReadAsStringAsync();
-                HandleErrorResponse(response, responseContent);
-                return false;
+                throw new SalesforceException(GetErrorResponse(response, responseContent));
             }
         }
 
@@ -195,8 +191,7 @@ namespace Core.Salesforce
             else
             {
                 var responseContent = await response.Content.ReadAsStringAsync();
-                HandleErrorResponse(response, responseContent);
-                return false;
+                throw new SalesforceException(GetErrorResponse(response, responseContent));
             }
         }
 
@@ -223,8 +218,7 @@ namespace Core.Salesforce
             }
             else
             {
-                HandleErrorResponse(response, responseContent);
-                return null;
+                throw new SalesforceException(GetErrorResponse(response, responseContent));
             }
         }
 
@@ -245,8 +239,7 @@ namespace Core.Salesforce
             }
             else
             {
-                HandleErrorResponse(response, responseContent);
-                return null;
+                throw new SalesforceException(GetErrorResponse(response, responseContent));
             }
         }
 
@@ -308,8 +301,7 @@ namespace Core.Salesforce
             }
             else
             {
-                HandleErrorResponse(response, responseContent);
-                return null;
+                throw new SalesforceException(GetErrorResponse(response, responseContent));
             }
         }
 
@@ -334,8 +326,7 @@ namespace Core.Salesforce
             }
             else
             {
-                HandleErrorResponse(response, responseContent);
-                return null;
+                throw new SalesforceException(GetErrorResponse(response, responseContent));
             }
         }
 
@@ -357,8 +348,7 @@ namespace Core.Salesforce
             }
             else
             {
-                HandleErrorResponse(response, responseContent);
-                return null;
+                throw new SalesforceException(GetErrorResponse(response, responseContent));
             }
         }
 
@@ -391,22 +381,21 @@ namespace Core.Salesforce
             }
             else
             {
-                HandleErrorResponse(response, responseContent);
-                return null;
+                throw new SalesforceException(GetErrorResponse(response, responseContent));
             }
         }
 
-        private void HandleErrorResponse(HttpResponseMessage response, string content)
+        private string GetErrorResponse(HttpResponseMessage response, string content)
         {
             try
             {
                 var errors = JsonSerializer.Deserialize<List<SalesforceError>>(content, _jsonOptions);
                 var errorMessage = string.Join(", ", errors!.Select(e => $"{e.ErrorCode}: {e.Message}"));
-                throw new SalesforceException($"Salesforce API error: {errorMessage}");
+                return String.Format($"Salesforce API error: {errorMessage}");
             }
             catch (JsonException)
             {
-                throw new SalesforceException($"HTTP {(int)response.StatusCode} {response.ReasonPhrase}: {content}");
+                return String.Format($"HTTP {(int)response.StatusCode} {response.ReasonPhrase}: {content}");
             }
         }
 

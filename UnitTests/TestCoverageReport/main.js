@@ -288,19 +288,19 @@ var assemblies = [
       { "name": "Core.Physics.Vector3D", "rp": "Core_Vector3D.html", "cl": 0, "ucl": 15, "cal": 15, "tl": 29, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.PhysicsHelper", "rp": "Core_PhysicsHelper.html", "cl": 0, "ucl": 49, "cal": 49, "tl": 127, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.ResourceNotFoundException", "rp": "Core_ResourceNotFoundException.html", "cl": 0, "ucl": 3, "cal": 3, "tl": 10, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Salesforce.AuthResponse", "rp": "Core_AuthResponse.html", "cl": 0, "ucl": 6, "cal": 6, "tl": 647, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Salesforce.CompositeResponse", "rp": "Core_CompositeResponse.html", "cl": 0, "ucl": 1, "cal": 1, "tl": 647, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Salesforce.CompositeResult", "rp": "Core_CompositeResult.html", "cl": 0, "ucl": 4, "cal": 4, "tl": 647, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Salesforce.CreateResponse", "rp": "Core_CreateResponse.html", "cl": 0, "ucl": 3, "cal": 3, "tl": 647, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Salesforce.FieldDescribe", "rp": "Core_FieldDescribe.html", "cl": 0, "ucl": 6, "cal": 6, "tl": 647, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Salesforce.QueryResult<T>", "rp": "Core_QueryResult_1.html", "cl": 0, "ucl": 4, "cal": 4, "tl": 647, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Salesforce.SalesforceClient", "rp": "Core_SalesforceClient.html", "cl": 0, "ucl": 225, "cal": 225, "tl": 647, "cb": 0, "tb": 46, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Salesforce.SalesforceConfig", "rp": "Core_SalesforceConfig.html", "cl": 0, "ucl": 7, "cal": 7, "tl": 647, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Salesforce.SalesforceError", "rp": "Core_SalesforceError.html", "cl": 0, "ucl": 3, "cal": 3, "tl": 647, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Salesforce.SalesforceException", "rp": "Core_SalesforceException.html", "cl": 0, "ucl": 2, "cal": 2, "tl": 647, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Salesforce.SObjectDescribe", "rp": "Core_SObjectDescribe.html", "cl": 0, "ucl": 6, "cal": 6, "tl": 647, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Salesforce.SObjectInfo", "rp": "Core_SObjectInfo.html", "cl": 0, "ucl": 4, "cal": 4, "tl": 647, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Salesforce.SObjectsResponse", "rp": "Core_SObjectsResponse.html", "cl": 0, "ucl": 1, "cal": 1, "tl": 647, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Salesforce.AuthResponse", "rp": "Core_AuthResponse.html", "cl": 6, "ucl": 0, "cal": 6, "tl": 632, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Salesforce.CompositeResponse", "rp": "Core_CompositeResponse.html", "cl": 1, "ucl": 0, "cal": 1, "tl": 632, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Salesforce.CompositeResult", "rp": "Core_CompositeResult.html", "cl": 4, "ucl": 0, "cal": 4, "tl": 632, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Salesforce.CreateResponse", "rp": "Core_CreateResponse.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 632, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Salesforce.FieldDescribe", "rp": "Core_FieldDescribe.html", "cl": 6, "ucl": 0, "cal": 6, "tl": 632, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Salesforce.QueryResult<T>", "rp": "Core_QueryResult_1.html", "cl": 4, "ucl": 0, "cal": 4, "tl": 632, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Salesforce.SalesforceClient", "rp": "Core_SalesforceClient.html", "cl": 208, "ucl": 7, "cal": 215, "tl": 632, "cb": 40, "tb": 44, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Salesforce.SalesforceConfig", "rp": "Core_SalesforceConfig.html", "cl": 7, "ucl": 0, "cal": 7, "tl": 632, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Salesforce.SalesforceError", "rp": "Core_SalesforceError.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 632, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Salesforce.SalesforceException", "rp": "Core_SalesforceException.html", "cl": 2, "ucl": 0, "cal": 2, "tl": 632, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Salesforce.SObjectDescribe", "rp": "Core_SObjectDescribe.html", "cl": 6, "ucl": 0, "cal": 6, "tl": 632, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Salesforce.SObjectInfo", "rp": "Core_SObjectInfo.html", "cl": 4, "ucl": 0, "cal": 4, "tl": 632, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Salesforce.SObjectsResponse", "rp": "Core_SObjectsResponse.html", "cl": 1, "ucl": 0, "cal": 1, "tl": 632, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.StringExtensions", "rp": "Core_StringExtensions.html", "cl": 348, "ucl": 0, "cal": 348, "tl": 591, "cb": 135, "tb": 138, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.TimeSpanExtensions", "rp": "Core_TimeSpanExtensions.html", "cl": 10, "ucl": 0, "cal": 10, "tl": 20, "cb": 6, "tb": 6, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
     ]},
@@ -474,12 +474,6 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "IsSNumber(System.UInt64)", "methodShortName": "IsSNumber(...)", "fileIndex": 0, "line": 510,
-    "metrics": [
-      { "value": 156, "exceeded": true },
-      { "value": 12, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.Salesforce.SalesforceClient", "reportPath": "Core_SalesforceClient.html", "methodName": "ExecuteRestCallAsync()", "methodShortName": "ExecuteRestCallAsync()", "fileIndex": 0, "line": 378,
     "metrics": [
       { "value": 156, "exceeded": true },
       { "value": 12, "exceeded": false },
@@ -948,12 +942,6 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.Physics.QuantumGates", "reportPath": "Core_QuantumGates.html", "methodName": "ApplySingleQubitGate(Core.Physics.QuantumState,System.Int32,Core.Physics.QuantumComplex[0...,0...])", "methodShortName": "ApplySingleQubitGate(...)", "fileIndex": 0, "line": 99,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.Salesforce.SalesforceClient", "reportPath": "Core_SalesforceClient.html", "methodName": "QueryAllAsync()", "methodShortName": "QueryAllAsync()", "fileIndex": 0, "line": 262,
     "metrics": [
       { "value": 42, "exceeded": true },
       { "value": 6, "exceeded": false },
