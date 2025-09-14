@@ -1,13 +1,17 @@
 ﻿using Core;
 using Core.Bioinformatics;
+using NLog;
 using SkiaSharp;
 using System.Numerics;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace Rosalind
 {
     public class BioinformaticsStronghold
     {
+        private static readonly HttpClient client = new();
+
         #region Problems
 
         public static void ProblemDNA()
@@ -393,6 +397,11 @@ namespace Rosalind
             double result = 1.0 - CumulativeBinomial_LIA(totalOffspring, probAaBb, N - 1);
 
             Console.WriteLine($"{result:F3}");
+        }
+
+        public static void ProblemMPRT()
+        {
+            Console.WriteLine("Web site has changed, problem no longer solvable as designed.");
         }
 
         #endregion

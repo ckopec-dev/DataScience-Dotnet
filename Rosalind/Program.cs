@@ -44,7 +44,8 @@ namespace Rosalind
                     case "/grph": BioinformaticsStronghold.ProblemGRPH(); break;
                     case "/iev": BioinformaticsStronghold.ProblemIEV(); break;
                     case "/lcsm": BioinformaticsStronghold.ProblemLCSM(); break;
-                    case "/lia": BioinformaticsStronghold.ProblemLIA(); break;  
+                    case "/lia": BioinformaticsStronghold.ProblemLIA(); break;
+                    case "/mprt": BioinformaticsStronghold.ProblemMPRT(); break;
 
                     default: Console.WriteLine(switchErr); break;
                 }
