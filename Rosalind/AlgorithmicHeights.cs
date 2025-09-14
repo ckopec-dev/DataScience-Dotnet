@@ -1,5 +1,6 @@
 ﻿using Core;
 using ScottPlot;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
@@ -396,7 +397,6 @@ namespace Rosalind
             using StreamReader sr = new(mrs);
 
             // Read input
-            //string[] lines = sr.Re File.ReadAllLines("rosalind_ms.txt");
             int n = int.Parse(sr.ReadLine()!);
             int[] arr = [.. sr.ReadLine()!.Split().Select(int.Parse)];
 
@@ -443,13 +443,49 @@ namespace Rosalind
             for (int t = 0; t < k; t++)
             {
                 var arr = sr.ReadLine()!.Split().Select(int.Parse).ToArray();
-                var result = FindThreeSum(arr);
+                var result = FindThreeSum_3SUM(arr);
 
                 if (result.Count == 0)
                     Console.WriteLine("-1");
                 else
                     Console.WriteLine(string.Join(" ", result));
             }
+        }
+
+        public static void ProblemBIP()
+        {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Rosalind.Inputs.bip.txt") ?? throw new ResourceNotFoundException();
+            using StreamReader sr = new(mrs);
+
+            var input = sr.ReadToEnd().Split(['\n', '\r'], StringSplitOptions.RemoveEmptyEntries);
+
+            int index = 0;
+            int k = int.Parse(input[index++]); // number of graphs
+
+            var results = new List<int>();
+
+            for (int g = 0; g < k; g++)
+            {
+                var parts = input[index++].Split();
+                int n = int.Parse(parts[0]);
+                int m = int.Parse(parts[1]);
+
+                var adj = new List<int>[n + 1];
+                for (int i = 1; i <= n; i++) adj[i] = [];
+
+                for (int i = 0; i < m; i++)
+                {
+                    var edge = input[index++].Split();
+                    int u = int.Parse(edge[0]);
+                    int v = int.Parse(edge[1]);
+                    adj[u].Add(v);
+                    adj[v].Add(u);
+                }
+
+                results.Add(IsBipartite_BIP(adj, n) ? 1 : -1);
+            }
+
+            Console.WriteLine(string.Join(" ", results));
         }
 
         #endregion
@@ -580,7 +616,7 @@ namespace Rosalind
             return result;
         }
 
-        static List<int> FindThreeSum(int[] arr)
+        static List<int> FindThreeSum_3SUM(int[] arr)
         {
             int n = arr.Length;
             // Store value -> list of indices
@@ -613,6 +649,38 @@ namespace Rosalind
             }
 
             return []; // No solution
+        }
+
+        static bool IsBipartite_BIP(List<int>[] adj, int n)
+        {
+            int[] color = new int[n + 1]; // 0 = unvisited, 1 = red, -1 = blue
+
+            for (int start = 1; start <= n; start++)
+            {
+                if (color[start] != 0) continue;
+
+                var queue = new Queue<int>();
+                queue.Enqueue(start);
+                color[start] = 1;
+
+                while (queue.Count > 0)
+                {
+                    int u = queue.Dequeue();
+                    foreach (var v in adj[u])
+                    {
+                        if (color[v] == 0)
+                        {
+                            color[v] = -color[u];
+                            queue.Enqueue(v);
+                        }
+                        else if (color[v] == color[u])
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
         }
 
         #endregion

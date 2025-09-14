@@ -12,6 +12,7 @@
     <None Remove="Inputs\3sum.txt" />
     <None Remove="Inputs\bfs.txt" />
     <None Remove="Inputs\bins.txt" />
+    <None Remove="Inputs\bip.txt" />
     <None Remove="Inputs\cc.txt" />
     <None Remove="Inputs\cons.txt" />
     <None Remove="Inputs\ddeg.txt" />
@@ -39,6 +40,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Inputs\3sum.txt" />
+    <EmbeddedResource Include="Inputs\bip.txt" />
     <EmbeddedResource Include="Inputs\iev.txt" />
     <Content Include="nlog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
