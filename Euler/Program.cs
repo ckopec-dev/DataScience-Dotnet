@@ -3491,6 +3491,83 @@ namespace Euler
             Console.WriteLine(sumPerimeters);
         }
 
+        static void Problem95()
+        {
+            const int LIMIT = 1000000;
+
+            // Step 1: Precompute sum of proper divisors
+            int[] sod = new int[LIMIT + 1];
+            for (int i = 1; i <= LIMIT / 2; i++)
+            {
+                for (int j = i * 2; j <= LIMIT; j += i)
+                {
+                    sod[j] += i;
+                }
+            }
+
+            bool[] visited = new bool[LIMIT + 1];
+            int bestLen = 0;
+            int bestSmallest = 0;
+
+            // Step 2: Traverse chains
+            for (int start = 2; start <= LIMIT; start++)
+            {
+                if (visited[start]) continue;
+
+                Dictionary<int, int> indexMap = [];
+                List<int> seq = [];
+                int cur = start;
+
+                while (true)
+                {
+                    if (cur == 0 || cur > LIMIT)
+                    {
+                        // Invalid chain, mark visited
+                        foreach (int x in seq)
+                            if (x <= LIMIT) visited[x] = true;
+                        break;
+                    }
+
+                    if (indexMap.TryGetValue(cur, out int loopStart))
+                    {
+                        List<int> loop = seq.GetRange(loopStart, seq.Count - loopStart);
+
+                        foreach (int x in seq)
+                            if (x <= LIMIT) visited[x] = true;
+
+                        int len = loop.Count;
+                        if (len > bestLen)
+                        {
+                            bestLen = len;
+                            bestSmallest = loop.Min();// Min(loop);
+                        }
+                        else if (len == bestLen && len > 0)
+                        {
+                            int smallest = loop.Min();// Min(loop);
+                            if (smallest < bestSmallest)
+                                bestSmallest = smallest;
+                        }
+                        break;
+                    }
+
+                    if (cur <= LIMIT && visited[cur])
+                    {
+                        // Hit a known sequence
+                        foreach (int x in seq)
+                            if (x <= LIMIT) visited[x] = true;
+                        break;
+                    }
+
+                    indexMap[cur] = seq.Count;
+                    seq.Add(cur);
+                    cur = sod[cur];
+                }
+            }
+
+            Console.WriteLine($"Longest amicable chain length: {bestLen}");
+            Console.WriteLine($"Smallest member of that chain: {bestSmallest}");
+        }
+
         static void Problem97()
         {
             BigInteger bi = BigInteger.Pow(2, 7830457);
