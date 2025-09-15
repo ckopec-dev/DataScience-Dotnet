@@ -3568,6 +3568,15 @@ namespace Euler
             Console.WriteLine($"Smallest member of that chain: {bestSmallest}");
         }
 
+        static void Problem96()
+        {
+            Stream? mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream("Euler.Inputs.Problem96.txt") ?? throw new ResourceNotFoundException();
+            using StreamReader sr = new(mrs);
+
+            int result = SudokuSolver96.SolveFromStream(sr);
+            Console.WriteLine("Euler 96 answer: " + result);
+        }
+
         static void Problem97()
         {
             BigInteger bi = BigInteger.Pow(2, 7830457);
@@ -4945,6 +4954,198 @@ namespace Euler
             (array[j], array[i]) = (array[i], array[j]);
         }
 
+        class SudokuSolver96
+        {
+            // Masks for rows/cols/boxes: bit d (1<<d) set when digit d is present
+            private readonly int[] rowMask = new int[9];
+            private readonly int[] colMask = new int[9];
+            private readonly int[] boxMask = new int[9];
+            private readonly int[,] board = new int[9, 9];
+
+            // bit mask with bits 1..9 valid: 0b1111111110 -> decimal 0x3FE
+            private const int AllDigitsMask = 0x3FE; // bits 1..9 set
+
+            // Solve single board in-place. Returns true if solved.
+            private bool SolveRecursive()
+            {
+                // Find the empty cell with minimum candidates
+                int bestR = -1, bestC = -1, bestCount = 10, bestCandidates = 0;
+                for (int r = 0; r < 9; r++)
+                {
+                    for (int c = 0; c < 9; c++)
+                    {
+                        if (board[r, c] == 0)
+                        {
+                            int used = rowMask[r] | colMask[c] | boxMask[(r / 3) * 3 + (c / 3)];
+                            int candidates = AllDigitsMask & ~used;
+                            // Count bits
+                            int count = BitCount(candidates);
+                            if (count == 0) return false; // dead end
+                            if (count < bestCount)
+                            {
+                                bestCount = count;
+                                bestR = r; bestC = c; bestCandidates = candidates;
+                                if (count == 1) goto HAVE_CELL; // can't do better than 1
+                            }
+                        }
+                    }
+                }
+
+            HAVE_CELL:
+                // If no empty cell found, solved
+                if (bestR == -1) return true;
+
+                // Try candidates (digits 1..9) - iterate bits
+                int mask = bestCandidates;
+                while (mask != 0)
+                {
+                    int digitBit = mask & -mask;
+                    mask -= digitBit;
+                    int d = BitToDigit(digitBit);
+                    // place
+                    board[bestR, bestC] = d;
+                    rowMask[bestR] |= 1 << d;
+                    colMask[bestC] |= 1 << d;
+                    int b = (bestR / 3) * 3 + (bestC / 3);
+                    boxMask[b] |= 1 << d;
+
+                    if (SolveRecursive()) return true; // solved!
+
+                    // undo
+                    board[bestR, bestC] = 0;
+                    rowMask[bestR] &= ~(1 << d);
+                    colMask[bestC] &= ~(1 << d);
+                    boxMask[b] &= ~(1 << d);
+                }
+
+                return false;
+            }
+
+            // Small helpers
+            private static int BitCount(int x)
+            {
+                // builtin popcount alternative
+                int cnt = 0;
+                while (x != 0) { x &= x - 1; cnt++; }
+                return cnt;
+            }
+            private static int BitToDigit(int bit) // convert 1<<d to d
+            {
+                // bit is guaranteed to be a single bit (1<<d)
+                int d = 0;
+                while (bit > 1) { bit >>= 1; d++; }
+                return d;
+            }
+
+            // Public solver: returns true if solved, modifies board in place
+            public bool SolveSudoku(int[,] startBoard)
+            {
+                // Copy board and initialize masks
+                Array.Clear(rowMask, 0, 9);
+                Array.Clear(colMask, 0, 9);
+                Array.Clear(boxMask, 0, 9);
+                for (int r = 0; r < 9; r++)
+                    for (int c = 0; c < 9; c++)
+                        board[r, c] = startBoard[r, c];
+
+                for (int r = 0; r < 9; r++)
+                {
+                    for (int c = 0; c < 9; c++)
+                    {
+                        int d = board[r, c];
+                        if (d != 0)
+                        {
+                            int bit = 1 << d;
+                            rowMask[r] |= bit;
+                            colMask[c] |= bit;
+                            boxMask[(r / 3) * 3 + (c / 3)] |= bit;
+                        }
+                    }
+                }
+
+                return SolveRecursive();
+            }
+
+            // Reads puzzles from StreamReader and returns the Euler96 sum:
+            // for each solved grid adds 100*board[0,0] + 10*board[0,1] + board[0,2]
+            public static int SolveFromStream(StreamReader sr)
+            {
+                var solver = new SudokuSolver96();
+                int total = 0;
+                while (!sr.EndOfStream)
+                {
+                    string line = sr.ReadLine()!;
+                    if (line == null) break;
+                    line = line.Trim();
+                    if (line.Length == 0) continue;
+
+                    // expecting "Grid XX" then 9 lines of digits
+                    if (line.StartsWith("Grid", StringComparison.OrdinalIgnoreCase))
+                    {
+                        int[,] startBoard = new int[9, 9];
+                        for (int r = 0; r < 9; r++)
+                        {
+                            string rowLine = sr.ReadLine()! ?? throw new InvalidDataException("Unexpected end of file while reading grid.");
+                            rowLine = rowLine.Trim();
+                            if (rowLine.Length < 9) throw new InvalidDataException("Grid row too short.");
+                            for (int c = 0; c < 9; c++)
+                            {
+                                char ch = rowLine[c];
+                                if (ch >= '1' && ch <= '9') startBoard[r, c] = ch - '0';
+                                else startBoard[r, c] = 0;
+                            }
+                        }
+
+                        bool solved = solver.SolveSudoku(startBoard);
+                        if (!solved) throw new Exception("Failed to solve a Sudoku puzzle.");
+
+                        int top3 = solver.board[0, 0] * 100 + solver.board[0, 1] * 10 + solver.board[0, 2];
+                        total += top3;
+                    }
+                    else
+                    {
+                        // some files might just have 9-line blocks without "Grid" marker.
+                        // We'll try to handle that case: treat this line as first row of a grid
+                        // If it's digits -> proceed
+                        if (line.Length >= 9 && IsDigitRow(line))
+                        {
+                            int[,] startBoard = new int[9, 9];
+                            for (int c = 0; c < 9; c++)
+                            {
+                                char ch = line[c];
+                                startBoard[0, c] = (ch >= '1' && ch <= '9') ? ch - '0' : 0;
+                            }
+                            for (int r = 1; r < 9; r++)
+                            {
+                                string rowLine = sr.ReadLine()! ?? throw new InvalidDataException("Unexpected end of file while reading grid.");
+                                rowLine = rowLine.Trim();
+                                if (rowLine.Length < 9) throw new InvalidDataException("Grid row too short.");
+                                for (int c = 0; c < 9; c++)
+                                {
+                                    char ch = rowLine[c];
+                                    startBoard[r, c] = (ch >= '1' && ch <= '9') ? ch - '0' : 0;
+                                }
+                            }
+                            bool solved = solver.SolveSudoku(startBoard);
+                            if (!solved) throw new Exception("Failed to solve a Sudoku puzzle.");
+                            int top3 = solver.board[0, 0] * 100 + solver.board[0, 1] * 10 + solver.board[0, 2];
+                            total += top3;
+                        }
+                        // else ignore line
+                    }
+                }
+
+                return total;
+            }
+
+            private static bool IsDigitRow(string s)
+            {
+                if (s.Length < 9) return false;
+                for (int i = 0; i < 9; i++) if (s[i] < '0' || s[i] > '9') return false;
+                return true;
+            }
+        }
+        
         #endregion
 
 #pragma warning restore IDE0051 // Remove unused private members
