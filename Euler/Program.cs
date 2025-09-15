@@ -3446,6 +3446,51 @@ namespace Euler
             Console.WriteLine($"Consecutive count: {maxConsecutive}");
         }
 
+        static void Problem94()
+        {
+            BigInteger limit = 1_000_000_000;
+            BigInteger x = 2; // first solution (x,y) of x^2 - 3 y^2 = 1
+            BigInteger y = 1;
+            BigInteger sumPerimeters = 0;
+
+            // p_minus = 2*x - 2 is the smaller possible perimeter for a given x.
+            // Stop when even the smaller perimeter exceeds the limit.
+            while (2 * x - 2 <= limit)
+            {
+                // plus-case: a = (2x + 1) / 3  -> perimeter p = 3a + 1 = 2x + 2
+                BigInteger numPlus = 2 * x + 1;
+                if (numPlus % 3 == 0)
+                {
+                    BigInteger a = numPlus / 3;
+                    if (a > 1)
+                    {
+                        BigInteger p = 3 * a + 1; // same as 2*x + 2
+                        if (p <= limit) sumPerimeters += p;
+                    }
+                }
+
+                // minus-case: a = (2x - 1) / 3 -> perimeter p = 3a - 1 = 2x - 2
+                BigInteger numMinus = 2 * x - 1;
+                if (numMinus % 3 == 0)
+                {
+                    BigInteger a = numMinus / 3;
+                    if (a > 1)
+                    {
+                        BigInteger p = 3 * a - 1; // same as 2*x - 2
+                        if (p <= limit) sumPerimeters += p;
+                    }
+                }
+
+                // next Pell solution: (x_{n+1}, y_{n+1}) = (2x + 3y, x + 2y)
+                BigInteger nextX = 2 * x + 3 * y;
+                BigInteger nextY = x + 2 * y;
+                x = nextX;
+                y = nextY;
+            }
+
+            Console.WriteLine(sumPerimeters);
+        }
+
         static void Problem97()
         {
             BigInteger bi = BigInteger.Pow(2, 7830457);
