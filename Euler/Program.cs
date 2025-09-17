@@ -222,7 +222,7 @@ namespace Euler
             while (x < 10001)
             {
                 n++;
-                if (Core.MathHelper.IsPrime(n))
+                if (MathHelper.IsPrime(n))
                     x++;
             }
 

@@ -124,8 +124,8 @@ namespace UnitTests
             var data = "1,2\n3,4";
             var result = data.ToIntListArray('\n', ',');
             Assert.Equal(2, result.Count);
-            Assert.Equal(new int[] { 1, 2 }, result[0]);
-            Assert.Equal(new int[] { 3, 4 }, result[1]);
+            Assert.Equal([1, 2], result[0]);
+            Assert.Equal([3, 4], result[1]);
         }
 
         [Fact]
@@ -134,8 +134,8 @@ namespace UnitTests
             var data = "1.1,2.2\n3.3,4.4";
             var result = data.ToDoubleListArray('\n', ',');
             Assert.Equal(2, result.Count);
-            Assert.Equal(new double[] { 1.1, 2.2 }, result[0]);
-            Assert.Equal(new double[] { 3.3, 4.4 }, result[1]);
+            Assert.Equal([1.1, 2.2], result[0]);
+            Assert.Equal([3.3, 4.4], result[1]);
         }
 
         #endregion
@@ -161,7 +161,7 @@ namespace UnitTests
         [Fact]
         public void PandigitalMultiple_Returns_Correct_Value()
         {
-            var result = 192.PandigitalMultiple(new List<int> { 1, 2, 3 });
+            var result = 192.PandigitalMultiple([1, 2, 3]);
             Assert.Equal(192384576, result);
         }
 
@@ -186,7 +186,7 @@ namespace UnitTests
         {
             var intArray = new int[] { 65, 66, 67 };
             var charArray = intArray.ToCharArray();
-            Assert.Equal(new char[] { 'A', 'B', 'C' }, charArray);
+            Assert.Equal(['A', 'B', 'C'], charArray);
         }
 
         [Fact]
@@ -194,7 +194,7 @@ namespace UnitTests
         {
             var stringArray = new string[] { "1", "2", "3" };
             var longArray = stringArray.ToLongArray();
-            Assert.Equal(new long[] { 1L, 2L, 3L }, longArray);
+            Assert.Equal([1L, 2L, 3L], longArray);
         }
 
         #endregion
@@ -206,7 +206,7 @@ namespace UnitTests
         {
             var stringArray = new string[] { "1", "2", "3" };
             var intArray = stringArray.ToArray();
-            Assert.Equal(new int[] { 1, 2, 3 }, intArray);
+            Assert.Equal([1, 2, 3], intArray);
         }
 
         #endregion

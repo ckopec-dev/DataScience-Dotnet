@@ -1,7 +1,8 @@
-﻿using System.Numerics;
+﻿using Core;
+using System.Numerics;
 using System.Text;
 
-namespace Core
+namespace Core.Maths
 {
     public static class MathHelper
     {
@@ -289,7 +290,7 @@ namespace Core
         public static uint LeastCommonMultiple(uint a, uint b)
         {
             // Returns the smallest number that can be divided by both a and b.
-            return (a / GCD(a, b)) * b;
+            return a / GCD(a, b) * b;
         }
 
         public static double Li(double x)
@@ -359,7 +360,7 @@ namespace Core
 
         public static bool IsApproximatelyEqualTo(double numerator, double denominator, double value, double epsilon)
         {
-            double diff = (numerator / denominator) - value;
+            double diff = numerator / denominator - value;
 
             if(Math.Abs(diff) < epsilon)
                 return true;

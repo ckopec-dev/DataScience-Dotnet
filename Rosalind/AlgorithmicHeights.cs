@@ -1,4 +1,5 @@
 ﻿using Core;
+using Core.Maths;
 using ScottPlot;
 using System.Collections.Generic;
 using System.Reflection;
@@ -23,9 +24,9 @@ namespace Rosalind
 
             int n = Convert.ToInt32(sr.ReadToEnd().Trim());
 
-            Console.WriteLine("FinonacciRecursive({0}): {1}", n, Core.MathHelper.FibonacciRecursive(n));
+            Console.WriteLine("FinonacciRecursive({0}): {1}", n, MathHelper.FibonacciRecursive(n));
 
-            Console.WriteLine("Finonacci({0}): {1}", n, Core.MathHelper.Fibonacci(n));
+            Console.WriteLine("Finonacci({0}): {1}", n, MathHelper.Fibonacci(n));
         }
 
         public static void ProblemBINS()
