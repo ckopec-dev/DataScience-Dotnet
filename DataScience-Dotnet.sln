@@ -3,11 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Euler", "Euler\Euler.csproj", "{6BFBEA63-1F22-4080-A6DA-1BC1164DFBED}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{7E492424-C000-4FDF-912C-1876EC236296}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rosalind", "Rosalind\Rosalind.csproj", "{DBDEE4C2-B391-46F1-903B-798F0F109CDA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{BEA39988-7B67-4C54-9721-D5A945D27CBE}"
 EndProject
@@ -17,18 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6BFBEA63-1F22-4080-A6DA-1BC1164DFBED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6BFBEA63-1F22-4080-A6DA-1BC1164DFBED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6BFBEA63-1F22-4080-A6DA-1BC1164DFBED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6BFBEA63-1F22-4080-A6DA-1BC1164DFBED}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7E492424-C000-4FDF-912C-1876EC236296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7E492424-C000-4FDF-912C-1876EC236296}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E492424-C000-4FDF-912C-1876EC236296}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E492424-C000-4FDF-912C-1876EC236296}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DBDEE4C2-B391-46F1-903B-798F0F109CDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DBDEE4C2-B391-46F1-903B-798F0F109CDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DBDEE4C2-B391-46F1-903B-798F0F109CDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DBDEE4C2-B391-46F1-903B-798F0F109CDA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BEA39988-7B67-4C54-9721-D5A945D27CBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BEA39988-7B67-4C54-9721-D5A945D27CBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEA39988-7B67-4C54-9721-D5A945D27CBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
