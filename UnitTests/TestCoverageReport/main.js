@@ -273,7 +273,7 @@ var assemblies = [
       { "name": "Core.Maths.StatisticsExample", "rp": "Core_StatisticsExample.html", "cl": 0, "ucl": 25, "cal": 25, "tl": 683, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Maths.Trigonometry", "rp": "Core_Trigonometry.html", "cl": 0, "ucl": 163, "cal": 163, "tl": 538, "cb": 0, "tb": 16, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.NetworkHelper", "rp": "Core_NetworkHelper.html", "cl": 0, "ucl": 25, "cal": 25, "tl": 42, "cb": 0, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.NumberExtensions", "rp": "Core_NumberExtensions.html", "cl": 121, "ucl": 1028, "cal": 1149, "tl": 1918, "cb": 39, "tb": 436, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.NumberExtensions", "rp": "Core_NumberExtensions.html", "cl": 183, "ucl": 954, "cal": 1137, "tl": 1918, "cb": 54, "tb": 430, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Physics.Motion", "rp": "Core_Motion.html", "cl": 0, "ucl": 18, "cal": 18, "tl": 51, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Physics.Optics", "rp": "Core_Optics.html", "cl": 0, "ucl": 28, "cal": 28, "tl": 77, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Physics.OrbitalElements", "rp": "Core_OrbitalElements.html", "cl": 0, "ucl": 8, "cal": 8, "tl": 16, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -395,6 +395,18 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.Maths.Statistics", "reportPath": "Core_Statistics.html", "methodName": "IncompleteGamma(System.Double,System.Double)", "methodShortName": "IncompleteGamma(...)", "fileIndex": 0, "line": 421,
+    "metrics": [
+      { "value": 272, "exceeded": true },
+      { "value": 16, "exceeded": true },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "IsPrime(System.UInt64)", "methodShortName": "IsPrime(...)", "fileIndex": 0, "line": 73,
+    "metrics": [
+      { "value": 272, "exceeded": true },
+      { "value": 16, "exceeded": true },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "IsPrime(System.Numerics.BigInteger)", "methodShortName": "IsPrime(...)", "fileIndex": 0, "line": 90,
     "metrics": [
       { "value": 272, "exceeded": true },
       { "value": 16, "exceeded": true },
@@ -700,6 +712,12 @@ var riskHotspots = [
       { "value": 8, "exceeded": false },
     ]},
   {
+    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "IsCyclicSet(System.Collections.Generic.List`1<System.Int32>,System.Int32)", "methodShortName": "IsCyclicSet(...)", "fileIndex": 0, "line": 716,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
     "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "Factor(System.Int64)", "methodShortName": "Factor(...)", "fileIndex": 0, "line": 944,
     "metrics": [
       { "value": 72, "exceeded": true },
@@ -904,36 +922,6 @@ var riskHotspots = [
       { "value": 6, "exceeded": false },
     ]},
   {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "WordValue(System.String)", "methodShortName": "WordValue(...)", "fileIndex": 0, "line": 1621,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "AreDigitsInAscendingOrder(System.Int32)", "methodShortName": "AreDigitsInAscendingOrder(...)", "fileIndex": 0, "line": 1650,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "AreDigitsInDescendingOrder(System.Int32)", "methodShortName": "AreDigitsInDescendingOrder(...)", "fileIndex": 0, "line": 1669,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "Identical(System.Collections.Generic.List`1<System.Int32>)", "methodShortName": "Identical(...)", "fileIndex": 0, "line": 1734,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "HasDupes(System.Collections.Generic.List`1<System.Int32>)", "methodShortName": "HasDupes(...)", "fileIndex": 0, "line": 1748,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
     "assembly": "Core", "class": "Core.Physics.QuantumGates", "reportPath": "Core_QuantumGates.html", "methodName": "CNOT(Core.Physics.QuantumState,System.Int32,System.Int32)", "methodShortName": "CNOT(...)", "fileIndex": 0, "line": 74,
     "metrics": [
       { "value": 42, "exceeded": true },
@@ -947,18 +935,6 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.Bioinformatics.ProfileMatrix", "reportPath": "Core_ProfileMatrix.html", "methodName": ".ctor(System.Collections.Generic.List`1<Core.Bioinformatics.Dna>)", "methodShortName": ".ctor(...)", "fileIndex": 0, "line": 48,
-    "metrics": [
-      { "value": 16, "exceeded": false },
-      { "value": 16, "exceeded": true },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "IsPrime(System.UInt64)", "methodShortName": "IsPrime(...)", "fileIndex": 0, "line": 73,
-    "metrics": [
-      { "value": 17, "exceeded": false },
-      { "value": 16, "exceeded": true },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "IsPrime(System.Numerics.BigInteger)", "methodShortName": "IsPrime(...)", "fileIndex": 0, "line": 90,
     "metrics": [
       { "value": 16, "exceeded": false },
       { "value": 16, "exceeded": true },

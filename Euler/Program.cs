@@ -1272,7 +1272,7 @@ namespace Euler
 
             foreach (string w in parsed)
             {
-                int wv = w.WordValue();
+                int wv = WordValue42(w);
 
                 if (triange_nums.Contains(wv))
                     ttl++;
@@ -4358,6 +4358,11 @@ namespace Euler
         #endregion
 
         #region Helpers
+
+        static int WordValue42(string word)
+        {
+            return word.ToUpper().Sum(c => c - 'A' + 1);
+        }
 
         static readonly (int dx, int dy)[] Directions82 =
         [

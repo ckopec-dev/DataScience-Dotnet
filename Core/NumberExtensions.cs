@@ -16,11 +16,6 @@ namespace Core
          * E.g. 1000.IsPower(10) -> true
         ***/
 
-        public static bool IsPower(this byte n, byte p)
-        {
-            throw new NotImplementedException();
-        }
-
         public static bool IsPower(this int x, byte y)
         {
             double d = Math.Log(x) / Math.Log(y);
@@ -1007,8 +1002,6 @@ namespace Core
             return t;
         }
 
-
-
         public static bool IsProbablyPrime(this int number)
         {
             return number.IsProbablyPrime(10);
@@ -1615,25 +1608,6 @@ namespace Core
             long result = Convert.ToInt64(sb.ToString());
 
             return result;
-        }
-
-        public static int WordValue(this string word)
-        {
-            decimal ttl = 0;
-
-            for (int i = 0; i < word.Length; i++)
-            {
-                Char c = Convert.ToChar(word.Substring(i, 1));
-
-                decimal d = (decimal)c - 64;
-
-                if (d < 1 || d > 26)
-                    throw new Exception("Unsupported characters in word.");
-
-                ttl += d;
-            }
-
-            return Convert.ToInt32(ttl);
         }
 
         public static int ToInt32(this long n, int startIndex, int length)
