@@ -1,4 +1,4 @@
-﻿using Core;
+﻿using Core.Physics;
 using Xunit;
 using Assert = Xunit.Assert;
 

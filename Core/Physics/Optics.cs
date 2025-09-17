@@ -1,5 +1,4 @@
-﻿
-namespace Core
+﻿namespace Core.Physics
 {
     public static class Optics
     {
@@ -37,7 +36,7 @@ namespace Core
             // Convex part of the lens is the side closest to the light rays.
             // Concave part of the lens is the side closest to the focal point. This is given as a negative number.
 
-            return 1m / ((refractiveIndex - 1) * ((1m / convexRadius) - (1m / concaveRadius)));
+            return 1m / ((refractiveIndex - 1) * (1m / convexRadius - 1m / concaveRadius));
         }
 
         public static decimal FocalLengthConvex(decimal concaveRadius)
@@ -65,7 +64,7 @@ namespace Core
             // Wavelength is in nanometers.
             // Diameter is in millimeters.
 
-            return (0.00122m * wavelength * focalLength) / lensDiameter;
+            return 0.00122m * wavelength * focalLength / lensDiameter;
         }
 
         public static decimal TrueFieldOfView(decimal degreesApparentAngularField, decimal power)

@@ -1,5 +1,4 @@
-﻿
-namespace Core
+﻿namespace Core.Physics
 {
     /// <summary>
     /// Usual metrics:
@@ -44,7 +43,7 @@ namespace Core
         public static decimal DistanceOfGravity(decimal SpeedStart, decimal Time)
         {
             // Returns the distance an object has fallen after Time has elapsed.
-            return (SpeedStart * Time) + (0.5m * 9.8m * (Time * Time));
+            return SpeedStart * Time + 0.5m * 9.8m * Time * Time;
         }
 
         #endregion
