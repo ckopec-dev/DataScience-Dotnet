@@ -1,5 +1,4 @@
 ﻿using Core;
-using System;
 using Xunit;
 using Assert = Xunit.Assert;
 
