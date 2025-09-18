@@ -244,10 +244,10 @@ var assemblies = [
       { "name": "Core.GameTheory.Card", "rp": "Core_Card.html", "cl": 0, "ucl": 82, "cal": 82, "tl": 106, "cb": 0, "tb": 96, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.GameTheory.Deck", "rp": "Core_Deck.html", "cl": 0, "ucl": 29, "cal": 29, "tl": 48, "cb": 0, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.GameTheory.PokerHand", "rp": "Core_PokerHand.html", "cl": 0, "ucl": 278, "cal": 278, "tl": 465, "cb": 0, "tb": 156, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.GenericExtensions", "rp": "Core_GenericExtensions.html", "cl": 0, "ucl": 10, "cal": 10, "tl": 22, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.GenericExtensions", "rp": "Core_GenericExtensions.html", "cl": 10, "ucl": 0, "cal": 10, "tl": 22, "cb": 2, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.GraphTheory.Edge<T>", "rp": "Core_Edge_1.html", "cl": 0, "ucl": 20, "cal": 20, "tl": 36, "cb": 0, "tb": 10, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.GraphTheory.Graph<T>", "rp": "Core_Graph_1.html", "cl": 0, "ucl": 317, "cal": 317, "tl": 526, "cb": 0, "tb": 146, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Histogram<T>", "rp": "Core_Histogram_1.html", "cl": 0, "ucl": 9, "cal": 9, "tl": 18, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Internet.NetworkHelper", "rp": "Core_NetworkHelper.html", "cl": 0, "ucl": 25, "cal": 25, "tl": 42, "cb": 0, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Internet.NntpArticleResponse", "rp": "Core_NntpArticleResponse.html", "cl": 0, "ucl": 22, "cal": 22, "tl": 37, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Internet.NntpClient", "rp": "Core_NntpClient.html", "cl": 0, "ucl": 242, "cal": 242, "tl": 373, "cb": 0, "tb": 66, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Internet.NntpConnectResponse", "rp": "Core_NntpConnectResponse.html", "cl": 0, "ucl": 3, "cal": 3, "tl": 11, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -264,15 +264,15 @@ var assemblies = [
       { "name": "Core.LinearAlgebra.LinearAlgebraUtils", "rp": "Core_LinearAlgebraUtils.html", "cl": 0, "ucl": 93, "cal": 93, "tl": 139, "cb": 0, "tb": 60, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.LinearAlgebra.Matrix", "rp": "Core_Matrix.html", "cl": 0, "ucl": 238, "cal": 238, "tl": 342, "cb": 0, "tb": 130, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.LinearAlgebra.Vector", "rp": "Core_Vector.html", "cl": 0, "ucl": 75, "cal": 75, "tl": 120, "cb": 0, "tb": 22, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.LinearRegression", "rp": "Core_LinearRegression.html", "cl": 15, "ucl": 7, "cal": 22, "tl": 40, "cb": 3, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Maths.Algebra", "rp": "Core_Algebra.html", "cl": 0, "ucl": 238, "cal": 238, "tl": 474, "cb": 0, "tb": 100, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Maths.Calculus", "rp": "Core_Calculus.html", "cl": 0, "ucl": 201, "cal": 201, "tl": 484, "cb": 0, "tb": 64, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Maths.DescriptiveStatistics", "rp": "Core_DescriptiveStatistics.html", "cl": 0, "ucl": 31, "cal": 31, "tl": 683, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Maths.Histogram<T>", "rp": "Core_Histogram_1.html", "cl": 0, "ucl": 9, "cal": 9, "tl": 17, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Maths.LinearRegression", "rp": "Core_LinearRegression.html", "cl": 15, "ucl": 7, "cal": 22, "tl": 39, "cb": 3, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Maths.MathHelper", "rp": "Core_MathHelper.html", "cl": 0, "ucl": 229, "cal": 229, "tl": 381, "cb": 0, "tb": 124, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Maths.Statistics", "rp": "Core_Statistics.html", "cl": 0, "ucl": 343, "cal": 343, "tl": 683, "cb": 0, "tb": 118, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Maths.StatisticsExample", "rp": "Core_StatisticsExample.html", "cl": 0, "ucl": 25, "cal": 25, "tl": 683, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Maths.Trigonometry", "rp": "Core_Trigonometry.html", "cl": 0, "ucl": 163, "cal": 163, "tl": 538, "cb": 0, "tb": 16, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.NetworkHelper", "rp": "Core_NetworkHelper.html", "cl": 0, "ucl": 25, "cal": 25, "tl": 42, "cb": 0, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.NumberExtensions", "rp": "Core_NumberExtensions.html", "cl": 582, "ucl": 0, "cal": 582, "tl": 957, "cb": 152, "tb": 152, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Physics.Motion", "rp": "Core_Motion.html", "cl": 0, "ucl": 18, "cal": 18, "tl": 51, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Physics.Optics", "rp": "Core_Optics.html", "cl": 0, "ucl": 28, "cal": 28, "tl": 77, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -544,6 +544,12 @@ var riskHotspots = [
       { "value": 8, "exceeded": false },
     ]},
   {
+    "assembly": "Core", "class": "Core.Internet.NetworkHelper", "reportPath": "Core_NetworkHelper.html", "methodName": "ProjectPath()", "methodShortName": "ProjectPath()", "fileIndex": 0, "line": 19,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
     "assembly": "Core", "class": "Core.Internet.NntpClient", "reportPath": "Core_NntpClient.html", "methodName": "ReadResponse(System.Boolean)", "methodShortName": "ReadResponse(...)", "fileIndex": 0, "line": 42,
     "metrics": [
       { "value": 72, "exceeded": true },
@@ -641,12 +647,6 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.Maths.Statistics", "reportPath": "Core_Statistics.html", "methodName": "StandardNormalInverse(System.Double)", "methodShortName": "StandardNormalInverse(...)", "fileIndex": 0, "line": 326,
-    "metrics": [
-      { "value": 72, "exceeded": true },
-      { "value": 8, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NetworkHelper", "reportPath": "Core_NetworkHelper.html", "methodName": "ProjectPath()", "methodShortName": "ProjectPath()", "fileIndex": 0, "line": 19,
     "metrics": [
       { "value": 72, "exceeded": true },
       { "value": 8, "exceeded": false },

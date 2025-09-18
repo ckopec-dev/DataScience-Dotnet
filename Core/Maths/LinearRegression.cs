@@ -1,5 +1,4 @@
-﻿
-namespace Core
+﻿namespace Core.Maths
 {
     public class LinearRegression
     {

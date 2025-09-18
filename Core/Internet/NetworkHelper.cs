@@ -1,5 +1,5 @@
 ﻿
-namespace Core
+namespace Core.Internet
 {
     public static class NetworkHelper
     {
