@@ -1,6 +1,5 @@
 ﻿using Core.Internet;
 using Xunit;
-using Xunit.Sdk;
 using Assert = Xunit.Assert;
 
 namespace UnitTests
