@@ -1,5 +1,4 @@
-﻿
-namespace Core
+﻿namespace Core.Maths
 {
     public class FigurateNumber
     {
@@ -30,7 +29,7 @@ namespace Core
 
         public override string ToString()
         {
-            return String.Format("Number: {0}, Type: {1}", Number, Type);
+            return string.Format("Number: {0}, Type: {1}", Number, Type);
         }
     }
 }

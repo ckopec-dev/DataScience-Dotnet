@@ -238,9 +238,7 @@ var assemblies = [
       { "name": "Core.DirectedGraphPath", "rp": "Core_DirectedGraphPath.html", "cl": 0, "ucl": 7, "cal": 7, "tl": 15, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.FigurateCalculator", "rp": "Core_FigurateCalculator.html", "cl": 0, "ucl": 18, "cal": 18, "tl": 36, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.FigurateNumber", "rp": "Core_FigurateNumber.html", "cl": 0, "ucl": 19, "cal": 19, "tl": 36, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.FileHelper", "rp": "Core_FileHelper.html", "cl": 0, "ucl": 27, "cal": 27, "tl": 45, "cb": 0, "tb": 12, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Fraction", "rp": "Core_Fraction.html", "cl": 0, "ucl": 39, "cal": 39, "tl": 66, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.GameOfLife", "rp": "Core_GameOfLife.html", "cl": 0, "ucl": 102, "cal": 102, "tl": 168, "cb": 0, "tb": 66, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.FileHelper", "rp": "Core_FileHelper.html", "cl": 9, "ucl": 0, "cal": 9, "tl": 19, "cb": 4, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.GameTheory.Card", "rp": "Core_Card.html", "cl": 0, "ucl": 82, "cal": 82, "tl": 106, "cb": 0, "tb": 96, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.GameTheory.Deck", "rp": "Core_Deck.html", "cl": 0, "ucl": 29, "cal": 29, "tl": 48, "cb": 0, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.GameTheory.PokerHand", "rp": "Core_PokerHand.html", "cl": 0, "ucl": 278, "cal": 278, "tl": 465, "cb": 0, "tb": 156, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -267,6 +265,7 @@ var assemblies = [
       { "name": "Core.Maths.Algebra", "rp": "Core_Algebra.html", "cl": 0, "ucl": 238, "cal": 238, "tl": 474, "cb": 0, "tb": 100, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Maths.Calculus", "rp": "Core_Calculus.html", "cl": 0, "ucl": 201, "cal": 201, "tl": 484, "cb": 0, "tb": 64, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Maths.DescriptiveStatistics", "rp": "Core_DescriptiveStatistics.html", "cl": 0, "ucl": 31, "cal": 31, "tl": 683, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Maths.Fraction", "rp": "Core_Fraction.html", "cl": 0, "ucl": 39, "cal": 39, "tl": 61, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Maths.Histogram<T>", "rp": "Core_Histogram_1.html", "cl": 0, "ucl": 9, "cal": 9, "tl": 17, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Maths.LinearRegression", "rp": "Core_LinearRegression.html", "cl": 15, "ucl": 7, "cal": 22, "tl": 39, "cb": 3, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Maths.MathHelper", "rp": "Core_MathHelper.html", "cl": 0, "ucl": 229, "cal": 229, "tl": 381, "cb": 0, "tb": 124, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -320,12 +319,6 @@ var riskHotspots = [
     "metrics": [
       { "value": 4692, "exceeded": true },
       { "value": 68, "exceeded": true },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.GameOfLife", "reportPath": "Core_GameOfLife.html", "methodName": "Generation(System.Boolean[0...,0...]&,System.Boolean&)", "methodShortName": "Generation(...)", "fileIndex": 0, "line": 29,
-    "metrics": [
-      { "value": 3422, "exceeded": true },
-      { "value": 58, "exceeded": true },
     ]},
   {
     "assembly": "Core", "class": "Core.Maths.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "Is3x3MagicSquare(System.Int64[0...,0...])", "methodShortName": "Is3x3MagicSquare(...)", "fileIndex": 0, "line": 189,
@@ -653,24 +646,6 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.DirectedGraph", "reportPath": "Core_DirectedGraph.html", "methodName": ".ctor(System.IO.StreamReader)", "methodShortName": ".ctor(...)", "fileIndex": 0, "line": 16,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.FileHelper", "reportPath": "Core_FileHelper.html", "methodName": "GetProjectPath()", "methodShortName": "GetProjectPath()", "fileIndex": 0, "line": 7,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.FileHelper", "reportPath": "Core_FileHelper.html", "methodName": "ConvertFileSizeToString(System.Int32)", "methodShortName": "ConvertFileSizeToString(...)", "fileIndex": 0, "line": 23,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.GameOfLife", "reportPath": "Core_GameOfLife.html", "methodName": "IsIdentical(System.Boolean[0...,0...],System.Boolean[0...,0...])", "methodShortName": "IsIdentical(...)", "fileIndex": 0, "line": 153,
     "metrics": [
       { "value": 42, "exceeded": true },
       { "value": 6, "exceeded": false },

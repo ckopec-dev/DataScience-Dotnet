@@ -3,7 +3,7 @@
 namespace UnitTests
 {
     [TestClass]
-    public class FastaUnitTests
+    public class FastaTests
     {
         [TestMethod]
         public void TestCreate()

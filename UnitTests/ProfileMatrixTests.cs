@@ -4,7 +4,7 @@ using System.Text;
 namespace UnitTests
 {
     [TestClass]
-    public class ProfileMatrixUnitTests
+    public class ProfileMatrixTests
     {
         private readonly List<Dna> _dnaValid = [new Dna("ACTG"), new Dna("CCTG")];
         private readonly List<Dna> _dnaInvalid = [new Dna("ACTG"), new Dna("CCT")];

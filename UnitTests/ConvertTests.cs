@@ -3,7 +3,7 @@
 namespace UnitTests
 {
     [TestClass]
-    public class ConvertUnitsTests
+    public class ConvertTests
     {
         private const decimal Tolerance = 0.0001m;
 

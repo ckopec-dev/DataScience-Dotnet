@@ -1,6 +1,4 @@
 ﻿using Core;
-using ExtendedNumerics;
-using System.Numerics;
 using Xunit;
 using Assert = Xunit.Assert;
 

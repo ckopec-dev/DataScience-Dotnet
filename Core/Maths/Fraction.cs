@@ -1,9 +1,4 @@
-﻿
-using Core.Maths;
-using System.ComponentModel;
-using System.Runtime.InteropServices.Marshalling;
-
-namespace Core
+﻿namespace Core.Maths
 {
     public class Fraction
     {
@@ -11,7 +6,7 @@ namespace Core
         public long Denominator { get; set; }
         public double Value
         {
-            get { return (double)Numerator / (double)Denominator; }
+            get { return Numerator / (double)Denominator; }
         }
 
         public Fraction()
@@ -60,7 +55,7 @@ namespace Core
 
         public override string ToString()
         {
-            return String.Format("{0} / {1}", Numerator, Denominator);
+            return string.Format("{0} / {1}", Numerator, Denominator);
         }
     }
 }

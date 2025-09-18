@@ -3,7 +3,7 @@
 namespace UnitTests
 {
     [TestClass]
-    public class LinearRegressionUnitTests
+    public class LinearRegressionTests
     {
         [TestMethod]
         public void SlopeTest()

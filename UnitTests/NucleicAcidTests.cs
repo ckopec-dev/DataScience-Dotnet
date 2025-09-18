@@ -2,7 +2,7 @@
 
 namespace UnitTests
 {
-    public class NucleicAcidUnitTests
+    public class NucleicAcidTests
     {
 
     }
