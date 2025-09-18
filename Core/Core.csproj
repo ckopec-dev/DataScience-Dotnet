@@ -8,18 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="GraphTheory\v2\**" />
     <Compile Remove="Logic\**" />
-    <EmbeddedResource Remove="GraphTheory\v2\**" />
     <EmbeddedResource Remove="Logic\**" />
-    <None Remove="GraphTheory\v2\**" />
     <None Remove="Logic\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="GraphTheory\EdgeList.cs" />
-    <Compile Remove="GraphTheory\GraphType.cs" />
-    <Compile Remove="GraphTheory\Vertex.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,6 +32,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
     <PackageReference Include="NLog" Version="6.0.3" />
     <PackageReference Include="ScottPlot" Version="5.0.56" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Maths\" />
   </ItemGroup>
 
 </Project>

@@ -27,6 +27,7 @@ namespace Core.Internet
 
         public static void RandomSleep(int minMilliseconds, int maxMilliseconds)
         {
+            if (maxMilliseconds <= minMilliseconds) return;
             int r = _Random.Next(minMilliseconds, maxMilliseconds);
             Thread.Sleep(r);
         }
