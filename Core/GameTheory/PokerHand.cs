@@ -311,7 +311,7 @@ namespace Core.GameTheory
         {
             foreach (Card c in Cards)
             {
-                List<Card> pairs = Cards.Where(i => i.Value == c.Value).ToList();
+                List<Card> pairs = [.. Cards.Where(i => i.Value == c.Value)];
 
                 if (pairs.Count > 1)
                 {
@@ -338,7 +338,7 @@ namespace Core.GameTheory
                 if (onePair.Contains(c))
                     continue;
 
-                List<Card> pairs = Cards.Where(i => i.Value == c.Value).ToList();
+                List<Card> pairs = [.. Cards.Where(i => i.Value == c.Value)];
 
                 if (pairs.Count > 1)
                 {
@@ -356,7 +356,7 @@ namespace Core.GameTheory
         {
             foreach (Card c in Cards)
             {
-                List<Card> pairs = Cards.Where(i => i.Value == c.Value).ToList();
+                List<Card> pairs = [.. Cards.Where(i => i.Value == c.Value)];
 
                 if (pairs.Count > 2)
                 {
@@ -408,7 +408,7 @@ namespace Core.GameTheory
                 if (threeOfAKind.Contains(c))
                     continue;
 
-                List<Card> pairs = Cards.Where(i => i.Value == c.Value).ToList();
+                List<Card> pairs = [.. Cards.Where(i => i.Value == c.Value)];
 
                 if (pairs.Count > 1)
                 {
@@ -426,7 +426,7 @@ namespace Core.GameTheory
         {
             foreach (Card c in Cards)
             {
-                List<Card> pairs = Cards.Where(i => i.Value == c.Value).ToList();
+                List<Card> pairs = [.. Cards.Where(i => i.Value == c.Value)];
 
                 if (pairs.Count > 3)
                 {

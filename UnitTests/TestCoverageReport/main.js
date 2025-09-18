@@ -221,11 +221,8 @@ var assemblies = [
   {
     "name": "Core",
     "classes": [
-      { "name": "Core.Bioinformatics.Dna", "rp": "Core_Dna.html", "cl": 61, "ucl": 0, "cal": 61, "tl": 137, "cb": 20, "tb": 20, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Bioinformatics.Fasta", "rp": "Core_Fasta.html", "cl": 50, "ucl": 0, "cal": 50, "tl": 106, "cb": 12, "tb": 12, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Bioinformatics.FastaEntry", "rp": "Core_FastaEntry.html", "cl": 6, "ucl": 0, "cal": 6, "tl": 14, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Bioinformatics.ProfileMatrix", "rp": "Core_ProfileMatrix.html", "cl": 59, "ucl": 0, "cal": 59, "tl": 95, "cb": 24, "tb": 24, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Bioinformatics.Rna", "rp": "Core_Rna.html", "cl": 47, "ucl": 0, "cal": 47, "tl": 89, "cb": 8, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Bioinformatics.Bio", "rp": "Core_Bio.html", "cl": 146, "ucl": 0, "cal": 146, "tl": 180, "cb": 72, "tb": 72, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Bioinformatics.BioSequence", "rp": "Core_BioSequence.html", "cl": 10, "ucl": 0, "cal": 10, "tl": 18, "cb": 3, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.CompressionHelper", "rp": "Core_CompressionHelper.html", "cl": 11, "ucl": 0, "cal": 11, "tl": 29, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.ConvertUnits", "rp": "Core_ConvertUnits.html", "cl": 80, "ucl": 0, "cal": 80, "tl": 139, "cb": 8, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.DataHelper", "rp": "Core_DataHelper.html", "cl": 25, "ucl": 0, "cal": 25, "tl": 51, "cb": 8, "tb": 10, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -793,10 +790,10 @@ var riskHotspots = [
       { "value": 6, "exceeded": false },
     ]},
   {
-    "assembly": "Core", "class": "Core.Bioinformatics.ProfileMatrix", "reportPath": "Core_ProfileMatrix.html", "methodName": ".ctor(System.Collections.Generic.List`1<Core.Bioinformatics.Dna>)", "methodShortName": ".ctor(...)", "fileIndex": 0, "line": 48,
+    "assembly": "Core", "class": "Core.Bioinformatics.Bio", "reportPath": "Core_Bio.html", "methodName": "ValidateDna(System.String)", "methodShortName": "ValidateDna(...)", "fileIndex": 0, "line": 66,
     "metrics": [
-      { "value": 16, "exceeded": false },
-      { "value": 16, "exceeded": true },
+      { "value": 24, "exceeded": false },
+      { "value": 24, "exceeded": true },
     ]},
   {
     "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "IsProbablyPrime(System.Int32,System.Int32)", "methodShortName": "IsProbablyPrime(...)", "fileIndex": 0, "line": 461,
