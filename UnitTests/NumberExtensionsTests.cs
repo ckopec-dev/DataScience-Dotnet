@@ -1,4 +1,5 @@
 ﻿using Core;
+using System.Numerics;
 using Xunit;
 using Assert = Xunit.Assert;
 
@@ -220,5 +221,149 @@ namespace UnitTests
         }
 
         #endregion
+
+        [Fact]
+        public void Factorial_Zero_ReturnsOne()
+        {
+            var result = 0.Factorial();
+            Assert.Equal(1, result);
+        }
+
+        [Fact]
+        public void Factorial_PositiveNumber_ReturnsCorrectValue()
+        {
+            var result = 5.Factorial();
+            Assert.Equal(120, result);
+        }
+
+        [Fact]
+        public void Factorial_Negative_ThrowsException()
+        {
+            Assert.Throws<Exception>(() => (-1).Factorial());
+        }
+
+        [Fact]
+        public void CommonDigits_SameDigits_ReturnsCommonDigits()
+        {
+            var result = 234.CommonDigits(328);
+            Assert.Contains(2, result);
+            Assert.Contains(3, result);
+            Assert.Equal(2, result.Count);
+        }
+
+        [Fact]
+        public void CommonDigits_NoCommonDigits_ReturnsEmptyList()
+        {
+            var result = 123.CommonDigits(456);
+            Assert.Empty(result);
+        }
+
+        [Fact]
+        public void ReplaceDigit_ReplaceMiddleDigit_ReturnsNewNumber()
+        {
+            var result = 12345.ReplaceDigit(2, 7);
+            Assert.Equal(12745, result);
+        }
+
+        [Fact]
+        public void RemoveDigit_RemovesAllOccurrences_ReturnsNewNumber()
+        {
+            var result = 1234423.RemoveDigit(2);
+            Assert.Equal(13443, result);
+        }
+
+        [Fact]
+        public void GetDigit_IndexOutOfBounds_ThrowsException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => 123.GetDigit(5));
+        }
+
+        [Fact]
+        public void GetDigit_ValidIndex_ReturnsCorrectDigit()
+        {
+            var result = 12345.GetDigit(2);
+            Assert.Equal(3, result);
+        }
+
+        [Fact]
+        public void ToStringOfOrderedDigits_ReturnsSortedString()
+        {
+            var result = 3142.ToStringOfOrderedDigits();
+            Assert.Equal("1234", result);
+        }
+
+        [Fact]
+        public void SameDigits_True_ReturnsTrue()
+        {
+            var numbers = new List<int> { 123, 321, 132 };
+            var result = 123.SameDigits(numbers);
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void SameDigits_False_ReturnsFalse()
+        {
+            var numbers = new List<int> { 123, 456 };
+            var result = 123.SameDigits(numbers);
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void Product_List_ReturnsProduct()
+        {
+            var numbers = new List<int> { 2, 3, 4 };
+            var result = numbers.Product();
+            Assert.Equal(24, result);
+        }
+
+        [Fact]
+        public void Sum_List_ReturnsSum()
+        {
+            var numbers = new List<int> { 1, 2, 3 };
+            var result = numbers.Sum();
+            Assert.Equal(6, result);
+        }
+
+        [Fact]
+        public void Sum_Int_ReturnsSumOfSequence()
+        {
+            var result = 5.Sum();
+            Assert.Equal(15, result); // 1 + 2 + 3 + 4 + 5 = 15
+        }
+
+        [Fact]
+        public void IsPerfect_True_ReturnsTrue()
+        {
+            var result = 6.IsPerfect();
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void IsPerfect_False_ReturnsFalse()
+        {
+            var result = 8.IsPerfect();
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void ProperDivisors_Int_ReturnsCorrectList()
+        {
+            var result = 6.ProperDivisors();
+            Assert.Equal([1, 2, 3], result);
+        }
+
+        [Fact]
+        public void ProperDivisors_Long_ReturnsCorrectList()
+        {
+            var result = 6L.ProperDivisors();
+            Assert.Equal([1, 2, 3], result);
+        }
+
+        [Fact]
+        public void IsPerfect_SmallNumber_ReturnsCorrectResult()
+        {
+            Assert.True(6.IsPerfect());
+            Assert.False(10.IsPerfect());
+        }
     }
 }

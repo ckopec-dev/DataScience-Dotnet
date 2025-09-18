@@ -239,7 +239,7 @@ var assemblies = [
       { "name": "Core.FigurateCalculator", "rp": "Core_FigurateCalculator.html", "cl": 0, "ucl": 18, "cal": 18, "tl": 36, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.FigurateNumber", "rp": "Core_FigurateNumber.html", "cl": 0, "ucl": 19, "cal": 19, "tl": 36, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.FileHelper", "rp": "Core_FileHelper.html", "cl": 0, "ucl": 27, "cal": 27, "tl": 45, "cb": 0, "tb": 12, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.Fraction", "rp": "Core_Fraction.html", "cl": 0, "ucl": 39, "cal": 39, "tl": 65, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Fraction", "rp": "Core_Fraction.html", "cl": 0, "ucl": 39, "cal": 39, "tl": 66, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.GameOfLife", "rp": "Core_GameOfLife.html", "cl": 0, "ucl": 102, "cal": 102, "tl": 168, "cb": 0, "tb": 66, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.GameTheory.Card", "rp": "Core_Card.html", "cl": 0, "ucl": 82, "cal": 82, "tl": 106, "cb": 0, "tb": 96, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.GameTheory.Deck", "rp": "Core_Deck.html", "cl": 0, "ucl": 29, "cal": 29, "tl": 48, "cb": 0, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -265,15 +265,15 @@ var assemblies = [
       { "name": "Core.LinearAlgebra.Matrix", "rp": "Core_Matrix.html", "cl": 0, "ucl": 238, "cal": 238, "tl": 342, "cb": 0, "tb": 130, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.LinearAlgebra.Vector", "rp": "Core_Vector.html", "cl": 0, "ucl": 75, "cal": 75, "tl": 120, "cb": 0, "tb": 22, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.LinearRegression", "rp": "Core_LinearRegression.html", "cl": 15, "ucl": 7, "cal": 22, "tl": 40, "cb": 3, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.MathHelper", "rp": "Core_MathHelper.html", "cl": 0, "ucl": 238, "cal": 238, "tl": 397, "cb": 0, "tb": 128, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Maths.Algebra", "rp": "Core_Algebra.html", "cl": 0, "ucl": 238, "cal": 238, "tl": 474, "cb": 0, "tb": 100, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Maths.Calculus", "rp": "Core_Calculus.html", "cl": 0, "ucl": 201, "cal": 201, "tl": 484, "cb": 0, "tb": 64, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Maths.DescriptiveStatistics", "rp": "Core_DescriptiveStatistics.html", "cl": 0, "ucl": 31, "cal": 31, "tl": 683, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.Maths.MathHelper", "rp": "Core_MathHelper.html", "cl": 0, "ucl": 229, "cal": 229, "tl": 381, "cb": 0, "tb": 124, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Maths.Statistics", "rp": "Core_Statistics.html", "cl": 0, "ucl": 343, "cal": 343, "tl": 683, "cb": 0, "tb": 118, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Maths.StatisticsExample", "rp": "Core_StatisticsExample.html", "cl": 0, "ucl": 25, "cal": 25, "tl": 683, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Maths.Trigonometry", "rp": "Core_Trigonometry.html", "cl": 0, "ucl": 163, "cal": 163, "tl": 538, "cb": 0, "tb": 16, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.NetworkHelper", "rp": "Core_NetworkHelper.html", "cl": 0, "ucl": 25, "cal": 25, "tl": 42, "cb": 0, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Core.NumberExtensions", "rp": "Core_NumberExtensions.html", "cl": 183, "ucl": 954, "cal": 1137, "tl": 1918, "cb": 54, "tb": 430, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Core.NumberExtensions", "rp": "Core_NumberExtensions.html", "cl": 286, "ucl": 617, "cal": 903, "tl": 1480, "cb": 89, "tb": 294, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Physics.Motion", "rp": "Core_Motion.html", "cl": 0, "ucl": 18, "cal": 18, "tl": 51, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Physics.Optics", "rp": "Core_Optics.html", "cl": 0, "ucl": 28, "cal": 28, "tl": 77, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Core.Physics.OrbitalElements", "rp": "Core_OrbitalElements.html", "cl": 0, "ucl": 8, "cal": 8, "tl": 16, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -328,13 +328,7 @@ var riskHotspots = [
       { "value": 58, "exceeded": true },
     ]},
   {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "ToWords(System.Int32)", "methodShortName": "ToWords(...)", "fileIndex": 0, "line": 1157,
-    "metrics": [
-      { "value": 1482, "exceeded": true },
-      { "value": 38, "exceeded": true },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "Is3x3MagicSquare(System.Int64[0...,0...])", "methodShortName": "Is3x3MagicSquare(...)", "fileIndex": 0, "line": 188,
+    "assembly": "Core", "class": "Core.Maths.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "Is3x3MagicSquare(System.Int64[0...,0...])", "methodShortName": "Is3x3MagicSquare(...)", "fileIndex": 0, "line": 189,
     "metrics": [
       { "value": 1332, "exceeded": true },
       { "value": 36, "exceeded": true },
@@ -346,7 +340,7 @@ var riskHotspots = [
       { "value": 35, "exceeded": true },
     ]},
   {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "ToRomanNumeral(System.Int32)", "methodShortName": "ToRomanNumeral(...)", "fileIndex": 0, "line": 905,
+    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "ToRomanNumeral(System.Int32)", "methodShortName": "ToRomanNumeral(...)", "fileIndex": 0, "line": 678,
     "metrics": [
       { "value": 1190, "exceeded": true },
       { "value": 34, "exceeded": true },
@@ -400,25 +394,13 @@ var riskHotspots = [
       { "value": 16, "exceeded": true },
     ]},
   {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "IsPrime(System.UInt64)", "methodShortName": "IsPrime(...)", "fileIndex": 0, "line": 73,
+    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "Phi(System.UInt64)", "methodShortName": "Phi(...)", "fileIndex": 0, "line": 388,
     "metrics": [
       { "value": 272, "exceeded": true },
       { "value": 16, "exceeded": true },
     ]},
   {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "IsPrime(System.Numerics.BigInteger)", "methodShortName": "IsPrime(...)", "fileIndex": 0, "line": 90,
-    "metrics": [
-      { "value": 272, "exceeded": true },
-      { "value": 16, "exceeded": true },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "Phi(System.UInt64)", "methodShortName": "Phi(...)", "fileIndex": 0, "line": 615,
-    "metrics": [
-      { "value": 272, "exceeded": true },
-      { "value": 16, "exceeded": true },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "IsProbablyPrime(System.Int32,System.Int32)", "methodShortName": "IsProbablyPrime(...)", "fileIndex": 0, "line": 1018,
+    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "IsProbablyPrime(System.Int32,System.Int32)", "methodShortName": "IsProbablyPrime(...)", "fileIndex": 0, "line": 789,
     "metrics": [
       { "value": 272, "exceeded": true },
       { "value": 16, "exceeded": true },
@@ -443,12 +425,6 @@ var riskHotspots = [
     ]},
   {
     "assembly": "Core", "class": "Core.LinearAlgebra.Matrix", "reportPath": "Core_Matrix.html", "methodName": "QRDecomposition()", "methodShortName": "QRDecomposition()", "fileIndex": 0, "line": 241,
-    "metrics": [
-      { "value": 210, "exceeded": true },
-      { "value": 14, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "PartitionCount(System.Int32)", "methodShortName": "PartitionCount(...)", "fileIndex": 0, "line": 391,
     "metrics": [
       { "value": 210, "exceeded": true },
       { "value": 14, "exceeded": false },
@@ -484,7 +460,7 @@ var riskHotspots = [
       { "value": 12, "exceeded": false },
     ]},
   {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "IsSNumber(System.UInt64)", "methodShortName": "IsSNumber(...)", "fileIndex": 0, "line": 510,
+    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "IsSNumber(System.UInt64)", "methodShortName": "IsSNumber(...)", "fileIndex": 0, "line": 283,
     "metrics": [
       { "value": 156, "exceeded": true },
       { "value": 12, "exceeded": false },
@@ -520,18 +496,6 @@ var riskHotspots = [
       { "value": 10, "exceeded": false },
     ]},
   {
-    "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "IsPrime(System.Int64)", "methodShortName": "IsPrime(...)", "fileIndex": 0, "line": 98,
-    "metrics": [
-      { "value": 110, "exceeded": true },
-      { "value": 10, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "SieveOfEratosthenes(System.Int32)", "methodShortName": "SieveOfEratosthenes(...)", "fileIndex": 0, "line": 371,
-    "metrics": [
-      { "value": 110, "exceeded": true },
-      { "value": 10, "exceeded": false },
-    ]},
-  {
     "assembly": "Core", "class": "Core.Maths.Algebra", "reportPath": "Core_Algebra.html", "methodName": "IsPrime(System.Int64)", "methodShortName": "IsPrime(...)", "fileIndex": 0, "line": 367,
     "metrics": [
       { "value": 110, "exceeded": true },
@@ -550,13 +514,19 @@ var riskHotspots = [
       { "value": 10, "exceeded": false },
     ]},
   {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "SquareDigitChain(System.Int32)", "methodShortName": "SquareDigitChain(...)", "fileIndex": 0, "line": 467,
+    "assembly": "Core", "class": "Core.Maths.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "IsPrime(System.Int64)", "methodShortName": "IsPrime(...)", "fileIndex": 0, "line": 99,
     "metrics": [
       { "value": 110, "exceeded": true },
       { "value": 10, "exceeded": false },
     ]},
   {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "IsTruncatablePrime(System.Int64)", "methodShortName": "IsTruncatablePrime(...)", "fileIndex": 0, "line": 1114,
+    "assembly": "Core", "class": "Core.Maths.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "SieveOfEratosthenes(System.Int32)", "methodShortName": "SieveOfEratosthenes(...)", "fileIndex": 0, "line": 355,
+    "metrics": [
+      { "value": 110, "exceeded": true },
+      { "value": 10, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "SquareDigitChain(System.Int32)", "methodShortName": "SquareDigitChain(...)", "fileIndex": 0, "line": 240,
     "metrics": [
       { "value": 110, "exceeded": true },
       { "value": 10, "exceeded": false },
@@ -640,18 +610,6 @@ var riskHotspots = [
       { "value": 8, "exceeded": false },
     ]},
   {
-    "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "ProperDivisors(System.Int64)", "methodShortName": "ProperDivisors(...)", "fileIndex": 0, "line": 113,
-    "metrics": [
-      { "value": 72, "exceeded": true },
-      { "value": 8, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "Fibonacci(System.Int32)", "methodShortName": "Fibonacci(...)", "fileIndex": 0, "line": 138,
-    "metrics": [
-      { "value": 72, "exceeded": true },
-      { "value": 8, "exceeded": false },
-    ]},
-  {
     "assembly": "Core", "class": "Core.Maths.Algebra", "reportPath": "Core_Algebra.html", "methodName": "Factorial(System.Int32)", "methodShortName": "Factorial(...)", "fileIndex": 0, "line": 349,
     "metrics": [
       { "value": 72, "exceeded": true },
@@ -688,6 +646,18 @@ var riskHotspots = [
       { "value": 8, "exceeded": false },
     ]},
   {
+    "assembly": "Core", "class": "Core.Maths.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "ProperDivisors(System.Int64)", "methodShortName": "ProperDivisors(...)", "fileIndex": 0, "line": 114,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "Fibonacci(System.Int32)", "methodShortName": "Fibonacci(...)", "fileIndex": 0, "line": 139,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
     "assembly": "Core", "class": "Core.Maths.Statistics", "reportPath": "Core_Statistics.html", "methodName": "LinearRegression(System.Collections.Generic.IEnumerable`1<System.Double>,System.Collections.Generic.IEnumerable`1<System.Double>)", "methodShortName": "LinearRegression(...)", "fileIndex": 0, "line": 222,
     "metrics": [
       { "value": 72, "exceeded": true },
@@ -712,19 +682,13 @@ var riskHotspots = [
       { "value": 8, "exceeded": false },
     ]},
   {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "IsCyclicSet(System.Collections.Generic.List`1<System.Int32>,System.Int32)", "methodShortName": "IsCyclicSet(...)", "fileIndex": 0, "line": 716,
+    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "IsCyclicSet(System.Collections.Generic.List`1<System.Int32>,System.Int32)", "methodShortName": "IsCyclicSet(...)", "fileIndex": 0, "line": 489,
     "metrics": [
       { "value": 72, "exceeded": true },
       { "value": 8, "exceeded": false },
     ]},
   {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "Factor(System.Int64)", "methodShortName": "Factor(...)", "fileIndex": 0, "line": 944,
-    "metrics": [
-      { "value": 72, "exceeded": true },
-      { "value": 8, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "CommonDigits(System.Int32,System.Int32)", "methodShortName": "CommonDigits(...)", "fileIndex": 0, "line": 1408,
+    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "Factor(System.Int64)", "methodShortName": "Factor(...)", "fileIndex": 0, "line": 717,
     "metrics": [
       { "value": 72, "exceeded": true },
       { "value": 8, "exceeded": false },
@@ -832,30 +796,6 @@ var riskHotspots = [
       { "value": 6, "exceeded": false },
     ]},
   {
-    "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "RomanToLong(System.String)", "methodShortName": "RomanToLong(...)", "fileIndex": 0, "line": 12,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "LongToMinimalRoman(System.Int64)", "methodShortName": "LongToMinimalRoman(...)", "fileIndex": 0, "line": 42,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "IsConcatSquare(System.UInt64,System.UInt64)", "methodShortName": "IsConcatSquare(...)", "fileIndex": 0, "line": 77,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "FibonacciRecursive(System.Int32)", "methodShortName": "FibonacciRecursive(...)", "fileIndex": 0, "line": 162,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
     "assembly": "Core", "class": "Core.Maths.Algebra", "reportPath": "Core_Algebra.html", "methodName": "Add(Core.Maths.Algebra/Polynomial,Core.Maths.Algebra/Polynomial)", "methodShortName": "Add(...)", "fileIndex": 0, "line": 191,
     "metrics": [
       { "value": 42, "exceeded": true },
@@ -880,6 +820,30 @@ var riskHotspots = [
       { "value": 6, "exceeded": false },
     ]},
   {
+    "assembly": "Core", "class": "Core.Maths.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "RomanToLong(System.String)", "methodShortName": "RomanToLong(...)", "fileIndex": 0, "line": 13,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "LongToMinimalRoman(System.Int64)", "methodShortName": "LongToMinimalRoman(...)", "fileIndex": 0, "line": 43,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "IsConcatSquare(System.UInt64,System.UInt64)", "methodShortName": "IsConcatSquare(...)", "fileIndex": 0, "line": 78,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "Core", "class": "Core.Maths.MathHelper", "reportPath": "Core_MathHelper.html", "methodName": "FibonacciRecursive(System.Int32)", "methodShortName": "FibonacciRecursive(...)", "fileIndex": 0, "line": 163,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
     "assembly": "Core", "class": "Core.Maths.Statistics", "reportPath": "Core_Statistics.html", "methodName": "PearsonCorrelation(System.Collections.Generic.IEnumerable`1<System.Double>,System.Collections.Generic.IEnumerable`1<System.Double>)", "methodShortName": "PearsonCorrelation(...)", "fileIndex": 0, "line": 183,
     "metrics": [
       { "value": 42, "exceeded": true },
@@ -892,31 +856,13 @@ var riskHotspots = [
       { "value": 6, "exceeded": false },
     ]},
   {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "ReversiblePrimeSquare(System.Int32)", "methodShortName": "ReversiblePrimeSquare(...)", "fileIndex": 0, "line": 421,
+    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "HasSameDigits(System.Int32,System.Int32)", "methodShortName": "HasSameDigits(...)", "fileIndex": 0, "line": 525,
     "metrics": [
       { "value": 42, "exceeded": true },
       { "value": 6, "exceeded": false },
     ]},
   {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "HasSameDigits(System.Int32,System.Int32)", "methodShortName": "HasSameDigits(...)", "fileIndex": 0, "line": 752,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "HasSameDigits(System.UInt64,System.UInt64)", "methodShortName": "HasSameDigits(...)", "fileIndex": 0, "line": 773,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "Factorial(System.Int32)", "methodShortName": "Factorial(...)", "fileIndex": 0, "line": 1452,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "SumOfFactorialDigits(System.Int32)", "methodShortName": "SumOfFactorialDigits(...)", "fileIndex": 0, "line": 1471,
+    "assembly": "Core", "class": "Core.NumberExtensions", "reportPath": "Core_NumberExtensions.html", "methodName": "HasSameDigits(System.UInt64,System.UInt64)", "methodShortName": "HasSameDigits(...)", "fileIndex": 0, "line": 546,
     "metrics": [
       { "value": 42, "exceeded": true },
       { "value": 6, "exceeded": false },

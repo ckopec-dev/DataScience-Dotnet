@@ -328,23 +328,6 @@ namespace Core.Maths
             return result;
         }
 
-        public static long Pi(long x)
-        {
-            // The Prime Counting Function
-            // The count of all primes up to (and including) x.
-            // E.g. Pi(1000) returns 168.
-
-            long count = 0;
-
-            for(long i = 0; i <= x; i++)
-            {
-                if (i.IsPrime())
-                    count++;
-            }
-
-            return count;
-        }
-
         public static int PiProbably(int x)
         {
             int count = 0;

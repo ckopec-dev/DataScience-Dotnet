@@ -9,104 +9,6 @@ namespace Core
 {
     public static class NumberExtensions
     {
-        #region IsPower
-
-        /***
-         * Is n a power of m.
-         * E.g. 1000.IsPower(10) -> true
-        ***/
-
-        public static bool IsPower(this int x, byte y)
-        {
-            double d = Math.Log(x) / Math.Log(y);
-            return d == Math.Floor(d);
-        }
-
-        #endregion
-
-        #region IsPrime
-
-        /***
-         * Is n prime?
-         * E.g. 5 -> true.
-        ***/
-
-        public static bool IsPrime(this byte n)
-        {
-            return IsPrime((ulong)n);
-        }
-
-        public static bool IsPrime(this short n)
-        {
-            if (n < 2) return false;
-            return IsPrime((ulong)n);
-        }
-
-        public static bool IsPrime(this ushort n)
-        {
-            return IsPrime((ulong)n);
-        }
-
-        public static bool IsPrime(this int n)
-        {
-            if (n < 2) return false;
-            return IsPrime((ulong)n);
-        }
-
-        public static bool IsPrime(this uint n)
-        {
-            return IsPrime((ulong)n);
-        }
-
-        public static bool IsPrime(this long n)
-        {
-            if (n < 2) return false;
-            return IsPrime((ulong)n);
-        }
-
-        public static bool IsPrime(this ulong n)
-        {
-            if (n == 2 || n == 3)
-                return true;
-
-            if (n <= 1 || n % 2 == 0 || n % 3 == 0)
-                return false;
-
-            for (ulong i = 5; i * i <= n; i += 6)
-            {
-                if (n % i == 0 || n % (i + 2) == 0)
-                    return false;
-            }
-
-            return true;
-        }
-
-        public static bool IsPrime(this BigInteger n)
-        {
-            if (n == 2 || n == 3)
-                return true;
-
-            if (n <= 1 || n % 2 == 0 || n % 3 == 0)
-                return false;
-
-            for (BigInteger i = 5; i * i <= n; i += 6)
-            {
-                if (n % i == 0 || n % (i + 2) == 0)
-                    return false;
-            }
-
-            return true;
-        }
-
-        #endregion
-
-        #region Reverse
-
-        /***
-         * Reverse the digits of n.
-         * E.g. 123 -> 321.
-        ***/
-
         public static byte Reverse(this byte n)
         {
             char[] charArray = n.ToString().ToCharArray();
@@ -147,6 +49,7 @@ namespace Core
             return Convert.ToInt32(numberReversed);
 
         }
+        
         public static uint Reverse(this uint n)
         {
             char[] charArray = n.ToString().ToCharArray();
@@ -189,15 +92,6 @@ namespace Core
 
             return BigInteger.Parse(numberReversed);
         }
-
-        #endregion
-
-        #region SumOfDigits
-
-        /***
-         * Sums the digits of n.
-         * Intentionally not covered are non-integer types and signed types.
-        ***/
 
         public static long SumOfDigits(this byte n)
         {
@@ -256,16 +150,6 @@ namespace Core
             return sum;
         }
 
-        #endregion
-
-        #region SumOfSquares
-
-        /***
-         * Returns the sum of squares of 1 to n (inclusive).
-         * Intentionally not covered are non-integer types and signed types.
-         * E.g. 2 -> 5 because 1^2 + 2^2 = 5.
-        ***/
-
         public static long SumOfSquares(this byte n)
         {
             throw new NotImplementedException();
@@ -285,8 +169,6 @@ namespace Core
         {
             throw new NotImplementedException();
         }
-
-        #endregion
 
         public static bool IsArmstrong(this int n)
         {
@@ -352,110 +234,6 @@ namespace Core
             }
 
             return digits;
-        }
-
-        public static List<int> GeneratePrimes(this int n)
-        {
-            List<int> primes = [];
-            for (int i = 2; i <= n; i++)
-            {
-                if (IsPrime(i))
-                    primes.Add(i);
-            }
-            return primes;
-        }
-
-        public static int PrimePartitionCount(this int n)
-        {
-            var primes = GeneratePrimes(n);
-            int[] dp = new int[n + 1];
-            dp[0] = 1;
-
-            foreach (int prime in primes)
-            {
-                for (int i = prime; i <= n; i++)
-                {
-                    dp[i] += dp[i - prime];
-                }
-            }
-
-            return dp[n];
-        }
-
-        public static BigInteger PartitionCount(this int n)
-        {
-            // Returns the number of ways n can be partitioned with integers.
-
-            if (n < 0) return 0;
-            if (n == 0) return 1;
-
-            BigInteger[] p = new BigInteger[n + 1];
-            p[0] = 1;
-
-            for (int i = 1; i <= n; i++)
-            {
-                int k = 1;
-                while (true)
-                {
-                    int j1 = k * (3 * k - 1) / 2;
-                    if (j1 > i) break;
-                    p[i] += (k % 2 == 1 ? 1 : -1) * p[i - j1];
-
-                    int j2 = k * (3 * k + 1) / 2;
-                    if (j2 > i) break;
-                    p[i] += (k % 2 == 1 ? 1 : -1) * p[i - j2];
-
-                    k++;
-                }
-            }
-
-            return p[n];
-        }
-
-        public static bool ReversiblePrimeSquare(this int n)
-        {
-            // We call a number a reversible prime square if:
-            //  It is not a palindrome, and
-            //  It is the square of a prime, and
-            //  Its reverse is also the square of a prime.
-
-            // E.g.: 169
-
-            //Console.WriteLine("IsPalindrome: {0}", n.IsPalindrome());
-            //Console.WriteLine("IsPrimeSquare: {0}", n.IsPrimeSquare());
-            //Console.WriteLine("ReverseIsPrimeSquare: {0}", n.Reverse().IsPrimeSquare());
-
-            if (!n.IsPalindrome() &&
-                n.IsPrimeSquare() && 
-                n.Reverse().IsPrimeSquare()
-                )
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public static bool IsPrimeSquare(this int n)
-        {
-            // Returns true if n is the square of a prime.
-            // E.g. 169 returns true because 13 * 13 = 169.
-
-            bool isPrimeSquare = false;
-
-            if (n.IsPerfectSquare())
-            {
-                int root = Convert.ToInt32(Math.Sqrt(n));
-                
-                if (root.IsPrime())
-                {
-                    isPrimeSquare = true;
-                }
-            }
-
-            return isPrimeSquare;
         }
 
         public static int SquareDigitChain(this int n)
@@ -1067,17 +845,6 @@ namespace Core
                 return false;
         }
 
-        public static bool ArePrime(this List<int> numbers)
-        {
-            // Returns true if all members of the list are prime.
-
-            foreach (int n in numbers)
-                if (!n.IsPrime())
-                    return false;
-
-            return true;
-        }
-
         public static bool IsPalindrome(this int number)
         {
             return ((long)number).IsPalindrome();
@@ -1103,32 +870,6 @@ namespace Core
                 return false;
         }
 
-        public static bool IsTruncatablePrime(this long number)
-        {
-            // See https://projecteuler.net/problem=37.
-
-            if (!number.IsPrime())
-                return false;
-
-            if (number < 10)
-                return false;
-
-            for (int i = 1; i < number.ToString().Length; i++)
-            {
-                long newNum = Convert.ToInt64(number.ToString()[i..]);
-
-                if (!newNum.IsPrime())
-                    return false;
-
-                newNum = Convert.ToInt64(number.ToString()[..i]);
-
-                if (!newNum.IsPrime())
-                    return false;
-            }
-
-            return true;
-        }
-
         public static int TriangleNumber(this int number)
         {
             // The sequence of triangle numbers is generated by adding the natural numbers. So the 7th triangle number would be 1 + 2 + 3 + 4 + 5 + 6 + 7 = 28.
@@ -1144,101 +885,6 @@ namespace Core
             }
 
             return result;
-        }
-
-        public static string ToWords(this int number)
-        {
-            // Converts number to words. e.g. 100 = one hundred.
-            // Int max size is 2,147,483,647
-            // Some redundant code once we get in the 100s. If exdpanding this to support longs, it would be useful to chunk it out into a helper function.
-
-            string[] list = [ "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
-                "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" ];
-
-            Dictionary<int, string> d = [];
-
-            // Add everything under 20.
-            for (int i = 0; i <= 20; i++)
-                d.Add(i, list[i]);
-
-            // Add the 10s.
-            int idx = 20;
-            for (int i = idx + 1; i < 28; i++)
-            {
-                idx += 10;
-                d.Add(idx, list[i]);
-            }
-
-            // Handle negative numbers...
-            if (number < 0)
-                return "negative " + (number * -1).ToWords();
-
-            if (number <= 20)
-                return d[number];
-
-            if (number > 20 && number < 100)
-            {
-                // E.g. 38 becomes 30.
-                int tens = number / 10 * 10;
-                int ones = number - tens;
-                if (ones == 0)
-                    return d[tens];
-                else
-                    return d[tens] + " " + d[ones];
-            }
-
-            // Hundreds
-            if (number >= 100 && number < 1000)
-            {
-                int hundreds = number / 100;
-                string val = hundreds.ToWords() + " hundred";
-                int rem = number - (hundreds * 100);
-                if (rem == 0)
-                    return val;
-                else
-                    return val + " and " + rem.ToWords();
-            }
-
-            // Thousands
-            if (number >= 1000 && number < 1000000)
-            {
-                int thousands = number / 1000;
-                string val = thousands.ToWords() + " thousand";
-                int rem = number - (thousands * 1000);
-                if (rem == 0)
-                    return val;
-                else
-                    return val + " and " + rem.ToWords();
-            }
-
-            // Millions
-            if (number >= 1000000 && number < 1000000000)
-            {
-                int millions = number / 1000000;
-                string val = millions.ToWords() + " million";
-                int rem = number - (millions * 1000000);
-                if (rem == 0)
-                    return val;
-                else
-                    return val + " and " + rem.ToWords();
-            }
-
-            // Billions
-            if (number >= 1000000000)
-            {
-                int billions = number / 1000000000;
-                string val = billions.ToWords() + " billion";
-                int rem = number - (billions * 1000000000);
-                if (rem == 0)
-                    return val;
-                else
-                    return val + " and " + rem.ToWords();
-            }
-
-            if (number == 1000)
-                return "one thousand";
-
-            throw new Exception("This number is not supported.");
         }
 
         public static List<long> ProperDivisors(this long number)
@@ -1302,11 +948,6 @@ namespace Core
             return product;
         }
 
-        public static int NumberOfDigits(this BigInteger number)
-        {
-            return number.ToString().Length;
-        }
-
         public static bool SameDigits(this int number, List<int> numbersToCompare)
         {
             // Do all the numbers in numbersToCompare have the same digits (order insensitive) as number?
@@ -1333,24 +974,6 @@ namespace Core
                 sb.Append(digit);
 
             return sb.ToString();
-        }
-
-        public static bool IsPandigital(this long n, int lowDigit, int highDigit)
-        {
-            // We shall say that an n-digit number is pandigital if it makes use of all the digits lowDigit to highDigit exactly once;
-            // for example, the 5-digit number, 15234, is 1 through 5 pandigital.
-
-            string s = n.ToString();
-            
-            for(int i = lowDigit; i <= highDigit; i++)
-            {
-                if (s.AllIndexesOf(i.ToString()).Count != 1)
-                {
-                    return false;
-                }
-            }
-
-            return true;
         }
 
         public static int GetDigit(this int number, int index)
@@ -1427,20 +1050,6 @@ namespace Core
             return result;
         }
 
-        public static string? ToSpaceDelimitedString(this int[] values)
-        {
-            string? s = null;
-
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (i > 0)
-                    s += " ";
-                s += values[i].ToString();
-            }
-
-            return s;
-        }
-
         public static BigInteger Factorial(this int val)
         {
             if (val < 0)
@@ -1454,27 +1063,6 @@ namespace Core
                 for (int i = 1; i <= val; i++)
                 {
                     b *= i;
-                }
-
-                return b;
-            }
-        }
-
-        public static BigInteger SumOfFactorialDigits(this int val)
-        {
-            if (val < 0)
-                throw new Exception("Negative values are undefined for this method.");
-            else if (val == 0)
-                return new BigInteger(1);
-            else
-            {
-                BigInteger b = 0;
-
-                for (int i = 0; i < val.ToString().Length; i++)
-                {
-                    int v = val.GetDigit(i);
-
-                    b += v.Factorial();
                 }
 
                 return b;
