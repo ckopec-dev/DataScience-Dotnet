@@ -9,15 +9,6 @@ namespace Core
 {
     public static class NumberExtensions
     {
-        public static byte Reverse(this byte n)
-        {
-            char[] charArray = n.ToString().ToCharArray();
-            Array.Reverse(charArray);
-            string numberReversed = new(charArray);
-
-            return Convert.ToByte(numberReversed);
-        }
-
         public static short Reverse(this short n)
         {
             ArgumentOutOfRangeException.ThrowIfNegative(n);
@@ -79,20 +70,6 @@ namespace Core
             return Convert.ToUInt64(numberReversed);
         }
 
-        public static BigInteger Reverse(this BigInteger n)
-        {
-            ArgumentOutOfRangeException.ThrowIfNegative(n);
-            
-            char[] charArray = n.ToString().ToCharArray();
-            Array.Reverse(charArray);
-            string numberReversed = new(charArray);
-
-            if (numberReversed == null)
-                return BigInteger.Zero;
-
-            return BigInteger.Parse(numberReversed);
-        }
-
         public static long SumOfDigits(this byte n)
         {
             return ((long)n).SumOfDigits();
@@ -148,26 +125,6 @@ namespace Core
             sum += n.WholeValue.SumOfDigits();
 
             return sum;
-        }
-
-        public static long SumOfSquares(this byte n)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static long SumOfSquares(this short n)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static long SumOfSquares(this int n)
-        {
-            return (n * (n + 1) / 2) * (2 * n + 1) / 3;
-        }
-
-        public static long SumOfSquares(this BigInteger n)
-        {
-            throw new NotImplementedException();
         }
 
         public static bool IsArmstrong(this int n)
@@ -250,12 +207,9 @@ namespace Core
             // 44 -> 32 -> 13 -> 10 -> 1 -> 1
 
             ArgumentOutOfRangeException.ThrowIfLessThan(n, 1);
-            if (n == 1 || n == 89) return n;
 
             while (n != 1 && n != 89)
             {
-                //Console.WriteLine(n);
-
                 List<int> digits = n.ToListOfDigits();
 
                 int sum = 0;
@@ -279,56 +233,6 @@ namespace Core
                 return false;
         }
 
-        public static bool IsSNumber(this ulong n)
-        {
-            // We define an S-number to be a natural number, n,
-            // that is a perfect square and its square root can be obtained by
-            // splitting the decimal representation of n into 2 or more 
-            // numbers then adding the numbers.
-
-            // Examples:
-            // sqr(81) = 8 + 1 = 9.
-            // sqr(6724) = 6 + 72 + 4 = 82.
-
-            if (n < 10)
-                return false;
-
-            if (n.IsPerfectSquare())
-            {
-                double sqrt = Math.Floor(Math.Sqrt(n));
-                //Console.WriteLine("sqrt: {0}", sqrt);
-
-                string s = n.ToString();
-                List<string> list = [.. s.Permute()];
-                foreach (string l in list)
-                {
-                    string[] parts = l.Split(' ');
-
-                    if (parts.Length > 1)
-                    {
-                        //Console.WriteLine(l);
-
-                        ulong sum = 0;
-                        foreach(string p in parts)
-                        {
-                            sum += Convert.ToUInt64(p);
-                        }
-
-                        //Console.WriteLine("sum: {0}", sum);
-
-                        if (sum == sqrt)
-                            return true;
-                    }
-                }
-
-                return false;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         public static bool IsPerfectSquare(this ulong n)
         {
             double sqrt = Math.Sqrt(n);
@@ -343,72 +247,6 @@ namespace Core
             }
         }
 
-        public static List<BigInteger> FactorialDigitCycle(this BigInteger n)
-        {
-            // Returns chain of numbers formed by recursively iterating SumFactorialDigits(n).
-            // Only non-repeating part of the chain is returned.
-            // Examples:
-            // 169 -> 363601 -> 1454 (-> 169)
-            // 78 -> 45360 -> 871 -> 45361 (-> 871)
-            // 540 -> 145 ( -> 145)
-
-            List<BigInteger> result = [];
-            BigInteger next = SumFactorialDigits(n);
-            result.Add(n);
-            bool repeat = false;
-
-            while(!repeat)
-            {
-                result.Add(next);
-                next = SumFactorialDigits(next);
-                repeat = result.Contains(next);
-            }
-
-            return result;
-        }
-
-        public static BigInteger SumFactorialDigits(this BigInteger n)
-        {
-            // Returns the sum of the factorial of n's digits.
-            // E.g. SumFactorialDigits(145) = 1! + 4! + 5! = 1 + 24 + 120 = 145.
-
-            List<int> digits = n.ToListOfDigits();
-
-            BigInteger sum = BigInteger.Zero;
-
-            foreach(int digit in digits)
-            {
-                sum += digit.Factorial();
-            }
-
-            return sum;
-        }
-
-        public static ulong Phi(this ulong n)
-        {
-            if (n < 3) return 1;
-            if (n == 3) return 2;
-
-            ulong totient = n;
-
-            if ((n & 1) == 0)
-            {
-                totient >>= 1;
-                while (((n >>= 1) & 1) == 0) ;
-            }
-
-            for (ulong i = 3; i * i <= n; i += 2)
-            {
-                if (n % i == 0)
-                {
-                    totient -= totient / i;
-                    while ((n /= i) % i == 0) ;
-                }
-            }
-            if (n > 1) totient -= totient / n;
-            return totient;
-        }
-
         public static bool IsSquare(this double n)
         {
             double root = Math.Sqrt(n);
@@ -421,27 +259,6 @@ namespace Core
             return (root - BigDecimal.Floor(root)) == 0;
         }
 
-        public static bool HasMinimalDifference(this List<double> values, double n, double margin = 0.00001)
-        {
-            // Returns true if any member of the list has a minimal difference with n.
-            foreach (var v in values)
-            {
-                if (v.HasMinimalDifference(n, margin))
-                    return true;
-            }
-            return false;
-        }
-
-        public static bool HasMinimalDifference(this double value1, double value2, double margin = 0.00001)
-        {
-            double difference = Math.Abs(value1 * margin);
-
-            if (Math.Abs(value1 - value2) <= difference) 
-                return true;
-            else
-                return false;
-        }
-
         public static ulong ContinuedFraction(this ulong x, out List<ulong> repeat)
         {
             // Returns the integer value of the root.
@@ -451,10 +268,7 @@ namespace Core
             repeat = [];
 
             ulong original_root = (ulong)Math.Truncate(Math.Sqrt(x));
-            //Console.WriteLine("Original root: {0}", original_root);
-
-            if (original_root * original_root == x) return x;
-
+            
             ulong step_a = 0;
             ulong a = original_root;
             ulong numerator = 0;
@@ -462,8 +276,6 @@ namespace Core
 
             while (a != 2 * original_root)
             {
-                //Console.WriteLine("step a({0}): n: {1}, d: {2}, a: {3}", step_a, numerator, denominator, a);
-
                 numerator = denominator * a - numerator;
                 denominator = (x - numerator * numerator) / denominator;
                 a = (original_root + numerator) / denominator;
@@ -485,30 +297,6 @@ namespace Core
             return String.Format("{{ {0} }}", String.Join(", ", list));
         }
 
-        public static bool IsCyclicSet(this List<int> set, int cycleSize)
-        {
-            for(int i = 0; i < set.Count; i++)
-            {
-                if (i == set.Count - 1)
-                {
-                    // It's the last item in the set, so the cycle continues with the first item of the set.
-                    
-                    string right = set[i].ToString().Right(cycleSize);
-                    string left = set[0].ToString().Left(cycleSize);
-
-                    if (right != left)
-                        return false;
-                }
-                else
-                {
-                    if (set[i].ToString().Right(cycleSize) != set[i + 1].ToString().Left(cycleSize))
-                        return false;
-                }
-            }
-
-            return true;
-        }
-
         public static int Concatenate(this int num1, int num2)
         {
             int num2Length = 10;
@@ -524,11 +312,7 @@ namespace Core
         public static bool HasSameDigits(this int num1, int num2)
         {
             int n1 = num1.ToString().Length;
-            int n2 = num2.ToString().Length;
-
-            if (n1 != n2)
-                return false;
-
+            
             char[] c1 = num1.ToString().ToCharArray();
             char[] c2 = num2.ToString().ToCharArray();
 
@@ -561,14 +345,6 @@ namespace Core
                     return false;
 
             return true;
-        }
-
-        public static bool IsApocalypseNumber(this BigInteger n)
-        {
-            if (n.ToString().Length == 666)
-                return true;
-            else
-                return false;
         }
 
         public static string ToDelimitedString(this int[] numbers, char delimiter)
@@ -614,9 +390,6 @@ namespace Core
         public static List<int> ToIntList(this string n, char delimiter)
         {
             List<int> retval = [];
-
-            if (String.IsNullOrWhiteSpace(n))
-                return retval;
 
             string[] items = n.Split(delimiter);
 
@@ -674,110 +447,9 @@ namespace Core
             return digits.ToIntFromDigitList();
         }
 
-        public static string ToRomanNumeral(this int n)
-        {
-            string invalidValueMsg = "Valid range is from -3999 to 3999 inclusive.";
-
-            if (n < -3999 || n > 3999) throw new ArgumentOutOfRangeException(nameof(n), invalidValueMsg);
-
-            if (n == 0) return "N";
-            if (n < 0) return "-" + n.ToRomanNumeral();
-            if (n >= 1000) return "M" + (n - 1000).ToRomanNumeral();
-            if (n >= 900) return "CM" + (n - 900).ToRomanNumeral();
-            if (n >= 500) return "D" + (n - 500).ToRomanNumeral();
-            if (n >= 400) return "CD" + (n - 400).ToRomanNumeral();
-            if (n >= 100) return "C" + (n - 100).ToRomanNumeral();
-            if (n >= 90) return "XC" + (n - 90).ToRomanNumeral();
-            if (n >= 50) return "L" + (n - 50).ToRomanNumeral();
-            if (n >= 40) return "XL" + (n - 40).ToRomanNumeral();
-            if (n >= 10) return "X" + (n - 10).ToRomanNumeral();
-            if (n >= 9) return "IX" + (n - 9).ToRomanNumeral();
-            if (n >= 5) return "V" + (n - 5).ToRomanNumeral();
-            if (n >= 4) return "IV" + (n - 4).ToRomanNumeral();
-            if (n >= 1) return "I" + (n - 1).ToRomanNumeral();
-
-            throw new ArgumentOutOfRangeException(nameof(n), invalidValueMsg);
-        }
-
-        public static BigInteger Factorial(this BigInteger n)
-        {
-            // Returns n!
-
-            BigInteger result = new(1);
-
-            for (BigInteger i = n; i > 1; i--)
-            {
-                result *= i;
-            }
-
-            return result;
-        }
-
-        public static List<long> Factor(this long n)
-        {
-            List<long> result = [];
-
-            while (n % 2 == 0)
-            {
-                result.Add(2);
-                n /= 2;
-            }
-
-            // Take out other primes.
-            long factor = 3;
-            while (factor * factor <= n)
-            {
-                if (n % factor == 0)
-                {
-                    // This is a factor.
-                    result.Add(factor);
-                    n /= factor;
-                }
-                else
-                {
-                    // Go to the next odd number.
-                    factor += 2;
-                }
-            }
-
-            if (n > 1)
-                result.Add(n);
-
-            return result;
-        }
-
         public static decimal ToMicrons(this decimal millimeters)
         {
             return millimeters * 0.0001m;
-        }
-
-        public static int ToFloorInt(this decimal n)
-        {
-            return (int)Math.Floor((double)n);
-        }
-
-        public static int ToIntegerPart(this decimal n)
-        {
-            // Returns the portion of the number to the left of the decimal point.
-
-            decimal t = Math.Abs(n);
-            t = Math.Floor(t);
-
-            if (n < 0)
-                return Convert.ToInt32(t * -1m);
-            else
-                return (int)t;
-        }
-
-        public static decimal ToFractionalPart(this decimal n)
-        {
-            // Returns the portion of the number to the right of the decimal point. This is always a non-negative value.
-
-            decimal t = n.ToIntegerPart();
-            t = n - t;
-            t = Math.Abs(t);
-
-            return t;
         }
 
         public static bool IsProbablyPrime(this int number)
@@ -855,16 +527,6 @@ namespace Core
             string numberReversed = number.Reverse().ToString();
 
             if (number.ToString() == numberReversed)
-                return true;
-            else
-                return false;
-        }
-
-        public static bool IsPalindrome(this BigInteger number)
-        {
-            BigInteger reversed = number.Reverse();
-
-            if (number.ToString() == reversed.ToString())
                 return true;
             else
                 return false;
@@ -1001,9 +663,6 @@ namespace Core
 
             s = s.Replace(digitToRemove.ToString(), "");
 
-            if (String.IsNullOrWhiteSpace(s))
-                return 0;
-
             return Convert.ToInt32(s);
         }
 
@@ -1069,23 +728,6 @@ namespace Core
             }
         }
 
-        public static List<int> ToListOfDigits(this BigInteger val)
-        {
-            if (val < 0)
-                throw new Exception("Negative values are not supported.");
-
-            List<int> vals = [];
-
-            string v = val.ToString();
-
-            for (int i = 0; i < v.Length; i++)
-            {
-                vals.Add(Convert.ToInt32(v.Substring(i, 1)));
-            }
-
-            return vals;
-        }
-
         public static List<int> ToListOfDigits(this int n)
         {
             return ToListOfDigits((ulong)n);   
@@ -1108,17 +750,6 @@ namespace Core
             return vals;
         }
 
-        public static int ToIntFromDigitArray(this int[] vals)
-        {
-            // Given array of digits such as 1, 4, 7, return the number they represent. E.g. 147.
-
-            StringBuilder sb = new();
-            for (int i = 0; i < vals.Length; i++)
-                sb.Append(vals[i]);
-
-            return Convert.ToInt32(sb.ToString());
-        }
-
         public static int ToIntFromDigitList(this List<int> vals)
         {
             StringBuilder sb = new();
@@ -1126,28 +757,6 @@ namespace Core
                 sb.Append(vals[i]);
 
             return Convert.ToInt32(sb.ToString());
-        }
-
-        public static List<int> ToRotations(this int val)
-        {
-            // Given a number such as 197, return all rotations of its digits. E.g. 197, 971, 719
-
-            List<int> r = [];
-
-            List<int> digits = val.ToListOfDigits();
-
-            for (int i = 0; i < digits.Count; i++)
-            {
-                int newval = digits.ToIntFromDigitList();
-                r.Add(newval);
-
-                // Rotate.
-                int currentDigit = digits[0];
-                digits.RemoveAt(0);
-                digits.Insert(digits.Count, currentDigit);
-            }
-
-            return r;
         }
 
         public static int[] ToArray(this string[] vals)
@@ -1208,43 +817,6 @@ namespace Core
             return Convert.ToInt32(s.Substring(startIndex, length));
         }
 
-        public static bool AreDigitsInAscendingOrder(this int n)
-        {
-            // Returns true if each digit is larger than the previous digit, reading left to right. 
-            // E.g. n = 12345, return true.
-
-            List<int> list = n.ToListOfDigits();
-
-            if (list.Count == 1)
-                return true;
-
-            for (int i = 1; i < list.Count; i++)
-            {
-                if (list[i] <= list[i - 1])
-                    return false;
-            }
-
-            return true;
-        }
-
-        public static bool AreDigitsInDescendingOrder(this int n)
-        {
-            // E.g. n = 54321, return true.
-
-            List<int> list = n.ToListOfDigits();
-
-            if (list.Count == 1)
-                return true;
-
-            for (int i = 1; i < list.Count; i++)
-            {
-                if (list[i] >= list[i - 1])
-                    return false;
-            }
-
-            return true;
-        }
-
         public static int Min(this int[] intArray)
         {
             int m = Int32.MaxValue;
@@ -1292,49 +864,12 @@ namespace Core
             return m;
         }
 
-        public static bool Identical(this List<int> intList)
-        {
-            if (intList.Count < 1)
-                return true;
-
-            for (int i = 1; i < intList.Count; i++)
-            {
-                if (intList[0] != intList[i])
-                    return false;
-            }
-
-            return true;
-        }
-
-        public static bool HasDupes(this List<int> intList)
-        {
-            if (intList.Count <= 1)
-                return false;
-
-            List<int> list = [];
-
-            foreach (int i in intList)
-            {
-                if (list.Contains(i))
-                {
-                    return true;
-                }
-                else
-                {
-                    list.Add(i);
-                }
-            }
-
-            return false;
-        }
-
         public static List<int[]> ToIntListArray(this string val, char rowDelimiter, char colDelimiter)
         {
             List<int[]> data = [];
 
             string[] lines = val.Split(rowDelimiter);
 
-            //Console.WriteLine("lines: {0}", lines);
             for (int i = 1; i <= lines.Length; i++)
             {
                 string[] fields = lines[i - 1].Split(colDelimiter);
@@ -1343,14 +878,7 @@ namespace Core
 
                 for (int j = 0; j < fields.Length; j++)
                 {
-                    try
-                    {
-                        d[j] = Convert.ToInt32(fields[j].Trim());
-                    }
-                    catch
-                    {
-                        throw new InvalidDataException(String.Format("Line {0} is in incorrect format.", i));
-                    }
+                    d[j] = Convert.ToInt32(fields[j].Trim());
                 }
 
                 data.Add(d);
@@ -1374,14 +902,7 @@ namespace Core
 
                 for (int j = 0; j < fields.Length; j++)
                 {
-                    try
-                    {
-                        d[j] = Convert.ToDouble(fields[j].Trim());
-                    }
-                    catch
-                    {
-                        throw new InvalidDataException(String.Format("Line {0} is in incorrect format.", i));
-                    }
+                    d[j] = Convert.ToDouble(fields[j].Trim());
                 }
 
                 data.Add(d);
@@ -1423,58 +944,14 @@ namespace Core
             return Encoding.UTF8.GetString([.. msg.Select((b, i) => (byte)(b ^ pwd[i % pwd.Length]))]);
         }
 
-        #region Trig methods 
-
         public static double ToRadians(this double degrees)
         {
             return ((Math.PI / 180d) * degrees);
-        }
-
-        public static decimal ToRadians(this decimal degrees)
-        {
-            return (((decimal)Math.PI / 180m) * degrees);
         }
 
         public static double ToDegrees(this double radians)
         {
             return ((180d / Math.PI) * radians);
         }
-
-        public static decimal ToDegrees(this decimal radians)
-        {
-            return ((180m / (decimal)Math.PI) * radians);
-        }
-
-        public static decimal Sin(this decimal degrees)
-        {
-            return (decimal)Math.Sin((double)degrees.ToRadians());
-        }
-
-        public static decimal InverseSin(this decimal sin)
-        {
-            return (decimal)Math.Asin((double)sin).ToDegrees();
-        }
-
-        public static decimal Cos(this decimal degrees)
-        {
-            return (decimal)Math.Cos((double)degrees.ToRadians());
-        }
-
-        public static decimal InverseCos(this decimal cos)
-        {
-            return (decimal)Math.Acos((double)cos).ToDegrees();
-        }
-
-        public static decimal Tan(this decimal degrees)
-        {
-            return (decimal)Math.Tan((double)degrees.ToRadians());
-        }
-
-        public static decimal InverseTan(this decimal tan)
-        {
-            return (decimal)Math.Atan((double)tan).ToDegrees();
-        }
-
-        #endregion
     }
 }
